@@ -1,9 +1,9 @@
 ﻿
-exports.newUserBot = function (processIndex, COMMONS, EXCHANGE_API) {
+exports.newSuperalgosBotModulesHistoricOHLCVs = function (processIndex) {
 
     const FULL_LOG = true;
     const GMT_SECONDS = ':00.000 GMT+0000';
-    const MODULE_NAME = "User Bot";
+    const MODULE_NAME = "Historic OHLCVs";
     const CANDLES_FOLDER_NAME = "Candles/One-Min";
     const VOLUMES_FOLDER_NAME = "Volumes/One-Min";
 
