@@ -1,19 +1,20 @@
 {
-    "tutorial": "Testing a Trading Idea - The Other Stages",
-    "pageNumber": 25,
-    "type": "Tutorial Step - The Tricks of the Trade",
+    "tutorial": "Basic Education",
+    "pageNumber": "26",
+    "type": "Tutorial Step - Let's Get On With It!",
     "definition": {
+        "text": "The tricky bit is when the destination node is far away from the originator node, maybe even in different hierarchies!",
+        "updated": 1615807480540,
         "icon": {
-            "project": "Superalgos",
-            "name": "mouse-pointer"
-        },
-        "text": "Establishing a reference is kid's play! The only \"challenge\" here is that the node to be referenced is far away from the originator.",
-        "updated": 1615805937875
+            "name": "mouse-right-click",
+            "project": "Superalgos"
+        }
     },
     "paragraphs": [
         {
             "style": "Text",
-            "text": "These UI tricks may make your life easier:"
+            "text": "These UI tricks may make your life easier:",
+            "updated": 1615807543929
         },
         {
             "style": "List",
@@ -25,7 +26,8 @@
         },
         {
             "style": "List",
-            "text": "Use Ctrl / Command + arrow keys to drag the node across the screen after clicking on it with the mouse. Keep keys pressed and the node flies!"
+            "text": "Use Ctrl / Cmd + arrow keys to drag the node across the screen after clicking on it with the mouse. Keep keys pressed and the node flies!",
+            "updated": 1615807572088
         },
         {
             "style": "List",
