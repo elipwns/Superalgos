@@ -1,5 +1,5 @@
 {
-    "type": "Contribution Claims",
+    "type": "Support Program",
     "menuItems": [
         {
             "action": "Configure",
@@ -11,23 +11,18 @@
         {
             "action": "Add UI Object",
             "actionProject": "Foundations",
-            "label": "Add Asset Contributions Folder",
-            "relatedUiObject": "Asset Contributions Folder",
-            "actionFunction": "payload.executeAction"
+            "actionFunction": "payload.executeAction",
+            "label": "Add User Supporter",
+            "relatedUiObject": "User Supporter"
         },
         {
             "action": "Add UI Object",
             "actionProject": "Foundations",
+            "disableIfPropertyIsDefined": true,
+            "propertyToCheckFor": "tokensAwarded",
             "actionFunction": "payload.executeAction",
-            "label": "Add Feature Contributions Folder",
-            "relatedUiObject": "Feature Contributions Folder"
-        },
-        {
-            "action": "Add UI Object",
-            "actionProject": "Foundations",
-            "actionFunction": "payload.executeAction",
-            "label": "Add Position Contributions Folder",
-            "relatedUiObject": "Position Contributions Folder"
+            "label": "Add Tokens Awarded",
+            "relatedUiObject": "Tokens Awarded"
         },
         {
             "action": "Delete UI Object",
@@ -47,29 +42,23 @@
         "config": "{}"
     },
     "attachingRules": {
-        "compatibleTypes": "->User Profile->"
+        "compatibleTypes": "->Token Power Switch->"
     },
     "addLeftIcons": true,
     "level": 1,
-    "propertyNameAtParent": "contributionClaims",
+    "propertyNameAtParent": "supportProgram",
     "childrenNodesProperties": [
         {
-            "name": "assetContributionsFolder",
+            "name": "userSupporters",
             "type": "array",
-            "childType": "Asset Contributions Folder",
+            "childType": "User Supporter",
             "autoAdd": false
         },
         {
-            "name": "featureContributionsFolder",
-            "type": "array",
-            "childType": "Feature Contributions Folder",
-            "autoAdd": false
-        },
-        {
-            "name": "positionContributionsFolder",
-            "type": "array",
-            "childType": "Position Contributions Folder",
-            "autoAdd": false
+            "name": "tokensAwarded",
+            "type": "node",
+            "childType": "Tokens Awarded",
+            "autoAdd": true
         }
     ]
 }

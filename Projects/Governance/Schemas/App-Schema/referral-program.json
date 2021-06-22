@@ -1,5 +1,5 @@
 {
-    "type": "Feature Contributions Folder",
+    "type": "Referral Program",
     "menuItems": [
         {
             "action": "Configure",
@@ -12,15 +12,17 @@
             "action": "Add UI Object",
             "actionProject": "Foundations",
             "actionFunction": "payload.executeAction",
-            "label": "Add Feature Contributions Folder",
-            "relatedUiObject": "Feature Contributions Folder"
+            "label": "Add User Referrer",
+            "relatedUiObject": "User Referrer"
         },
         {
             "action": "Add UI Object",
             "actionProject": "Foundations",
+            "disableIfPropertyIsDefined": true,
+            "propertyToCheckFor": "tokensAwarded",
             "actionFunction": "payload.executeAction",
-            "label": "Add Feature Contribution Claim",
-            "relatedUiObject": "Feature Contribution Claim"
+            "label": "Add Tokens Awarded",
+            "relatedUiObject": "Tokens Awarded"
         },
         {
             "action": "Delete UI Object",
@@ -39,24 +41,24 @@
     "initialValues": {
         "config": "{}"
     },
-    "addLeftIcons": true,
-    "level": 2,
     "attachingRules": {
-        "compatibleTypes": "->Contribution Claims->Feature Contributions Folder->"
+        "compatibleTypes": "->Token Power Switch->"
     },
-    "propertyNameAtParent": "featureContributionsFolder",
+    "addLeftIcons": true,
+    "level": 1,
+    "propertyNameAtParent": "referralProgram",
     "childrenNodesProperties": [
         {
-            "name": "featureContributionsFolder",
+            "name": "userReferrers",
             "type": "array",
-            "childType": "Feature Contributions Folder",
-            "autoAdd": false
+            "childType": "User Referrer",
+            "autoAdd": true
         },
         {
-            "name": "featureContributionClaims",
-            "type": "array",
-            "childType": "Feature Contribution Claim",
-            "autoAdd": false
+            "name": "tokensAwarded",
+            "type": "node",
+            "childType": "Tokens Awarded",
+            "autoAdd": true
         }
     ]
 }
