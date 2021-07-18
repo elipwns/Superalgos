@@ -30537,17 +30537,17 @@
                             {
                                 "type": "Plugin File",
                                 "name": "Bollinger",
-                                "config": "{\n\"codeName\": \"\"\n}",
+                                "config": "{\"project\":\"Foundations\",\"fileName\":\"Bollinger\",\"folderName\":\"Data-Mines\",\"nodeType\":\"Data Mine\"}",
                                 "project": "Foundations",
                                 "pluginFilePosition": {
                                     "type": "Plugin File Position",
                                     "name": "Bollinger",
                                     "project": "Foundations",
-                                    "id": "f1fe2800-a35e-4ea8-92c1-c6f7cc34b1a5",
+                                    "id": "b154d141-8b6b-4668-91c4-b348857fcbdf",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 18877.262986317583,
-                                            "y": 18690.545648831718
+                                            "x": 18867.960045721586,
+                                            "y": 18694.249722246608
                                         },
                                         "targetPosition": {
                                             "x": 30786.316614332067,
@@ -30557,7 +30557,7 @@
                                             "isPinned": true,
                                             "isFrozen": false,
                                             "isCollapsed": false,
-                                            "angleToParent": 2,
+                                            "angleToParent": 1,
                                             "distanceToParent": 3,
                                             "arrangementStyle": 0
                                         },
@@ -30566,7 +30566,7 @@
                                         }
                                     }
                                 },
-                                "id": "7e62f317-f81a-4b11-b741-70ac73455c36",
+                                "id": "b7187964-4e15-403b-981a-c30dbbba6280",
                                 "savedPayload": {
                                     "position": {
                                         "x": 30786.316614332067,
@@ -30592,17 +30592,17 @@
                             {
                                 "type": "Plugin File",
                                 "name": "Candles",
-                                "config": "{\n\"codeName\": \"\"\n}",
+                                "config": "{\"project\":\"Foundations\",\"fileName\":\"Candles\",\"folderName\":\"Data-Mines\",\"nodeType\":\"Data Mine\"}",
                                 "project": "Foundations",
                                 "pluginFilePosition": {
                                     "type": "Plugin File Position",
                                     "name": "Candles",
                                     "project": "Foundations",
-                                    "id": "04fbbd3c-3a81-46e4-8157-16aa11a2ada5",
+                                    "id": "039206f7-61bb-4d6a-83ee-ffc39f8252f7",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 18878.81250391841,
-                                            "y": 11224.853795850122
+                                            "x": 18867.13119709707,
+                                            "y": 11233.339525621643
                                         },
                                         "targetPosition": {
                                             "x": 30962.65219001981,
@@ -30612,7 +30612,7 @@
                                             "isPinned": true,
                                             "isFrozen": false,
                                             "isCollapsed": false,
-                                            "angleToParent": 2,
+                                            "angleToParent": 1,
                                             "distanceToParent": 3,
                                             "arrangementStyle": 0
                                         },
@@ -30621,7 +30621,7 @@
                                         }
                                     }
                                 },
-                                "id": "63e37e23-08a1-4f24-8139-4c5001f82886",
+                                "id": "9767e4cd-9f99-4bc7-abf0-7106e1749f94",
                                 "savedPayload": {
                                     "position": {
                                         "x": 30962.65219001981,
@@ -30676,21 +30676,21 @@
                             {
                                 "type": "Plugin File",
                                 "name": "Masters",
-                                "config": "{\n\"codeName\": \"\"\n}",
+                                "config": "{\"project\":\"Foundations\",\"fileName\":\"Masters\",\"folderName\":\"Trading-Mines\",\"nodeType\":\"Trading Mine\"}",
                                 "project": "Foundations",
                                 "pluginFilePosition": {
                                     "type": "Plugin File Position",
                                     "name": "Masters",
                                     "project": "Foundations",
-                                    "id": "ad1ce785-858f-4cfc-ba68-108b5e0c54d9",
+                                    "id": "8004e29d-3283-4d8e-bf59-3532ab436aeb",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 24941.217404066585,
-                                            "y": 18714.893045797242
+                                            "x": 24928.762986317583,
+                                            "y": 18725.10151122931
                                         },
                                         "targetPosition": {
-                                            "x": 31320.45102232534,
-                                            "y": 19544.930491916948
+                                            "x": 31141.968084630065,
+                                            "y": 18085.168466117855
                                         },
                                         "floatingObject": {
                                             "isPinned": true,
@@ -30705,15 +30705,15 @@
                                         }
                                     }
                                 },
-                                "id": "8a64c00e-4f8c-49bf-b57d-4e2e388bae41",
+                                "id": "32c14399-ed7e-4a48-8399-5b0bb8bb8313",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 31320.45102232534,
-                                        "y": 19544.930491916948
+                                        "x": 31141.968084630065,
+                                        "y": 18085.168466117855
                                     },
                                     "targetPosition": {
-                                        "x": 31070.415084976332,
-                                        "y": 19111.835158656926
+                                        "x": 31234.673182942548,
+                                        "y": 18370.4854210064
                                     },
                                     "floatingObject": {
                                         "isPinned": false,
@@ -30844,21 +30844,21 @@
                             {
                                 "type": "Plugin File",
                                 "name": "Low-Frequency",
-                                "config": "{\n\"codeName\": \"\"\n}",
+                                "config": "{\"project\":\"Foundations\",\"fileName\":\"Low-Frequency\",\"folderName\":\"Trading-Engines\",\"nodeType\":\"Trading Engine\"}",
                                 "project": "Foundations",
                                 "pluginFilePosition": {
                                     "type": "Plugin File Position",
                                     "name": "Low-Frequency",
                                     "project": "Foundations",
-                                    "id": "e117a2a4-09b3-4181-8455-e680de3bdeb3",
+                                    "id": "811e8e0f-95e3-4872-a770-0a3619a1c5fd",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 30923.55093774257,
-                                            "y": 24967.049392142086
+                                            "x": 30910.99357619248,
+                                            "y": 24968.559102958174
                                         },
                                         "targetPosition": {
-                                            "x": 31141.968084630065,
-                                            "y": 19226.436285672036
+                                            "x": 31812.788477879996,
+                                            "y": 19008.47352727043
                                         },
                                         "floatingObject": {
                                             "isPinned": true,
@@ -30873,15 +30873,15 @@
                                         }
                                     }
                                 },
-                                "id": "e9270d67-4630-4ac9-91ca-1dec4fb5aa38",
+                                "id": "9ceee9b4-f338-44b4-ad1a-b84fdb043b01",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 31141.968084630065,
-                                        "y": 19226.436285672036
+                                        "x": 31812.788477879996,
+                                        "y": 19008.47352727043
                                     },
                                     "targetPosition": {
-                                        "x": 31234.673182942548,
-                                        "y": 18941.11933078349
+                                        "x": 31570.083379567513,
+                                        "y": 18832.13795158269
                                     },
                                     "floatingObject": {
                                         "isPinned": false,
@@ -75253,7 +75253,6 @@
                     "arrangementStyle": 0
                 },
                 "uiObject": {
-                    "isPlaying": false,
                     "isRunning": false
                 },
                 "tutorial": {
@@ -76478,7 +76477,6 @@
                     "arrangementStyle": 0
                 },
                 "uiObject": {
-                    "isPlaying": false,
                     "isRunning": false
                 },
                 "tutorial": {
@@ -79579,7 +79577,6 @@
                     "arrangementStyle": 0
                 },
                 "uiObject": {
-                    "isPlaying": false,
                     "isRunning": false
                 },
                 "tutorial": {
@@ -81948,7 +81945,6 @@
                     "arrangementStyle": 0
                 },
                 "uiObject": {
-                    "isPlaying": false,
                     "isRunning": false
                 },
                 "tutorial": {
