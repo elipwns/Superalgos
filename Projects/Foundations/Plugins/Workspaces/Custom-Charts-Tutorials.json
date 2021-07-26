@@ -1748,7 +1748,7 @@
                                                                                             "timeRange": {
                                                                                                 "type": "Time Range",
                                                                                                 "name": "New Time Range",
-                                                                                                "config": "{\n    \"initialDatetime\": \"2020-09-01\",\n    \"finalDatetime\": \"2020-09-02\"\n}",
+                                                                                                "config": "{ \n\"initialDatetime\": \"2020-09-01\",\n\"finalDatetime\": \"2020-09-02\" \n}",
                                                                                                 "project": "Foundations",
                                                                                                 "id": "88cbd256-3b11-4be6-b9c1-9d2dac6f0e02",
                                                                                                 "savedPayload": {
@@ -3675,7 +3675,7 @@
                                                                 "floatingObject": {
                                                                     "isPinned": false,
                                                                     "isFrozen": false,
-                                                                    "isCollapsed": false,
+                                                                    "isCollapsed": true,
                                                                     "angleToParent": 2,
                                                                     "distanceToParent": 3,
                                                                     "arrangementStyle": 0
@@ -4053,7 +4053,7 @@
                                                                 "floatingObject": {
                                                                     "isPinned": false,
                                                                     "isFrozen": false,
-                                                                    "isCollapsed": false,
+                                                                    "isCollapsed": true,
                                                                     "angleToParent": 2,
                                                                     "distanceToParent": 3,
                                                                     "arrangementStyle": 0
@@ -4304,7 +4304,7 @@
                                                         "floatingObject": {
                                                             "isPinned": false,
                                                             "isFrozen": false,
-                                                            "isCollapsed": true,
+                                                            "isCollapsed": false,
                                                             "angleToParent": 2,
                                                             "distanceToParent": 3,
                                                             "arrangementStyle": 0
@@ -8367,7 +8367,7 @@
                                                         "floatingObject": {
                                                             "isPinned": false,
                                                             "isFrozen": false,
-                                                            "isCollapsed": false,
+                                                            "isCollapsed": true,
                                                             "angleToParent": 2,
                                                             "distanceToParent": 3,
                                                             "arrangementStyle": 0
@@ -13874,12 +13874,12 @@
                 "id": "01713f1d-91b8-44f9-9c5d-a0c12fd09037",
                 "savedPayload": {
                     "position": {
-                        "x": 19873.306237131383,
-                        "y": 29028.85640053908
+                        "x": 19870.306237131383,
+                        "y": 29027.85640053908
                     },
                     "targetPosition": {
-                        "x": 19573.306237131383,
-                        "y": 29028.85640053908
+                        "x": 19570.306237131383,
+                        "y": 29027.85640053908
                     },
                     "floatingObject": {
                         "isPinned": false,
@@ -13912,12 +13912,12 @@
                             "id": "65aa985b-19cc-4dbe-8988-b0d7a1adee35",
                             "savedPayload": {
                                 "position": {
-                                    "x": 19061.17420277542,
-                                    "y": 29240.988434895044
+                                    "x": 19058.17420277542,
+                                    "y": 29239.988434895044
                                 },
                                 "targetPosition": {
-                                    "x": 19273.306237131383,
-                                    "y": 29028.85640053908
+                                    "x": 19270.306237131383,
+                                    "y": 29027.85640053908
                                 },
                                 "floatingObject": {
                                     "isPinned": false,
@@ -28455,12 +28455,12 @@
                                     "id": "72a1f250-0d0e-4354-8fdf-741866b9c16c",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 18673.306237131383,
-                                            "y": 29028.85640053908
+                                            "x": 18670.306237131383,
+                                            "y": 29027.85640053908
                                         },
                                         "targetPosition": {
-                                            "x": 18973.306237131383,
-                                            "y": 29028.85640053908
+                                            "x": 18970.306237131383,
+                                            "y": 29027.85640053908
                                         },
                                         "floatingObject": {
                                             "isPinned": false,
@@ -28493,12 +28493,12 @@
                             "id": "b10709c9-2150-4055-a06e-1b9b8db2af55",
                             "savedPayload": {
                                 "position": {
-                                    "x": 18973.306237131383,
-                                    "y": 29028.85640053908
+                                    "x": 18970.306237131383,
+                                    "y": 29027.85640053908
                                 },
                                 "targetPosition": {
-                                    "x": 19273.306237131383,
-                                    "y": 29028.85640053908
+                                    "x": 19270.306237131383,
+                                    "y": 29027.85640053908
                                 },
                                 "floatingObject": {
                                     "isPinned": false,
@@ -43036,12 +43036,12 @@
                                     "id": "987baa7c-457b-4884-b3fa-b43b43558e38",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 18849.042168419455,
-                                            "y": 28604.592331827153
+                                            "x": 18846.042168419455,
+                                            "y": 28603.592331827153
                                         },
                                         "targetPosition": {
-                                            "x": 19061.17420277542,
-                                            "y": 28816.724366183116
+                                            "x": 19058.17420277542,
+                                            "y": 28815.724366183116
                                         },
                                         "floatingObject": {
                                             "isPinned": false,
@@ -43074,12 +43074,12 @@
                             "id": "26c596fe-7a86-47c5-ac4a-f92db9a594e2",
                             "savedPayload": {
                                 "position": {
-                                    "x": 19061.17420277542,
-                                    "y": 28816.724366183116
+                                    "x": 19058.17420277542,
+                                    "y": 28815.724366183116
                                 },
                                 "targetPosition": {
-                                    "x": 19273.306237131383,
-                                    "y": 29028.85640053908
+                                    "x": 19270.306237131383,
+                                    "y": 29027.85640053908
                                 },
                                 "floatingObject": {
                                     "isPinned": false,
@@ -43103,12 +43103,12 @@
                     "id": "2f92dce8-f804-40b6-9f4d-e605f4b4a55e",
                     "savedPayload": {
                         "position": {
-                            "x": 19273.306237131383,
-                            "y": 29028.85640053908
+                            "x": 19270.306237131383,
+                            "y": 29027.85640053908
                         },
                         "targetPosition": {
-                            "x": 19573.306237131383,
-                            "y": 29028.85640053908
+                            "x": 19570.306237131383,
+                            "y": 29027.85640053908
                         },
                         "floatingObject": {
                             "isPinned": false,
@@ -43132,12 +43132,12 @@
             "id": "21d2ec55-9e56-4652-8e96-c7e451262c36",
             "savedPayload": {
                 "position": {
-                    "x": 19573.306237131383,
-                    "y": 29028.85640053908
+                    "x": 19570.306237131383,
+                    "y": 29027.85640053908
                 },
                 "targetPosition": {
-                    "x": 19573.306237131383,
-                    "y": 29028.85640053908
+                    "x": 19570.306237131383,
+                    "y": 29027.85640053908
                 },
                 "floatingObject": {
                     "isPinned": true,
@@ -43170,18 +43170,18 @@
                         "pluginFiles": [
                             {
                                 "type": "Plugin File",
-                                "name": "Masters",
-                                "config": "{\n\"codeName\": \"\"\n}",
+                                "name": "Candles",
+                                "config": "{\"project\":\"Foundations\",\"fileName\":\"Candles\",\"folderName\":\"Data-Mines\",\"nodeType\":\"Data Mine\"}",
                                 "project": "Foundations",
                                 "pluginFilePosition": {
                                     "type": "Plugin File Position",
-                                    "name": "Masters",
+                                    "name": "Candles",
                                     "project": "Foundations",
-                                    "id": "d5234bd2-ef4e-4856-a6a0-ce7659653a48",
+                                    "id": "29558ca6-d412-44a3-a6d7-7396badf4ad0",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 14663.352187356151,
-                                            "y": 19699.05301821844
+                                            "x": 14637.069268429528,
+                                            "y": 10937.341121162674
                                         },
                                         "targetPosition": {
                                             "x": 30270.371225686038,
@@ -43191,7 +43191,7 @@
                                             "isPinned": true,
                                             "isFrozen": false,
                                             "isCollapsed": false,
-                                            "angleToParent": 2,
+                                            "angleToParent": 1,
                                             "distanceToParent": 3,
                                             "arrangementStyle": 0
                                         },
@@ -43200,7 +43200,7 @@
                                         }
                                     }
                                 },
-                                "id": "ecc1a524-de9b-4e73-8874-b99a7ea0402b",
+                                "id": "ff25c769-f0f1-406d-9d84-e2d5033f3d0d",
                                 "savedPayload": {
                                     "position": {
                                         "x": 30270.371225686038,
@@ -43225,18 +43225,18 @@
                             },
                             {
                                 "type": "Plugin File",
-                                "name": "Sparta",
-                                "config": "{\n\"codeName\": \"\"\n}",
+                                "name": "Masters",
+                                "config": "{\"project\":\"Foundations\",\"fileName\":\"Masters\",\"folderName\":\"Data-Mines\",\"nodeType\":\"Data Mine\"}",
                                 "project": "Foundations",
                                 "pluginFilePosition": {
                                     "type": "Plugin File Position",
-                                    "name": "Sparta",
+                                    "name": "Masters",
                                     "project": "Foundations",
-                                    "id": "449f1832-f5b8-4e7e-a010-d892d721d3bc",
+                                    "id": "55e11219-35d9-4034-8a73-a17d409a0b57",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 14673.067482786275,
-                                            "y": 29093.63150649338
+                                            "x": 14651.262986317583,
+                                            "y": 19722.60151122931
                                         },
                                         "targetPosition": {
                                             "x": 30444.968084630065,
@@ -43246,7 +43246,7 @@
                                             "isPinned": true,
                                             "isFrozen": false,
                                             "isCollapsed": false,
-                                            "angleToParent": 2,
+                                            "angleToParent": 1,
                                             "distanceToParent": 3,
                                             "arrangementStyle": 0
                                         },
@@ -43255,7 +43255,7 @@
                                         }
                                     }
                                 },
-                                "id": "0486ca8b-855a-4295-ba63-6f63421b4a13",
+                                "id": "170f0588-298b-450d-b104-dafba1260ad7",
                                 "savedPayload": {
                                     "position": {
                                         "x": 30444.968084630065,
@@ -43269,7 +43269,7 @@
                                         "isPinned": false,
                                         "isFrozen": false,
                                         "isCollapsed": false,
-                                        "angleToParent": 2,
+                                        "angleToParent": 1,
                                         "distanceToParent": 3,
                                         "arrangementStyle": 0
                                     },
@@ -43280,18 +43280,18 @@
                             },
                             {
                                 "type": "Plugin File",
-                                "name": "Candles",
-                                "config": "{\n\"codeName\": \"\"\n}",
+                                "name": "Sparta",
+                                "config": "{\"project\":\"Foundations\",\"fileName\":\"Sparta\",\"folderName\":\"Data-Mines\",\"nodeType\":\"Data Mine\"}",
                                 "project": "Foundations",
                                 "pluginFilePosition": {
                                     "type": "Plugin File Position",
-                                    "name": "Candles",
+                                    "name": "Sparta",
                                     "project": "Foundations",
-                                    "id": "56de3162-efa3-4402-bd90-8bcaa2391305",
+                                    "id": "71713419-b024-49a1-97dc-b48b9fbdb77c",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 14642.151546757865,
-                                            "y": 10925.348525719965
+                                            "x": 14665.067482786275,
+                                            "y": 29107.38150649338
                                         },
                                         "targetPosition": {
                                             "x": 30673.87033286441,
@@ -43301,7 +43301,7 @@
                                             "isPinned": true,
                                             "isFrozen": false,
                                             "isCollapsed": false,
-                                            "angleToParent": 2,
+                                            "angleToParent": 1,
                                             "distanceToParent": 3,
                                             "arrangementStyle": 0
                                         },
@@ -43310,7 +43310,7 @@
                                         }
                                     }
                                 },
-                                "id": "3e6bfb2f-4d6d-4b3f-9b0c-944ad4c0fd91",
+                                "id": "5fd4a53a-673f-4590-a2f4-0045b3996127",
                                 "savedPayload": {
                                     "position": {
                                         "x": 30673.87033286441,
@@ -43347,7 +43347,7 @@
                             "floatingObject": {
                                 "isPinned": false,
                                 "isFrozen": false,
-                                "isCollapsed": false,
+                                "isCollapsed": true,
                                 "angleToParent": 1,
                                 "distanceToParent": 3,
                                 "arrangementStyle": 0
@@ -43365,17 +43365,17 @@
                             {
                                 "type": "Plugin File",
                                 "name": "Masters",
-                                "config": "{\n\"codeName\": \"\"\n}",
+                                "config": "{\n    \"project\": \"Foundations\",\n    \"fileName\": \"Masters\",\n    \"folderName\": \"Trading-Mines\",\n    \"nodeType\": \"Trading Mine\"\n}",
                                 "project": "Foundations",
                                 "pluginFilePosition": {
                                     "type": "Plugin File Position",
                                     "name": "Masters",
                                     "project": "Foundations",
-                                    "id": "ad1ce785-858f-4cfc-ba68-108b5e0c54d9",
+                                    "id": "65a1052e-ffa7-498a-8571-1583e4f994db",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 30316.217404066585,
-                                            "y": 10859.643045797242
+                                            "x": 30304.99357619248,
+                                            "y": 10874.545648831718
                                         },
                                         "targetPosition": {
                                             "x": 31115.788477879996,
@@ -43394,7 +43394,7 @@
                                         }
                                     }
                                 },
-                                "id": "8a64c00e-4f8c-49bf-b57d-4e2e388bae41",
+                                "id": "735cb138-8e6d-4093-a5bb-e515aa4262fe",
                                 "savedPayload": {
                                     "position": {
                                         "x": 31115.788477879996,
@@ -43449,17 +43449,17 @@
                             {
                                 "type": "Plugin File",
                                 "name": "Masters-Lightning-Strike",
-                                "config": "{\n\"codeName\": \"\"\n}",
+                                "config": "{\n    \"project\": \"Foundations\",\n    \"fileName\": \"Masters-Lightning-Strike\",\n    \"folderName\": \"Trading-Systems\",\n    \"nodeType\": \"Trading System\"\n}",
                                 "project": "Foundations",
                                 "pluginFilePosition": {
                                     "type": "Plugin File Position",
                                     "name": "Masters-Lightning-Strike",
                                     "project": "Foundations",
-                                    "id": "37ab4b0d-6bd8-46b6-9778-e193c32669a4",
+                                    "id": "ae5c2e13-5b5c-456b-9c96-41ccf5d63823",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 24926.365708673427,
-                                            "y": 19688.576468868458
+                                            "x": 24917.49357619248,
+                                            "y": 19698.559102958174
                                         },
                                         "targetPosition": {
                                             "x": 31115.788477879996,
@@ -43469,7 +43469,7 @@
                                             "isPinned": true,
                                             "isFrozen": false,
                                             "isCollapsed": false,
-                                            "angleToParent": 2,
+                                            "angleToParent": 1,
                                             "distanceToParent": 3,
                                             "arrangementStyle": 0
                                         },
@@ -43478,7 +43478,7 @@
                                         }
                                     }
                                 },
-                                "id": "5fdcecee-8c8f-4e0f-b36b-81e9231970a6",
+                                "id": "f0fe3aed-15d4-495f-a7c5-86a7d6768827",
                                 "savedPayload": {
                                     "position": {
                                         "x": 31115.788477879996,
@@ -43491,8 +43491,8 @@
                                     "floatingObject": {
                                         "isPinned": false,
                                         "isFrozen": false,
-                                        "isCollapsed": true,
-                                        "angleToParent": 2,
+                                        "isCollapsed": false,
+                                        "angleToParent": 1,
                                         "distanceToParent": 3,
                                         "arrangementStyle": 0
                                     },
@@ -43533,17 +43533,17 @@
                             {
                                 "type": "Plugin File",
                                 "name": "Low-Frequency",
-                                "config": "{\n\"codeName\": \"\"\n}",
+                                "config": "{\n    \"project\": \"Foundations\",\n    \"fileName\": \"Low-Frequency\",\n    \"folderName\": \"Trading-Engines\",\n    \"nodeType\": \"Trading Engine\"\n}",
                                 "project": "Foundations",
                                 "pluginFilePosition": {
                                     "type": "Plugin File Position",
                                     "name": "Low-Frequency",
                                     "project": "Foundations",
-                                    "id": "e117a2a4-09b3-4181-8455-e680de3bdeb3",
+                                    "id": "43bd7bf4-c32d-4584-a9fc-db11f100f51e",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 30325.55093774257,
-                                            "y": 19653.049392142086
+                                            "x": 30315.262986317583,
+                                            "y": 19661.00324056058
                                         },
                                         "targetPosition": {
                                             "x": 30444.968084630065,
@@ -43562,7 +43562,7 @@
                                         }
                                     }
                                 },
-                                "id": "e9270d67-4630-4ac9-91ca-1dec4fb5aa38",
+                                "id": "6d63590b-76ce-48df-9d5a-6fe0abc70ad0",
                                 "savedPayload": {
                                     "position": {
                                         "x": 30444.968084630065,
@@ -43976,7 +43976,7 @@
                                 "floatingObject": {
                                     "isPinned": false,
                                     "isFrozen": false,
-                                    "isCollapsed": false,
+                                    "isCollapsed": true,
                                     "angleToParent": 2,
                                     "distanceToParent": 3,
                                     "arrangementStyle": 0
@@ -44026,8 +44026,8 @@
                                         },
                                         "referenceParent": {
                                             "type": "Workspace",
-                                            "name": "Creating Custom Charts",
-                                            "id": "fb6f90e4-fe6d-4f40-8392-c4f3b8f214e1"
+                                            "name": "Custom Charts Tutorials",
+                                            "id": "7f5b5bd1-ed0d-4fc9-a4e9-42e69e57f351"
                                         }
                                     }
                                 },
@@ -44124,7 +44124,9 @@
                                         "uiObject": {
                                             "isRunning": false
                                         },
-                                        "tutorial": {},
+                                        "tutorial": {
+                                            "status": "Done"
+                                        },
                                         "referenceParent": {
                                             "type": "Market",
                                             "name": "BTC/USDT",
@@ -44325,7 +44327,9 @@
                                 "uiObject": {
                                     "isRunning": false
                                 },
-                                "tutorial": {}
+                                "tutorial": {
+                                    "status": "Done"
+                                }
                             }
                         },
                         {
@@ -44395,8 +44399,8 @@
                                 },
                                 "referenceParent": {
                                     "type": "Time Machine",
-                                    "name": "Lighting Strike Backtesting Session",
-                                    "id": "499eac86-6c40-4362-a36a-5f2002081866"
+                                    "name": "Lightning Strike Backtesting Session My Computer Binanceus BTC/USDT",
+                                    "id": "72a1f250-0d0e-4354-8fdf-741866b9c16c"
                                 }
                             }
                         }
@@ -44473,7 +44477,7 @@
                                         "referenceParent": {
                                             "type": "Project Dashboards",
                                             "name": "Foundations",
-                                            "id": "84a1b1ba-4888-4eac-8762-7084f0ee5de7"
+                                            "id": "2f92dce8-f804-40b6-9f4d-e605f4b4a55e"
                                         }
                                     }
                                 },
@@ -44653,7 +44657,7 @@
                                 {
                                     "type": "Tutorial Step",
                                     "name": "Add a Timeline Chart",
-                                    "config": "{\n    \"icon\": {\n        \"name\": \"Time/timeline-chart\",\n        \"project\": \"Foundations\"\n    },\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"pressButton\": \"\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Add a Timeline Chart\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"\",\n        \"closeTutorialEditor\": false,\n        \"page\": {\n            \"project\": \"Foundations\",\n            \"category\": \"\",\n            \"type\": \"\"\n        }\n    },\n    \"positionAtReferenceParent\": true\n}",
+                                    "config": "{\n    \"icon\": {\n        \"name\": \"Time/timeline-chart\",\n        \"project\": \"Foundations\"\n    },\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"pressButton\": \"\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Add a Timeline Chart\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"\",\n        \"closeTutorialEditor\": false,\n        \"page\": {\n            \"project\": \"Foundations\",\n            \"category\": \"\",\n            \"type\": \"\"\n        }\n    }\n}",
                                     "project": "Education",
                                     "id": "db25291f-ef20-4cc9-8bfe-a477ad73d1d4",
                                     "savedPayload": {
@@ -44689,7 +44693,7 @@
                                 {
                                     "type": "Tutorial Step",
                                     "name": "Why is it blank?",
-                                    "config": "{\n    \"icon\": {\n        \"name\": \"Charting-Space/chart-points\",\n        \"project\": \"Foundations\"\n    },\n    \"position\": \"Right\",\n    \"slider\": \"toBottom\",\n    \"repositionAtTimeMachineNoZoomReferenceParent\": true,\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Why Is It Blank?\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"\",\n        \"closeTutorialEditor\": false,\n        \"page\": {\n            \"project\": \"Foundations\",\n            \"category\": \"\",\n            \"type\": \"\"\n        }\n    },\n    \"positionAtReferenceParent\": true\n}",
+                                    "config": "{\n    \"icon\": {\n        \"name\": \"Charting-Space/chart-points\",\n        \"project\": \"Foundations\"\n    },\n    \"position\": \"Right\",\n    \"slider\": \"toBottom\",\n    \"repositionAtTimeMachineNoZoomReferenceParent\": true,\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Why Is It Blank?\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"\",\n        \"closeTutorialEditor\": false,\n        \"page\": {\n            \"project\": \"Foundations\",\n            \"category\": \"\",\n            \"type\": \"\"\n        }\n    }\n}",
                                     "project": "Education",
                                     "id": "a2131ede-c79b-4313-bd85-40fbd29287e7",
                                     "savedPayload": {
@@ -44813,7 +44817,9 @@
                                         "uiObject": {
                                             "isRunning": false
                                         },
-                                        "tutorial": {}
+                                        "tutorial": {
+                                            "status": "Done"
+                                        }
                                     }
                                 },
                                 {
@@ -44912,7 +44918,9 @@
                                         "uiObject": {
                                             "isRunning": false
                                         },
-                                        "tutorial": {},
+                                        "tutorial": {
+                                            "status": "Done"
+                                        },
                                         "referenceParent": {
                                             "type": "Data Storage",
                                             "name": "New Data Storage",
@@ -44946,9 +44954,7 @@
                                         "uiObject": {
                                             "isRunning": false
                                         },
-                                        "tutorial": {
-                                            "status": "Done"
-                                        },
+                                        "tutorial": {},
                                         "referenceParent": {
                                             "type": "Data Mines Data",
                                             "name": "New Data Mines Data",
@@ -44982,7 +44988,9 @@
                                         "uiObject": {
                                             "isRunning": false
                                         },
-                                        "tutorial": {},
+                                        "tutorial": {
+                                            "status": "Done"
+                                        },
                                         "referenceParent": {
                                             "type": "Data Mine Products",
                                             "name": "Candles",
@@ -45032,7 +45040,7 @@
                         "floatingObject": {
                             "isPinned": false,
                             "isFrozen": false,
-                            "isCollapsed": true,
+                            "isCollapsed": false,
                             "angleToParent": 1,
                             "distanceToParent": 3,
                             "arrangementStyle": 0
@@ -45054,7 +45062,7 @@
                         {
                             "type": "Tutorial Step",
                             "name": "Link Chart to Data Products",
-                            "config": "{\n    \"icon\": {\n        \"name\": \"Data/data-mine-products\",\n        \"project\": \"Foundations\"\n    },\n    \"position\": \"Right\",\n    \"slider\": \"toTop\",\n    \"pressButton\": \"\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Link Chart to Data Products\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"\",\n        \"closeTutorialEditor\": false,\n        \"page\": {\n            \"project\": \"Foundations\",\n            \"category\": \"\",\n            \"type\": \"\"\n        }\n    },\n    \"positionAtReferenceParent\": true\n}",
+                            "config": "{\n    \"icon\": {\n        \"name\": \"Data/data-mine-products\",\n        \"project\": \"Foundations\"\n    },\n    \"position\": \"Right\",\n    \"slider\": \"toTop\",\n    \"pressButton\": \"\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Link Chart to Data Products\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"\",\n        \"closeTutorialEditor\": false,\n        \"page\": {\n            \"project\": \"Foundations\",\n            \"category\": \"\",\n            \"type\": \"\"\n        }\n    }\n}",
                             "project": "Education",
                             "id": "cc2794e2-9140-4ca5-89d0-c812eee41f6d",
                             "savedPayload": {
@@ -45077,9 +45085,7 @@
                                 "uiObject": {
                                     "isRunning": false
                                 },
-                                "tutorial": {
-                                    "status": "Done"
-                                },
+                                "tutorial": {},
                                 "referenceParent": {
                                     "type": "Time Machine",
                                     "name": "Lighting Strike Backtesting Session",
@@ -45520,7 +45526,7 @@
                                 "floatingObject": {
                                     "isPinned": false,
                                     "isFrozen": false,
-                                    "isCollapsed": false,
+                                    "isCollapsed": true,
                                     "angleToParent": 2,
                                     "distanceToParent": 3,
                                     "arrangementStyle": 0
@@ -45565,7 +45571,9 @@
                                         "uiObject": {
                                             "isRunning": false
                                         },
-                                        "tutorial": {},
+                                        "tutorial": {
+                                            "status": "Done"
+                                        },
                                         "referenceParent": {
                                             "type": "Time Machine",
                                             "name": "Lighting Strike Backtesting Session",
@@ -45646,7 +45654,7 @@
                         "floatingObject": {
                             "isPinned": false,
                             "isFrozen": false,
-                            "isCollapsed": false,
+                            "isCollapsed": true,
                             "angleToParent": 1,
                             "distanceToParent": 3,
                             "arrangementStyle": 0
@@ -45775,7 +45783,6 @@
                     "arrangementStyle": 1
                 },
                 "uiObject": {
-                    "isPlaying": false,
                     "isRunning": false
                 },
                 "tutorial": {
