@@ -60159,7 +60159,6 @@
                     "arrangementStyle": 0
                 },
                 "uiObject": {
-                    "isPlaying": false,
                     "isRunning": false
                 },
                 "tutorial": {
@@ -62416,7 +62415,7 @@
                                 "referenceParent": {
                                     "type": "Workspace",
                                     "name": "Getting Started Tutorials",
-                                    "id": "e927ea33-b88c-4524-97bb-07bbfea501f2"
+                                    "id": "90718523-1d6d-49a5-893c-803a492fdb43"
                                 },
                                 "referenceParentCombinedNodePath": [
                                     [
@@ -63381,7 +63380,6 @@
                     "arrangementStyle": 0
                 },
                 "uiObject": {
-                    "isPlaying": false,
                     "isRunning": false
                 },
                 "tutorial": {
@@ -69872,6 +69870,7 @@
                     "arrangementStyle": 0
                 },
                 "uiObject": {
+                    "isPlaying": true,
                     "isRunning": false
                 },
                 "tutorial": {
