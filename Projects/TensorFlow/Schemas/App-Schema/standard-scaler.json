@@ -1,13 +1,6 @@
 {
-    "type": "Dimensionality Units",
+    "type": "Standard Scaler",
     "menuItems": [
-        {
-            "action": "Configure",
-            "label": "Configure",
-            "iconPathOn": "configuration",
-            "iconPathOff": "configuration",
-            "actionFunction": "uiObject.configEditor.activate"
-        },
         {
             "action": "Delete UI Object",
             "actionProject": "Foundations",
@@ -19,18 +12,12 @@
             "actionFunction": "payload.executeAction"
         }
     ],
-    "editors": {
-        "config": true
-    },
-    "initialValues": {
-        "config": "{ \n  \"value\": 1\n}"
-    },
     "addLeftIcons": true,
     "level": 3,
     "attachingRules": {
-        "compatibleTypes": "->Dense Layer->"
+        "compatibleTypes": "->Feature Preprocessing->"
     },
-    "propertyNameAtParent": "dimensionalityUnits",
+    "propertyNameAtParent": "standardScaler",
     "childrenNodesProperties": [],
     "icon": "tensorflow"
 }

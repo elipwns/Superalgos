@@ -1,22 +1,22 @@
 {
-    "type": "Data Feature",
+    "type": "Feature Preprocessing",
     "menuItems": [
         {
             "action": "Add UI Object",
             "actionProject": "Foundations",
             "disableIfPropertyIsDefined": true,
-            "propertyToCheckFor": "featureFormula",
-            "label": "Add Feature Formula",
-            "relatedUiObject": "Feature Formula",
+            "propertyToCheckFor": "minMaxScaler",
+            "label": "Add MinMax Scaler",
+            "relatedUiObject": "MinMax Scaler",
             "actionFunction": "payload.executeAction"
         },
         {
             "action": "Add UI Object",
             "actionProject": "Foundations",
             "disableIfPropertyIsDefined": true,
-            "propertyToCheckFor": "featurePreprocessing",
-            "label": "Add Feature Preprocessing",
-            "relatedUiObject": "Feature Preprocessing",
+            "propertyToCheckFor": "standardScaler",
+            "label": "Add Standard Scaler",
+            "relatedUiObject": "Standard Scaler",
             "actionFunction": "payload.executeAction"
         },
         {
@@ -33,21 +33,21 @@
     "addLeftIcons": true,
     "level": 3,
     "attachingRules": {
-        "compatibleTypes": "->Input Features->"
+        "compatibleTypes": "->Data Feature->"
     },
-    "propertyNameAtParent": "dataFeatures",
+    "propertyNameAtParent": "featurePreprocessing",
     "childrenNodesProperties": [
         {
-            "name": "featureFormula",
+            "name": "minMaxScaler",
             "type": "node",
-            "childType": "Feature Formula",
-            "autoAdd": true
+            "childType": "MinMax Scaler",
+            "autoAdd": false
         },
         {
-          "name": "featurePreprocessing",
-          "type": "node",
-          "childType": "Feature Preprocessing",
-          "autoAdd": false
+            "name": "standardScaler",
+            "type": "node",
+            "childType": "Standard Scaler",
+            "autoAdd": false
         }
     ],
     "icon": "tensorflow"

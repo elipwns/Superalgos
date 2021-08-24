@@ -1,5 +1,5 @@
 {
-    "type": "Dimensionality Units",
+    "type": "Adam Instance",
     "menuItems": [
         {
             "action": "Configure",
@@ -23,14 +23,14 @@
         "config": true
     },
     "initialValues": {
-        "config": "{ \n  \"value\": 1\n}"
+        "config": "{ \n  \"learningRate\": 0.001 ,\n \"beta1\": 0.9 ,\n \"beta2\": 0.999 ,\n \"epsilon\": 1e-07 \n}"
     },
     "addLeftIcons": true,
     "level": 3,
     "attachingRules": {
-        "compatibleTypes": "->Dense Layer->"
+        "compatibleTypes": "->Optimizer->"
     },
-    "propertyNameAtParent": "dimensionalityUnits",
+    "propertyNameAtParent": "optimizerType",
     "childrenNodesProperties": [],
     "icon": "tensorflow"
 }
