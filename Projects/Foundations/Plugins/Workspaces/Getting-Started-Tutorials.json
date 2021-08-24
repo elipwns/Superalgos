@@ -687,7 +687,7 @@
                                                 "arrangementStyle": 0
                                             },
                                             "uiObject": {
-                                                "isRunning": false
+                                                "isRunning": true
                                             },
                                             "referenceParent": {
                                                 "type": "Crypto Exchange",
@@ -736,7 +736,7 @@
                                         "arrangementStyle": 0
                                     },
                                     "uiObject": {
-                                        "isRunning": false
+                                        "isRunning": true
                                     },
                                     "referenceParent": {
                                         "type": "Project Definition",
@@ -779,7 +779,7 @@
                                 "arrangementStyle": 0
                             },
                             "uiObject": {
-                                "isRunning": false
+                                "isRunning": true
                             }
                         }
                     },
@@ -10732,7 +10732,7 @@
                 "floatingObject": {
                     "isPinned": true,
                     "isFrozen": false,
-                    "isCollapsed": false,
+                    "isCollapsed": true,
                     "angleToParent": 1,
                     "distanceToParent": 3,
                     "arrangementStyle": 0
@@ -24324,7 +24324,7 @@
             "viewport": {
                 "type": "Viewport",
                 "name": "New Viewport",
-                "config": "{\"zoom\":\"1.40\"}",
+                "config": "{\"zoom\":\"0.00\"}",
                 "project": "Foundations",
                 "id": "01713f1d-91b8-44f9-9c5d-a0c12fd09037",
                 "savedPayload": {
@@ -24349,8 +24349,8 @@
                     },
                     "frame": {
                         "position": {
-                            "x": 40,
-                            "y": -1440
+                            "x": 828.4999999999999,
+                            "y": 194.0257847533632
                         }
                     }
                 }
@@ -24426,7 +24426,7 @@
                                     "timeScale": {
                                         "type": "Time Scale",
                                         "name": "New Time Scale",
-                                        "config": "{\n    \"autoMinScale\": false,\n    \"autoMaxScale\": false,\n    \"fromDate\": \"2020-08-31T23:40:00.000Z\",\n    \"toDate\": \"2020-09-01T01:00:00.000Z\"\n}",
+                                        "config": "{\n    \"autoMinScale\": true,\n    \"autoMaxScale\": true,\n    \"fromDate\": \"2020-01-01T00:00:00.000Z\",\n    \"toDate\": \"2021-08-24T23:59:59.999Z\"\n}",
                                         "project": "Foundations",
                                         "id": "b12b6892-52a3-4bf8-a1d9-85bfe72d2f44",
                                         "savedPayload": {
@@ -24454,7 +24454,7 @@
                                     "rateScale": {
                                         "type": "Rate Scale",
                                         "name": "New Rate Scale",
-                                        "config": "{\n    \"autoMinScale\": false,\n    \"autoMaxScale\": false,\n    \"minValue\": 11000,\n    \"maxValue\": 11800\n}",
+                                        "config": "{\n    \"autoMinScale\": true,\n    \"autoMaxScale\": true,\n    \"minValue\": 3744.3087,\n    \"maxValue\": 65502.54\n}",
                                         "project": "Foundations",
                                         "id": "c6d395a1-dfb0-438b-b7be-64fa1a53fe5e",
                                         "savedPayload": {
@@ -24482,7 +24482,7 @@
                                     "timeFrameScale": {
                                         "type": "Time Frame Scale",
                                         "name": "New Time Frame Scale",
-                                        "config": "{\n     \"value\": \"01-min\"\n}",
+                                        "config": "{\"value\":\"24-hs\"}",
                                         "project": "Foundations",
                                         "id": "9ac80476-a542-4d74-bf7a-7e55c754887a",
                                         "savedPayload": {
@@ -24515,7 +24515,7 @@
                                             "layerManager": {
                                                 "type": "Layer Manager",
                                                 "name": "Masters",
-                                                "config": "{\n    \"visibleLayers\": 2,\n    \"panelLocation\": {\n        \"upOrDown\": \"up\",\n        \"leftOrRight\": \"left\"\n    }\n}",
+                                                "config": "{\n    \"visibleLayers\": 0,\n    \"panelLocation\": {\n        \"upOrDown\": \"up\",\n        \"leftOrRight\": \"left\"\n    }\n}",
                                                 "project": "Foundations",
                                                 "layers": [],
                                                 "botLayers": [
@@ -28993,7 +28993,7 @@
                                                             "y": 80
                                                         },
                                                         "width": 150,
-                                                        "height": 190,
+                                                        "height": 40,
                                                         "radius": 0
                                                     },
                                                     "referenceParent": {
@@ -38076,7 +38076,7 @@
                                             "layerManager": {
                                                 "type": "Layer Manager",
                                                 "name": "Masters",
-                                                "config": "{\n    \"visibleLayers\": 2,\n    \"panelLocation\": {\n        \"upOrDown\": \"up\",\n        \"leftOrRight\": \"left\"\n    }\n}",
+                                                "config": "{\n    \"visibleLayers\": 0,\n    \"panelLocation\": {\n        \"upOrDown\": \"up\",\n        \"leftOrRight\": \"left\"\n    }\n}",
                                                 "project": "Foundations",
                                                 "layers": [],
                                                 "botLayers": [
@@ -39133,7 +39133,7 @@
                                                             {
                                                                 "type": "Layer",
                                                                 "name": "Supports",
-                                                                "config": "{\n    \"status\": \"on\",\n    \"showPanels\": false\n}",
+                                                                "config": "{\n    \"status\": \"off\",\n    \"showPanels\": false\n}",
                                                                 "project": "Foundations",
                                                                 "layerPanels": {
                                                                     "type": "Layer Panels",
@@ -40228,7 +40228,7 @@
                                                             "y": 80
                                                         },
                                                         "width": 150,
-                                                        "height": 190,
+                                                        "height": 40,
                                                         "radius": 0
                                                     },
                                                     "referenceParent": {
@@ -40318,7 +40318,7 @@
                                             "layerManager": {
                                                 "type": "Layer Manager",
                                                 "name": "Candles",
-                                                "config": "{\n    \"visibleLayers\": 1,\n    \"panelLocation\": {\n        \"upOrDown\": \"up\",\n        \"leftOrRight\": \"left\"\n    }\n}",
+                                                "config": "{\n    \"visibleLayers\": 0,\n    \"panelLocation\": {\n        \"upOrDown\": \"up\",\n        \"leftOrRight\": \"left\"\n    }\n}",
                                                 "project": "Foundations",
                                                 "layers": [],
                                                 "botLayers": [
@@ -40831,7 +40831,7 @@
                                                             "y": 80
                                                         },
                                                         "width": 150,
-                                                        "height": 120,
+                                                        "height": 40,
                                                         "radius": 0
                                                     },
                                                     "referenceParent": {
@@ -40941,8 +40941,8 @@
                                                 "x": -5,
                                                 "y": 185
                                             },
-                                            "width": 161.75,
-                                            "height": 73.625,
+                                            "width": 240,
+                                            "height": 112.375,
                                             "radius": 0
                                         },
                                         "referenceParent": {
@@ -58765,7 +58765,9 @@
                                 "uiObject": {
                                     "isRunning": false
                                 },
-                                "tutorial": {},
+                                "tutorial": {
+                                    "status": "Reset"
+                                },
                                 "referenceParent": {
                                     "type": "Tutorial",
                                     "name": "Beyond the Basics",
@@ -58808,7 +58810,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Tutorial",
@@ -58852,7 +58854,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Tutorial",
@@ -58896,7 +58898,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Tutorial",
@@ -58940,7 +58942,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Tutorial",
@@ -58981,7 +58983,7 @@
                             "isRunning": false
                         },
                         "tutorial": {
-                            "status": "Done"
+                            "status": "Reset"
                         }
                     }
                 },
@@ -59018,7 +59020,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 }
                             }
                         },
@@ -59049,7 +59051,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Tutorial",
@@ -59093,7 +59095,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Tutorial",
@@ -59137,7 +59139,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Tutorial",
@@ -59181,7 +59183,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Tutorial",
@@ -59225,7 +59227,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Tutorial",
@@ -59269,7 +59271,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Tutorial",
@@ -59313,7 +59315,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Tutorial",
@@ -59354,7 +59356,7 @@
                             "isRunning": false
                         },
                         "tutorial": {
-                            "status": "Done"
+                            "status": "Reset"
                         }
                     }
                 },
@@ -59391,7 +59393,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Tutorial",
@@ -59435,7 +59437,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Tutorial",
@@ -59479,7 +59481,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Tutorial",
@@ -59523,7 +59525,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Tutorial",
@@ -59567,7 +59569,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Tutorial",
@@ -59611,7 +59613,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Tutorial",
@@ -59652,7 +59654,7 @@
                             "isRunning": false
                         },
                         "tutorial": {
-                            "status": "Done"
+                            "status": "Reset"
                         }
                     }
                 },
@@ -59689,7 +59691,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 }
                             }
                         },
@@ -59720,7 +59722,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 }
                             }
                         },
@@ -59751,7 +59753,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 }
                             }
                         },
@@ -59782,7 +59784,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 }
                             }
                         },
@@ -59813,7 +59815,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 }
                             }
                         },
@@ -59844,7 +59846,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Github API",
@@ -59893,7 +59895,9 @@
                                 "uiObject": {
                                     "isRunning": false
                                 },
-                                "tutorial": {}
+                                "tutorial": {
+                                    "status": "Reset"
+                                }
                             }
                         },
                         {
@@ -59923,7 +59927,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 }
                             }
                         },
@@ -59954,7 +59958,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 }
                             }
                         }
@@ -59982,7 +59986,7 @@
                             "isRunning": false
                         },
                         "tutorial": {
-                            "status": "Done"
+                            "status": "Reset"
                         }
                     }
                 },
@@ -60019,7 +60023,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 }
                             }
                         },
@@ -60050,7 +60054,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Tutorial",
@@ -60094,7 +60098,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Tutorial",
@@ -60135,7 +60139,7 @@
                             "isRunning": false
                         },
                         "tutorial": {
-                            "status": "Done"
+                            "status": "Reset"
                         }
                     }
                 }
@@ -60220,7 +60224,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 },
                                                 "referenceParent": {
                                                     "type": "Session Base Asset",
@@ -60342,7 +60346,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 }
                                             }
                                         }
@@ -60370,7 +60374,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         }
                                     }
                                 },
@@ -60407,7 +60411,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 },
                                                 "referenceParent": {
                                                     "type": "Backtesting Session",
@@ -60517,7 +60521,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 }
                                             }
                                         },
@@ -60548,7 +60552,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 }
                                             }
                                         },
@@ -60579,7 +60583,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 }
                                             }
                                         }
@@ -60607,7 +60611,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         }
                                     }
                                 },
@@ -60644,7 +60648,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 },
                                                 "referenceParent": {
                                                     "type": "Backtesting Session",
@@ -60754,7 +60758,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 }
                                             }
                                         },
@@ -60785,7 +60789,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 },
                                                 "referenceParent": {
                                                     "type": "Network",
@@ -60826,7 +60830,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         }
                                     }
                                 },
@@ -60863,7 +60867,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 }
                                             }
                                         },
@@ -60894,7 +60898,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 }
                                             }
                                         },
@@ -60925,7 +60929,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 },
                                                 "referenceParent": {
                                                     "type": "Design Space",
@@ -60966,7 +60970,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         }
                                     }
                                 }
@@ -60993,7 +60997,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 }
                             }
                         },
@@ -61037,7 +61041,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 },
                                                 "referenceParent": {
                                                     "type": "Trading System",
@@ -61081,7 +61085,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 },
                                                 "referenceParent": {
                                                     "type": "Trading Parameters",
@@ -61197,7 +61201,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 }
                                             }
                                         },
@@ -61228,7 +61232,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 }
                                             }
                                         },
@@ -61259,7 +61263,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 }
                                             }
                                         },
@@ -61290,7 +61294,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 },
                                                 "referenceParent": {
                                                     "type": "Trading Parameters",
@@ -61403,7 +61407,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         }
                                     }
                                 },
@@ -61440,7 +61444,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 }
                                             }
                                         },
@@ -61471,7 +61475,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 },
                                                 "referenceParent": {
                                                     "type": "Backtesting Session",
@@ -61581,7 +61585,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 }
                                             }
                                         },
@@ -61612,7 +61616,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 },
                                                 "referenceParent": {
                                                     "type": "Trading System Reference",
@@ -61728,7 +61732,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 }
                                             }
                                         },
@@ -61759,7 +61763,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 }
                                             }
                                         },
@@ -61790,7 +61794,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 },
                                                 "referenceParent": {
                                                     "type": "Trading System Reference",
@@ -61903,7 +61907,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         }
                                     }
                                 },
@@ -61940,7 +61944,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 }
                                             }
                                         },
@@ -61971,7 +61975,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 },
                                                 "referenceParent": {
                                                     "type": "Task",
@@ -62063,7 +62067,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 },
                                                 "referenceParent": {
                                                     "type": "Trading System",
@@ -62106,7 +62110,9 @@
                                                 "uiObject": {
                                                     "isRunning": false
                                                 },
-                                                "tutorial": {},
+                                                "tutorial": {
+                                                    "status": "Reset"
+                                                },
                                                 "referenceParent": {
                                                     "type": "Shapes",
                                                     "name": "New Shapes",
@@ -62167,7 +62173,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 }
                                             }
                                         },
@@ -62198,7 +62204,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 }
                                             }
                                         },
@@ -62229,7 +62235,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 }
                                             }
                                         }
@@ -62257,7 +62263,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         }
                                     }
                                 }
@@ -62284,7 +62290,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 }
                             }
                         }
@@ -62311,7 +62317,7 @@
                             "isRunning": false
                         },
                         "tutorial": {
-                            "status": "Done"
+                            "status": "Reset"
                         }
                     }
                 },
@@ -62348,7 +62354,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 }
                             }
                         },
@@ -62379,7 +62385,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 }
                             }
                         },
@@ -62415,7 +62421,7 @@
                                 "referenceParent": {
                                     "type": "Workspace",
                                     "name": "Getting Started Tutorials",
-                                    "id": "90718523-1d6d-49a5-893c-803a492fdb43"
+                                    "id": "42c461cb-6092-448a-9153-18657454f1f3"
                                 },
                                 "referenceParentCombinedNodePath": [
                                     [
@@ -62449,7 +62455,7 @@
                             "isRunning": false
                         },
                         "tutorial": {
-                            "status": "Done"
+                            "status": "Reset"
                         }
                     }
                 },
@@ -62486,7 +62492,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Plugins",
@@ -62530,7 +62536,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 }
                             }
                         },
@@ -62561,7 +62567,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Plugin File Position",
@@ -62629,7 +62635,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Plugin Trading Systems",
@@ -62685,7 +62691,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 }
                             }
                         },
@@ -62716,7 +62722,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Tutorial",
@@ -62760,7 +62766,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Tutorial",
@@ -62804,7 +62810,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Tutorial",
@@ -62882,7 +62888,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 }
                             }
                         },
@@ -62912,7 +62918,9 @@
                                 "uiObject": {
                                     "isRunning": false
                                 },
-                                "tutorial": {}
+                                "tutorial": {
+                                    "status": "Reset"
+                                }
                             }
                         },
                         {
@@ -62942,7 +62950,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 }
                             }
                         }
@@ -62970,7 +62978,7 @@
                             "isRunning": false
                         },
                         "tutorial": {
-                            "status": "Done"
+                            "status": "Reset"
                         }
                     }
                 },
@@ -63007,7 +63015,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 }
                             }
                         },
@@ -63038,7 +63046,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Exchange Markets",
@@ -63100,7 +63108,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 }
                             }
                         },
@@ -63131,7 +63139,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 }
                             }
                         },
@@ -63162,7 +63170,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 }
                             }
                         },
@@ -63193,7 +63201,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Tutorial",
@@ -63234,7 +63242,7 @@
                             "isRunning": false
                         },
                         "tutorial": {
-                            "status": "Done"
+                            "status": "Reset"
                         }
                     }
                 },
@@ -63271,7 +63279,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Tutorial",
@@ -63356,7 +63364,7 @@
                             "isRunning": false
                         },
                         "tutorial": {
-                            "status": "Done"
+                            "status": "Reset"
                         }
                     }
                 }
@@ -63427,7 +63435,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 }
                             }
                         },
@@ -63458,7 +63466,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Tutorial",
@@ -63502,7 +63510,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Tutorial",
@@ -63546,7 +63554,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Tutorial",
@@ -63590,7 +63598,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Network",
@@ -63634,7 +63642,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Network Node",
@@ -63684,7 +63692,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 }
                             }
                         },
@@ -63715,7 +63723,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Network Node",
@@ -63762,7 +63770,7 @@
                             "isRunning": false
                         },
                         "tutorial": {
-                            "status": "Done"
+                            "status": "Reset"
                         }
                     }
                 },
@@ -63799,7 +63807,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Data Tasks",
@@ -63855,7 +63863,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Crypto Exchange",
@@ -63911,7 +63919,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Tutorial",
@@ -63955,7 +63963,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Data Tasks",
@@ -64011,7 +64019,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 }
                             }
                         },
@@ -64042,7 +64050,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Sensor Bot Instance",
@@ -64140,7 +64148,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Indicator Bot Instance",
@@ -64235,7 +64243,7 @@
                             "isRunning": false
                         },
                         "tutorial": {
-                            "status": "Done"
+                            "status": "Reset"
                         }
                     }
                 },
@@ -64279,7 +64287,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         }
                                     }
                                 },
@@ -64310,7 +64318,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         }
                                     }
                                 },
@@ -64341,7 +64349,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         }
                                     }
                                 },
@@ -64372,7 +64380,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         }
                                     }
                                 }
@@ -64400,7 +64408,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 }
                             }
                         },
@@ -64437,7 +64445,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         },
                                         "referenceParent": {
                                             "type": "Tutorial",
@@ -64481,7 +64489,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         },
                                         "referenceParent": {
                                             "type": "Tutorial",
@@ -64525,7 +64533,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         },
                                         "referenceParent": {
                                             "type": "Data Tasks",
@@ -64581,7 +64589,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         }
                                     }
                                 },
@@ -64612,7 +64620,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         }
                                     }
                                 }
@@ -64631,7 +64639,7 @@
                                 "floatingObject": {
                                     "isPinned": false,
                                     "isFrozen": false,
-                                    "isCollapsed": true,
+                                    "isCollapsed": false,
                                     "angleToParent": 2,
                                     "distanceToParent": 3,
                                     "arrangementStyle": 0
@@ -64640,7 +64648,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 }
                             }
                         }
@@ -64658,7 +64666,7 @@
                         "floatingObject": {
                             "isPinned": false,
                             "isFrozen": false,
-                            "isCollapsed": true,
+                            "isCollapsed": false,
                             "angleToParent": 1,
                             "distanceToParent": 3,
                             "arrangementStyle": 0
@@ -64667,7 +64675,7 @@
                             "isRunning": false
                         },
                         "tutorial": {
-                            "status": "Done"
+                            "status": "Reset"
                         }
                     }
                 },
@@ -64704,7 +64712,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Data Tasks",
@@ -64760,7 +64768,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Data Mine Tasks",
@@ -64840,7 +64848,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Task",
@@ -64932,7 +64940,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Indicator Process Instance",
@@ -65036,7 +65044,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Market Data Tasks",
@@ -65110,7 +65118,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 }
                             }
                         }
@@ -65138,7 +65146,7 @@
                             "isRunning": false
                         },
                         "tutorial": {
-                            "status": "Done"
+                            "status": "Reset"
                         }
                     }
                 },
@@ -65182,7 +65190,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         },
                                         "referenceParent": {
                                             "type": "Charting Space",
@@ -65226,7 +65234,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         }
                                     }
                                 },
@@ -65256,7 +65264,9 @@
                                         "uiObject": {
                                             "isRunning": false
                                         },
-                                        "tutorial": {},
+                                        "tutorial": {
+                                            "status": "Reset"
+                                        },
                                         "referenceParent": {
                                             "type": "Time Machine",
                                             "name": "Lightning Strike Backtesting Session My Computer Binance BTC/USDT",
@@ -65317,7 +65327,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         }
                                     }
                                 },
@@ -65348,7 +65358,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         }
                                     }
                                 },
@@ -65379,7 +65389,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         }
                                     }
                                 },
@@ -65410,7 +65420,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         }
                                     }
                                 },
@@ -65441,7 +65451,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         }
                                     }
                                 },
@@ -65472,7 +65482,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         },
                                         "referenceParent": {
                                             "type": "Time Machine",
@@ -65531,7 +65541,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 }
                             }
                         },
@@ -65575,7 +65585,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 },
                                                 "referenceParent": {
                                                     "type": "Time Machine",
@@ -65637,7 +65647,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 }
                                             }
                                         },
@@ -65668,7 +65678,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 }
                                             }
                                         },
@@ -65699,7 +65709,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 }
                                             }
                                         },
@@ -65730,7 +65740,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 }
                                             }
                                         },
@@ -65761,7 +65771,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 }
                                             }
                                         },
@@ -65792,7 +65802,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 }
                                             }
                                         },
@@ -65823,7 +65833,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 }
                                             }
                                         },
@@ -65854,7 +65864,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 }
                                             }
                                         },
@@ -65885,7 +65895,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 }
                                             }
                                         }
@@ -65913,7 +65923,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         }
                                     }
                                 },
@@ -65950,7 +65960,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 }
                                             }
                                         },
@@ -65981,7 +65991,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 }
                                             }
                                         },
@@ -66012,7 +66022,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 }
                                             }
                                         },
@@ -66043,7 +66053,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 }
                                             }
                                         },
@@ -66074,7 +66084,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 }
                                             }
                                         },
@@ -66105,7 +66115,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 }
                                             }
                                         }
@@ -66133,7 +66143,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         }
                                     }
                                 }
@@ -66160,7 +66170,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 }
                             }
                         },
@@ -66197,7 +66207,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         },
                                         "referenceParent": {
                                             "type": "Timeline Chart",
@@ -66265,7 +66275,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         },
                                         "referenceParent": {
                                             "type": "Process Definition",
@@ -66321,7 +66331,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         },
                                         "referenceParent": {
                                             "type": "Plotter Panel",
@@ -66380,7 +66390,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 }
                             }
                         }
@@ -66407,7 +66417,7 @@
                             "isRunning": false
                         },
                         "tutorial": {
-                            "status": "Done"
+                            "status": "Reset"
                         }
                     }
                 },
@@ -66451,7 +66461,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         },
                                         "referenceParent": {
                                             "type": "Testing Trading Tasks",
@@ -66507,7 +66517,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         },
                                         "referenceParent": {
                                             "type": "Network Node",
@@ -66557,7 +66567,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         },
                                         "referenceParent": {
                                             "type": "Learning Tasks",
@@ -66612,7 +66622,9 @@
                                         "uiObject": {
                                             "isRunning": false
                                         },
-                                        "tutorial": {}
+                                        "tutorial": {
+                                            "status": "Reset"
+                                        }
                                     }
                                 },
                                 {
@@ -66642,7 +66654,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         },
                                         "referenceParent": {
                                             "type": "Backtesting Session",
@@ -66752,7 +66764,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         },
                                         "referenceParent": {
                                             "type": "Trading Parameters",
@@ -66868,7 +66880,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         },
                                         "referenceParent": {
                                             "type": "Task",
@@ -66957,7 +66969,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 }
                             }
                         },
@@ -67001,7 +67013,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 },
                                                 "referenceParent": {
                                                     "type": "Time Machine",
@@ -67063,7 +67075,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 },
                                                 "referenceParent": {
                                                     "type": "Time Machine",
@@ -67125,7 +67137,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 },
                                                 "referenceParent": {
                                                     "type": "Time Machine",
@@ -67187,7 +67199,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 },
                                                 "referenceParent": {
                                                     "type": "Time Machine",
@@ -67246,7 +67258,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         }
                                     }
                                 },
@@ -67283,7 +67295,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 },
                                                 "referenceParent": {
                                                     "type": "Time Machine",
@@ -67345,7 +67357,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 }
                                             }
                                         },
@@ -67376,7 +67388,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 }
                                             }
                                         },
@@ -67407,7 +67419,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 }
                                             }
                                         },
@@ -67438,7 +67450,7 @@
                                                     "isRunning": false
                                                 },
                                                 "tutorial": {
-                                                    "status": "Done"
+                                                    "status": "Reset"
                                                 }
                                             }
                                         }
@@ -67466,7 +67478,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         }
                                     }
                                 }
@@ -67493,7 +67505,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 }
                             }
                         },
@@ -67530,7 +67542,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         },
                                         "referenceParent": {
                                             "type": "Execution Algorithm",
@@ -67598,7 +67610,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         },
                                         "referenceParent": {
                                             "type": "Order Rate",
@@ -67678,7 +67690,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         },
                                         "referenceParent": {
                                             "type": "Execution Algorithm",
@@ -67746,7 +67758,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         },
                                         "referenceParent": {
                                             "type": "Trading Strategy",
@@ -67796,7 +67808,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         },
                                         "referenceParent": {
                                             "type": "Limit Sell Order",
@@ -67867,7 +67879,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 }
                             }
                         },
@@ -67904,7 +67916,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         },
                                         "referenceParent": {
                                             "type": "Trading Engine",
@@ -67948,7 +67960,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         },
                                         "referenceParent": {
                                             "type": "Entry Target Rate",
@@ -68010,7 +68022,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         },
                                         "referenceParent": {
                                             "type": "Time Machine",
@@ -68072,7 +68084,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         },
                                         "referenceParent": {
                                             "type": "Exit Target Rate",
@@ -68134,7 +68146,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         },
                                         "referenceParent": {
                                             "type": "Rate",
@@ -68202,7 +68214,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         }
                                     }
                                 }
@@ -68230,7 +68242,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 }
                             }
                         }
@@ -68257,7 +68269,7 @@
                             "isRunning": false
                         },
                         "tutorial": {
-                            "status": "Done"
+                            "status": "Reset"
                         }
                     }
                 },
@@ -68301,7 +68313,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         },
                                         "referenceParent": {
                                             "type": "Production Trading Tasks",
@@ -68357,7 +68369,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         }
                                     }
                                 },
@@ -68388,7 +68400,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         },
                                         "referenceParent": {
                                             "type": "Session Quoted Asset",
@@ -68510,7 +68522,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         }
                                     }
                                 },
@@ -68541,7 +68553,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         },
                                         "referenceParent": {
                                             "type": "Crypto Ecosystem",
@@ -68585,7 +68597,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         },
                                         "referenceParent": {
                                             "type": "Exchange Account Key",
@@ -68665,7 +68677,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         },
                                         "referenceParent": {
                                             "type": "Data Tasks",
@@ -68721,7 +68733,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         },
                                         "referenceParent": {
                                             "type": "Indicator Process Instance",
@@ -68825,7 +68837,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         },
                                         "referenceParent": {
                                             "type": "Task",
@@ -68917,7 +68929,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         },
                                         "referenceParent": {
                                             "type": "Trading Process Instance",
@@ -69018,7 +69030,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 }
                             }
                         },
@@ -69055,7 +69067,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         }
                                     }
                                 },
@@ -69086,7 +69098,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         }
                                     }
                                 },
@@ -69117,7 +69129,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         }
                                     }
                                 },
@@ -69148,7 +69160,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         },
                                         "referenceParent": {
                                             "type": "Time Scale",
@@ -69216,7 +69228,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         },
                                         "referenceParent": {
                                             "type": "Time Machine",
@@ -69278,7 +69290,7 @@
                                             "isRunning": false
                                         },
                                         "tutorial": {
-                                            "status": "Done"
+                                            "status": "Reset"
                                         }
                                     }
                                 }
@@ -69306,7 +69318,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 }
                             }
                         }
@@ -69333,7 +69345,7 @@
                             "isRunning": false
                         },
                         "tutorial": {
-                            "status": "Done"
+                            "status": "Reset"
                         }
                     }
                 },
@@ -69370,7 +69382,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Tutorial",
@@ -69414,7 +69426,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Tutorial",
@@ -69458,7 +69470,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Tutorial",
@@ -69502,7 +69514,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 }
                             }
                         },
@@ -69533,7 +69545,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Tutorial",
@@ -69577,7 +69589,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 }
                             }
                         },
@@ -69608,7 +69620,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Tutorial",
@@ -69649,7 +69661,7 @@
                             "isRunning": false
                         },
                         "tutorial": {
-                            "status": "Done"
+                            "status": "Reset"
                         }
                     }
                 },
@@ -69686,7 +69698,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Tutorial",
@@ -69730,7 +69742,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 }
                             }
                         },
@@ -69761,7 +69773,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Tutorial",
@@ -69805,7 +69817,7 @@
                                     "isRunning": false
                                 },
                                 "tutorial": {
-                                    "status": "Done"
+                                    "status": "Reset"
                                 },
                                 "referenceParent": {
                                     "type": "Tutorial",
@@ -69846,7 +69858,7 @@
                             "isRunning": false
                         },
                         "tutorial": {
-                            "status": "Done"
+                            "status": "Reset"
                         }
                     }
                 }
