@@ -687,7 +687,7 @@
                                                 "arrangementStyle": 0
                                             },
                                             "uiObject": {
-                                                "isRunning": true
+                                                "isRunning": false
                                             },
                                             "referenceParent": {
                                                 "type": "Crypto Exchange",
@@ -736,7 +736,7 @@
                                         "arrangementStyle": 0
                                     },
                                     "uiObject": {
-                                        "isRunning": true
+                                        "isRunning": false
                                     },
                                     "referenceParent": {
                                         "type": "Project Definition",
@@ -779,7 +779,7 @@
                                 "arrangementStyle": 0
                             },
                             "uiObject": {
-                                "isRunning": true
+                                "isRunning": false
                             }
                         }
                     },
@@ -58139,7 +58139,7 @@
                             "floatingObject": {
                                 "isPinned": false,
                                 "isFrozen": false,
-                                "isCollapsed": false,
+                                "isCollapsed": true,
                                 "angleToParent": 1,
                                 "distanceToParent": 3,
                                 "arrangementStyle": 0
@@ -60386,8 +60386,8 @@
                                     "tutorialSteps": [
                                         {
                                             "type": "Tutorial Step",
-                                            "name": "Mary Go Round",
-                                            "config": "{\n    \"icon\": {\n        \"name\": \"Set\\\\set-angle-to-parent-node-to-360-degrees\",\n        \"project\": \"Foundations\"\n    },\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"pressButton\": \"\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Mary Go Round\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"\",\n        \"closeTutorialEditor\": false,\n        \"page\": {\n            \"project\": \"Foundations\",\n            \"category\": \"\",\n            \"type\": \"\"\n        }\n    },\n    \"positionAtReferenceParent\": true\n}",
+                                            "name": "Merry Go Round",
+                                            "config": "{\n    \"icon\": {\n        \"name\": \"Set\\\\set-angle-to-parent-node-to-360-degrees\",\n        \"project\": \"Foundations\"\n    },\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"pressButton\": \"\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Merry Go Round\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"\",\n        \"closeTutorialEditor\": false,\n        \"page\": {\n            \"project\": \"Foundations\",\n            \"category\": \"\",\n            \"type\": \"\"\n        }\n    },\n    \"positionAtReferenceParent\": true\n}",
                                             "project": "Education",
                                             "id": "836a107b-368d-4ef0-8a43-5daeefcb0fe2",
                                             "savedPayload": {
@@ -62421,7 +62421,7 @@
                                 "referenceParent": {
                                     "type": "Workspace",
                                     "name": "Getting Started Tutorials",
-                                    "id": "42c461cb-6092-448a-9153-18657454f1f3"
+                                    "id": "5bb4654e-ecaa-4680-8acf-356c415b9fc9"
                                 },
                                 "referenceParentCombinedNodePath": [
                                     [
@@ -62697,10 +62697,10 @@
                         },
                         {
                             "type": "Tutorial Step",
-                            "name": "GIF",
-                            "config": "{\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"documentationURL\": \"\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - GIF Saving Plugins\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"Close\"\n    },\n    \"icon\": {\n        \"project\": \"Foundations\"\n    }\n}",
+                            "name": "Starting From a Plugin",
+                            "config": "{\n    \"icon\": {\n        \"name\": \"Trading\\\\trading-system\",\n        \"project\": \"Foundations\"\n    },\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"pressButton\": \"\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Starting From a Plugin\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"\",\n        \"closeTutorialEditor\": false,\n        \"page\": {\n            \"project\": \"Foundations\",\n            \"category\": \"\",\n            \"type\": \"\"\n        }\n    }\n}",
                             "project": "Education",
-                            "id": "b2dcf9df-ce36-4dce-a3f2-9c9ec04ab280",
+                            "id": "286d6e2a-0020-4461-98e4-974315326ddd",
                             "savedPayload": {
                                 "position": {
                                     "x": 24582.98404553133,
@@ -62741,10 +62741,10 @@
                         },
                         {
                             "type": "Tutorial Step",
-                            "name": "Starting From a Plugin",
-                            "config": "{\n    \"icon\": {\n        \"name\": \"Trading\\\\trading-system\",\n        \"project\": \"Foundations\"\n    },\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"pressButton\": \"\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Starting From a Plugin\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"\",\n        \"closeTutorialEditor\": false,\n        \"page\": {\n            \"project\": \"Foundations\",\n            \"category\": \"\",\n            \"type\": \"\"\n        }\n    }\n}",
+                            "name": "Improving a Plugin",
+                            "config": "{\n    \"icon\": {\n        \"name\": \"indicator-bot\",\n        \"project\": \"Foundations\"\n    },\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"pressButton\": \"\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Improving a Plugin\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"Close\",\n        \"closeTutorialEditor\": true,\n        \"page\": {\n            \"project\": \"Foundations\",\n            \"category\": \"\",\n            \"type\": \"\"\n        }\n    }\n}",
                             "project": "Education",
-                            "id": "286d6e2a-0020-4461-98e4-974315326ddd",
+                            "id": "4a1b74f7-8ed5-4771-b0e0-3d1427a5510a",
                             "savedPayload": {
                                 "position": {
                                     "x": 24547.349340763,
@@ -62785,10 +62785,10 @@
                         },
                         {
                             "type": "Tutorial Step",
-                            "name": "Improving a Plugin",
-                            "config": "{\n    \"icon\": {\n        \"name\": \"sensor-bot\",\n        \"project\": \"Foundations\"\n    },\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"pressButton\": \"\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Improving a Plugin\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"Close\",\n        \"closeTutorialEditor\": true,\n        \"page\": {\n            \"project\": \"Foundations\",\n            \"category\": \"\",\n            \"type\": \"\"\n        }\n    }\n}",
+                            "name": "GIF",
+                            "config": "{\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"documentationURL\": \"\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - GIF Saving Plugins\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"Close\"\n    },\n    \"icon\": {\n        \"project\": \"Foundations\"\n    }\n}",
                             "project": "Education",
-                            "id": "4a1b74f7-8ed5-4771-b0e0-3d1427a5510a",
+                            "id": "b2dcf9df-ce36-4dce-a3f2-9c9ec04ab280",
                             "savedPayload": {
                                 "position": {
                                     "x": 24547.349340763,
@@ -62864,7 +62864,7 @@
                         {
                             "type": "Tutorial Step",
                             "name": "Talking Exchanges",
-                            "config": "{\n    \"icon\": {\n        \"name\": \"crypto-exchange\",\n        \"project\": \"Foundations\"\n    },\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"pressButton\": \"\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Talking Exchanges\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"\",\n        \"closeTutorialEditor\": true,\n        \"page\": {\n            \"project\": \"Foundations\",\n            \"category\": \"Topic\",\n            \"type\": \"Community Effort to Test Exchanges\"\n        }\n    }\n}",
+                            "config": "{\n    \"icon\": {\n        \"name\": \"crypto-exchange\",\n        \"project\": \"Foundations\"\n    },\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"pressButton\": \"\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Let's Talk Exchanges\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"\",\n        \"closeTutorialEditor\": true,\n        \"page\": {\n            \"project\": \"Foundations\",\n            \"category\": \"Topic\",\n            \"type\": \"Community Effort to Test Exchanges\"\n        }\n    }\n}",
                             "project": "Education",
                             "id": "70ece243-3a2a-4b2a-9963-5044c11df654",
                             "savedPayload": {
@@ -65555,7 +65555,7 @@
                                 {
                                     "type": "Tutorial Topic",
                                     "name": "5.b.i) Navigation & Scales",
-                                    "config": "{ \n    \"title\": \" \",\n     \"summary\": \"\",\n     \"gif\": \"\",\n     \"image\": \"\",\n     \"definition\": \"\",\n     \"paragraph1\": \"\",\n     \"callOut\": \"\",\n     \"externalLink\": [\"\", \"\"],\n     \"paragraph2\": \"\",\n     \"note\": \"\",\n     \"tip\": \"\",\n     \"important\": \"\",\n     \"warning\": \"\", \n     \"position\": \"Left\",\n     \"slider\": \"toTop\",\n     \"pressButton\": \"Next\",\n     \"documentationURL\": \"\" \n    }",
+                                    "config": "{\n    \"position\": \"Left\",\n    \"pressButton\": \"Next\",\n    \"documentationURL\": \"\"\n}",
                                     "project": "Education",
                                     "tutorialSteps": [
                                         {
@@ -65930,7 +65930,7 @@
                                 {
                                     "type": "Tutorial Topic",
                                     "name": "5.b.ii) Layers & Managers",
-                                    "config": "{ \n    \"title\": \" \",\n     \"summary\": \"\",\n     \"gif\": \"\",\n     \"image\": \"\",\n     \"definition\": \"\",\n     \"paragraph1\": \"\",\n     \"callOut\": \"\",\n     \"externalLink\": [\"\", \"\"],\n     \"paragraph2\": \"\",\n     \"note\": \"\",\n     \"tip\": \"\",\n     \"important\": \"\",\n     \"warning\": \"\", \n     \"position\": \"Left\",\n     \"slider\": \"toTop\",\n     \"pressButton\": \"Next\",\n     \"documentationURL\": \"\" \n    }",
+                                    "config": "{\n    \"position\": \"Left\",\n    \"pressButton\": \"Next\",\n    \"documentationURL\": \"\"\n}",
                                     "project": "Education",
                                     "tutorialSteps": [
                                         {
@@ -69679,8 +69679,8 @@
                             "id": "7abb039d-4c70-40a1-bcd1-84f23cfc2041",
                             "savedPayload": {
                                 "position": {
-                                    "x": 19148.053057479123,
-                                    "y": 39925.37128220185
+                                    "x": 19116.88554630228,
+                                    "y": 39929.198171376134
                                 },
                                 "targetPosition": {
                                     "x": 19168.97999960236,
@@ -69723,8 +69723,8 @@
                             "id": "5237c645-3e66-41fe-8e63-2f10e1793ea4",
                             "savedPayload": {
                                 "position": {
-                                    "x": 19327.95577887232,
-                                    "y": 39970.22606843287
+                                    "x": 19271.58604260006,
+                                    "y": 39942.732711044024
                                 },
                                 "targetPosition": {
                                     "x": 19168.97999960236,
@@ -69754,8 +69754,8 @@
                             "id": "96e240f1-4e57-451f-81eb-f79b41ac2d38",
                             "savedPayload": {
                                 "position": {
-                                    "x": 19447.1351559724,
-                                    "y": 40112.258519255025
+                                    "x": 19398.793332538055,
+                                    "y": 40031.804214373835
                                 },
                                 "targetPosition": {
                                     "x": 19168.97999960236,
@@ -69792,14 +69792,45 @@
                         },
                         {
                             "type": "Tutorial Step",
+                            "name": "About our Governance",
+                            "config": "{\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - About our Governance\"\n    },\n    \"icon\": {\n        \"name\": \"\\\\governance-project\",\n        \"project\": \"Governance\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"Close\",\n        \"closeTutorialEditor\": true\n    }\n}",
+                            "project": "Education",
+                            "id": "8366046e-6f9b-4dec-8d00-69859ef9fcce",
+                            "savedPayload": {
+                                "position": {
+                                    "x": 19464.422325506024,
+                                    "y": 40172.54604397972
+                                },
+                                "targetPosition": {
+                                    "x": 19168.97999960236,
+                                    "y": 40224.6404972798
+                                },
+                                "floatingObject": {
+                                    "isPinned": false,
+                                    "isFrozen": false,
+                                    "isCollapsed": false,
+                                    "angleToParent": 2,
+                                    "distanceToParent": 3,
+                                    "arrangementStyle": 0
+                                },
+                                "uiObject": {
+                                    "isRunning": false
+                                },
+                                "tutorial": {
+                                    "status": "Reset"
+                                }
+                            }
+                        },
+                        {
+                            "type": "Tutorial Step",
                             "name": "This Is The End",
                             "config": "{\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"positionAtReferenceParent\": true,\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - My Only Friend, The End!\"\n    },\n    \"icon\": {\n        \"name\": \"Close\\\\close-stage-event\",\n        \"project\": \"Foundations\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"Close\",\n        \"closeTutorialEditor\": true\n    }\n}",
                             "project": "Education",
                             "id": "7fd54288-564a-414f-9b50-a9ade7243f3d",
                             "savedPayload": {
                                 "position": {
-                                    "x": 19460.06871748516,
-                                    "y": 40297.217065959696
+                                    "x": 19450.887785838135,
+                                    "y": 40327.2465402775
                                 },
                                 "targetPosition": {
                                     "x": 19168.97999960236,
