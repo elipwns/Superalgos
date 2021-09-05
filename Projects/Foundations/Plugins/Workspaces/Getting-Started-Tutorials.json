@@ -62421,7 +62421,7 @@
                                 "referenceParent": {
                                     "type": "Workspace",
                                     "name": "Getting Started Tutorials",
-                                    "id": "5bb4654e-ecaa-4680-8acf-356c415b9fc9"
+                                    "id": "65f35798-c9c5-46f4-b037-dd85967a3db6"
                                 },
                                 "referenceParentCombinedNodePath": [
                                     [
@@ -69363,8 +69363,8 @@
                             "id": "d0971551-1077-4d2f-b51f-194031e6a33a",
                             "savedPayload": {
                                 "position": {
-                                    "x": 18738.243686222882,
-                                    "y": 39960.84457177805
+                                    "x": 18731.453498831415,
+                                    "y": 39972.0344542821
                                 },
                                 "targetPosition": {
                                     "x": 18991.261119966748,
@@ -69407,8 +69407,8 @@
                             "id": "43cfe24a-01d4-4924-90d3-eb5aa3650e0a",
                             "savedPayload": {
                                 "position": {
-                                    "x": 18819.188189061435,
-                                    "y": 39876.288840995396
+                                    "x": 18798.424837060786,
+                                    "y": 39892.2211213464
                                 },
                                 "targetPosition": {
                                     "x": 18991.261119966748,
@@ -69451,8 +69451,8 @@
                             "id": "a5949f55-dc76-4c61-888b-45bc1e7c6ef1",
                             "savedPayload": {
                                 "position": {
-                                    "x": 18926.329235785317,
-                                    "y": 39829.145652146115
+                                    "x": 18888.655076969048,
+                                    "y": 39840.12666804632
                                 },
                                 "targetPosition": {
                                     "x": 18991.261119966748,
@@ -69495,8 +69495,8 @@
                             "id": "192af355-57c9-4c62-a79d-245a0705c180",
                             "savedPayload": {
                                 "position": {
-                                    "x": 19043.35557326683,
-                                    "y": 39826.592128378434
+                                    "x": 18991.261119966748,
+                                    "y": 39822.0344542821
                                 },
                                 "targetPosition": {
                                     "x": 18991.261119966748,
@@ -69526,8 +69526,52 @@
                             "id": "a40f204e-469b-4d14-a4cf-e3d1eea8fd72",
                             "savedPayload": {
                                 "position": {
-                                    "x": 19152.451002470796,
-                                    "y": 39869.01702053823
+                                    "x": 19093.86716296445,
+                                    "y": 39840.12666804632
+                                },
+                                "targetPosition": {
+                                    "x": 18991.261119966748,
+                                    "y": 40122.0344542821
+                                },
+                                "floatingObject": {
+                                    "isPinned": false,
+                                    "isFrozen": false,
+                                    "isCollapsed": false,
+                                    "angleToParent": 2,
+                                    "distanceToParent": 3,
+                                    "arrangementStyle": 0
+                                },
+                                "uiObject": {
+                                    "isRunning": false
+                                },
+                                "tutorial": {
+                                    "status": "Reset"
+                                },
+                                "referenceParent": {
+                                    "type": "Tutorial",
+                                    "name": "Welcome to Superalgos!",
+                                    "id": "c598fe19-7375-400c-95b9-ff1c0c38ec1e"
+                                },
+                                "referenceParentCombinedNodePath": [
+                                    [
+                                        "Welcome to Superalgos!",
+                                        "Tutorial",
+                                        "Education",
+                                        "c598fe19-7375-400c-95b9-ff1c0c38ec1e"
+                                    ]
+                                ]
+                            }
+                        },
+                        {
+                            "type": "Tutorial Step",
+                            "name": "Ultimate Social Trading",
+                            "config": "{\n    \"position\": \"\",\n    \"slider\": \"\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Ultimate Social Trading\"\n    },\n    \"icon\": {\n        \"name\": \"User\\\\user-influencer\",\n        \"project\": \"Governance\"\n    }\n}",
+                            "project": "Education",
+                            "id": "85233174-cdcc-4c3b-84b3-6447c7a95fd9",
+                            "savedPayload": {
+                                "position": {
+                                    "x": 19184.09740287271,
+                                    "y": 39892.2211213464
                                 },
                                 "targetPosition": {
                                     "x": 18991.261119966748,
@@ -69570,8 +69614,8 @@
                             "id": "45549599-0051-46be-9847-495c856dd182",
                             "savedPayload": {
                                 "position": {
-                                    "x": 19237.006733253445,
-                                    "y": 39949.96152337678
+                                    "x": 19251.06874110208,
+                                    "y": 39972.0344542821
                                 },
                                 "targetPosition": {
                                     "x": 18991.261119966748,
@@ -69601,8 +69645,8 @@
                             "id": "bc08da7d-e803-458d-99fa-8aae1f64d929",
                             "savedPayload": {
                                 "position": {
-                                    "x": 19284.14992210273,
-                                    "y": 40057.102570100666
+                                    "x": 19286.70344587041,
+                                    "y": 40069.94000098202
                                 },
                                 "targetPosition": {
                                     "x": 18991.261119966748,
