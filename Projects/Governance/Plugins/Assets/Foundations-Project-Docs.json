@@ -70647,9 +70647,2598 @@
                     "isRunning": false
                 }
             }
+        },
+        {
+            "type": "Asset Class",
+            "name": "Asset",
+            "config": "{\"codeName\":\"Asset\"}",
+            "project": "Governance",
+            "assetClasses": [],
+            "assets": [
+                {
+                    "type": "Asset",
+                    "name": "asset-claim-vote.png",
+                    "config": "{\"codeName\":\"asset-claim-vote.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "36bc3c40-08b4-4de4-a105-85393b423722",
+                    "savedPayload": {
+                        "position": {
+                            "x": 31162.788468748862,
+                            "y": 46723.06073991442
+                        },
+                        "targetPosition": {
+                            "x": 30896.62162291578,
+                            "y": 46584.658391020814
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "asset-claims-folder.png",
+                    "config": "{\"codeName\":\"asset-claims-folder.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "fb537b89-7e40-4e50-872a-34cc1a574ca2",
+                    "savedPayload": {
+                        "position": {
+                            "x": 31106.992658197527,
+                            "y": 46798.53692550823
+                        },
+                        "targetPosition": {
+                            "x": 30896.62162291578,
+                            "y": 46584.658391020814
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "asset-class.png",
+                    "config": "{\"codeName\":\"asset-class.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "27784e17-6b82-406f-9940-685b0c1afda4",
+                    "savedPayload": {
+                        "position": {
+                            "x": 31030.604264971622,
+                            "y": 46853.07718996704
+                        },
+                        "targetPosition": {
+                            "x": 30896.62162291578,
+                            "y": 46584.658391020814
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "asset-contribution-claim.png",
+                    "config": "{\"codeName\":\"asset-contribution-claim.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "ca7a092e-700f-4003-b3ef-f2caf5d2cb05",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30941.100717229332,
+                            "y": 46881.34275220126
+                        },
+                        "targetPosition": {
+                            "x": 30896.62162291578,
+                            "y": 46584.658391020814
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "asset-contribution-folder.png",
+                    "config": "{\"codeName\":\"asset-contribution-folder.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "80e79fa2-2a8c-46c8-8ae2-187a3a212e91",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30847.24324583156,
+                            "y": 46880.56678204163
+                        },
+                        "targetPosition": {
+                            "x": 30896.62162291578,
+                            "y": 46584.658391020814
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "asset-weight-vote.png",
+                    "config": "{\"codeName\":\"asset-weight-vote.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "0924f5f9-5cb3-4f4a-be92-2ebe45525a74",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30758.219274022173,
+                            "y": 46850.825236853896
+                        },
+                        "targetPosition": {
+                            "x": 30896.62162291578,
+                            "y": 46584.658391020814
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "asset.png",
+                    "config": "{\"codeName\":\"asset.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "a6b48f69-6cf5-48c2-8ad3-4ecef8c89858",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30682.74308842836,
+                            "y": 46795.02942630256
+                        },
+                        "targetPosition": {
+                            "x": 30896.62162291578,
+                            "y": 46584.658391020814
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "assets.png",
+                    "config": "{\"codeName\":\"assets.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "ad3689da-a883-4914-85c6-c3568b832b4c",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30628.20282396955,
+                            "y": 46718.64103307666
+                        },
+                        "targetPosition": {
+                            "x": 30896.62162291578,
+                            "y": 46584.658391020814
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "Thumbs.db",
+                    "config": "{\"codeName\":\"Thumbs.db\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "9da47df0-dd65-488e-a36d-8d418a8a1329",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30599.93726173534,
+                            "y": 46629.137485334366
+                        },
+                        "targetPosition": {
+                            "x": 30896.62162291578,
+                            "y": 46584.658391020814
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                }
+            ],
+            "id": "e080f979-53b8-4e67-bc32-4fe736ececd6",
+            "savedPayload": {
+                "position": {
+                    "x": 30896.62162291578,
+                    "y": 46584.658391020814
+                },
+                "targetPosition": {
+                    "x": 30946,
+                    "y": 46288.75
+                },
+                "floatingObject": {
+                    "isPinned": false,
+                    "isFrozen": false,
+                    "isCollapsed": false,
+                    "angleToParent": 2,
+                    "distanceToParent": 3,
+                    "arrangementStyle": 0
+                },
+                "uiObject": {
+                    "isRunning": false
+                }
+            }
+        },
+        {
+            "type": "Asset Class",
+            "name": "Feature",
+            "config": "{\"codeName\":\"Feature\"}",
+            "project": "Governance",
+            "assetClasses": [],
+            "assets": [
+                {
+                    "type": "Asset",
+                    "name": "feature-claim-vote.png",
+                    "config": "{\"codeName\":\"feature-claim-vote.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "603129c7-06a1-4569-805f-4da35d495178",
+                    "savedPayload": {
+                        "position": {
+                            "x": 31088.346558307072,
+                            "y": 46752.8195166951
+                        },
+                        "targetPosition": {
+                            "x": 30848.590159238596,
+                            "y": 46572.49517251019
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "feature-claims-folder.png",
+                    "config": "{\"codeName\":\"feature-claims-folder.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "06dba952-a389-401f-9b52-58a4dbe65d9e",
+                    "savedPayload": {
+                        "position": {
+                            "x": 31020.88875804348,
+                            "y": 46818.0826169162
+                        },
+                        "targetPosition": {
+                            "x": 30848.590159238596,
+                            "y": 46572.49517251019
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "feature-class.png",
+                    "config": "{\"codeName\":\"feature-class.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "38a73cc0-0daf-4a62-86a9-b5293d22845a",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30936.565170453934,
+                            "y": 46859.3059069705
+                        },
+                        "targetPosition": {
+                            "x": 30848.590159238596,
+                            "y": 46572.49517251019
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "feature-contribution-claim.png",
+                    "config": "{\"codeName\":\"feature-contribution-claim.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "57e206fb-2bc4-4bbe-b5c9-72506192a3f5",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30843.62997580869,
+                            "y": 46872.45416400793
+                        },
+                        "targetPosition": {
+                            "x": 30848.590159238596,
+                            "y": 46572.49517251019
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "feature-contribution-folder.png",
+                    "config": "{\"codeName\":\"feature-contribution-folder.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "5e6c52b1-8002-4633-92ed-15447e039c82",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30751.180318477192,
+                            "y": 46856.240345020386
+                        },
+                        "targetPosition": {
+                            "x": 30848.590159238596,
+                            "y": 46572.49517251019
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "feature-weight-vote.png",
+                    "config": "{\"codeName\":\"feature-weight-vote.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "1876146b-e4e0-42b6-b77b-d5b743763ff5",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30668.265815053688,
+                            "y": 46812.25157157867
+                        },
+                        "targetPosition": {
+                            "x": 30848.590159238596,
+                            "y": 46572.49517251019
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "feature.png",
+                    "config": "{\"codeName\":\"feature.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "6430b8cd-dc2b-42f5-ac83-1f24c39e0e71",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30603.00271483259,
+                            "y": 46744.793771315075
+                        },
+                        "targetPosition": {
+                            "x": 30848.590159238596,
+                            "y": 46572.49517251019
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "features.png",
+                    "config": "{\"codeName\":\"features.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "e9d22c85-e5e0-4805-97ce-2d317e82e9b9",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30561.779424778288,
+                            "y": 46660.470183725534
+                        },
+                        "targetPosition": {
+                            "x": 30848.590159238596,
+                            "y": 46572.49517251019
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "Thumbs.db",
+                    "config": "{\"codeName\":\"Thumbs.db\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "4ed3d0f7-91d7-4a99-b699-747b36428fe9",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30548.631167740856,
+                            "y": 46567.53498908028
+                        },
+                        "targetPosition": {
+                            "x": 30848.590159238596,
+                            "y": 46572.49517251019
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                }
+            ],
+            "id": "69b58e3f-ed96-4a83-ba7d-0478e078e0a8",
+            "savedPayload": {
+                "position": {
+                    "x": 30848.590159238596,
+                    "y": 46572.49517251019
+                },
+                "targetPosition": {
+                    "x": 30946,
+                    "y": 46288.75
+                },
+                "floatingObject": {
+                    "isPinned": false,
+                    "isFrozen": false,
+                    "isCollapsed": false,
+                    "angleToParent": 2,
+                    "distanceToParent": 3,
+                    "arrangementStyle": 0
+                },
+                "uiObject": {
+                    "isRunning": false
+                }
+            }
+        },
+        {
+            "type": "Asset Class",
+            "name": "Plugins",
+            "config": "{\"codeName\":\"Plugins\"}",
+            "project": "Governance",
+            "assetClasses": [],
+            "assets": [
+                {
+                    "type": "Asset",
+                    "name": "plugin-assets.png",
+                    "config": "{\"codeName\":\"plugin-assets.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "50e22fdd-5206-4727-bad6-421242c01404",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30978.977572726944,
+                            "y": 46795.71306841643
+                        },
+                        "targetPosition": {
+                            "x": 30803.21578208888,
+                            "y": 46552.592125361945
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "plugin-features.png",
+                    "config": "{\"codeName\":\"plugin-features.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "e222a390-c13c-46f5-8556-e7332f2eb06a",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30856.085459790294,
+                            "y": 46847.89670910515
+                        },
+                        "targetPosition": {
+                            "x": 30803.21578208888,
+                            "y": 46552.592125361945
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "plugin-pools.png",
+                    "config": "{\"codeName\":\"plugin-pools.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "9382c2a9-b849-402c-b66a-55138381523e",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30722.721858780835,
+                            "y": 46841.59165531049
+                        },
+                        "targetPosition": {
+                            "x": 30803.21578208888,
+                            "y": 46552.592125361945
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "plugin-positions.png",
+                    "config": "{\"codeName\":\"plugin-positions.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "c348b8f2-6f24-49a2-b7b7-cdcdcb745456",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30605.301066475713,
+                            "y": 46778.04670026288
+                        },
+                        "targetPosition": {
+                            "x": 30803.21578208888,
+                            "y": 46552.592125361945
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "plugin-user-profiles.png",
+                    "config": "{\"codeName\":\"plugin-user-profiles.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "3b44c5c9-402a-4e41-975b-24cbfa17996b",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30527.07971086248,
+                            "y": 46669.847701637234
+                        },
+                        "targetPosition": {
+                            "x": 30803.21578208888,
+                            "y": 46552.592125361945
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "Thumbs.db",
+                    "config": "{\"codeName\":\"Thumbs.db\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "4aa4f90e-2e28-4220-a3b5-2d0ef7df46a3",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30503.550490742302,
+                            "y": 46538.424798085
+                        },
+                        "targetPosition": {
+                            "x": 30803.21578208888,
+                            "y": 46552.592125361945
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                }
+            ],
+            "id": "5ce97830-702f-4fc6-88c3-3cf6b95e96a9",
+            "savedPayload": {
+                "position": {
+                    "x": 30803.21578208888,
+                    "y": 46552.592125361945
+                },
+                "targetPosition": {
+                    "x": 30946,
+                    "y": 46288.75
+                },
+                "floatingObject": {
+                    "isPinned": false,
+                    "isFrozen": false,
+                    "isCollapsed": false,
+                    "angleToParent": 2,
+                    "distanceToParent": 3,
+                    "arrangementStyle": 0
+                },
+                "uiObject": {
+                    "isRunning": false
+                }
+            }
+        },
+        {
+            "type": "Asset Class",
+            "name": "Pool",
+            "config": "{\"codeName\":\"Pool\"}",
+            "project": "Governance",
+            "assetClasses": [],
+            "assets": [
+                {
+                    "type": "Asset",
+                    "name": "pool-class.png",
+                    "config": "{\"codeName\":\"pool-class.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "cf4ec065-14bb-426d-abaa-4d76af112b3f",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30874.62899777745,
+                            "y": 46803.44037298336
+                        },
+                        "targetPosition": {
+                            "x": 30761.7361861931,
+                            "y": 46525.492152818915
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "pool-weight-vote.png",
+                    "config": "{\"codeName\":\"pool-weight-vote.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "a0fa1f1d-7bbc-4c4a-a825-769fc11d459e",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30720.530118847575,
+                            "y": 46822.64877821017
+                        },
+                        "targetPosition": {
+                            "x": 30761.7361861931,
+                            "y": 46525.492152818915
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "pool.png",
+                    "config": "{\"codeName\":\"pool.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "57754303-f2ec-47f2-b83c-d0a1012f2823",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30577.472372386197,
+                            "y": 46762.23430563783
+                        },
+                        "targetPosition": {
+                            "x": 30761.7361861931,
+                            "y": 46525.492152818915
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "pools.png",
+                    "config": "{\"codeName\":\"pools.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "e4fa636b-faa9-48ab-b0d4-5f5ebc3b5ce2",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30483.78796602866,
+                            "y": 46638.38496440327
+                        },
+                        "targetPosition": {
+                            "x": 30761.7361861931,
+                            "y": 46525.492152818915
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "Thumbs.db",
+                    "config": "{\"codeName\":\"Thumbs.db\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "e9c4d000-cd70-4c39-a230-1796bf6a5a8f",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30464.57956080185,
+                            "y": 46484.286085473395
+                        },
+                        "targetPosition": {
+                            "x": 30761.7361861931,
+                            "y": 46525.492152818915
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                }
+            ],
+            "id": "c1f72227-29f7-473c-b4cd-1255599a9b48",
+            "savedPayload": {
+                "position": {
+                    "x": 30761.7361861931,
+                    "y": 46525.492152818915
+                },
+                "targetPosition": {
+                    "x": 30946,
+                    "y": 46288.75
+                },
+                "floatingObject": {
+                    "isPinned": false,
+                    "isFrozen": false,
+                    "isCollapsed": false,
+                    "angleToParent": 2,
+                    "distanceToParent": 3,
+                    "arrangementStyle": 0
+                },
+                "uiObject": {
+                    "isRunning": false
+                }
+            }
+        },
+        {
+            "type": "Asset Class",
+            "name": "Position",
+            "config": "{\"codeName\":\"Position\"}",
+            "project": "Governance",
+            "assetClasses": [],
+            "assets": [
+                {
+                    "type": "Asset",
+                    "name": "position-claim-vote.png",
+                    "config": "{\"codeName\":\"position-claim-vote.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "e2d715ce-5623-44ba-9bbd-ae7090734b62",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30850.31738494665,
+                            "y": 46764.63643200247
+                        },
+                        "targetPosition": {
+                            "x": 30725.282826798062,
+                            "y": 46491.93447148772
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "position-claims-folder.png",
+                    "config": "{\"codeName\":\"position-claims-folder.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "61ad6aa5-2b63-412e-ac19-985ac4fa80a9",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30759.928217888937,
+                            "y": 46789.92725139381
+                        },
+                        "targetPosition": {
+                            "x": 30725.282826798062,
+                            "y": 46491.93447148772
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "position-class.png",
+                    "config": "{\"codeName\":\"position-class.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "6e4cee5c-3f58-4e53-a3e2-cc842d7ff1c6",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30666.147718562617,
+                            "y": 46786.04846125017
+                        },
+                        "targetPosition": {
+                            "x": 30725.282826798062,
+                            "y": 46491.93447148772
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "position-contribution-claim.png",
+                    "config": "{\"codeName\":\"position-contribution-claim.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "1e281fe4-949f-4b0f-91be-cf9aa214d93b",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30578.15577564891,
+                            "y": 46753.379744575905
+                        },
+                        "targetPosition": {
+                            "x": 30725.282826798062,
+                            "y": 46491.93447148772
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "position-contribution-folder.png",
+                    "config": "{\"codeName\":\"position-contribution-folder.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "d7a173f8-a059-4cd8-87cb-727917cd6c73",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30504.565653596124,
+                            "y": 46695.118942975445
+                        },
+                        "targetPosition": {
+                            "x": 30725.282826798062,
+                            "y": 46491.93447148772
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "position-weight-vote.png",
+                    "config": "{\"codeName\":\"position-weight-vote.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "fe006fb5-3f06-4764-9efc-b0c94ad04abc",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30452.580866283315,
+                            "y": 46616.96902963631
+                        },
+                        "targetPosition": {
+                            "x": 30725.282826798062,
+                            "y": 46491.93447148772
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "position.png",
+                    "config": "{\"codeName\":\"position.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "7546bba9-60ea-43e9-90c4-22df9431345a",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30427.290046891972,
+                            "y": 46526.5798625786
+                        },
+                        "targetPosition": {
+                            "x": 30725.282826798062,
+                            "y": 46491.93447148772
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "positions.png",
+                    "config": "{\"codeName\":\"positions.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "aa93ad79-794f-4093-b967-20f905a1e8a8",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30431.16883703562,
+                            "y": 46432.79936325228
+                        },
+                        "targetPosition": {
+                            "x": 30725.282826798062,
+                            "y": 46491.93447148772
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "Thumbs.db",
+                    "config": "{\"codeName\":\"Thumbs.db\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "6287d01f-0afb-49c8-b49b-fd177ebf45e9",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30463.83755370988,
+                            "y": 46344.80742033857
+                        },
+                        "targetPosition": {
+                            "x": 30725.282826798062,
+                            "y": 46491.93447148772
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                }
+            ],
+            "id": "3b31edb0-00f7-4e28-a6b9-4cc73e03ec49",
+            "savedPayload": {
+                "position": {
+                    "x": 30725.282826798062,
+                    "y": 46491.93447148772
+                },
+                "targetPosition": {
+                    "x": 30946,
+                    "y": 46288.75
+                },
+                "floatingObject": {
+                    "isPinned": false,
+                    "isFrozen": false,
+                    "isCollapsed": false,
+                    "angleToParent": 2,
+                    "distanceToParent": 3,
+                    "arrangementStyle": 0
+                },
+                "uiObject": {
+                    "isRunning": false
+                }
+            }
+        },
+        {
+            "type": "Asset Class",
+            "name": "Programs",
+            "config": "{\"codeName\":\"Programs\"}",
+            "project": "Governance",
+            "assetClasses": [],
+            "assets": [
+                {
+                    "type": "Asset",
+                    "name": "airdrop-program.png",
+                    "config": "{\"codeName\":\"airdrop-program.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "967a51b8-8106-4801-bde5-4e8c1da831cc",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30806.78474396268,
+                            "y": 46731.16990286307
+                        },
+                        "targetPosition": {
+                            "x": 30694.85005652124,
+                            "y": 46452.834447436726
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "claims-program.png",
+                    "config": "{\"codeName\":\"claims-program.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "39aeb9bf-1ddb-4732-b260-e26070f8e29b",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30750.33339670271,
+                            "y": 46747.65913935094
+                        },
+                        "targetPosition": {
+                            "x": 30694.85005652124,
+                            "y": 46452.834447436726
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "community-building-programs.png",
+                    "config": "{\"codeName\":\"community-building-programs.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "a0cac5de-3f88-43ac-aa3c-b55367e54d9f",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30691.74985579498,
+                            "y": 46752.81842826813
+                        },
+                        "targetPosition": {
+                            "x": 30694.85005652124,
+                            "y": 46452.834447436726
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "delegation-program.png",
+                    "config": "{\"codeName\":\"delegation-program.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "53a9fd2d-cde0-46d6-bf9d-7cd39e89edb6",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30633.28545386255,
+                            "y": 46746.449501034935
+                        },
+                        "targetPosition": {
+                            "x": 30694.85005652124,
+                            "y": 46452.834447436726
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "financial-programs.png",
+                    "config": "{\"codeName\":\"financial-programs.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "c2ab2a4c-647d-40e7-8181-2d1100b21b07",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30577.186945084468,
+                            "y": 46728.79711195317
+                        },
+                        "targetPosition": {
+                            "x": 30694.85005652124,
+                            "y": 46452.834447436726
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "github-program.png",
+                    "config": "{\"codeName\":\"github-program.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "7187537f-cb24-4e8d-9caa-f6b06830a341",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30525.610163692665,
+                            "y": 46700.53963243569
+                        },
+                        "targetPosition": {
+                            "x": 30694.85005652124,
+                            "y": 46452.834447436726
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "influencer-program.png",
+                    "config": "{\"codeName\":\"influencer-program.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "d21d00b0-6ba6-413c-b902-3e987a7c2e1e",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30480.53717647144,
+                            "y": 46662.76298157337
+                        },
+                        "targetPosition": {
+                            "x": 30694.85005652124,
+                            "y": 46452.834447436726
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "mentorship-program.png",
+                    "config": "{\"codeName\":\"mentorship-program.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "bf694463-b62c-46ec-95c8-818aaecf9575",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30443.700113042483,
+                            "y": 46616.91889487345
+                        },
+                        "targetPosition": {
+                            "x": 30694.85005652124,
+                            "y": 46452.834447436726
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "onboarding-programs.png",
+                    "config": "{\"codeName\":\"onboarding-programs.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "cf5e7849-d401-421a-b6dd-3f3acde7af08",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30416.514601094903,
+                            "y": 46564.76913487817
+                        },
+                        "targetPosition": {
+                            "x": 30694.85005652124,
+                            "y": 46452.834447436726
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "referral-program.png",
+                    "config": "{\"codeName\":\"referral-program.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "26695bb0-8d9f-4d0a-a69d-0739f0cfc715",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30400.025364607034,
+                            "y": 46508.317787618194
+                        },
+                        "targetPosition": {
+                            "x": 30694.85005652124,
+                            "y": 46452.834447436726
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "staking-program.png",
+                    "config": "{\"codeName\":\"staking-program.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "e753184f-319c-4ff3-839f-d4c698451ba9",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30394.866075689835,
+                            "y": 46449.73424671047
+                        },
+                        "targetPosition": {
+                            "x": 30694.85005652124,
+                            "y": 46452.834447436726
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "support-program.png",
+                    "config": "{\"codeName\":\"support-program.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "0d6e470a-6cce-4977-896a-324d6510ef0b",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30401.235002923037,
+                            "y": 46391.269844778035
+                        },
+                        "targetPosition": {
+                            "x": 30694.85005652124,
+                            "y": 46452.834447436726
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "Thumbs.db",
+                    "config": "{\"codeName\":\"Thumbs.db\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "41b34008-ded3-4fcd-b079-60546a1151b2",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30418.887392004795,
+                            "y": 46335.17133599995
+                        },
+                        "targetPosition": {
+                            "x": 30694.85005652124,
+                            "y": 46452.834447436726
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "votes-and-claims-programs.png",
+                    "config": "{\"codeName\":\"votes-and-claims-programs.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "b8ad3000-5fd9-47eb-82fe-7eecba6057f3",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30447.144871522276,
+                            "y": 46283.59455460815
+                        },
+                        "targetPosition": {
+                            "x": 30694.85005652124,
+                            "y": 46452.834447436726
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "voting-program.png",
+                    "config": "{\"codeName\":\"voting-program.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "6229ddcf-f5cf-461f-a4ce-5438bfcc8ce0",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30484.921522384597,
+                            "y": 46238.521567386924
+                        },
+                        "targetPosition": {
+                            "x": 30694.85005652124,
+                            "y": 46452.834447436726
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                }
+            ],
+            "id": "b1620a32-3764-44a3-8f45-03e144aba04d",
+            "savedPayload": {
+                "position": {
+                    "x": 30694.85005652124,
+                    "y": 46452.834447436726
+                },
+                "targetPosition": {
+                    "x": 30946,
+                    "y": 46288.75
+                },
+                "floatingObject": {
+                    "isPinned": false,
+                    "isFrozen": false,
+                    "isCollapsed": false,
+                    "angleToParent": 2,
+                    "distanceToParent": 3,
+                    "arrangementStyle": 0
+                },
+                "uiObject": {
+                    "isRunning": false
+                }
+            }
+        },
+        {
+            "type": "Asset Class",
+            "name": "Switches",
+            "config": "{\"codeName\":\"Switches\"}",
+            "project": "Governance",
+            "assetClasses": [],
+            "assets": [
+                {
+                    "type": "Asset",
+                    "name": "claim-votes-switch.png",
+                    "config": "{\"codeName\":\"claim-votes-switch.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "237245cf-eabb-4499-8f13-5c495b8893fc",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30677.46807237175,
+                            "y": 46709.194552432265
+                        },
+                        "targetPosition": {
+                            "x": 30671.268002003482,
+                            "y": 46409.25862739589
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "delegate-power-switch.png",
+                    "config": "{\"codeName\":\"delegate-power-switch.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "d66a6b0a-096e-4af6-97cc-fb8de53bebfb",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30562.215610834333,
+                            "y": 46688.73595381127
+                        },
+                        "targetPosition": {
+                            "x": 30671.268002003482,
+                            "y": 46409.25862739589
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "Thumbs.db",
+                    "config": "{\"codeName\":\"Thumbs.db\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "45c2d508-d5dc-4e3e-8876-0d9667bf8a91",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30463.565387290033,
+                            "y": 46625.729465711804
+                        },
+                        "targetPosition": {
+                            "x": 30671.268002003482,
+                            "y": 46409.25862739589
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "token-power-switch.png",
+                    "config": "{\"codeName\":\"token-power-switch.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "93314262-7727-4b01-8392-385250b8b10a",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30396.536004006965,
+                            "y": 46529.767254791775
+                        },
+                        "targetPosition": {
+                            "x": 30671.268002003482,
+                            "y": 46409.25862739589
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "user-profile-votes-switch.png",
+                    "config": "{\"codeName\":\"user-profile-votes-switch.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "0ec3c7e3-47b8-41f5-9385-bfbc6de6f372",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30371.332076967105,
+                            "y": 46415.45869776415
+                        },
+                        "targetPosition": {
+                            "x": 30671.268002003482,
+                            "y": 46409.25862739589
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "votes-switch.png",
+                    "config": "{\"codeName\":\"votes-switch.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "d29ab8dc-2a8f-4400-ba16-1b8ffbd40254",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30391.790675588098,
+                            "y": 46300.20623622674
+                        },
+                        "targetPosition": {
+                            "x": 30671.268002003482,
+                            "y": 46409.25862739589
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "weight-votes-switch.png",
+                    "config": "{\"codeName\":\"weight-votes-switch.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "af2a9608-c557-4f74-994b-7fbe3bfb49af",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30454.797163687563,
+                            "y": 46201.55601268244
+                        },
+                        "targetPosition": {
+                            "x": 30671.268002003482,
+                            "y": 46409.25862739589
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                }
+            ],
+            "id": "fffc7066-bcc5-4668-8b72-474ad43f1b94",
+            "savedPayload": {
+                "position": {
+                    "x": 30671.268002003482,
+                    "y": 46409.25862739589
+                },
+                "targetPosition": {
+                    "x": 30946,
+                    "y": 46288.75
+                },
+                "floatingObject": {
+                    "isPinned": false,
+                    "isFrozen": false,
+                    "isCollapsed": false,
+                    "angleToParent": 2,
+                    "distanceToParent": 3,
+                    "arrangementStyle": 0
+                },
+                "uiObject": {
+                    "isRunning": false
+                }
+            }
+        },
+        {
+            "type": "Asset Class",
+            "name": "User",
+            "config": "{\"codeName\":\"User\"}",
+            "project": "Governance",
+            "assetClasses": [],
+            "assets": [
+                {
+                    "type": "Asset",
+                    "name": "Thumbs.db",
+                    "config": "{\"codeName\":\"Thumbs.db\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "a68bde30-71f4-458a-b440-07e1b54ac08e",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30624.91786508212,
+                            "y": 46660.865423538446
+                        },
+                        "targetPosition": {
+                            "x": 30655.1799202182,
+                            "y": 46362.39564614224
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "user-delegate.png",
+                    "config": "{\"codeName\":\"user-delegate.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "8ca86a3a-90d3-4d4a-8a25-b59ef5213c8b",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30524.66021427358,
+                            "y": 46632.5152610541
+                        },
+                        "targetPosition": {
+                            "x": 30655.1799202182,
+                            "y": 46362.39564614224
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "user-influencer.png",
+                    "config": "{\"codeName\":\"user-influencer.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "8db3cef9-ccfc-469e-b20f-6f5d07a17428",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30440.145166267666,
+                            "y": 46571.58468647044
+                        },
+                        "targetPosition": {
+                            "x": 30655.1799202182,
+                            "y": 46362.39564614224
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "user-mentor.png",
+                    "config": "{\"codeName\":\"user-mentor.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "7d408306-4135-466c-a905-99dc5a57ddab",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30381.56648316316,
+                            "y": 46485.422826321774
+                        },
+                        "targetPosition": {
+                            "x": 30655.1799202182,
+                            "y": 46362.39564614224
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "user-profile-vote.png",
+                    "config": "{\"codeName\":\"user-profile-vote.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "9cdc051c-8df8-4580-b659-e8fd583abbcb",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30355.989618671752,
+                            "y": 46384.42207255565
+                        },
+                        "targetPosition": {
+                            "x": 30655.1799202182,
+                            "y": 46362.39564614224
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "user-profile.png",
+                    "config": "{\"codeName\":\"user-profile.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "8fe0026e-277f-4f2a-a210-0e8f58f2ddaa",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30366.499520125424,
+                            "y": 46280.764606688645
+                        },
+                        "targetPosition": {
+                            "x": 30655.1799202182,
+                            "y": 46362.39564614224
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "user-referrer.png",
+                    "config": "{\"codeName\":\"user-referrer.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "0b8b240d-04db-4dab-9c48-eb0ccffe7f0e",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30411.82853829924,
+                            "y": 46186.95304892557
+                        },
+                        "targetPosition": {
+                            "x": 30655.1799202182,
+                            "y": 46362.39564614224
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Asset",
+                    "name": "user-supporter.png",
+                    "config": "{\"codeName\":\"user-supporter.png\"}",
+                    "project": "Governance",
+                    "assetClasses": [],
+                    "assets": [],
+                    "id": "e02f85fa-ef38-4283-bb23-23fd517d7d14",
+                    "savedPayload": {
+                        "position": {
+                            "x": 30486.509324616374,
+                            "y": 46114.3024576438
+                        },
+                        "targetPosition": {
+                            "x": 30655.1799202182,
+                            "y": 46362.39564614224
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": false,
+                            "angleToParent": 2,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                }
+            ],
+            "id": "add960af-04d8-4caa-ab52-c079f8d3ffb1",
+            "savedPayload": {
+                "position": {
+                    "x": 30655.1799202182,
+                    "y": 46362.39564614224
+                },
+                "targetPosition": {
+                    "x": 30946,
+                    "y": 46288.75
+                },
+                "floatingObject": {
+                    "isPinned": false,
+                    "isFrozen": false,
+                    "isCollapsed": false,
+                    "angleToParent": 2,
+                    "distanceToParent": 3,
+                    "arrangementStyle": 0
+                },
+                "uiObject": {
+                    "isRunning": false
+                }
+            }
         }
     ],
-    "assets": [],
+    "assets": [
+        {
+            "type": "Asset",
+            "name": "configuration.png",
+            "config": "{\"codeName\":\"configuration.png\"}",
+            "project": "Governance",
+            "assetClasses": [],
+            "assets": [],
+            "id": "2755fd3d-af53-497b-88f8-871d926879aa",
+            "savedPayload": {
+                "position": {
+                    "x": 30647.024652098,
+                    "y": 46313.5238036417
+                },
+                "targetPosition": {
+                    "x": 30946,
+                    "y": 46288.75
+                },
+                "floatingObject": {
+                    "isPinned": false,
+                    "isFrozen": false,
+                    "isCollapsed": false,
+                    "angleToParent": 2,
+                    "distanceToParent": 3,
+                    "arrangementStyle": 0
+                },
+                "uiObject": {
+                    "isRunning": false
+                }
+            }
+        },
+        {
+            "type": "Asset",
+            "name": "delete-entity.png",
+            "config": "{\"codeName\":\"delete-entity.png\"}",
+            "project": "Governance",
+            "assetClasses": [],
+            "assets": [],
+            "id": "bee658b5-2bc4-45e1-8066-f7de5a1b74d0",
+            "savedPayload": {
+                "position": {
+                    "x": 30647.024652098,
+                    "y": 46263.9761963583
+                },
+                "targetPosition": {
+                    "x": 30946,
+                    "y": 46288.75
+                },
+                "floatingObject": {
+                    "isPinned": false,
+                    "isFrozen": false,
+                    "isCollapsed": false,
+                    "angleToParent": 2,
+                    "distanceToParent": 3,
+                    "arrangementStyle": 0
+                },
+                "uiObject": {
+                    "isRunning": false
+                }
+            }
+        },
+        {
+            "type": "Asset",
+            "name": "governance-project.png",
+            "config": "{\"codeName\":\"governance-project.png\"}",
+            "project": "Governance",
+            "assetClasses": [],
+            "assets": [],
+            "id": "ac1c5d2d-0887-4305-b327-e97abd165ea0",
+            "savedPayload": {
+                "position": {
+                    "x": 30655.1799202182,
+                    "y": 46215.10435385776
+                },
+                "targetPosition": {
+                    "x": 30946,
+                    "y": 46288.75
+                },
+                "floatingObject": {
+                    "isPinned": false,
+                    "isFrozen": false,
+                    "isCollapsed": false,
+                    "angleToParent": 2,
+                    "distanceToParent": 3,
+                    "arrangementStyle": 0
+                },
+                "uiObject": {
+                    "isRunning": false
+                }
+            }
+        },
+        {
+            "type": "Asset",
+            "name": "governance-tab.png",
+            "config": "{\"codeName\":\"governance-tab.png\"}",
+            "project": "Governance",
+            "assetClasses": [],
+            "assets": [],
+            "id": "15ecf1d4-aa9a-4735-b9e4-9c1b06f46c0e",
+            "savedPayload": {
+                "position": {
+                    "x": 30671.268002003482,
+                    "y": 46168.24137260411
+                },
+                "targetPosition": {
+                    "x": 30946,
+                    "y": 46288.75
+                },
+                "floatingObject": {
+                    "isPinned": false,
+                    "isFrozen": false,
+                    "isCollapsed": false,
+                    "angleToParent": 2,
+                    "distanceToParent": 3,
+                    "arrangementStyle": 0
+                },
+                "uiObject": {
+                    "isRunning": false
+                }
+            }
+        },
+        {
+            "type": "Asset",
+            "name": "governance.png",
+            "config": "{\"codeName\":\"governance.png\"}",
+            "project": "Governance",
+            "assetClasses": [],
+            "assets": [],
+            "id": "df3b23ec-1061-4a43-a17d-0716e96af688",
+            "savedPayload": {
+                "position": {
+                    "x": 30694.85005652124,
+                    "y": 46124.665552563274
+                },
+                "targetPosition": {
+                    "x": 30946,
+                    "y": 46288.75
+                },
+                "floatingObject": {
+                    "isPinned": false,
+                    "isFrozen": false,
+                    "isCollapsed": false,
+                    "angleToParent": 2,
+                    "distanceToParent": 3,
+                    "arrangementStyle": 0
+                },
+                "uiObject": {
+                    "isRunning": false
+                }
+            }
+        },
+        {
+            "type": "Asset",
+            "name": "profile-constructor.png",
+            "config": "{\"codeName\":\"profile-constructor.png\"}",
+            "project": "Governance",
+            "assetClasses": [],
+            "assets": [],
+            "id": "af5a0023-b7c9-4de4-a8b4-f12c08168512",
+            "savedPayload": {
+                "position": {
+                    "x": 30725.282826798062,
+                    "y": 46085.56552851228
+                },
+                "targetPosition": {
+                    "x": 30946,
+                    "y": 46288.75
+                },
+                "floatingObject": {
+                    "isPinned": false,
+                    "isFrozen": false,
+                    "isCollapsed": false,
+                    "angleToParent": 2,
+                    "distanceToParent": 3,
+                    "arrangementStyle": 0
+                },
+                "uiObject": {
+                    "isRunning": false
+                }
+            }
+        },
+        {
+            "type": "Asset",
+            "name": "Thumbs.db",
+            "config": "{\"codeName\":\"Thumbs.db\"}",
+            "project": "Governance",
+            "assetClasses": [],
+            "assets": [],
+            "id": "f04eea6e-95cd-4280-8145-73cc2d11604d",
+            "savedPayload": {
+                "position": {
+                    "x": 30761.7361861931,
+                    "y": 46052.007847181085
+                },
+                "targetPosition": {
+                    "x": 30946,
+                    "y": 46288.75
+                },
+                "floatingObject": {
+                    "isPinned": false,
+                    "isFrozen": false,
+                    "isCollapsed": false,
+                    "angleToParent": 2,
+                    "distanceToParent": 3,
+                    "arrangementStyle": 0
+                },
+                "uiObject": {
+                    "isRunning": false
+                }
+            }
+        },
+        {
+            "type": "Asset",
+            "name": "tokens-awarded.png",
+            "config": "{\"codeName\":\"tokens-awarded.png\"}",
+            "project": "Governance",
+            "assetClasses": [],
+            "assets": [],
+            "id": "2b00cca0-b850-46c7-b47b-16aa03dee439",
+            "savedPayload": {
+                "position": {
+                    "x": 30803.21578208888,
+                    "y": 46024.907874638055
+                },
+                "targetPosition": {
+                    "x": 30946,
+                    "y": 46288.75
+                },
+                "floatingObject": {
+                    "isPinned": false,
+                    "isFrozen": false,
+                    "isCollapsed": false,
+                    "angleToParent": 2,
+                    "distanceToParent": 3,
+                    "arrangementStyle": 0
+                },
+                "uiObject": {
+                    "isRunning": false
+                }
+            }
+        },
+        {
+            "type": "Asset",
+            "name": "tokens-bonus.png",
+            "config": "{\"codeName\":\"tokens-bonus.png\"}",
+            "project": "Governance",
+            "assetClasses": [],
+            "assets": [],
+            "id": "c634beef-73fd-47b1-ad04-e1bb8ba935a0",
+            "savedPayload": {
+                "position": {
+                    "x": 30848.590159238596,
+                    "y": 46005.00482748981
+                },
+                "targetPosition": {
+                    "x": 30946,
+                    "y": 46288.75
+                },
+                "floatingObject": {
+                    "isPinned": false,
+                    "isFrozen": false,
+                    "isCollapsed": false,
+                    "angleToParent": 2,
+                    "distanceToParent": 3,
+                    "arrangementStyle": 0
+                },
+                "uiObject": {
+                    "isRunning": false
+                }
+            }
+        },
+        {
+            "type": "Asset",
+            "name": "tokens-mined.png",
+            "config": "{\"codeName\":\"tokens-mined.png\"}",
+            "project": "Governance",
+            "assetClasses": [],
+            "assets": [],
+            "id": "a83b8423-4450-4608-85de-74c8a78c131a",
+            "savedPayload": {
+                "position": {
+                    "x": 30896.62162291578,
+                    "y": 45992.841608979186
+                },
+                "targetPosition": {
+                    "x": 30946,
+                    "y": 46288.75
+                },
+                "floatingObject": {
+                    "isPinned": false,
+                    "isFrozen": false,
+                    "isCollapsed": false,
+                    "angleToParent": 2,
+                    "distanceToParent": 3,
+                    "arrangementStyle": 0
+                },
+                "uiObject": {
+                    "isRunning": false
+                }
+            }
+        }
+    ],
     "id": "43831bbf-5672-4899-a3d8-b2609018512d",
     "savedPayload": {
         "position": {
@@ -70663,7 +73252,7 @@
         "floatingObject": {
             "isPinned": false,
             "isFrozen": false,
-            "isCollapsed": false,
+            "isCollapsed": true,
             "angleToParent": 2,
             "distanceToParent": 3,
             "arrangementStyle": 0
