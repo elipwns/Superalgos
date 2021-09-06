@@ -62421,7 +62421,7 @@
                                 "referenceParent": {
                                     "type": "Workspace",
                                     "name": "Getting Started Tutorials",
-                                    "id": "65f35798-c9c5-46f4-b037-dd85967a3db6"
+                                    "id": "a3333ada-a69c-4086-bba6-3c950bd1f6fd"
                                 },
                                 "referenceParentCombinedNodePath": [
                                     [
@@ -69640,7 +69640,7 @@
                         {
                             "type": "Tutorial Step",
                             "name": "Tweet It!",
-                            "config": "{\n    \"position\": \"\",\n    \"slider\": \"\",\n    \"documentationURL\": \"\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Spread the Word on Twitter!\"\n    },\n    \"icon\": {\n        \"name\": \"twitter\",\n        \"project\": \"Foundations\"\n    }\n}",
+                            "config": "{\n    \"position\": \"\",\n    \"slider\": \"\",\n    \"documentationURL\": \"\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Spread the Word on Twitter!\"\n    },\n    \"icon\": {\n        \"name\": \"twitter\",\n        \"project\": \"Foundations\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"Close\",\n        \"closeTutorialEditor\": true\n    }\n}",
                             "project": "Education",
                             "id": "bc08da7d-e803-458d-99fa-8aae1f64d929",
                             "savedPayload": {
@@ -69718,7 +69718,7 @@
                         {
                             "type": "Tutorial Step",
                             "name": "Contacts",
-                            "config": "{\n    \"position\": \"\",\n    \"slider\": \"\",\n    \"pressButton\": \"\",\n    \"documentationURL\": \"\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Get In Touch!\"\n    },\n    \"icon\": {\n        \"name\": \"Announcement\\\\telegram-bot\",\n        \"project\": \"Foundations\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"Close\",\n        \"closeTutorialEditor\": true\n    }\n}",
+                            "config": "{\n    \"position\": \"\",\n    \"slider\": \"\",\n    \"pressButton\": \"\",\n    \"documentationURL\": \"\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Get In Touch!\"\n    },\n    \"icon\": {\n        \"name\": \"Announcement\\\\telegram-bot\",\n        \"project\": \"Foundations\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"Open\",\n        \"closeTutorialEditor\": true,\n        \"searchPage\": true\n    }\n}",
                             "project": "Education",
                             "id": "7abb039d-4c70-40a1-bcd1-84f23cfc2041",
                             "savedPayload": {
@@ -69762,7 +69762,7 @@
                         {
                             "type": "Tutorial Step",
                             "name": "Beware of Impersonators!",
-                            "config": "{\n    \"icon\": {\n        \"name\": \"Bullet\\\\bullet-warning\",\n        \"project\": \"Foundations\"\n    },\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"pressButton\": \"\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Beware of Impersonators!\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"\",\n        \"closeTutorialEditor\": false,\n        \"page\": {\n            \"project\": \"Foundations\",\n            \"category\": \"\",\n            \"type\": \"\"\n        }\n    }\n}",
+                            "config": "{\n    \"icon\": {\n        \"name\": \"Bullet\\\\bullet-warning\",\n        \"project\": \"Foundations\"\n    },\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"pressButton\": \"\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Beware of Impersonators!\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"Close\",\n        \"closeTutorialEditor\": true,\n        \"page\": {\n            \"project\": \"Foundations\",\n            \"category\": \"\",\n            \"type\": \"\"\n        }\n    }\n}",
                             "project": "Education",
                             "id": "5237c645-3e66-41fe-8e63-2f10e1793ea4",
                             "savedPayload": {
