@@ -166,11 +166,11 @@
                                                                     },
                                                                     {
                                                                         "type": "Task",
-                                                                        "name": "Relative Strenght Index (RSI)",
+                                                                        "name": "Relative Strength Index (RSI)",
                                                                         "project": "Foundations",
                                                                         "bot": {
                                                                             "type": "Indicator Bot Instance",
-                                                                            "name": "Relative Strenght Index (RSI)",
+                                                                            "name": "Relative Strength Index (RSI)",
                                                                             "config": "{ \n\"parameter1\": \"Value for parameter1 defined at the Product Definition\"\n}",
                                                                             "project": "Foundations",
                                                                             "processes": [
@@ -2736,7 +2736,7 @@
                                                                 },
                                                                 {
                                                                     "type": "Bot Products",
-                                                                    "name": "Relative Strenght Index (RSI)",
+                                                                    "name": "Relative Strength Index (RSI)",
                                                                     "project": "Foundations",
                                                                     "dataProducts": [
                                                                         {
@@ -21362,7 +21362,7 @@
                                                     },
                                                     {
                                                         "type": "Bot Layers",
-                                                        "name": "Relative Strenght Index (RSI)",
+                                                        "name": "Relative Strength Index (RSI)",
                                                         "project": "Foundations",
                                                         "layers": [
                                                             {
@@ -31933,7 +31933,7 @@
                                                     },
                                                     {
                                                         "type": "Bot Layers",
-                                                        "name": "Relative Strenght Index (RSI)",
+                                                        "name": "Relative Strength Index (RSI)",
                                                         "project": "Foundations",
                                                         "layers": [
                                                             {
