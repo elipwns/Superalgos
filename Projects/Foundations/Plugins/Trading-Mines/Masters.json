@@ -9406,7 +9406,7 @@
                                     },
                                     {
                                         "type": "Bot Data Dependencies",
-                                        "name": "Relative Strenght Index (RSI)",
+                                        "name": "Relative Strength Index (RSI)",
                                         "project": "Foundations",
                                         "dataDependencies": [
                                             {
@@ -9448,7 +9448,7 @@
                                                                 "63b3bd4b-97da-47a7-8f72-b9eaf0632ebb"
                                                             ],
                                                             [
-                                                                "Relative Strenght Index (RSI)",
+                                                                "Relative Strength Index (RSI)",
                                                                 "Indicator Bot",
                                                                 "Foundations",
                                                                 "b2fc1830-30e3-407a-9cd2-ab93a9e36cc7"
@@ -9508,7 +9508,7 @@
                                                                 "63b3bd4b-97da-47a7-8f72-b9eaf0632ebb"
                                                             ],
                                                             [
-                                                                "Relative Strenght Index (RSI)",
+                                                                "Relative Strength Index (RSI)",
                                                                 "Indicator Bot",
                                                                 "Foundations",
                                                                 "b2fc1830-30e3-407a-9cd2-ab93a9e36cc7"
@@ -16664,7 +16664,7 @@
                                 "botDataDependencies": [
                                     {
                                         "type": "Bot Data Dependencies",
-                                        "name": "Relative Strenght Index - Wilder Method (RSI-W)",
+                                        "name": "Relative Strength Index - Wilder Method (RSI-W)",
                                         "project": "Foundations",
                                         "dataDependencies": [
                                             {
