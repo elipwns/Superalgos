@@ -1,8 +1,9 @@
 {
-    "type": "Network Client",
+    "type": "P2P Network Node",
     "menuItems": [
         {
             "action": "Configure",
+            "actionProject": "Foundations",
             "label": "Configure",
             "iconPathOn": "configuration",
             "iconPathOff": "configuration",
@@ -20,20 +21,19 @@
             "actionFunction": "payload.executeAction"
         }
     ],
-    "referencingRules": {
-        "compatibleTypes": "->LAN Network Node->"
-    },
     "editors": {
         "config": true
     },
     "initialValues": {
-        "config": "{ \n\"host\": \"localhost\", \n\"httpPort\": \"8545\"\n}"
+        "config": "{ \n\"host\": \"localhost\", \n\"webPort\": \"34248\", \n\"webSocketsPort\": \"18041\"\n}"
     },
+    "isTitleAllwaysVisible": true,
     "addLeftIcons": true,
     "level": 1,
     "attachingRules": {
-        "compatibleTypes": "->Blockchain Network->"
+        "compatibleTypes": "->P2P Network->"
     },
-    "propertyNameAtParent": "networkClients",
-    "icon": "ethereum"
+    "childrenNodesProperties": [
+    ],
+    "propertyNameAtParent": "p2pNetworkNodes"
 }
