@@ -1,24 +1,24 @@
 {
-    "type": "Docs Space",
+    "type": "Education Project",
     "menuItems": [
         {
             "action": "Add UI Object",
-            "disableIfPropertyIsDefined": true,
-            "propertyToCheckFor": "spaceStyle",
-            "label": "Add Space Style",
-            "relatedUiObject": "Space Style",
+            "actionProject": "Foundations",
+            "label": "Add Tutorial",
+            "iconProject": "Education",
+            "relatedUiObject": "Tutorial",
             "actionFunction": "payload.executeAction"
         },
         {
             "action": "Add UI Object",
-            "disableIfPropertyIsDefined": true,
-            "propertyToCheckFor": "spaceSettings",
-            "label": "Add Space Settings",
-            "relatedUiObject": "Space Settings",
+            "actionProject": "Foundations",
+            "label": "Add Docs Space",
+            "relatedUiObject": "Docs Space",
             "actionFunction": "payload.executeAction"
         },
         {
             "action": "Delete UI Object",
+            "actionProject": "Foundations",
             "askConfirmation": true,
             "confirmationLabel": "Confirm to Delete",
             "actionFunction": "payload.executeAction",
@@ -27,21 +27,19 @@
             "iconPathOff": "delete-entity"
         }
     ],
-    "isHierarchyHead": true,
+    "isProjectHead": true,
+    "isTitleAllwaysVisible": false,
     "addLeftIcons": true,
-    "level": 0,
+    "isPinned": true,
+    "positionLocked": true,
     "childrenNodesProperties": [
         {
-            "name": "spaceStyle",
+            "name": "projectDefinition",
             "type": "node",
-            "childType": "Space Style",
-            "autoAdd": true
-        },
-        {
-            "name": "spaceSettings",
-            "type": "node",
-            "childType": "Space Settings",
+            "childType": "Project Definition",
+            "project": "Foundations",
             "autoAdd": true
         }
-    ]
+    ],
+    "icon": "education"
 }
