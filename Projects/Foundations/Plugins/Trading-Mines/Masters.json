@@ -6977,8 +6977,8 @@
                                 "id": "e7fd528f-46bb-4a13-a11f-b6994236e3e7",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 25240.237694140684,
-                                        "y": 17813.208597109704
+                                        "x": 25240.842649934846,
+                                        "y": 17810.719993785526
                                     },
                                     "targetPosition": {
                                         "x": 25677.80415831964,
@@ -7036,8 +7036,8 @@
                                 "id": "0517c2f1-627f-44e2-b58d-6d3f72d6c931",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 25257.692966395898,
-                                        "y": 17756.993433549476
+                                        "x": 25259.555760604064,
+                                        "y": 17752.22203361282
                                     },
                                     "targetPosition": {
                                         "x": 25677.80415831964,
@@ -7095,8 +7095,8 @@
                                 "id": "0b6d7ced-ccef-4a98-909c-443125480c10",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 25282.336457621754,
-                                        "y": 17703.537568728036
+                                        "x": 25286.06004756636,
+                                        "y": 17696.817028171918
                                     },
                                     "targetPosition": {
                                         "x": 25677.80415831964,
@@ -9558,8 +9558,8 @@
                                 "id": "d1e74fb0-1e00-470d-9c1e-aeb78945ba83",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 25313.746510850913,
-                                        "y": 17653.755647313246
+                                        "x": 25319.86178610367,
+                                        "y": 17645.53706788389
                                     },
                                     "targetPosition": {
                                         "x": 25677.80415831964,
@@ -10354,8 +10354,8 @@
                                 "id": "d9ed7639-b1f1-4cd2-bf5d-db38520213a8",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 25351.38569136411,
-                                        "y": 17608.49945178267
+                                        "x": 25360.331313782386,
+                                        "y": 17599.3374013835
                                     },
                                     "targetPosition": {
                                         "x": 25677.80415831964,
@@ -10920,8 +10920,8 @@
                                 "id": "e8aa5392-dc06-49a9-910c-800543ebd7d8",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 25394.60998234721,
-                                        "y": 17568.543328189222
+                                        "x": 25406.714759873143,
+                                        "y": 17559.07864104451
                                     },
                                     "targetPosition": {
                                         "x": 25677.80415831964,
@@ -11142,8 +11142,8 @@
                                 "id": "6163d78b-7c4d-407c-973c-98fdef6d9375",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 25442.67980419746,
-                                        "y": 17534.57093688552
+                                        "x": 25458.148088536116,
+                                        "y": 17525.510731399547
                                     },
                                     "targetPosition": {
                                         "x": 25677.80415831964,
@@ -12076,8 +12076,8 @@
                                 "id": "9f290cf9-4129-4f1b-a232-2865b2a8612e",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 25494.77266893553,
-                                        "y": 17507.16355490569
+                                        "x": 25513.67319417391,
+                                        "y": 17499.258979092363
                                     },
                                     "targetPosition": {
                                         "x": 25677.80415831964,
@@ -12113,7 +12113,7 @@
                             },
                             {
                                 "type": "Data Mine Data Dependencies",
-                                "name": "",
+                                "name": "Pluvtech",
                                 "project": "Foundations",
                                 "botDataDependencies": [
                                     {
@@ -12123,17 +12123,17 @@
                                         "dataDependencies": [
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "FisherTransform Multi-Time-Frame-Market",
                                                 "project": "Foundations",
-                                                "id": "a6e6f5a2-7dcc-49dd-9d30-102eed3f1500",
+                                                "id": "c07214db-07f8-49e9-8d69-8ed30332b8d6",
                                                 "savedPayload": {
                                                     "position": {
-                                                        "x": 24275.377524976062,
-                                                        "y": 17344.177478108544
+                                                        "x": 21415.069136333586,
+                                                        "y": 18759.55070342408
                                                     },
                                                     "targetPosition": {
-                                                        "x": 24868.212079150886,
-                                                        "y": 17021.420307194658
+                                                        "x": 21795.373083619113,
+                                                        "y": 18518.991131427774
                                                     },
                                                     "floatingObject": {
                                                         "isPinned": false,
@@ -12150,22 +12150,48 @@
                                                         "type": "Dataset Definition",
                                                         "name": "Multi-Time-Frame-Market",
                                                         "id": "9323c88c-d610-4539-b736-cbb8653cef13"
-                                                    }
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Pluvtech",
+                                                            "Data Mine",
+                                                            "Foundations",
+                                                            "0a5518d0-e6d5-4bdf-ac31-461fb2d40b3c"
+                                                        ],
+                                                        [
+                                                            "Fisher Transform",
+                                                            "Indicator Bot",
+                                                            "Foundations",
+                                                            "1cf45944-eac2-493d-b53a-da358c2a67c1"
+                                                        ],
+                                                        [
+                                                            "FisherTransform",
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "2d1afdf1-95a1-4bcc-94a2-9f37485f86f6"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Market",
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "9323c88c-d610-4539-b736-cbb8653cef13"
+                                                        ]
+                                                    ]
                                                 }
                                             },
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "FisherTransform Multi-Time-Frame-Daily",
                                                 "project": "Foundations",
-                                                "id": "1eb4dccd-8de8-4f6d-9b65-c9a34fee231b",
+                                                "id": "53b6a64d-d4de-4b77-9a04-a54ff6de5985",
                                                 "savedPayload": {
                                                     "position": {
-                                                        "x": 24292.27889279845,
-                                                        "y": 16669.38910849498
+                                                        "x": 21396.890409504038,
+                                                        "y": 18309.918037917163
                                                     },
                                                     "targetPosition": {
-                                                        "x": 24868.212079150886,
-                                                        "y": 17021.420307194658
+                                                        "x": 21795.373083619113,
+                                                        "y": 18518.991131427774
                                                     },
                                                     "floatingObject": {
                                                         "isPinned": false,
@@ -12182,20 +12208,46 @@
                                                         "type": "Dataset Definition",
                                                         "name": "Multi-Time-Frame-Daily",
                                                         "id": "e708fb9c-e0f2-4c91-9f04-2caa7b096446"
-                                                    }
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Pluvtech",
+                                                            "Data Mine",
+                                                            "Foundations",
+                                                            "0a5518d0-e6d5-4bdf-ac31-461fb2d40b3c"
+                                                        ],
+                                                        [
+                                                            "Fisher Transform",
+                                                            "Indicator Bot",
+                                                            "Foundations",
+                                                            "1cf45944-eac2-493d-b53a-da358c2a67c1"
+                                                        ],
+                                                        [
+                                                            "FisherTransform",
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "2d1afdf1-95a1-4bcc-94a2-9f37485f86f6"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Daily",
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "e708fb9c-e0f2-4c91-9f04-2caa7b096446"
+                                                        ]
+                                                    ]
                                                 }
                                             }
                                         ],
                                         "dataDependencyFolders": [],
-                                        "id": "e505843a-42d5-46dd-8fcd-8171966af726",
+                                        "id": "64eb2bd9-1557-41d1-8066-1b61f845c27f",
                                         "savedPayload": {
                                             "position": {
-                                                "x": 24868.212079150886,
-                                                "y": 17021.420307194658
+                                                "x": 21795.373083619113,
+                                                "y": 18518.991131427774
                                             },
                                             "targetPosition": {
-                                                "x": 25543.00044876445,
-                                                "y": 17038.321675017047
+                                                "x": 22245.00574912603,
+                                                "y": 18500.812404598226
                                             },
                                             "floatingObject": {
                                                 "isPinned": false,
@@ -12217,17 +12269,17 @@
                                         "dataDependencies": [
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "Waddah Attar Multi-Time-Frame-Market",
                                                 "project": "Foundations",
-                                                "id": "04f471db-65ae-4bcc-a493-146370f00aea",
+                                                "id": "e3a2693b-33fa-4fc3-9745-26efeb0514e9",
                                                 "savedPayload": {
                                                     "position": {
-                                                        "x": 24239.40942178598,
-                                                        "y": 17005.670739658533
+                                                        "x": 21380.538797595644,
+                                                        "y": 18592.666518520542
                                                     },
                                                     "targetPosition": {
-                                                        "x": 24895.579331155932,
-                                                        "y": 16847.34812586812
+                                                        "x": 21800.466155537357,
+                                                        "y": 18430.922850786403
                                                     },
                                                     "floatingObject": {
                                                         "isPinned": false,
@@ -12244,22 +12296,48 @@
                                                         "type": "Dataset Definition",
                                                         "name": "Multi-Time-Frame-Market",
                                                         "id": "bfee2065-abeb-455c-816d-de941df980af"
-                                                    }
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Pluvtech",
+                                                            "Data Mine",
+                                                            "Foundations",
+                                                            "0a5518d0-e6d5-4bdf-ac31-461fb2d40b3c"
+                                                        ],
+                                                        [
+                                                            "Waddah Attar",
+                                                            "Indicator Bot",
+                                                            "Foundations",
+                                                            "771942e0-043e-41ce-8db2-a50729affc91"
+                                                        ],
+                                                        [
+                                                            "Waddah Attar",
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "f08a1e6f-fb96-412c-9ea9-c68d3d493b1e"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Market",
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "bfee2065-abeb-455c-816d-de941df980af"
+                                                        ]
+                                                    ]
                                                 }
                                             },
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "Waddah Attar Multi-Time-Frame-Daily",
                                                 "project": "Foundations",
-                                                "id": "f86e93c6-013e-49ae-a8cc-cb4493c84d48",
+                                                "id": "893ca9ef-2667-43c3-b389-68a1f95ee2c6",
                                                 "savedPayload": {
                                                     "position": {
-                                                        "x": 24430.382970934905,
-                                                        "y": 16358.249622050014
+                                                        "x": 21450.428351407467,
+                                                        "y": 18148.12692493187
                                                     },
                                                     "targetPosition": {
-                                                        "x": 24895.579331155932,
-                                                        "y": 16847.34812586812
+                                                        "x": 21800.466155537357,
+                                                        "y": 18430.922850786403
                                                     },
                                                     "floatingObject": {
                                                         "isPinned": false,
@@ -12276,20 +12354,46 @@
                                                         "type": "Dataset Definition",
                                                         "name": "Multi-Time-Frame-Daily",
                                                         "id": "ef9e9c8e-32cf-4502-84e1-657784fd75cb"
-                                                    }
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Pluvtech",
+                                                            "Data Mine",
+                                                            "Foundations",
+                                                            "0a5518d0-e6d5-4bdf-ac31-461fb2d40b3c"
+                                                        ],
+                                                        [
+                                                            "Waddah Attar",
+                                                            "Indicator Bot",
+                                                            "Foundations",
+                                                            "771942e0-043e-41ce-8db2-a50729affc91"
+                                                        ],
+                                                        [
+                                                            "Waddah Attar",
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "f08a1e6f-fb96-412c-9ea9-c68d3d493b1e"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Daily",
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "ef9e9c8e-32cf-4502-84e1-657784fd75cb"
+                                                        ]
+                                                    ]
                                                 }
                                             }
                                         ],
                                         "dataDependencyFolders": [],
-                                        "id": "0e6b5619-0f7c-4c5f-826d-c9a5ec2e7909",
+                                        "id": "4694bba1-e03d-46bc-a688-fbc86d8c9e5e",
                                         "savedPayload": {
                                             "position": {
-                                                "x": 24895.579331155932,
-                                                "y": 16847.34812586812
+                                                "x": 21800.466155537357,
+                                                "y": 18430.922850786403
                                             },
                                             "targetPosition": {
-                                                "x": 25543.00044876445,
-                                                "y": 17038.321675017047
+                                                "x": 22245.00574912603,
+                                                "y": 18500.812404598226
                                             },
                                             "floatingObject": {
                                                 "isPinned": false,
@@ -12311,17 +12415,17 @@
                                         "dataDependencies": [
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "PLUVTECH MACD Multi-Time-Frame-Market",
                                                 "project": "Foundations",
-                                                "id": "ee1b97a5-83f7-474d-ae63-bb39064d1b26",
+                                                "id": "f3f50c01-d3bf-4596-bd95-e3c439f1410e",
                                                 "savedPayload": {
                                                     "position": {
-                                                        "x": 24292.27889279845,
-                                                        "y": 16669.38910849498
+                                                        "x": 21379.229439006358,
+                                                        "y": 18422.252431531353
                                                     },
                                                     "targetPosition": {
-                                                        "x": 24967.067262412016,
-                                                        "y": 16686.29047631737
+                                                        "x": 21822.642634736534,
+                                                        "y": 18345.540386503508
                                                     },
                                                     "floatingObject": {
                                                         "isPinned": false,
@@ -12338,22 +12442,48 @@
                                                         "type": "Dataset Definition",
                                                         "name": "Multi-Time-Frame-Market",
                                                         "id": "923b32d3-cbe8-4c30-9af0-a95e10d5db9d"
-                                                    }
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Pluvtech",
+                                                            "Data Mine",
+                                                            "Foundations",
+                                                            "0a5518d0-e6d5-4bdf-ac31-461fb2d40b3c"
+                                                        ],
+                                                        [
+                                                            "PLUVTECH MACD",
+                                                            "Indicator Bot",
+                                                            "Foundations",
+                                                            "8dffabdf-ec34-42db-9d61-c9ebbca2e8fe"
+                                                        ],
+                                                        [
+                                                            "PLUVTECH MACD",
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "aa8aec56-7cee-4d78-b7f0-e74ef3e36ced"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Market",
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "923b32d3-cbe8-4c30-9af0-a95e10d5db9d"
+                                                        ]
+                                                    ]
                                                 }
                                             },
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "PLUVTECH MACD Multi-Time-Frame-Daily",
                                                 "project": "Foundations",
-                                                "id": "3ad6bd89-5b77-47d0-a314-d31dc9a7703f",
+                                                "id": "4a1d8870-1faa-4a7d-9ef2-b9f709e7b865",
                                                 "savedPayload": {
                                                     "position": {
-                                                        "x": 24644.31009149813,
-                                                        "y": 16093.455922142544
+                                                        "x": 21534.501457101076,
+                                                        "y": 17999.889317141857
                                                     },
                                                     "targetPosition": {
-                                                        "x": 24967.067262412016,
-                                                        "y": 16686.29047631737
+                                                        "x": 21822.642634736534,
+                                                        "y": 18345.540386503508
                                                     },
                                                     "floatingObject": {
                                                         "isPinned": false,
@@ -12370,20 +12500,46 @@
                                                         "type": "Dataset Definition",
                                                         "name": "Multi-Time-Frame-Daily",
                                                         "id": "60e21b53-d4ae-4654-8b43-d1382f6d8059"
-                                                    }
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Pluvtech",
+                                                            "Data Mine",
+                                                            "Foundations",
+                                                            "0a5518d0-e6d5-4bdf-ac31-461fb2d40b3c"
+                                                        ],
+                                                        [
+                                                            "PLUVTECH MACD",
+                                                            "Indicator Bot",
+                                                            "Foundations",
+                                                            "8dffabdf-ec34-42db-9d61-c9ebbca2e8fe"
+                                                        ],
+                                                        [
+                                                            "PLUVTECH MACD",
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "aa8aec56-7cee-4d78-b7f0-e74ef3e36ced"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Daily",
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "60e21b53-d4ae-4654-8b43-d1382f6d8059"
+                                                        ]
+                                                    ]
                                                 }
                                             }
                                         ],
                                         "dataDependencyFolders": [],
-                                        "id": "0a13f621-82f7-4b54-ac96-bb9b50e1a01e",
+                                        "id": "a1aaaae2-8fbb-4da2-98af-a4f4e61e187c",
                                         "savedPayload": {
                                             "position": {
-                                                "x": 24967.067262412016,
-                                                "y": 16686.29047631737
+                                                "x": 21822.642634736534,
+                                                "y": 18345.540386503508
                                             },
                                             "targetPosition": {
-                                                "x": 25543.00044876445,
-                                                "y": 17038.321675017047
+                                                "x": 22245.00574912603,
+                                                "y": 18500.812404598226
                                             },
                                             "floatingObject": {
                                                 "isPinned": false,
@@ -12405,17 +12561,17 @@
                                         "dataDependencies": [
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "HMA Multi-Time-Frame-Market",
                                                 "project": "Foundations",
-                                                "id": "acfb0de8-07e2-4569-bbc4-8c361632ab1d",
+                                                "id": "0ded283c-f72d-418d-b83f-f282e9bccf98",
                                                 "savedPayload": {
                                                     "position": {
-                                                        "x": 24430.382970934905,
-                                                        "y": 16358.249622050014
+                                                        "x": 21411.19137848203,
+                                                        "y": 18254.857360250182
                                                     },
                                                     "targetPosition": {
-                                                        "x": 25077.804088543424,
-                                                        "y": 16549.22317119894
+                                                        "x": 21861.05029155774,
+                                                        "y": 18266.124938798443
                                                     },
                                                     "floatingObject": {
                                                         "isPinned": false,
@@ -12432,22 +12588,48 @@
                                                         "type": "Dataset Definition",
                                                         "name": "Multi-Time-Frame-Market",
                                                         "id": "6b3161cd-7903-4c3b-a2f0-b2651cd04cdf"
-                                                    }
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Pluvtech",
+                                                            "Data Mine",
+                                                            "Foundations",
+                                                            "0a5518d0-e6d5-4bdf-ac31-461fb2d40b3c"
+                                                        ],
+                                                        [
+                                                            "HMA",
+                                                            "Indicator Bot",
+                                                            "Foundations",
+                                                            "ca8c02de-4c43-4345-85db-26186306a1d4"
+                                                        ],
+                                                        [
+                                                            "HMA",
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "e92e7af5-3912-413a-9479-d6b5cd5dae56"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Market",
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "6b3161cd-7903-4c3b-a2f0-b2651cd04cdf"
+                                                        ]
+                                                    ]
                                                 }
                                             },
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "HMA Multi-Time-Frame-Daily",
                                                 "project": "Foundations",
-                                                "id": "44c21676-03f9-4450-be98-30041aa751ce",
+                                                "id": "06d06234-e034-4a06-baa1-b0747f117e1e",
                                                 "savedPayload": {
                                                     "position": {
-                                                        "x": 24919.48147475301,
-                                                        "y": 15893.053261828987
+                                                        "x": 21645.87884428182,
+                                                        "y": 17870.901902681893
                                                     },
                                                     "targetPosition": {
-                                                        "x": 25077.804088543424,
-                                                        "y": 16549.22317119894
+                                                        "x": 21861.05029155774,
+                                                        "y": 18266.124938798443
                                                     },
                                                     "floatingObject": {
                                                         "isPinned": false,
@@ -12464,20 +12646,46 @@
                                                         "type": "Dataset Definition",
                                                         "name": "Multi-Time-Frame-Daily",
                                                         "id": "9e26a769-2b37-4176-b0d1-9c3cecde6028"
-                                                    }
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Pluvtech",
+                                                            "Data Mine",
+                                                            "Foundations",
+                                                            "0a5518d0-e6d5-4bdf-ac31-461fb2d40b3c"
+                                                        ],
+                                                        [
+                                                            "HMA",
+                                                            "Indicator Bot",
+                                                            "Foundations",
+                                                            "ca8c02de-4c43-4345-85db-26186306a1d4"
+                                                        ],
+                                                        [
+                                                            "HMA",
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "e92e7af5-3912-413a-9479-d6b5cd5dae56"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Daily",
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "9e26a769-2b37-4176-b0d1-9c3cecde6028"
+                                                        ]
+                                                    ]
                                                 }
                                             }
                                         ],
                                         "dataDependencyFolders": [],
-                                        "id": "483f48d0-f628-4ca3-af5c-f97002e97c6b",
+                                        "id": "b8691510-1c04-488f-9eb2-12a4df15560d",
                                         "savedPayload": {
                                             "position": {
-                                                "x": 25077.804088543424,
-                                                "y": 16549.22317119894
+                                                "x": 21861.05029155774,
+                                                "y": 18266.124938798443
                                             },
                                             "targetPosition": {
-                                                "x": 25543.00044876445,
-                                                "y": 17038.321675017047
+                                                "x": 22245.00574912603,
+                                                "y": 18500.812404598226
                                             },
                                             "floatingObject": {
                                                 "isPinned": false,
@@ -12499,17 +12707,17 @@
                                         "dataDependencies": [
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "EMA Multi-Time-Frame-Market",
                                                 "project": "Foundations",
-                                                "id": "5a987449-3793-4e1b-b9b1-61445a68d852",
+                                                "id": "5a44dd0a-2736-4b96-bb79-32645d9aebf6",
                                                 "savedPayload": {
                                                     "position": {
-                                                        "x": 24644.31009149813,
-                                                        "y": 16093.455922142544
+                                                        "x": 21475.196336613062,
+                                                        "y": 18096.914203390126
                                                     },
                                                     "targetPosition": {
-                                                        "x": 25220.243277850564,
-                                                        "y": 16445.487120842223
+                                                        "x": 21914.213141288594,
+                                                        "y": 18195.72839878981
                                                     },
                                                     "floatingObject": {
                                                         "isPinned": false,
@@ -12526,22 +12734,48 @@
                                                         "type": "Dataset Definition",
                                                         "name": "Multi-Time-Frame-Market",
                                                         "id": "1b5a992d-e78e-40d0-b695-c14da7919af6"
-                                                    }
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Pluvtech",
+                                                            "Data Mine",
+                                                            "Foundations",
+                                                            "0a5518d0-e6d5-4bdf-ac31-461fb2d40b3c"
+                                                        ],
+                                                        [
+                                                            "EMA",
+                                                            "Indicator Bot",
+                                                            "Foundations",
+                                                            "0702e945-c8e3-4af7-b597-37ee572b42e4"
+                                                        ],
+                                                        [
+                                                            "EMA",
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "67396a20-f5b3-40a1-afa8-27675b1fee0b"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Market",
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "1b5a992d-e78e-40d0-b695-c14da7919af6"
+                                                        ]
+                                                    ]
                                                 }
                                             },
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "EMA Multi-Time-Frame-Daily",
                                                 "project": "Foundations",
-                                                "id": "2c61012f-ec03-4200-a72a-59a260ba75fd",
+                                                "id": "43a112a7-49a9-4da8-8513-c23ec6c0b629",
                                                 "savedPayload": {
                                                     "position": {
-                                                        "x": 25237.144645672954,
-                                                        "y": 15770.698751228658
+                                                        "x": 21780.280342421476,
+                                                        "y": 17766.12159555269
                                                     },
                                                     "targetPosition": {
-                                                        "x": 25220.243277850564,
-                                                        "y": 16445.487120842223
+                                                        "x": 21914.213141288594,
+                                                        "y": 18195.72839878981
                                                     },
                                                     "floatingObject": {
                                                         "isPinned": false,
@@ -12558,20 +12792,46 @@
                                                         "type": "Dataset Definition",
                                                         "name": "Multi-Time-Frame-Daily",
                                                         "id": "39850a58-4d32-46d6-83f2-ee73cc6f2b0c"
-                                                    }
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Pluvtech",
+                                                            "Data Mine",
+                                                            "Foundations",
+                                                            "0a5518d0-e6d5-4bdf-ac31-461fb2d40b3c"
+                                                        ],
+                                                        [
+                                                            "EMA",
+                                                            "Indicator Bot",
+                                                            "Foundations",
+                                                            "0702e945-c8e3-4af7-b597-37ee572b42e4"
+                                                        ],
+                                                        [
+                                                            "EMA",
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "67396a20-f5b3-40a1-afa8-27675b1fee0b"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Daily",
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "39850a58-4d32-46d6-83f2-ee73cc6f2b0c"
+                                                        ]
+                                                    ]
                                                 }
                                             }
                                         ],
                                         "dataDependencyFolders": [],
-                                        "id": "63f23a94-afdd-4738-9f8f-5661dae224c9",
+                                        "id": "ea491781-98df-425e-a165-32a71c496fc2",
                                         "savedPayload": {
                                             "position": {
-                                                "x": 25220.243277850564,
-                                                "y": 16445.487120842223
+                                                "x": 21914.213141288594,
+                                                "y": 18195.72839878981
                                             },
                                             "targetPosition": {
-                                                "x": 25543.00044876445,
-                                                "y": 17038.321675017047
+                                                "x": 22245.00574912603,
+                                                "y": 18500.812404598226
                                             },
                                             "floatingObject": {
                                                 "isPinned": false,
@@ -12593,17 +12853,17 @@
                                         "dataDependencies": [
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "McGinley Multi-Time-Frame-Market",
                                                 "project": "Foundations",
-                                                "id": "8e5e8e27-ffa8-49db-a575-7a40f229f696",
+                                                "id": "d7ef5345-5bd1-42a9-94ce-75b81c2ec1a2",
                                                 "savedPayload": {
                                                     "position": {
-                                                        "x": 24919.48147475301,
-                                                        "y": 15893.053261828987
+                                                        "x": 21568.784638752877,
+                                                        "y": 17954.49262789378
                                                     },
                                                     "targetPosition": {
-                                                        "x": 25384.677834974038,
-                                                        "y": 16382.151765647093
+                                                        "x": 21980.08816542801,
+                                                        "y": 18137.05606603132
                                                     },
                                                     "floatingObject": {
                                                         "isPinned": false,
@@ -12620,22 +12880,48 @@
                                                         "type": "Dataset Definition",
                                                         "name": "Multi-Time-Frame-Market",
                                                         "id": "22004c88-da81-4f83-a404-acbfab00bf4d"
-                                                    }
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Pluvtech",
+                                                            "Data Mine",
+                                                            "Foundations",
+                                                            "0a5518d0-e6d5-4bdf-ac31-461fb2d40b3c"
+                                                        ],
+                                                        [
+                                                            "McGinley",
+                                                            "Indicator Bot",
+                                                            "Foundations",
+                                                            "d07599e3-ce23-48f1-8b3b-6e594559cc41"
+                                                        ],
+                                                        [
+                                                            "McGinley",
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "95dc3e95-c3b8-4c95-822b-69e5dd66ea16"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Market",
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "22004c88-da81-4f83-a404-acbfab00bf4d"
+                                                        ]
+                                                    ]
                                                 }
                                             },
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "McGinley Multi-Time-Frame-Daily",
                                                 "project": "Foundations",
-                                                "id": "f726dbcb-e89e-441a-a89b-4e8539f0145c",
+                                                "id": "b041916b-851f-4611-ae81-057bd54d3beb",
                                                 "savedPayload": {
                                                     "position": {
-                                                        "x": 25575.651384122964,
-                                                        "y": 15734.730648038574
+                                                        "x": 21932.540977319783,
+                                                        "y": 17689.575044195757
                                                     },
                                                     "targetPosition": {
-                                                        "x": 25384.677834974038,
-                                                        "y": 16382.151765647093
+                                                        "x": 21980.08816542801,
+                                                        "y": 18137.05606603132
                                                     },
                                                     "floatingObject": {
                                                         "isPinned": false,
@@ -12652,20 +12938,46 @@
                                                         "type": "Dataset Definition",
                                                         "name": "Multi-Time-Frame-Daily",
                                                         "id": "f8959f99-6307-407f-9111-23a8bdbcc635"
-                                                    }
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Pluvtech",
+                                                            "Data Mine",
+                                                            "Foundations",
+                                                            "0a5518d0-e6d5-4bdf-ac31-461fb2d40b3c"
+                                                        ],
+                                                        [
+                                                            "McGinley",
+                                                            "Indicator Bot",
+                                                            "Foundations",
+                                                            "d07599e3-ce23-48f1-8b3b-6e594559cc41"
+                                                        ],
+                                                        [
+                                                            "McGinley",
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "95dc3e95-c3b8-4c95-822b-69e5dd66ea16"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Daily",
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "f8959f99-6307-407f-9111-23a8bdbcc635"
+                                                        ]
+                                                    ]
                                                 }
                                             }
                                         ],
                                         "dataDependencyFolders": [],
-                                        "id": "2b5e7506-cc57-43f7-b968-d864d2bb28fa",
+                                        "id": "fe92b0f2-0074-407f-a884-3ed4770c7eb2",
                                         "savedPayload": {
                                             "position": {
-                                                "x": 25384.677834974038,
-                                                "y": 16382.151765647093
+                                                "x": 21980.08816542801,
+                                                "y": 18137.05606603132
                                             },
                                             "targetPosition": {
-                                                "x": 25543.00044876445,
-                                                "y": 17038.321675017047
+                                                "x": 22245.00574912603,
+                                                "y": 18500.812404598226
                                             },
                                             "floatingObject": {
                                                 "isPinned": false,
@@ -12687,17 +12999,17 @@
                                         "dataDependencies": [
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "WMA Multi-Time-Frame-Market",
                                                 "project": "Foundations",
-                                                "id": "e39ff8bf-bc88-4295-82f3-6cc2b968e9da",
+                                                "id": "915d3bf6-dcac-4eb3-a833-f41dee5fefe4",
                                                 "savedPayload": {
                                                     "position": {
-                                                        "x": 25237.144645672954,
-                                                        "y": 15770.698751228658
+                                                        "x": 21688.359738935163,
+                                                        "y": 17833.065815036523
                                                     },
                                                     "targetPosition": {
-                                                        "x": 25559.90181658684,
-                                                        "y": 16363.533305403482
+                                                        "x": 22056.143823741444,
+                                                        "y": 18092.36268536705
                                                     },
                                                     "floatingObject": {
                                                         "isPinned": false,
@@ -12714,22 +13026,48 @@
                                                         "type": "Dataset Definition",
                                                         "name": "Multi-Time-Frame-Market",
                                                         "id": "f7baea67-15c3-4877-8445-c2cefc86988a"
-                                                    }
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Pluvtech",
+                                                            "Data Mine",
+                                                            "Foundations",
+                                                            "0a5518d0-e6d5-4bdf-ac31-461fb2d40b3c"
+                                                        ],
+                                                        [
+                                                            "WMA",
+                                                            "Indicator Bot",
+                                                            "Foundations",
+                                                            "403b2817-ec8d-4b6a-8b66-72eab0b31961"
+                                                        ],
+                                                        [
+                                                            "WMA",
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "f7b69531-1a17-4457-b368-eca66b5a24b5"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Market",
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "f7baea67-15c3-4877-8445-c2cefc86988a"
+                                                        ]
+                                                    ]
                                                 }
                                             },
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "WMA Multi-Time-Frame-Daily",
                                                 "project": "Foundations",
-                                                "id": "0f076770-fc4a-4448-904b-8a3767be615b",
+                                                "id": "bb562cff-853f-4296-85db-5f6073c4e8de",
                                                 "savedPayload": {
                                                     "position": {
-                                                        "x": 25911.93301528652,
-                                                        "y": 15787.600119051047
+                                                        "x": 22096.80945816634,
+                                                        "y": 17644.203889651937
                                                     },
                                                     "targetPosition": {
-                                                        "x": 25559.90181658684,
-                                                        "y": 16363.533305403482
+                                                        "x": 22056.143823741444,
+                                                        "y": 18092.36268536705
                                                     },
                                                     "floatingObject": {
                                                         "isPinned": false,
@@ -12746,20 +13084,46 @@
                                                         "type": "Dataset Definition",
                                                         "name": "Multi-Time-Frame-Daily",
                                                         "id": "1f7c6a5d-5257-4203-b89f-e5ca66f5efdb"
-                                                    }
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Pluvtech",
+                                                            "Data Mine",
+                                                            "Foundations",
+                                                            "0a5518d0-e6d5-4bdf-ac31-461fb2d40b3c"
+                                                        ],
+                                                        [
+                                                            "WMA",
+                                                            "Indicator Bot",
+                                                            "Foundations",
+                                                            "403b2817-ec8d-4b6a-8b66-72eab0b31961"
+                                                        ],
+                                                        [
+                                                            "WMA",
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "f7b69531-1a17-4457-b368-eca66b5a24b5"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Daily",
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "1f7c6a5d-5257-4203-b89f-e5ca66f5efdb"
+                                                        ]
+                                                    ]
                                                 }
                                             }
                                         ],
                                         "dataDependencyFolders": [],
-                                        "id": "23ecd21c-6c3b-472f-bd59-bda3e935782b",
+                                        "id": "8da184b5-6318-40e8-8a31-adc69f9bc185",
                                         "savedPayload": {
                                             "position": {
-                                                "x": 25559.90181658684,
-                                                "y": 16363.533305403482
+                                                "x": 22056.143823741444,
+                                                "y": 18092.36268536705
                                             },
                                             "targetPosition": {
-                                                "x": 25543.00044876445,
-                                                "y": 17038.321675017047
+                                                "x": 22245.00574912603,
+                                                "y": 18500.812404598226
                                             },
                                             "floatingObject": {
                                                 "isPinned": false,
@@ -12781,17 +13145,17 @@
                                         "dataDependencies": [
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "SMA Multi-Time-Frame-Market",
                                                 "project": "Foundations",
-                                                "id": "04678224-a18a-4857-8bec-d3fdeaa1b5f4",
+                                                "id": "5449391e-1b95-4dc5-98e5-ad1c7c536093",
                                                 "savedPayload": {
                                                     "position": {
-                                                        "x": 25575.651384122964,
-                                                        "y": 15734.730648038574
+                                                        "x": 21829.326433118404,
+                                                        "y": 17737.30012913952
                                                     },
                                                     "targetPosition": {
-                                                        "x": 25733.973997913377,
-                                                        "y": 16390.90055740853
+                                                        "x": 22139.45733993242,
+                                                        "y": 18063.36579835159
                                                     },
                                                     "floatingObject": {
                                                         "isPinned": false,
@@ -12808,22 +13172,48 @@
                                                         "type": "Dataset Definition",
                                                         "name": "Multi-Time-Frame-Market",
                                                         "id": "1caf165a-e624-4b77-88e0-689140a28290"
-                                                    }
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Pluvtech",
+                                                            "Data Mine",
+                                                            "Foundations",
+                                                            "0a5518d0-e6d5-4bdf-ac31-461fb2d40b3c"
+                                                        ],
+                                                        [
+                                                            "SMA",
+                                                            "Indicator Bot",
+                                                            "Foundations",
+                                                            "911bc848-881a-4d4d-9031-fca087856547"
+                                                        ],
+                                                        [
+                                                            "SMA",
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "2300d187-f0dc-4a9a-b379-686379334a37"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Market",
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "1caf165a-e624-4b77-88e0-689140a28290"
+                                                        ]
+                                                    ]
                                                 }
                                             },
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "SMA Multi-Time-Frame-Daily",
                                                 "project": "Foundations",
-                                                "id": "36fa2290-5ac8-4f43-ae15-8e41a43b5dd5",
+                                                "id": "caae5a40-768b-4cdc-b0f4-1d60cf934077",
                                                 "savedPayload": {
                                                     "position": {
-                                                        "x": 26223.072501731483,
-                                                        "y": 15925.704197187504
+                                                        "x": 22266.77303936504,
+                                                        "y": 17631.751719945914
                                                     },
                                                     "targetPosition": {
-                                                        "x": 25733.973997913377,
-                                                        "y": 16390.90055740853
+                                                        "x": 22139.45733993242,
+                                                        "y": 18063.36579835159
                                                     },
                                                     "floatingObject": {
                                                         "isPinned": false,
@@ -12840,20 +13230,46 @@
                                                         "type": "Dataset Definition",
                                                         "name": "Multi-Time-Frame-Daily",
                                                         "id": "1dcd0c9b-4059-49f6-b846-4a035c317389"
-                                                    }
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Pluvtech",
+                                                            "Data Mine",
+                                                            "Foundations",
+                                                            "0a5518d0-e6d5-4bdf-ac31-461fb2d40b3c"
+                                                        ],
+                                                        [
+                                                            "SMA",
+                                                            "Indicator Bot",
+                                                            "Foundations",
+                                                            "911bc848-881a-4d4d-9031-fca087856547"
+                                                        ],
+                                                        [
+                                                            "SMA",
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "2300d187-f0dc-4a9a-b379-686379334a37"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Daily",
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "1dcd0c9b-4059-49f6-b846-4a035c317389"
+                                                        ]
+                                                    ]
                                                 }
                                             }
                                         ],
                                         "dataDependencyFolders": [],
-                                        "id": "f4562440-c97d-469d-81b2-4fc0b02044e7",
+                                        "id": "ee1f7db9-dd26-4298-b2d5-8f62f980470f",
                                         "savedPayload": {
                                             "position": {
-                                                "x": 25733.973997913377,
-                                                "y": 16390.90055740853
+                                                "x": 22139.45733993242,
+                                                "y": 18063.36579835159
                                             },
                                             "targetPosition": {
-                                                "x": 25543.00044876445,
-                                                "y": 17038.321675017047
+                                                "x": 22245.00574912603,
+                                                "y": 18500.812404598226
                                             },
                                             "floatingObject": {
                                                 "isPinned": false,
@@ -12875,17 +13291,17 @@
                                         "dataDependencies": [
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "VWMA Multi-Time-Frame-Market",
                                                 "project": "Foundations",
-                                                "id": "bcdb1684-64fc-4d59-9af2-59709ef00885",
+                                                "id": "e0854790-54d6-4d5f-b446-60a35b2ccb47",
                                                 "savedPayload": {
                                                     "position": {
-                                                        "x": 25911.93301528652,
-                                                        "y": 15787.600119051047
+                                                        "x": 21986.267450300176,
+                                                        "y": 17670.87579180578
                                                     },
                                                     "targetPosition": {
-                                                        "x": 25895.03164746413,
-                                                        "y": 16462.388488664612
+                                                        "x": 22226.827022296482,
+                                                        "y": 18051.17973909131
                                                     },
                                                     "floatingObject": {
                                                         "isPinned": false,
@@ -12902,22 +13318,48 @@
                                                         "type": "Dataset Definition",
                                                         "name": "Multi-Time-Frame-Market",
                                                         "id": "82106432-bd3d-417d-88bc-f3cdcb542c56"
-                                                    }
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Pluvtech",
+                                                            "Data Mine",
+                                                            "Foundations",
+                                                            "0a5518d0-e6d5-4bdf-ac31-461fb2d40b3c"
+                                                        ],
+                                                        [
+                                                            "Volume-WMA",
+                                                            "Indicator Bot",
+                                                            "Foundations",
+                                                            "89d82732-d20e-4c9d-8143-a690929a6a26"
+                                                        ],
+                                                        [
+                                                            "VWMA",
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "ced9d551-57dd-44b9-bf76-ff7dd9e1f3c0"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Market",
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "82106432-bd3d-417d-88bc-f3cdcb542c56"
+                                                        ]
+                                                    ]
                                                 }
                                             },
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "VWMA Multi-Time-Frame-Daily",
                                                 "project": "Foundations",
-                                                "id": "8cd3868a-8ac9-4a4b-956c-2a5f2d8343f7",
+                                                "id": "81b43f94-aa82-4f2f-9809-a297bff6d52d",
                                                 "savedPayload": {
                                                     "position": {
-                                                        "x": 26487.866201638953,
-                                                        "y": 16139.631317750725
+                                                        "x": 22435.900115807093,
+                                                        "y": 17652.697064976233
                                                     },
                                                     "targetPosition": {
-                                                        "x": 25895.03164746413,
-                                                        "y": 16462.388488664612
+                                                        "x": 22226.827022296482,
+                                                        "y": 18051.17973909131
                                                     },
                                                     "floatingObject": {
                                                         "isPinned": false,
@@ -12934,20 +13376,46 @@
                                                         "type": "Dataset Definition",
                                                         "name": "Multi-Time-Frame-Daily",
                                                         "id": "43b611c4-39a4-426a-8b04-af6976b4c439"
-                                                    }
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Pluvtech",
+                                                            "Data Mine",
+                                                            "Foundations",
+                                                            "0a5518d0-e6d5-4bdf-ac31-461fb2d40b3c"
+                                                        ],
+                                                        [
+                                                            "Volume-WMA",
+                                                            "Indicator Bot",
+                                                            "Foundations",
+                                                            "89d82732-d20e-4c9d-8143-a690929a6a26"
+                                                        ],
+                                                        [
+                                                            "VWMA",
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "ced9d551-57dd-44b9-bf76-ff7dd9e1f3c0"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Daily",
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "43b611c4-39a4-426a-8b04-af6976b4c439"
+                                                        ]
+                                                    ]
                                                 }
                                             }
                                         ],
                                         "dataDependencyFolders": [],
-                                        "id": "f03e3690-1f8c-4515-988c-c08f44dcb20f",
+                                        "id": "38e75b8d-0e91-4895-a01c-a18d654e2736",
                                         "savedPayload": {
                                             "position": {
-                                                "x": 25895.03164746413,
-                                                "y": 16462.388488664612
+                                                "x": 22226.827022296482,
+                                                "y": 18051.17973909131
                                             },
                                             "targetPosition": {
-                                                "x": 25543.00044876445,
-                                                "y": 17038.321675017047
+                                                "x": 22245.00574912603,
+                                                "y": 18500.812404598226
                                             },
                                             "floatingObject": {
                                                 "isPinned": false,
@@ -12969,17 +13437,17 @@
                                         "dataDependencies": [
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "Fibonacci-Bollinger Multi-Time-Frame-Market",
                                                 "project": "Foundations",
-                                                "id": "9951daf9-00d3-4504-815b-98afa5b0dc2b",
+                                                "id": "1758ea61-5a12-45e1-b52f-409b680973b6",
                                                 "savedPayload": {
                                                     "position": {
-                                                        "x": 26223.072501731483,
-                                                        "y": 15925.7041971875
+                                                        "x": 22153.151635203714,
+                                                        "y": 17636.34545306784
                                                     },
                                                     "targetPosition": {
-                                                        "x": 26032.098952582557,
-                                                        "y": 16573.12531479602
+                                                        "x": 22314.895302937854,
+                                                        "y": 18056.272811009552
                                                     },
                                                     "floatingObject": {
                                                         "isPinned": false,
@@ -12996,22 +13464,48 @@
                                                         "type": "Dataset Definition",
                                                         "name": "Multi-Time-Frame-Market",
                                                         "id": "923859b1-8d25-4590-9f8f-45b215df5a14"
-                                                    }
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Pluvtech",
+                                                            "Data Mine",
+                                                            "Foundations",
+                                                            "0a5518d0-e6d5-4bdf-ac31-461fb2d40b3c"
+                                                        ],
+                                                        [
+                                                            "Fibonacci-Bollinger",
+                                                            "Indicator Bot",
+                                                            "Foundations",
+                                                            "d40999ec-12b6-4847-bfa3-26e12eb7276b"
+                                                        ],
+                                                        [
+                                                            "Fibonacci-Bollinger",
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "30b6c6ea-0422-41e7-9132-618008d40ad3"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Market",
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "923859b1-8d25-4590-9f8f-45b215df5a14"
+                                                        ]
+                                                    ]
                                                 }
                                             },
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "Fibonacci-Bollinger Multi-Time-Frame-Daily",
                                                 "project": "Foundations",
-                                                "id": "7cba4ee0-deb4-44bb-987e-e1b44d633421",
+                                                "id": "0b65f50c-14a9-4fdf-88a1-324162b07486",
                                                 "savedPayload": {
                                                     "position": {
-                                                        "x": 26688.26886195251,
-                                                        "y": 16414.802701005607
+                                                        "x": 22597.691228792388,
+                                                        "y": 17706.235006879662
                                                     },
                                                     "targetPosition": {
-                                                        "x": 26032.098952582557,
-                                                        "y": 16573.12531479602
+                                                        "x": 22314.895302937854,
+                                                        "y": 18056.272811009552
                                                     },
                                                     "floatingObject": {
                                                         "isPinned": false,
@@ -13028,20 +13522,46 @@
                                                         "type": "Dataset Definition",
                                                         "name": "Multi-Time-Frame-Daily",
                                                         "id": "aa6136a6-4c18-49ce-80aa-3069addf7eea"
-                                                    }
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Pluvtech",
+                                                            "Data Mine",
+                                                            "Foundations",
+                                                            "0a5518d0-e6d5-4bdf-ac31-461fb2d40b3c"
+                                                        ],
+                                                        [
+                                                            "Fibonacci-Bollinger",
+                                                            "Indicator Bot",
+                                                            "Foundations",
+                                                            "d40999ec-12b6-4847-bfa3-26e12eb7276b"
+                                                        ],
+                                                        [
+                                                            "Fibonacci-Bollinger",
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "30b6c6ea-0422-41e7-9132-618008d40ad3"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Daily",
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "aa6136a6-4c18-49ce-80aa-3069addf7eea"
+                                                        ]
+                                                    ]
                                                 }
                                             }
                                         ],
                                         "dataDependencyFolders": [],
-                                        "id": "71e9d73d-849d-4734-b797-9658407deba0",
+                                        "id": "5985d4f4-7c20-434e-ba71-6e782f06e2d0",
                                         "savedPayload": {
                                             "position": {
-                                                "x": 26032.098952582557,
-                                                "y": 16573.12531479602
+                                                "x": 22314.895302937854,
+                                                "y": 18056.272811009552
                                             },
                                             "targetPosition": {
-                                                "x": 25543.00044876445,
-                                                "y": 17038.321675017047
+                                                "x": 22245.00574912603,
+                                                "y": 18500.812404598226
                                             },
                                             "floatingObject": {
                                                 "isPinned": false,
@@ -13063,17 +13583,17 @@
                                         "dataDependencies": [
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "TPSL Bands Multi-Time-Frame-Market",
                                                 "project": "Foundations",
-                                                "id": "4d2e78d4-6368-4d49-9ece-8057f9a6f9af",
+                                                "id": "f11b8e4b-ebd0-4b2c-8cc4-46a0ab139606",
                                                 "savedPayload": {
                                                     "position": {
-                                                        "x": 26487.866201638953,
-                                                        "y": 16139.631317750725
+                                                        "x": 22323.565722192903,
+                                                        "y": 17635.036094478553
                                                     },
                                                     "targetPosition": {
-                                                        "x": 26135.835002939275,
-                                                        "y": 16715.56450410316
+                                                        "x": 22400.27776722075,
+                                                        "y": 18078.44929020873
                                                     },
                                                     "floatingObject": {
                                                         "isPinned": false,
@@ -13090,22 +13610,48 @@
                                                         "type": "Dataset Definition",
                                                         "name": "Multi-Time-Frame-Market",
                                                         "id": "934e123e-4941-4148-9365-eb4580fc0f15"
-                                                    }
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Pluvtech",
+                                                            "Data Mine",
+                                                            "Foundations",
+                                                            "0a5518d0-e6d5-4bdf-ac31-461fb2d40b3c"
+                                                        ],
+                                                        [
+                                                            "TPSL Bands",
+                                                            "Indicator Bot",
+                                                            "Foundations",
+                                                            "bb548c23-987a-4cf4-bb92-97cc8e5af15c"
+                                                        ],
+                                                        [
+                                                            "TPSL Bands",
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "7a328b1e-2c04-4084-bdcf-f1d347f888f5"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Market",
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "934e123e-4941-4148-9365-eb4580fc0f15"
+                                                        ]
+                                                    ]
                                                 }
                                             },
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "TPSL Bands Multi-Time-Frame-Daily",
                                                 "project": "Foundations",
-                                                "id": "4b361ccb-2d02-4f7f-b1c5-3eb54789511e",
+                                                "id": "f9d69198-c64c-4a7c-98fc-39b2f34cac89",
                                                 "savedPayload": {
                                                     "position": {
-                                                        "x": 26810.62337255284,
-                                                        "y": 16732.46587192555
+                                                        "x": 22745.9288365824,
+                                                        "y": 17790.30811257327
                                                     },
                                                     "targetPosition": {
-                                                        "x": 26135.835002939275,
-                                                        "y": 16715.56450410316
+                                                        "x": 22400.27776722075,
+                                                        "y": 18078.44929020873
                                                     },
                                                     "floatingObject": {
                                                         "isPinned": false,
@@ -13122,20 +13668,630 @@
                                                         "type": "Dataset Definition",
                                                         "name": "Multi-Time-Frame-Daily",
                                                         "id": "c42033d0-4bba-4028-a226-f5bc2ddbd2c3"
-                                                    }
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Pluvtech",
+                                                            "Data Mine",
+                                                            "Foundations",
+                                                            "0a5518d0-e6d5-4bdf-ac31-461fb2d40b3c"
+                                                        ],
+                                                        [
+                                                            "TPSL Bands",
+                                                            "Indicator Bot",
+                                                            "Foundations",
+                                                            "bb548c23-987a-4cf4-bb92-97cc8e5af15c"
+                                                        ],
+                                                        [
+                                                            "TPSL Bands",
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "7a328b1e-2c04-4084-bdcf-f1d347f888f5"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Daily",
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "c42033d0-4bba-4028-a226-f5bc2ddbd2c3"
+                                                        ]
+                                                    ]
                                                 }
                                             }
                                         ],
                                         "dataDependencyFolders": [],
-                                        "id": "44a92b3f-7d10-4a2e-a56b-4978496d1a16",
+                                        "id": "e7421b81-54d5-4545-abbb-d1ee7a48060c",
                                         "savedPayload": {
                                             "position": {
-                                                "x": 26135.835002939275,
-                                                "y": 16715.56450410316
+                                                "x": 22400.27776722075,
+                                                "y": 18078.44929020873
                                             },
                                             "targetPosition": {
-                                                "x": 25543.00044876445,
-                                                "y": 17038.321675017047
+                                                "x": 22245.00574912603,
+                                                "y": 18500.812404598226
+                                            },
+                                            "floatingObject": {
+                                                "isPinned": false,
+                                                "isFrozen": false,
+                                                "isCollapsed": false,
+                                                "angleToParent": 2,
+                                                "distanceToParent": 3,
+                                                "arrangementStyle": 0
+                                            },
+                                            "uiObject": {
+                                                "isRunning": false
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Bot Data Dependencies",
+                                        "name": "MAMA",
+                                        "project": "Foundations",
+                                        "dataDependencies": [
+                                            {
+                                                "type": "Data Dependency",
+                                                "name": "MAMA Multi-Time-Frame-Market",
+                                                "project": "Foundations",
+                                                "id": "7814a65b-5303-4142-9a74-a060d425a0f2",
+                                                "savedPayload": {
+                                                    "position": {
+                                                        "x": 22490.960793474074,
+                                                        "y": 17666.998033954227
+                                                    },
+                                                    "targetPosition": {
+                                                        "x": 22479.693214925814,
+                                                        "y": 18116.856947029937
+                                                    },
+                                                    "floatingObject": {
+                                                        "isPinned": false,
+                                                        "isFrozen": false,
+                                                        "isCollapsed": false,
+                                                        "angleToParent": 2,
+                                                        "distanceToParent": 3,
+                                                        "arrangementStyle": 0
+                                                    },
+                                                    "uiObject": {
+                                                        "isRunning": false
+                                                    },
+                                                    "referenceParent": {
+                                                        "type": "Dataset Definition",
+                                                        "name": "Multi-Time-Frame-Market",
+                                                        "id": "3d3a7576-d4df-4b7d-a468-306f815d0357"
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Pluvtech",
+                                                            "Data Mine",
+                                                            "Foundations",
+                                                            "0a5518d0-e6d5-4bdf-ac31-461fb2d40b3c"
+                                                        ],
+                                                        [
+                                                            "MAMA",
+                                                            "Indicator Bot",
+                                                            "Foundations",
+                                                            "f1649445-3654-4fd5-8a93-6b10568bd73f"
+                                                        ],
+                                                        [
+                                                            "MAMA",
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "01791761-95d5-463c-8aed-0f77c1fa9c08"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Market",
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "3d3a7576-d4df-4b7d-a468-306f815d0357"
+                                                        ]
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "type": "Data Dependency",
+                                                "name": "MAMA Multi-Time-Frame-Daily",
+                                                "project": "Foundations",
+                                                "id": "98f46f6a-70ac-4dc4-aa62-4b2cf754a3b0",
+                                                "savedPayload": {
+                                                    "position": {
+                                                        "x": 22874.916251042363,
+                                                        "y": 17901.685499754014
+                                                    },
+                                                    "targetPosition": {
+                                                        "x": 22479.693214925814,
+                                                        "y": 18116.856947029937
+                                                    },
+                                                    "floatingObject": {
+                                                        "isPinned": false,
+                                                        "isFrozen": false,
+                                                        "isCollapsed": false,
+                                                        "angleToParent": 2,
+                                                        "distanceToParent": 3,
+                                                        "arrangementStyle": 0
+                                                    },
+                                                    "uiObject": {
+                                                        "isRunning": false
+                                                    },
+                                                    "referenceParent": {
+                                                        "type": "Dataset Definition",
+                                                        "name": "Multi-Time-Frame-Daily",
+                                                        "id": "2236958c-caf6-4fed-bf92-861d44d27860"
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Pluvtech",
+                                                            "Data Mine",
+                                                            "Foundations",
+                                                            "0a5518d0-e6d5-4bdf-ac31-461fb2d40b3c"
+                                                        ],
+                                                        [
+                                                            "MAMA",
+                                                            "Indicator Bot",
+                                                            "Foundations",
+                                                            "f1649445-3654-4fd5-8a93-6b10568bd73f"
+                                                        ],
+                                                        [
+                                                            "MAMA",
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "01791761-95d5-463c-8aed-0f77c1fa9c08"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Daily",
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "2236958c-caf6-4fed-bf92-861d44d27860"
+                                                        ]
+                                                    ]
+                                                }
+                                            }
+                                        ],
+                                        "dataDependencyFolders": [],
+                                        "id": "31afd081-1661-441b-bfcc-01dc16bdc42d",
+                                        "savedPayload": {
+                                            "position": {
+                                                "x": 22479.693214925814,
+                                                "y": 18116.856947029937
+                                            },
+                                            "targetPosition": {
+                                                "x": 22245.00574912603,
+                                                "y": 18500.812404598226
+                                            },
+                                            "floatingObject": {
+                                                "isPinned": false,
+                                                "isFrozen": false,
+                                                "isCollapsed": false,
+                                                "angleToParent": 2,
+                                                "distanceToParent": 3,
+                                                "arrangementStyle": 0
+                                            },
+                                            "uiObject": {
+                                                "isRunning": false
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Bot Data Dependencies",
+                                        "name": "Donchian-Tenkan",
+                                        "project": "Foundations",
+                                        "dataDependencies": [
+                                            {
+                                                "type": "Data Dependency",
+                                                "name": "Donchian-Tenkan Multi-Time-Frame-Market",
+                                                "project": "Foundations",
+                                                "id": "f39a46db-2c32-47eb-8bb6-23c1d232e839",
+                                                "savedPayload": {
+                                                    "position": {
+                                                        "x": 22648.90395033413,
+                                                        "y": 17731.002992085258
+                                                    },
+                                                    "targetPosition": {
+                                                        "x": 22550.089754934444,
+                                                        "y": 18170.01979676079
+                                                    },
+                                                    "floatingObject": {
+                                                        "isPinned": false,
+                                                        "isFrozen": false,
+                                                        "isCollapsed": false,
+                                                        "angleToParent": 2,
+                                                        "distanceToParent": 3,
+                                                        "arrangementStyle": 0
+                                                    },
+                                                    "uiObject": {
+                                                        "isRunning": false
+                                                    },
+                                                    "referenceParent": {
+                                                        "type": "Dataset Definition",
+                                                        "name": "Multi-Time-Frame-Market",
+                                                        "id": "93da824c-3f8f-40cd-965f-f5c539fbde08"
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Pluvtech",
+                                                            "Data Mine",
+                                                            "Foundations",
+                                                            "0a5518d0-e6d5-4bdf-ac31-461fb2d40b3c"
+                                                        ],
+                                                        [
+                                                            "Donchian-Tenkan",
+                                                            "Indicator Bot",
+                                                            "Foundations",
+                                                            "9d467fa8-c972-45fa-87a9-05150f42b063"
+                                                        ],
+                                                        [
+                                                            "Donchian-Tenkan",
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "862d0a7d-21ac-49fc-9157-35d4226b3ee4"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Market",
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "93da824c-3f8f-40cd-965f-f5c539fbde08"
+                                                        ]
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "type": "Data Dependency",
+                                                "name": "Donchian-Tenkan Multi-Time-Frame-Daily",
+                                                "project": "Foundations",
+                                                "id": "921b0ce6-2ff5-4c71-9b63-1273f8f63884",
+                                                "savedPayload": {
+                                                    "position": {
+                                                        "x": 22979.696558171567,
+                                                        "y": 18036.08699789367
+                                                    },
+                                                    "targetPosition": {
+                                                        "x": 22550.089754934444,
+                                                        "y": 18170.01979676079
+                                                    },
+                                                    "floatingObject": {
+                                                        "isPinned": false,
+                                                        "isFrozen": false,
+                                                        "isCollapsed": false,
+                                                        "angleToParent": 2,
+                                                        "distanceToParent": 3,
+                                                        "arrangementStyle": 0
+                                                    },
+                                                    "uiObject": {
+                                                        "isRunning": false
+                                                    },
+                                                    "referenceParent": {
+                                                        "type": "Dataset Definition",
+                                                        "name": "Multi-Time-Frame-Daily",
+                                                        "id": "fcb06b1e-fe6a-405c-9812-2938d3769c73"
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Pluvtech",
+                                                            "Data Mine",
+                                                            "Foundations",
+                                                            "0a5518d0-e6d5-4bdf-ac31-461fb2d40b3c"
+                                                        ],
+                                                        [
+                                                            "Donchian-Tenkan",
+                                                            "Indicator Bot",
+                                                            "Foundations",
+                                                            "9d467fa8-c972-45fa-87a9-05150f42b063"
+                                                        ],
+                                                        [
+                                                            "Donchian-Tenkan",
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "862d0a7d-21ac-49fc-9157-35d4226b3ee4"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Daily",
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "fcb06b1e-fe6a-405c-9812-2938d3769c73"
+                                                        ]
+                                                    ]
+                                                }
+                                            }
+                                        ],
+                                        "dataDependencyFolders": [],
+                                        "id": "f0993cd9-3b92-4765-814d-a81fbd0fb569",
+                                        "savedPayload": {
+                                            "position": {
+                                                "x": 22550.089754934444,
+                                                "y": 18170.01979676079
+                                            },
+                                            "targetPosition": {
+                                                "x": 22245.00574912603,
+                                                "y": 18500.812404598226
+                                            },
+                                            "floatingObject": {
+                                                "isPinned": false,
+                                                "isFrozen": false,
+                                                "isCollapsed": false,
+                                                "angleToParent": 2,
+                                                "distanceToParent": 3,
+                                                "arrangementStyle": 0
+                                            },
+                                            "uiObject": {
+                                                "isRunning": false
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Bot Data Dependencies",
+                                        "name": "Percentages",
+                                        "project": "Foundations",
+                                        "dataDependencies": [
+                                            {
+                                                "type": "Data Dependency",
+                                                "name": "Percentages Multi-Time-Frame-Market",
+                                                "project": "Foundations",
+                                                "id": "aac136a8-6526-47b5-be66-3292f9fe569c",
+                                                "savedPayload": {
+                                                    "position": {
+                                                        "x": 22791.325525830478,
+                                                        "y": 17824.591294225072
+                                                    },
+                                                    "targetPosition": {
+                                                        "x": 22608.762087692936,
+                                                        "y": 18235.894820900205
+                                                    },
+                                                    "floatingObject": {
+                                                        "isPinned": false,
+                                                        "isFrozen": false,
+                                                        "isCollapsed": false,
+                                                        "angleToParent": 2,
+                                                        "distanceToParent": 3,
+                                                        "arrangementStyle": 0
+                                                    },
+                                                    "uiObject": {
+                                                        "isRunning": false
+                                                    },
+                                                    "referenceParent": {
+                                                        "type": "Dataset Definition",
+                                                        "name": "Multi-Time-Frame-Market",
+                                                        "id": "5c593190-5f3a-443d-907e-2eb8e15eee21"
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Pluvtech",
+                                                            "Data Mine",
+                                                            "Foundations",
+                                                            "0a5518d0-e6d5-4bdf-ac31-461fb2d40b3c"
+                                                        ],
+                                                        [
+                                                            "Percentages",
+                                                            "Indicator Bot",
+                                                            "Foundations",
+                                                            "725a42a6-d94c-44aa-80c9-681b22bbe8ed"
+                                                        ],
+                                                        [
+                                                            "Percentages",
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "0bc2bb7b-1945-423d-a090-b26bc3da5082"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Market",
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "5c593190-5f3a-443d-907e-2eb8e15eee21"
+                                                        ]
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "type": "Data Dependency",
+                                                "name": "Percentages Multi-Time-Frame-Daily",
+                                                "project": "Foundations",
+                                                "id": "46c515f5-a55b-4ecc-b5ca-863a2fe4ee84",
+                                                "savedPayload": {
+                                                    "position": {
+                                                        "x": 23056.2431095285,
+                                                        "y": 18188.347632791978
+                                                    },
+                                                    "targetPosition": {
+                                                        "x": 22608.762087692936,
+                                                        "y": 18235.894820900205
+                                                    },
+                                                    "floatingObject": {
+                                                        "isPinned": false,
+                                                        "isFrozen": false,
+                                                        "isCollapsed": false,
+                                                        "angleToParent": 2,
+                                                        "distanceToParent": 3,
+                                                        "arrangementStyle": 0
+                                                    },
+                                                    "uiObject": {
+                                                        "isRunning": false
+                                                    },
+                                                    "referenceParent": {
+                                                        "type": "Dataset Definition",
+                                                        "name": "Multi-Time-Frame-Daily",
+                                                        "id": "9841f528-f044-438f-914c-454dedda9a8c"
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Pluvtech",
+                                                            "Data Mine",
+                                                            "Foundations",
+                                                            "0a5518d0-e6d5-4bdf-ac31-461fb2d40b3c"
+                                                        ],
+                                                        [
+                                                            "Percentages",
+                                                            "Indicator Bot",
+                                                            "Foundations",
+                                                            "725a42a6-d94c-44aa-80c9-681b22bbe8ed"
+                                                        ],
+                                                        [
+                                                            "Percentages",
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "0bc2bb7b-1945-423d-a090-b26bc3da5082"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Daily",
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "9841f528-f044-438f-914c-454dedda9a8c"
+                                                        ]
+                                                    ]
+                                                }
+                                            }
+                                        ],
+                                        "dataDependencyFolders": [],
+                                        "id": "66b3b1fa-c28b-46fa-a86c-fdac369b3253",
+                                        "savedPayload": {
+                                            "position": {
+                                                "x": 22608.762087692936,
+                                                "y": 18235.894820900205
+                                            },
+                                            "targetPosition": {
+                                                "x": 22245.00574912603,
+                                                "y": 18500.812404598226
+                                            },
+                                            "floatingObject": {
+                                                "isPinned": false,
+                                                "isFrozen": false,
+                                                "isCollapsed": false,
+                                                "angleToParent": 2,
+                                                "distanceToParent": 3,
+                                                "arrangementStyle": 0
+                                            },
+                                            "uiObject": {
+                                                "isRunning": false
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Bot Data Dependencies",
+                                        "name": "DCA Levels Long",
+                                        "project": "Foundations",
+                                        "dataDependencies": [
+                                            {
+                                                "type": "Data Dependency",
+                                                "name": "DCALevelsLong Multi-Time-Frame-Market",
+                                                "project": "Foundations",
+                                                "id": "18dd907b-1e54-4ef9-b42a-2e020075de39",
+                                                "savedPayload": {
+                                                    "position": {
+                                                        "x": 22912.752338687733,
+                                                        "y": 17944.16639440736
+                                                    },
+                                                    "targetPosition": {
+                                                        "x": 22653.455468357206,
+                                                        "y": 18311.95047921364
+                                                    },
+                                                    "floatingObject": {
+                                                        "isPinned": false,
+                                                        "isFrozen": false,
+                                                        "isCollapsed": false,
+                                                        "angleToParent": 2,
+                                                        "distanceToParent": 3,
+                                                        "arrangementStyle": 0
+                                                    },
+                                                    "uiObject": {
+                                                        "isRunning": false
+                                                    },
+                                                    "referenceParent": {
+                                                        "type": "Dataset Definition",
+                                                        "name": "Multi-Time-Frame-Market",
+                                                        "id": "494685d3-51b4-41fb-80a6-7c045a2f2dac"
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Pluvtech",
+                                                            "Data Mine",
+                                                            "Foundations",
+                                                            "0a5518d0-e6d5-4bdf-ac31-461fb2d40b3c"
+                                                        ],
+                                                        [
+                                                            "DCA Levels Long",
+                                                            "Indicator Bot",
+                                                            "Foundations",
+                                                            "cd71f389-5338-4362-af1c-18b0c83f4a18"
+                                                        ],
+                                                        [
+                                                            "DCALevelsLong",
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "969c11cf-0254-444a-8d3a-7d99ee6c7f6e"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Market",
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "494685d3-51b4-41fb-80a6-7c045a2f2dac"
+                                                        ]
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "type": "Data Dependency",
+                                                "name": "DCALevelsLong Multi-Time-Frame-Daily",
+                                                "project": "Foundations",
+                                                "id": "52bd0c13-ca35-4aac-9d93-2cd7b8dbdbac",
+                                                "savedPayload": {
+                                                    "position": {
+                                                        "x": 23101.61426407232,
+                                                        "y": 18352.616113638534
+                                                    },
+                                                    "targetPosition": {
+                                                        "x": 22653.455468357206,
+                                                        "y": 18311.95047921364
+                                                    },
+                                                    "floatingObject": {
+                                                        "isPinned": false,
+                                                        "isFrozen": false,
+                                                        "isCollapsed": false,
+                                                        "angleToParent": 2,
+                                                        "distanceToParent": 3,
+                                                        "arrangementStyle": 0
+                                                    },
+                                                    "uiObject": {
+                                                        "isRunning": false
+                                                    },
+                                                    "referenceParent": {
+                                                        "type": "Dataset Definition",
+                                                        "name": "Multi-Time-Frame-Daily",
+                                                        "id": "c51857cd-6bbd-4d38-bb2c-7637decb9f7b"
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Pluvtech",
+                                                            "Data Mine",
+                                                            "Foundations",
+                                                            "0a5518d0-e6d5-4bdf-ac31-461fb2d40b3c"
+                                                        ],
+                                                        [
+                                                            "DCA Levels Long",
+                                                            "Indicator Bot",
+                                                            "Foundations",
+                                                            "cd71f389-5338-4362-af1c-18b0c83f4a18"
+                                                        ],
+                                                        [
+                                                            "DCALevelsLong",
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "969c11cf-0254-444a-8d3a-7d99ee6c7f6e"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Daily",
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "c51857cd-6bbd-4d38-bb2c-7637decb9f7b"
+                                                        ]
+                                                    ]
+                                                }
+                                            }
+                                        ],
+                                        "dataDependencyFolders": [],
+                                        "id": "9fbacfc6-da55-47b6-b97c-31de3231e74e",
+                                        "savedPayload": {
+                                            "position": {
+                                                "x": 22653.455468357206,
+                                                "y": 18311.95047921364
+                                            },
+                                            "targetPosition": {
+                                                "x": 22245.00574912603,
+                                                "y": 18500.812404598226
                                             },
                                             "floatingObject": {
                                                 "isPinned": false,
@@ -13154,8 +14310,8 @@
                                 "id": "4bbc0cef-780a-463f-ae49-ad85f3be60ae",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 25549.997253202873,
-                                        "y": 17486.790130154175
+                                        "x": 25572.25574912603,
+                                        "y": 17480.812404598226
                                     },
                                     "targetPosition": {
                                         "x": 25677.80415831964,
@@ -13176,7 +14332,15 @@
                                         "type": "Data Mine",
                                         "name": "Pluvtech",
                                         "id": "0a5518d0-e6d5-4bdf-ac31-461fb2d40b3c"
-                                    }
+                                    },
+                                    "referenceParentCombinedNodePath": [
+                                        [
+                                            "Pluvtech",
+                                            "Data Mine",
+                                            "Foundations",
+                                            "0a5518d0-e6d5-4bdf-ac31-461fb2d40b3c"
+                                        ]
+                                    ]
                                 }
                             },
                             {
@@ -13632,8 +14796,8 @@
                                 "id": "339bc9dd-7cea-48e9-917a-7e5a5e714111",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 25607.408649051536,
-                                        "y": 17473.799257577048
+                                        "x": 25632.80447123617,
+                                        "y": 17470.514632697697
                                     },
                                     "targetPosition": {
                                         "x": 25677.80415831964,
@@ -13854,8 +15018,8 @@
                                 "id": "f3dba6e9-7655-4513-8a79-2878bba5d5c4",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 25666.024531581097,
-                                        "y": 17468.41321460586
+                                        "x": 25694.191452373994,
+                                        "y": 17468.557491397154
                                     },
                                     "targetPosition": {
                                         "x": 25677.80415831964,
@@ -14358,8 +15522,8 @@
                                 "id": "06c21e11-8d74-494e-865f-f77e33ed5ed5",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 25724.84196679008,
-                                        "y": 17470.724157929137
+                                        "x": 25755.27316922954,
+                                        "y": 17474.97743853597
                                     },
                                     "targetPosition": {
                                         "x": 25677.80415831964,
@@ -14550,8 +15714,8 @@
                                 "id": "a580edcc-53c0-41d8-9104-536610ae1864",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 25782.854572054795,
-                                        "y": 17480.692546665905
+                                        "x": 25814.911784988828,
+                                        "y": 17489.65488264596
                                     },
                                     "targetPosition": {
                                         "x": 25677.80415831964,
@@ -14866,8 +16030,8 @@
                                 "id": "dbb10ca1-b441-440e-b2be-1378a9d27ac9",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 25839.069735615023,
-                                        "y": 17498.14781892112
+                                        "x": 25871.996345080865,
+                                        "y": 17512.316410714135
                                     },
                                     "targetPosition": {
                                         "x": 25677.80415831964,
@@ -15276,8 +16440,8 @@
                                 "id": "6dae3940-c916-45dc-9cf5-1560e06669bc",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 25892.525600436464,
-                                        "y": 17522.791310146975
+                                        "x": 25925.463472159267,
+                                        "y": 17542.539881349854
                                     },
                                     "targetPosition": {
                                         "x": 25677.80415831964,
@@ -15596,8 +16760,8 @@
                                 "id": "ad88563a-61b6-4136-b8be-729dcc2d2431",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 25942.307521851253,
-                                        "y": 17554.201363376134
+                                        "x": 25974.317174810254,
+                                        "y": 17579.76228848017
                                     },
                                     "targetPosition": {
                                         "x": 25677.80415831964,
@@ -15692,8 +16856,8 @@
                                 "id": "dd0b2f78-bb68-4081-961b-0fe855da3212",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 25987.56371738183,
-                                        "y": 17591.84054388933
+                                        "x": 26017.64740098819,
+                                        "y": 17623.290249087746
                                     },
                                     "targetPosition": {
                                         "x": 25677.80415831964,
@@ -16200,8 +17364,8 @@
                                 "id": "9b900295-aa0e-44fa-9885-adc19b92f066",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 26027.519840975277,
-                                        "y": 17635.06483487243
+                                        "x": 26054.646990563324,
+                                        "y": 17672.312919624528
                                     },
                                     "targetPosition": {
                                         "x": 25677.80415831964,
@@ -16328,8 +17492,8 @@
                                 "id": "05bce847-1267-4439-bf3d-fac8cb29ba0a",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 26061.49223227898,
-                                        "y": 17683.134656722683
+                                        "x": 26084.626711187775,
+                                        "y": 17725.917100492872
                                     },
                                     "targetPosition": {
                                         "x": 25677.80415831964,
@@ -16624,8 +17788,8 @@
                                 "id": "86f4bab4-2913-414a-ab85-0009a672d435",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 26088.89961425881,
-                                        "y": 17735.22752146075
+                                        "x": 26107.028097390124,
+                                        "y": 17783.104247226198
                                     },
                                     "targetPosition": {
                                         "x": 25677.80415831964,
@@ -16854,8 +18018,8 @@
                                 "id": "e32cca3c-0786-4af1-b79c-4cba10e8a6e2",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 26109.273039010324,
-                                        "y": 17790.452105728094
+                                        "x": 26121.433853730472,
+                                        "y": 17842.80907148311
                                     },
                                     "targetPosition": {
                                         "x": 25677.80415831964,
@@ -16982,8 +18146,8 @@
                                 "id": "295fd09c-3aed-4681-9b0b-d923b0336310",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 26122.26391158745,
-                                        "y": 17847.863501576758
+                                        "x": 26127.575628224935,
+                                        "y": 17903.91938535356
                                     },
                                     "targetPosition": {
                                         "x": 25677.80415831964,
@@ -17005,306 +18169,6 @@
                                         "name": "CoinGecko",
                                         "id": "d33de80f-ef82-40fd-8370-71596440b9c5"
                                     }
-                                }
-                            },
-                            {
-                                "type": "Data Mine Data Dependencies",
-                                "name": "quantum",
-                                "project": "Foundations",
-                                "botDataDependencies": [
-                                    {
-                                        "type": "Bot Data Dependencies",
-                                        "name": "Keltner Channel",
-                                        "project": "Foundations",
-                                        "dataDependencies": [
-                                            {
-                                                "type": "Data Dependency",
-                                                "name": "Keltner Channel Multi-Time-Frame-Market",
-                                                "project": "Foundations",
-                                                "id": "68162725-ae4b-4d62-8ed2-a73303e07dc3",
-                                                "savedPayload": {
-                                                    "position": {
-                                                        "x": 26726.059470634806,
-                                                        "y": 17275.887329286255
-                                                    },
-                                                    "targetPosition": {
-                                                        "x": 26511.33802851798,
-                                                        "y": 17671.35502998414
-                                                    },
-                                                    "floatingObject": {
-                                                        "isPinned": false,
-                                                        "isFrozen": false,
-                                                        "isCollapsed": false,
-                                                        "angleToParent": 2,
-                                                        "distanceToParent": 3,
-                                                        "arrangementStyle": 0
-                                                    },
-                                                    "uiObject": {
-                                                        "isRunning": false
-                                                    },
-                                                    "referenceParent": {
-                                                        "type": "Dataset Definition",
-                                                        "name": "Multi-Time-Frame-Market",
-                                                        "id": "d76a7b97-f8ec-4565-bb08-b9c96e527061"
-                                                    },
-                                                    "referenceParentCombinedNodePath": [
-                                                        [
-                                                            "quantum",
-                                                            "Data Mine"
-                                                        ],
-                                                        [
-                                                            "Keltner Channel",
-                                                            "Indicator Bot"
-                                                        ],
-                                                        [
-                                                            "Keltner Channel",
-                                                            "Product Definition"
-                                                        ],
-                                                        [
-                                                            "Multi-Time-Frame-Market",
-                                                            "Dataset Definition"
-                                                        ]
-                                                    ]
-                                                }
-                                            },
-                                            {
-                                                "type": "Data Dependency",
-                                                "name": "Keltner Channel Multi-Time-Frame-Daily",
-                                                "project": "Foundations",
-                                                "id": "61425bf0-af8e-427f-83ae-0a02ac704751",
-                                                "savedPayload": {
-                                                    "position": {
-                                                        "x": 26961.183824756983,
-                                                        "y": 17659.5754032456
-                                                    },
-                                                    "targetPosition": {
-                                                        "x": 26511.33802851798,
-                                                        "y": 17671.35502998414
-                                                    },
-                                                    "floatingObject": {
-                                                        "isPinned": false,
-                                                        "isFrozen": false,
-                                                        "isCollapsed": false,
-                                                        "angleToParent": 2,
-                                                        "distanceToParent": 3,
-                                                        "arrangementStyle": 0
-                                                    },
-                                                    "uiObject": {
-                                                        "isRunning": false
-                                                    },
-                                                    "referenceParent": {
-                                                        "type": "Dataset Definition",
-                                                        "name": "Multi-Time-Frame-Daily",
-                                                        "id": "80454a5a-c87b-47f6-b71e-f0466c864634"
-                                                    },
-                                                    "referenceParentCombinedNodePath": [
-                                                        [
-                                                            "quantum",
-                                                            "Data Mine"
-                                                        ],
-                                                        [
-                                                            "Keltner Channel",
-                                                            "Indicator Bot"
-                                                        ],
-                                                        [
-                                                            "Keltner Channel",
-                                                            "Product Definition"
-                                                        ],
-                                                        [
-                                                            "Multi-Time-Frame-Daily",
-                                                            "Dataset Definition"
-                                                        ]
-                                                    ]
-                                                }
-                                            }
-                                        ],
-                                        "dataDependencyFolders": [],
-                                        "id": "62bdf92b-3624-4b34-baa7-b77162aab1b0",
-                                        "savedPayload": {
-                                            "position": {
-                                                "x": 26511.33802851798,
-                                                "y": 17671.35502998414
-                                            },
-                                            "targetPosition": {
-                                                "x": 26127.64995455864,
-                                                "y": 17906.47938410632
-                                            },
-                                            "floatingObject": {
-                                                "isPinned": false,
-                                                "isFrozen": false,
-                                                "isCollapsed": false,
-                                                "angleToParent": 2,
-                                                "distanceToParent": 3,
-                                                "arrangementStyle": 0
-                                            },
-                                            "uiObject": {
-                                                "isRunning": false
-                                            }
-                                        }
-                                    },
-                                    {
-                                        "type": "Bot Data Dependencies",
-                                        "name": "MVWAP",
-                                        "project": "Foundations",
-                                        "dataDependencies": [
-                                            {
-                                                "type": "Data Dependency",
-                                                "name": "MVWAP Multi-Time-Frame-Daily",
-                                                "project": "Foundations",
-                                                "id": "037cecd0-41f9-41eb-9950-69f2098c8d9e",
-                                                "savedPayload": {
-                                                    "position": {
-                                                        "x": 26972.96345149553,
-                                                        "y": 18109.4211994846
-                                                    },
-                                                    "targetPosition": {
-                                                        "x": 26523.117655256527,
-                                                        "y": 18121.200826223143
-                                                    },
-                                                    "floatingObject": {
-                                                        "isPinned": false,
-                                                        "isFrozen": false,
-                                                        "isCollapsed": false,
-                                                        "angleToParent": 2,
-                                                        "distanceToParent": 3,
-                                                        "arrangementStyle": 0
-                                                    },
-                                                    "uiObject": {
-                                                        "isRunning": false
-                                                    },
-                                                    "referenceParent": {
-                                                        "type": "Dataset Definition",
-                                                        "name": "Multi-Time-Frame-Daily",
-                                                        "id": "d84addaf-b023-4ea8-8e15-b7576c911bb5"
-                                                    },
-                                                    "referenceParentCombinedNodePath": [
-                                                        [
-                                                            "quantum",
-                                                            "Data Mine"
-                                                        ],
-                                                        [
-                                                            "MVWAP",
-                                                            "Indicator Bot"
-                                                        ],
-                                                        [
-                                                            "MVWAP",
-                                                            "Product Definition"
-                                                        ],
-                                                        [
-                                                            "Multi-Time-Frame-Daily",
-                                                            "Dataset Definition"
-                                                        ]
-                                                    ]
-                                                }
-                                            },
-                                            {
-                                                "type": "Data Dependency",
-                                                "name": "MVWAP Multi-Time-Frame-Market",
-                                                "project": "Foundations",
-                                                "id": "55e86094-2dfe-4f0a-bdcb-d7a799346142",
-                                                "savedPayload": {
-                                                    "position": {
-                                                        "x": 26758.242009378704,
-                                                        "y": 18504.888900182483
-                                                    },
-                                                    "targetPosition": {
-                                                        "x": 26523.117655256527,
-                                                        "y": 18121.200826223143
-                                                    },
-                                                    "floatingObject": {
-                                                        "isPinned": false,
-                                                        "isFrozen": false,
-                                                        "isCollapsed": false,
-                                                        "angleToParent": 2,
-                                                        "distanceToParent": 3,
-                                                        "arrangementStyle": 0
-                                                    },
-                                                    "uiObject": {
-                                                        "isRunning": false
-                                                    },
-                                                    "referenceParent": {
-                                                        "type": "Dataset Definition",
-                                                        "name": "Multi-Time-Frame-Market",
-                                                        "id": "601d886e-2bc1-46c1-b385-7fcc0dc1a2f2"
-                                                    },
-                                                    "referenceParentCombinedNodePath": [
-                                                        [
-                                                            "quantum",
-                                                            "Data Mine"
-                                                        ],
-                                                        [
-                                                            "MVWAP",
-                                                            "Indicator Bot"
-                                                        ],
-                                                        [
-                                                            "MVWAP",
-                                                            "Product Definition"
-                                                        ],
-                                                        [
-                                                            "Multi-Time-Frame-Market",
-                                                            "Dataset Definition"
-                                                        ]
-                                                    ]
-                                                }
-                                            }
-                                        ],
-                                        "dataDependencyFolders": [],
-                                        "id": "b8358533-9a9e-47b3-b114-c604078d719f",
-                                        "savedPayload": {
-                                            "position": {
-                                                "x": 26523.117655256527,
-                                                "y": 18121.200826223143
-                                            },
-                                            "targetPosition": {
-                                                "x": 26127.64995455864,
-                                                "y": 17906.47938410632
-                                            },
-                                            "floatingObject": {
-                                                "isPinned": false,
-                                                "isFrozen": false,
-                                                "isCollapsed": false,
-                                                "angleToParent": 2,
-                                                "distanceToParent": 3,
-                                                "arrangementStyle": 0
-                                            },
-                                            "uiObject": {
-                                                "isRunning": false
-                                            }
-                                        }
-                                    }
-                                ],
-                                "id": "3875ca85-3bb0-4455-ada4-df95a9c8d1ad",
-                                "savedPayload": {
-                                    "position": {
-                                        "x": 26127.64995455864,
-                                        "y": 17906.47938410632
-                                    },
-                                    "targetPosition": {
-                                        "x": 25677.80415831964,
-                                        "y": 17918.25901084486
-                                    },
-                                    "floatingObject": {
-                                        "isPinned": false,
-                                        "isFrozen": false,
-                                        "isCollapsed": false,
-                                        "angleToParent": 2,
-                                        "distanceToParent": 3,
-                                        "arrangementStyle": 0
-                                    },
-                                    "uiObject": {
-                                        "isRunning": false
-                                    },
-                                    "referenceParent": {
-                                        "type": "Data Mine",
-                                        "name": "quantum",
-                                        "id": "c605cc22-976a-4661-afbd-f735d6f8f8d9"
-                                    },
-                                    "referenceParentCombinedNodePath": [
-                                        [
-                                            "quantum",
-                                            "Data Mine"
-                                        ]
-                                    ]
                                 }
                             }
                         ],
@@ -77874,7 +78738,7 @@
         "floatingObject": {
             "isPinned": true,
             "isFrozen": false,
-            "isCollapsed": false,
+            "isCollapsed": true,
             "angleToParent": 1,
             "distanceToParent": 4,
             "arrangementStyle": 0
