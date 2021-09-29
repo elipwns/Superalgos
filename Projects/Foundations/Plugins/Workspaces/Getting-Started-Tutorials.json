@@ -745,16 +745,16 @@
                                     },
                                     "referenceParentCombinedNodePath": [
                                         [
-                                            "Getting Started Tutorials",
-                                            "Workspace"
-                                        ],
-                                        [
                                             "New Data-Mining Project",
-                                            "Data-Mining Project"
+                                            "Data-Mining Project",
+                                            "Data-Mining",
+                                            "c80ac0bd-1c21-4e7c-b4b8-020e212bd6f4"
                                         ],
                                         [
                                             "Data-Mining",
-                                            "Project Definition"
+                                            "Project Definition",
+                                            "Foundations",
+                                            "588e6946-31d9-4389-8cf2-37715795ba4d"
                                         ]
                                     ]
                                 }
@@ -790,7 +790,7 @@
                         "projectLearningTasks": [
                             {
                                 "type": "Project Learning Tasks",
-                                "name": "Foundations",
+                                "name": "Machine-Learning",
                                 "project": "Foundations",
                                 "exchangeLearningTasks": [
                                     {
@@ -806,17 +806,17 @@
                                                 "id": "aa592e1f-24db-41c7-a5e7-67723812fbce",
                                                 "savedPayload": {
                                                     "position": {
-                                                        "x": 25839.356993272086,
-                                                        "y": 29987.688294073963
+                                                        "x": 25897.356993272086,
+                                                        "y": 29983.688294073963
                                                     },
                                                     "targetPosition": {
-                                                        "x": 25689.356993272086,
-                                                        "y": 30247.495915209296
+                                                        "x": 25747.356993272086,
+                                                        "y": 30243.495915209296
                                                     },
                                                     "floatingObject": {
                                                         "isPinned": false,
                                                         "isFrozen": false,
-                                                        "isCollapsed": false,
+                                                        "isCollapsed": true,
                                                         "angleToParent": 2,
                                                         "distanceToParent": 3,
                                                         "arrangementStyle": 0
@@ -867,12 +867,12 @@
                                         "id": "598be123-5912-4b2c-857d-aee0667c620b",
                                         "savedPayload": {
                                             "position": {
-                                                "x": 25689.356993272086,
-                                                "y": 30247.495915209296
+                                                "x": 25747.356993272086,
+                                                "y": 30243.495915209296
                                             },
                                             "targetPosition": {
-                                                "x": 25539.356993272086,
-                                                "y": 30507.30353634463
+                                                "x": 25597.356993272086,
+                                                "y": 30503.30353634463
                                             },
                                             "floatingObject": {
                                                 "isPinned": false,
@@ -916,17 +916,17 @@
                                 "id": "7619d28e-1012-4d41-9d65-75d44e0b42b4",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 25539.356993272086,
-                                        "y": 30507.30353634463
+                                        "x": 25597.356993272086,
+                                        "y": 30503.30353634463
                                     },
                                     "targetPosition": {
-                                        "x": 25389.356993272086,
-                                        "y": 30767.11115747996
+                                        "x": 25447.356993272086,
+                                        "y": 30763.11115747996
                                     },
                                     "floatingObject": {
                                         "isPinned": false,
                                         "isFrozen": false,
-                                        "isCollapsed": false,
+                                        "isCollapsed": true,
                                         "angleToParent": 3,
                                         "distanceToParent": 3,
                                         "arrangementStyle": 0
@@ -936,21 +936,21 @@
                                     },
                                     "referenceParent": {
                                         "type": "Project Definition",
-                                        "name": "Foundations",
-                                        "id": "a2a04e12-604e-43f8-a986-1b8ca3b043cb"
+                                        "name": "Machine-Learning",
+                                        "id": "b15d5bbb-0433-40c3-bdd7-3d2aa0ddc389"
                                     },
                                     "referenceParentCombinedNodePath": [
                                         [
-                                            "New Foundations Project",
-                                            "Foundations Project",
-                                            "Foundations",
-                                            "cf9f8b3b-77c6-43c6-b01f-95cf366a91f6"
+                                            "New Machine-Learning Project",
+                                            "Machine-Learning Project",
+                                            "Machine-Learning",
+                                            "949164da-b9f8-4e0a-8482-f1fd06a22cd0"
                                         ],
                                         [
-                                            "Foundations",
+                                            "Machine-Learning",
                                             "Project Definition",
                                             "Foundations",
-                                            "a2a04e12-604e-43f8-a986-1b8ca3b043cb"
+                                            "b15d5bbb-0433-40c3-bdd7-3d2aa0ddc389"
                                         ]
                                     ]
                                 }
@@ -1704,16 +1704,16 @@
                                     },
                                     "referenceParentCombinedNodePath": [
                                         [
-                                            "Getting Started Tutorials",
-                                            "Workspace"
-                                        ],
-                                        [
                                             "New Algorithmic-Trading Project",
-                                            "Algorithmic-Trading Project"
+                                            "Algorithmic-Trading Project",
+                                            "Algorithmic-Trading",
+                                            "96734230-bb91-4527-b2a9-e2f16eb0be96"
                                         ],
                                         [
                                             "Algorithmic-Trading",
-                                            "Project Definition"
+                                            "Project Definition",
+                                            "Foundations",
+                                            "159d6c95-233b-4d79-8fe0-b1d75d40f90b"
                                         ]
                                     ]
                                 }
@@ -10732,7 +10732,7 @@
                 "floatingObject": {
                     "isPinned": true,
                     "isFrozen": false,
-                    "isCollapsed": true,
+                    "isCollapsed": false,
                     "angleToParent": 1,
                     "distanceToParent": 3,
                     "arrangementStyle": 0
@@ -57998,7 +57998,7 @@
                         "floatingObject": {
                             "isPinned": false,
                             "isFrozen": false,
-                            "isCollapsed": false,
+                            "isCollapsed": true,
                             "angleToParent": 1,
                             "distanceToParent": 3,
                             "arrangementStyle": 0
@@ -58101,8 +58101,8 @@
                     "id": "9e34391d-8a7f-465d-aaae-d1aab31d27af",
                     "savedPayload": {
                         "position": {
-                            "x": 37514.19161419073,
-                            "y": 10951.638658800908
+                            "x": 37536.75434110439,
+                            "y": 10920.994621131626
                         },
                         "targetPosition": {
                             "x": 37284.378281255034,
@@ -58129,8 +58129,8 @@
                     "id": "005d0fc0-5d81-4607-856b-32bcb1665b64",
                     "savedPayload": {
                         "position": {
-                            "x": 37336.472734555115,
-                            "y": 11054.244701798609
+                            "x": 37409.0027851556,
+                            "y": 11031.691974501302
                         },
                         "targetPosition": {
                             "x": 37284.378281255034,
@@ -58157,8 +58157,8 @@
                     "id": "bddb8fdb-f325-4615-a828-9935d37583ad",
                     "savedPayload": {
                         "position": {
-                            "x": 37134.378281255034,
-                            "y": 11018.609997030277
+                            "x": 37241.68382977305,
+                            "y": 11055.748808459226
                         },
                         "targetPosition": {
                             "x": 37284.378281255034,
@@ -58185,8 +58185,8 @@
                     "id": "d6649bf0-8e12-456a-a2d0-a7d4617f6843",
                     "savedPayload": {
                         "position": {
-                            "x": 37002.47049501926,
-                            "y": 10861.408418892646
+                            "x": 37087.92006107145,
+                            "y": 10985.527248201222
                         },
                         "targetPosition": {
                             "x": 37284.378281255034,
@@ -58213,8 +58213,8 @@
                     "id": "e72188be-7474-4a0d-85c1-413810bfa807",
                     "savedPayload": {
                         "position": {
-                            "x": 37002.47049501926,
-                            "y": 10656.196332897245
+                            "x": 36996.530389170686,
+                            "y": 10843.322142947374
                         },
                         "targetPosition": {
                             "x": 37284.378281255034,
@@ -58241,8 +58241,8 @@
                     "id": "5614b71b-9e5f-42b0-a6fb-6322564623ea",
                     "savedPayload": {
                         "position": {
-                            "x": 37134.378281255034,
-                            "y": 10498.994754759615
+                            "x": 36996.530389170686,
+                            "y": 10674.282608842517
                         },
                         "targetPosition": {
                             "x": 37284.378281255034,
@@ -58269,8 +58269,8 @@
                     "id": "624a4851-e3d8-411f-8ac3-b1418516f30d",
                     "savedPayload": {
                         "position": {
-                            "x": 37336.472734555115,
-                            "y": 10463.360049991283
+                            "x": 37087.92006107145,
+                            "y": 10532.077503588669
                         },
                         "targetPosition": {
                             "x": 37284.378281255034,
@@ -58297,8 +58297,8 @@
                     "id": "b41eaa84-a3bc-44fc-8199-48cc117cbd27",
                     "savedPayload": {
                         "position": {
-                            "x": 37514.19161419073,
-                            "y": 10565.966092988983
+                            "x": 37241.68382977305,
+                            "y": 10461.855943330665
                         },
                         "targetPosition": {
                             "x": 37284.378281255034,
@@ -58308,6 +58308,202 @@
                             "isPinned": false,
                             "isFrozen": false,
                             "isCollapsed": false,
+                            "angleToParent": 1,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Plugin Project",
+                    "name": "Machine-Learning",
+                    "config": "{\"codeName\":\"Machine-Learning\"}",
+                    "project": "Community-Plugins",
+                    "pluginLearningMines": {
+                        "type": "Plugin Learning Mines",
+                        "name": "New Plugin Learning Mines",
+                        "project": "Community-Plugins",
+                        "pluginFiles": [],
+                        "id": "691b8eec-79db-42b9-9ca4-d22176ecabdb",
+                        "savedPayload": {
+                            "position": {
+                                "x": 37304.16353127587,
+                                "y": 10204.82785978866
+                            },
+                            "targetPosition": {
+                                "x": 37409.0027851556,
+                                "y": 10485.91277728859
+                            },
+                            "floatingObject": {
+                                "isPinned": false,
+                                "isFrozen": false,
+                                "isCollapsed": false,
+                                "angleToParent": 2,
+                                "distanceToParent": 3,
+                                "arrangementStyle": 0
+                            },
+                            "uiObject": {
+                                "isRunning": false
+                            }
+                        }
+                    },
+                    "pluginLearningSystems": {
+                        "type": "Plugin Learning Systems",
+                        "name": "New Plugin Learning Systems",
+                        "project": "Community-Plugins",
+                        "pluginFiles": [],
+                        "id": "99f881d1-74f5-487e-8e2a-4ed83101ce42",
+                        "savedPayload": {
+                            "position": {
+                                "x": 37533.62728905617,
+                                "y": 10213.023178682233
+                            },
+                            "targetPosition": {
+                                "x": 37409.0027851556,
+                                "y": 10485.91277728859
+                            },
+                            "floatingObject": {
+                                "isPinned": false,
+                                "isFrozen": false,
+                                "isCollapsed": false,
+                                "angleToParent": 2,
+                                "distanceToParent": 3,
+                                "arrangementStyle": 0
+                            },
+                            "uiObject": {
+                                "isRunning": false
+                            }
+                        }
+                    },
+                    "pluginLearningEngines": {
+                        "type": "Plugin Learning Engines",
+                        "name": "New Plugin Learning Engines",
+                        "project": "Community-Plugins",
+                        "pluginFiles": [],
+                        "id": "1594d693-040c-4762-9c19-ce3212bdddae",
+                        "savedPayload": {
+                            "position": {
+                                "x": 37690.08770265553,
+                                "y": 10381.07352340886
+                            },
+                            "targetPosition": {
+                                "x": 37409.0027851556,
+                                "y": 10485.91277728859
+                            },
+                            "floatingObject": {
+                                "isPinned": false,
+                                "isFrozen": false,
+                                "isCollapsed": false,
+                                "angleToParent": 2,
+                                "distanceToParent": 3,
+                                "arrangementStyle": 0
+                            },
+                            "uiObject": {
+                                "isRunning": false
+                            }
+                        }
+                    },
+                    "id": "0c2a59f9-362c-4a72-b9ff-e49dd7c26e7e",
+                    "savedPayload": {
+                        "position": {
+                            "x": 37409.0027851556,
+                            "y": 10485.91277728859
+                        },
+                        "targetPosition": {
+                            "x": 37284.378281255034,
+                            "y": 10758.802375894946
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": true,
+                            "angleToParent": 1,
+                            "distanceToParent": 3,
+                            "arrangementStyle": 0
+                        },
+                        "uiObject": {
+                            "isRunning": false
+                        }
+                    }
+                },
+                {
+                    "type": "Plugin Project",
+                    "name": "Foundations",
+                    "config": "{\"codeName\":\"Foundations\"}",
+                    "project": "Community-Plugins",
+                    "pluginTutorials": {
+                        "type": "Plugin Tutorials",
+                        "name": "New Plugin Tutorials",
+                        "project": "Community-Plugins",
+                        "pluginFiles": [],
+                        "id": "cab27915-c4e9-44c7-94d6-e3d20ed0e382",
+                        "savedPayload": {
+                            "position": {
+                                "x": 37522.47976635727,
+                                "y": 10296.949928903363
+                            },
+                            "targetPosition": {
+                                "x": 37536.75434110439,
+                                "y": 10596.610130658266
+                            },
+                            "floatingObject": {
+                                "isPinned": false,
+                                "isFrozen": false,
+                                "isCollapsed": false,
+                                "angleToParent": 1,
+                                "distanceToParent": 3,
+                                "arrangementStyle": 0
+                            },
+                            "uiObject": {
+                                "isRunning": false
+                            }
+                        }
+                    },
+                    "pluginApiMaps": {
+                        "type": "Plugin API Maps",
+                        "name": "New Plugin API Maps",
+                        "project": "Community-Plugins",
+                        "pluginFiles": [],
+                        "id": "7ad3f24a-38e4-4f33-a7e1-0d06121c09d0",
+                        "savedPayload": {
+                            "position": {
+                                "x": 37803.40497570086,
+                                "y": 10734.07808717649
+                            },
+                            "targetPosition": {
+                                "x": 37536.75434110439,
+                                "y": 10596.610130658266
+                            },
+                            "floatingObject": {
+                                "isPinned": false,
+                                "isFrozen": false,
+                                "isCollapsed": false,
+                                "angleToParent": 1,
+                                "distanceToParent": 3,
+                                "arrangementStyle": 0
+                            },
+                            "uiObject": {
+                                "isRunning": false
+                            }
+                        }
+                    },
+                    "id": "b5c1cb14-d645-4ca5-b34b-553646f65cf4",
+                    "savedPayload": {
+                        "position": {
+                            "x": 37536.75434110439,
+                            "y": 10596.610130658266
+                        },
+                        "targetPosition": {
+                            "x": 37284.378281255034,
+                            "y": 10758.802375894946
+                        },
+                        "floatingObject": {
+                            "isPinned": false,
+                            "isFrozen": false,
+                            "isCollapsed": true,
                             "angleToParent": 1,
                             "distanceToParent": 3,
                             "arrangementStyle": 0
@@ -58600,12 +58796,12 @@
             "id": "cf9f8b3b-77c6-43c6-b01f-95cf366a91f6",
             "savedPayload": {
                 "position": {
-                    "x": 4320.75,
-                    "y": 30833.453560371516
+                    "x": 4260.875,
+                    "y": 40334.982972136226
                 },
                 "targetPosition": {
-                    "x": 4320.75,
-                    "y": 30833.453560371516
+                    "x": 4260.875,
+                    "y": 40334.982972136226
                 },
                 "floatingObject": {
                     "isPinned": true,
@@ -62370,11 +62566,11 @@
                                 "referenceParent": {
                                     "type": "Workspace",
                                     "name": "Getting-Started-Tutorials",
-                                    "id": "ba8d157b-86e8-43e6-900d-97909ca0048b"
+                                    "id": "c6f0d16a-c053-4794-9066-0fbed2ad370d"
                                 },
                                 "referenceParentCombinedNodePath": [
                                     [
-                                        "Getting Started Tutorials",
+                                        "Getting-Started-Tutorials",
                                         "Workspace"
                                     ]
                                 ]
@@ -69960,6 +70156,61 @@
                 "targetPosition": {
                     "x": 4301.708333333332,
                     "y": 19847.940660474716
+                },
+                "floatingObject": {
+                    "isPinned": true,
+                    "isFrozen": false,
+                    "isCollapsed": false,
+                    "angleToParent": 1,
+                    "distanceToParent": 3,
+                    "arrangementStyle": 0
+                },
+                "uiObject": {
+                    "isRunning": false
+                }
+            }
+        },
+        {
+            "type": "Machine-Learning Project",
+            "name": "New Machine-Learning Project",
+            "project": "Machine-Learning",
+            "projectDefinition": {
+                "type": "Project Definition",
+                "name": "Machine-Learning",
+                "config": "{ \n  \"codeName\": \"Machine-Learning\"\n}",
+                "project": "Foundations",
+                "id": "b15d5bbb-0433-40c3-bdd7-3d2aa0ddc389",
+                "savedPayload": {
+                    "position": {
+                        "x": 4587.75,
+                        "y": 30875.953560371516
+                    },
+                    "targetPosition": {
+                        "x": 4287.75,
+                        "y": 30875.953560371516
+                    },
+                    "floatingObject": {
+                        "isPinned": false,
+                        "isFrozen": false,
+                        "isCollapsed": false,
+                        "angleToParent": 1,
+                        "distanceToParent": 3,
+                        "arrangementStyle": 0
+                    },
+                    "uiObject": {
+                        "isRunning": false
+                    }
+                }
+            },
+            "id": "949164da-b9f8-4e0a-8482-f1fd06a22cd0",
+            "savedPayload": {
+                "position": {
+                    "x": 4287.75,
+                    "y": 30875.953560371516
+                },
+                "targetPosition": {
+                    "x": 4287.75,
+                    "y": 30875.953560371516
                 },
                 "floatingObject": {
                     "isPinned": true,
