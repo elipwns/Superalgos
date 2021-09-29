@@ -26325,13 +26325,13 @@
                             "assetClasses": [
                                 {
                                     "type": "Asset Class",
-                                    "name": "Network",
+                                    "name": "LAN Network",
                                     "config": "{\"codeName\":\"Network\"}",
                                     "project": "Governance",
                                     "assetClasses": [
                                         {
                                             "type": "Asset Class",
-                                            "name": "Network",
+                                            "name": "LAN Network",
                                             "config": "{\"codeName\":\"Network\"}",
                                             "project": "Governance",
                                             "assetClasses": [],
@@ -50044,13 +50044,13 @@
                             "assetClasses": [
                                 {
                                     "type": "Asset Class",
-                                    "name": "Network",
+                                    "name": "LAN Network",
                                     "config": "{\"codeName\":\"Network\"}",
                                     "project": "Governance",
                                     "assetClasses": [
                                         {
                                             "type": "Asset Class",
-                                            "name": "Network",
+                                            "name": "LAN Network",
                                             "config": "{\"codeName\":\"Network\"}",
                                             "project": "Governance",
                                             "assetClasses": [],
