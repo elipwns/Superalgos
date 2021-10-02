@@ -4,12 +4,12 @@
     "config": "{\n    \"docsLanguage\": \"EN\",\n    \"contributionsBranch\": \"develop\"\n}",
     "rootNodes": [
         {
-            "type": "Network",
-            "name": "My Network",
+            "type": "LAN Network",
+            "name": "My LAN Network",
             "project": "Foundations",
-            "networkNodes": [
+            "lanNetworkNodes": [
                 {
-                    "type": "Network Node",
+                    "type": "LAN Network Node",
                     "name": "My Computer",
                     "config": "{ \n\"host\": \"localhost\", \n\"webPort\": \"34248\", \n\"webSocketsPort\": \"18041\"\n}",
                     "project": "Foundations",
@@ -528,17 +528,17 @@
                                                                     },
                                                                     {
                                                                         "type": "Task",
-                                                                        "name": "Relative Strenght Index (RSI)",
+                                                                        "name": "Relative Strength Index (RSI)",
                                                                         "project": "Foundations",
                                                                         "bot": {
                                                                             "type": "Indicator Bot Instance",
-                                                                            "name": "Relative Strenght Index (RSI)",
+                                                                            "name": "Relative Strength Index (RSI)",
                                                                             "config": "{ \n\"parameter1\": \"Value for parameter1 defined at the Product Definition\"\n}",
                                                                             "project": "Foundations",
                                                                             "processes": [
                                                                                 {
                                                                                     "type": "Indicator Process Instance",
-                                                                                    "name": "Relative Strenght Index (RSI) Multi-Time-Frame-Market",
+                                                                                    "name": "Relative Strength Index (RSI) Multi-Time-Frame-Market",
                                                                                     "project": "Foundations",
                                                                                     "id": "ffa5490a-b87c-4d25-a0bf-3a978ba22521",
                                                                                     "savedPayload": {
@@ -590,7 +590,7 @@
                                                                                 },
                                                                                 {
                                                                                     "type": "Indicator Process Instance",
-                                                                                    "name": "Relative Strenght Index (RSI) Multi-Time-Frame-Daily",
+                                                                                    "name": "Relative Strength Index (RSI) Multi-Time-Frame-Daily",
                                                                                     "project": "Foundations",
                                                                                     "id": "69ff12a5-65b8-4d00-ad9d-329f502aab42",
                                                                                     "savedPayload": {
@@ -4761,7 +4761,7 @@
                                                                 },
                                                                 {
                                                                     "type": "Bot Products",
-                                                                    "name": "Relative Strenght Index (RSI)",
+                                                                    "name": "Relative Strength Index (RSI)",
                                                                     "project": "Foundations",
                                                                     "dataProducts": [
                                                                         {
@@ -39739,7 +39739,7 @@
                                                     },
                                                     {
                                                         "type": "Bot Layers",
-                                                        "name": "Relative Strenght Index (RSI)",
+                                                        "name": "Relative Strength Index (RSI)",
                                                         "project": "Foundations",
                                                         "layers": [
                                                             {
@@ -66314,7 +66314,7 @@
                                                     },
                                                     {
                                                         "type": "Bot Layers",
-                                                        "name": "Relative Strenght Index (RSI)",
+                                                        "name": "Relative Strength Index (RSI)",
                                                         "project": "Foundations",
                                                         "layers": [
                                                             {
