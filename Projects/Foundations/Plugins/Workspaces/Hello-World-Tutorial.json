@@ -159922,13 +159922,13 @@
         {
             "type": "Tutorial",
             "name": "Hello World Tutorial",
-            "config": "{\n    \"icon\": {\n        \"name\": \"Tutorial\\\\tutorial\",\n        \"project\": \"Foundations\"\n    },\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"pressButton\": \"\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Welcome\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"\",\n        \"closeTutorialEditor\": false,\n        \"page\": {\n            \"project\": \"Foundations\",\n            \"category\": \"\",\n            \"type\": \"\"\n        }\n    }\n}",
+            "config": "{\n    \"icon\": {\n        \"name\": \"tutorial\",\n        \"project\": \"Foundations\"\n    },\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"pressButton\": \"\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Welcome\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"\",\n        \"closeTutorialEditor\": false,\n        \"page\": {\n            \"project\": \"Foundations\",\n            \"category\": \"\",\n            \"type\": \"\"\n        }\n    }\n}",
             "project": "Education",
             "tutorialSteps": [
                 {
                     "type": "Tutorial Step",
                     "name": "Look Around",
-                    "config": "{\n    \"icon\": {\n        \"name\": \"Layer\\\\layer\",\n        \"project\": \"Foundations\"\n    },\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"pressButton\": \"\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Look around\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"\",\n        \"closeTutorialEditor\": false,\n        \"page\": {\n            \"project\": \"Foundations\",\n            \"category\": \"\",\n            \"type\": \"\"\n        }\n    }\n}",
+                    "config": "{\n    \"icon\": {\n        \"name\": \"layer\",\n        \"project\": \"Foundations\"\n    },\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"pressButton\": \"\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Look around\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"\",\n        \"closeTutorialEditor\": false,\n        \"page\": {\n            \"project\": \"Foundations\",\n            \"category\": \"\",\n            \"type\": \"\"\n        }\n    }\n}",
                     "project": "Education",
                     "id": "0152006e-4690-4e9f-b7bc-c21ac94e3dfb",
                     "savedPayload": {
@@ -159972,7 +159972,7 @@
                 {
                     "type": "Tutorial Step",
                     "name": "Custom Data Mine ",
-                    "config": "{\n    \"icon\": {\n        \"name\": \"Data\\\\data-mine\",\n        \"project\": \"Foundations\"\n    },\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"pressButton\": \"\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Custom Data Mine\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"\",\n        \"closeTutorialEditor\": false,\n        \"page\": {\n            \"project\": \"Foundations\",\n            \"category\": \"\",\n            \"type\": \"\"\n        }\n    }\n}",
+                    "config": "{\n    \"icon\": {\n        \"name\": \"data-mine\",\n        \"project\": \"Foundations\"\n    },\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"pressButton\": \"\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Custom Data Mine\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"\",\n        \"closeTutorialEditor\": false,\n        \"page\": {\n            \"project\": \"Foundations\",\n            \"category\": \"\",\n            \"type\": \"\"\n        }\n    }\n}",
                     "project": "Education",
                     "id": "20739207-d5e6-4565-b23a-95f20f6b2cd1",
                     "savedPayload": {
@@ -160016,7 +160016,7 @@
                 {
                     "type": "Tutorial Step",
                     "name": "The Strategy",
-                    "config": "{\n    \"icon\": {\n        \"name\": \"Strategy\\\\strategy\",\n        \"project\": \"Foundations\"\n    },\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"pressButton\": \"\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - The Strategy\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"\",\n        \"closeTutorialEditor\": false,\n        \"page\": {\n            \"project\": \"Foundations\",\n            \"category\": \"\",\n            \"type\": \"\"\n        }\n    }\n}",
+                    "config": "{\n    \"icon\": {\n        \"name\": \"strategy\",\n        \"project\": \"Foundations\"\n    },\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"pressButton\": \"\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - The Strategy\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"\",\n        \"closeTutorialEditor\": false,\n        \"page\": {\n            \"project\": \"Foundations\",\n            \"category\": \"\",\n            \"type\": \"\"\n        }\n    }\n}",
                     "project": "Education",
                     "id": "a2607fd9-54da-427e-b18a-5be361aef825",
                     "savedPayload": {
@@ -160060,7 +160060,7 @@
                 {
                     "type": "Tutorial Step",
                     "name": "Move to Trading System",
-                    "config": "{\n    \"icon\": {\n        \"name\": \"Trading\\\\trading-system-reference\",\n        \"project\": \"Foundations\"\n    },\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"pressButton\": \"\",\n    \"positionAtReferenceParent\": true,\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Trading System\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"\",\n        \"closeTutorialEditor\": false,\n        \"page\": {\n            \"project\": \"Foundations\",\n            \"category\": \"\",\n            \"type\": \"\"\n        }\n    }\n}",
+                    "config": "{\n    \"icon\": {\n        \"name\": \"trading-system-reference\",\n        \"project\": \"Foundations\"\n    },\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"pressButton\": \"\",\n    \"positionAtReferenceParent\": true,\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Trading System\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"\",\n        \"closeTutorialEditor\": false,\n        \"page\": {\n            \"project\": \"Foundations\",\n            \"category\": \"\",\n            \"type\": \"\"\n        }\n    }\n}",
                     "project": "Education",
                     "id": "efafbbda-10f1-4554-8621-b4e0d16064ac",
                     "savedPayload": {
@@ -160334,7 +160334,7 @@
                 {
                     "type": "Tutorial Step",
                     "name": "Open Stage",
-                    "config": "{\n    \"icon\": {\n        \"name\": \"Open\\\\open-stage\",\n        \"project\": \"Foundations\"\n    },\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"pressButton\": \"\",\n    \"positionAtReferenceParent\": true,\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Open Stage\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"\",\n        \"closeTutorialEditor\": false,\n        \"page\": {\n            \"project\": \"Foundations\",\n            \"category\": \"\",\n            \"type\": \"\"\n        }\n    }\n}",
+                    "config": "{\n    \"icon\": {\n        \"name\": \"open-stage\",\n        \"project\": \"Foundations\"\n    },\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"pressButton\": \"\",\n    \"positionAtReferenceParent\": true,\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Open Stage\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"\",\n        \"closeTutorialEditor\": false,\n        \"page\": {\n            \"project\": \"Foundations\",\n            \"category\": \"\",\n            \"type\": \"\"\n        }\n    }\n}",
                     "project": "Education",
                     "id": "ecd5eda3-5a12-4725-b038-ba0bb350732b",
                     "savedPayload": {
@@ -160446,7 +160446,7 @@
                 {
                     "type": "Tutorial Step",
                     "name": "Close Stage",
-                    "config": "{\n    \"icon\": {\n        \"name\": \"Close\\\\close-stage\",\n        \"project\": \"Foundations\"\n    },\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"pressButton\": \"\",\n    \"positionAtReferenceParent\": true,\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Close Stage\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"\",\n        \"closeTutorialEditor\": false,\n        \"page\": {\n            \"project\": \"Foundations\",\n            \"category\": \"\",\n            \"type\": \"\"\n        }\n    }\n}",
+                    "config": "{\n    \"icon\": {\n        \"name\": \"close-stage\",\n        \"project\": \"Foundations\"\n    },\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"pressButton\": \"\",\n    \"positionAtReferenceParent\": true,\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Close Stage\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"\",\n        \"closeTutorialEditor\": false,\n        \"page\": {\n            \"project\": \"Foundations\",\n            \"category\": \"\",\n            \"type\": \"\"\n        }\n    }\n}",
                     "project": "Education",
                     "id": "2993cf05-3ecb-45d7-9f43-b84cf93c5b02",
                     "savedPayload": {
@@ -160502,7 +160502,7 @@
                 {
                     "type": "Tutorial Step",
                     "name": "That's it",
-                    "config": "{\n    \"icon\": {\n        \"name\": \"Announcement\\\\announcement\",\n        \"project\": \"Foundations\"\n    },\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"pressButton\": \"\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - That's it\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"\",\n        \"closeTutorialEditor\": false,\n        \"page\": {\n            \"project\": \"Foundations\",\n            \"category\": \"\",\n            \"type\": \"\"\n        }\n    }\n}",
+                    "config": "{\n    \"icon\": {\n        \"name\": \"announcement\",\n        \"project\": \"Foundations\"\n    },\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"pressButton\": \"\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - That's it\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"\",\n        \"closeTutorialEditor\": false,\n        \"page\": {\n            \"project\": \"Foundations\",\n            \"category\": \"\",\n            \"type\": \"\"\n        }\n    }\n}",
                     "project": "Education",
                     "id": "bd1438ec-d4e2-448a-b4a4-81f4e980227f",
                     "savedPayload": {
@@ -160546,7 +160546,7 @@
                 {
                     "type": "Tutorial Step",
                     "name": "Update Data Mines",
-                    "config": "{\n    \"icon\": {\n        \"name\": \"Data\\\\data-tasks\",\n        \"project\": \"Foundations\"\n    },\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"pressButton\": \"\",\n    \"positionAtReferenceParent\": true,\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Update Data Mines\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"\",\n        \"closeTutorialEditor\": false,\n        \"page\": {\n            \"project\": \"Foundations\",\n            \"category\": \"\",\n            \"type\": \"\"\n        }\n    }\n}",
+                    "config": "{\n    \"icon\": {\n        \"name\": \"data-tasks\",\n        \"project\": \"Foundations\"\n    },\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"pressButton\": \"\",\n    \"positionAtReferenceParent\": true,\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Update Data Mines\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"\",\n        \"closeTutorialEditor\": false,\n        \"page\": {\n            \"project\": \"Foundations\",\n            \"category\": \"\",\n            \"type\": \"\"\n        }\n    }\n}",
                     "project": "Education",
                     "id": "e6a225f4-b35a-4c68-bb51-db00b8b2f8f4",
                     "savedPayload": {
@@ -160712,7 +160712,7 @@
                 {
                     "type": "Tutorial Step",
                     "name": "The Chart",
-                    "config": "{\n    \"icon\": {\n        \"name\": \"Charting-Space\\\\charting-space\",\n        \"project\": \"Foundations\"\n    },\n    \"position\": \"Left\",\n    \"slider\": \"toBottom\",\n    \"pressButton\": \"\",\n    \"repositionAtTimeMachineReferenceParent\": true,\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - The Chart\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"\",\n        \"closeTutorialEditor\": false,\n        \"page\": {\n            \"project\": \"Foundations\",\n            \"category\": \"\",\n            \"type\": \"\"\n        }\n    }\n}",
+                    "config": "{\n    \"icon\": {\n        \"name\": \"charting-space\",\n        \"project\": \"Foundations\"\n    },\n    \"position\": \"Left\",\n    \"slider\": \"toBottom\",\n    \"pressButton\": \"\",\n    \"repositionAtTimeMachineReferenceParent\": true,\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - The Chart\"\n    },\n    \"controlDocs\": {\n        \"panel\": \"\",\n        \"closeTutorialEditor\": false,\n        \"page\": {\n            \"project\": \"Foundations\",\n            \"category\": \"\",\n            \"type\": \"\"\n        }\n    }\n}",
                     "project": "Education",
                     "id": "fe36de15-dc1c-46d4-a7a6-f9f9979be215",
                     "savedPayload": {
