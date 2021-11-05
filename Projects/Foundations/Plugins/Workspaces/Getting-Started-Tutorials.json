@@ -16042,8 +16042,8 @@
                     },
                     "frame": {
                         "position": {
-                            "x": 361,
-                            "y": -37.1875
+                            "x": 845,
+                            "y": 229.9375
                         }
                     }
                 }
@@ -18162,7 +18162,7 @@
                                                                             {
                                                                                 "type": "Layer",
                                                                                 "name": "Current Position",
-                                                                                "config": "{\n     \"status\": \"on\"\n}",
+                                                                                "config": "{\n    \"status\": \"on\"\n}",
                                                                                 "project": "Foundations",
                                                                                 "layerPanels": {
                                                                                     "type": "Layer Panels",
@@ -20686,7 +20686,7 @@
                                                             "y": 80
                                                         },
                                                         "width": 150,
-                                                        "height": 40,
+                                                        "height": 190,
                                                         "radius": 0
                                                     },
                                                     "referenceParent": {
@@ -51946,7 +51946,6 @@
                     "arrangementStyle": 0
                 },
                 "uiObject": {
-                    "isPlaying": false,
                     "isRunning": false
                 },
                 "tutorial": {
@@ -54203,7 +54202,7 @@
                                 "referenceParent": {
                                     "type": "Workspace",
                                     "name": "Getting-Started-Tutorials",
-                                    "id": "1311639b-a469-4126-9a6a-da5c3e12be8f"
+                                    "id": "0996f880-bdcd-421c-af26-75254cf30e11"
                                 },
                                 "referenceParentCombinedNodePath": [
                                     [
@@ -55120,7 +55119,6 @@
                     "arrangementStyle": 0
                 },
                 "uiObject": {
-                    "isPlaying": false,
                     "isRunning": false
                 },
                 "tutorial": {
@@ -57121,9 +57119,7 @@
                                         "uiObject": {
                                             "isRunning": false
                                         },
-                                        "tutorial": {
-                                            "status": "Done"
-                                        }
+                                        "tutorial": {}
                                     }
                                 },
                                 {
@@ -61682,7 +61678,7 @@
                 "floatingObject": {
                     "isPinned": true,
                     "isFrozen": false,
-                    "isCollapsed": false,
+                    "isCollapsed": true,
                     "angleToParent": 1,
                     "distanceToParent": 3,
                     "arrangementStyle": 0
