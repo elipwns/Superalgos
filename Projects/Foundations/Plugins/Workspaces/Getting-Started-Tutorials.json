@@ -44840,6 +44840,33 @@
                                 "name": "Masters-Lightning-Strike",
                                 "config": "{\"project\":\"Algorithmic-Trading\",\"fileName\":\"Masters-Lightning-Strike\",\"folderName\":\"Trading-Systems\",\"nodeType\":\"Trading System\",\"saveWithWorkspace\":false}",
                                 "project": "Community-Plugins",
+                                "pluginFilePosition": {
+                                    "type": "Plugin File Position",
+                                    "name": "Masters-Lightning-Strike",
+                                    "project": "Community-Plugins",
+                                    "id": "2b946b24-7a3f-4c73-958d-4cf2c09e0c8e",
+                                    "savedPayload": {
+                                        "position": {
+                                            "x": 31003.365708673427,
+                                            "y": 31005.826468868458
+                                        },
+                                        "targetPosition": {
+                                            "x": 37207.378281255034,
+                                            "y": 10760.802375894946
+                                        },
+                                        "floatingObject": {
+                                            "isPinned": true,
+                                            "isFrozen": false,
+                                            "isCollapsed": false,
+                                            "angleToParent": 2,
+                                            "distanceToParent": 3,
+                                            "arrangementStyle": 0
+                                        },
+                                        "uiObject": {
+                                            "isRunning": false
+                                        }
+                                    }
+                                },
                                 "id": "b5c5eed1-ac0e-4f1b-bbe8-9f2d6dcc519b",
                                 "savedPayload": {
                                     "position": {
@@ -44853,7 +44880,7 @@
                                     "floatingObject": {
                                         "isPinned": false,
                                         "isFrozen": false,
-                                        "isCollapsed": false,
+                                        "isCollapsed": true,
                                         "angleToParent": 2,
                                         "distanceToParent": 3,
                                         "arrangementStyle": 0
@@ -49551,7 +49578,7 @@
                                 "referenceParent": {
                                     "type": "Workspace",
                                     "name": "Getting-Started-Tutorials",
-                                    "id": "53d02883-311e-47fe-a50a-7e0d7ea2152f"
+                                    "id": "88c7750c-4f14-492e-bbc9-462ce1a06f3a"
                                 },
                                 "referenceParentCombinedNodePath": [
                                     [
