@@ -49578,7 +49578,7 @@
                                 "referenceParent": {
                                     "type": "Workspace",
                                     "name": "Getting-Started-Tutorials",
-                                    "id": "88c7750c-4f14-492e-bbc9-462ce1a06f3a"
+                                    "id": "7ca7a57e-9ec4-4027-911a-e376813a35de"
                                 },
                                 "referenceParentCombinedNodePath": [
                                     [
@@ -49728,10 +49728,41 @@
                                 },
                                 "referenceParent": {
                                     "type": "Plugin File Position",
-                                    "name": "Masters-Lightning-Strike",
-                                    "id": "37ab4b0d-6bd8-46b6-9778-e193c32669a4"
+                                    "name": "Masters",
+                                    "id": "09e63cdb-2302-4f8a-a747-ef205912c685"
                                 },
-                                "referenceParentCombinedNodePath": []
+                                "referenceParentCombinedNodePath": [
+                                    [
+                                        "New Plugins",
+                                        "Plugins",
+                                        "Community-Plugins",
+                                        "bfb0b514-3b9f-4e9a-85ca-d0ca714b09f6"
+                                    ],
+                                    [
+                                        "Algorithmic-Trading",
+                                        "Plugin Project",
+                                        "Community-Plugins",
+                                        "252daf71-559e-4a54-a534-42ec1e7f1a31"
+                                    ],
+                                    [
+                                        "New Plugin Trading Mines",
+                                        "Plugin Trading Mines",
+                                        "Community-Plugins",
+                                        "b784724f-9692-4365-8e01-032158248fc4"
+                                    ],
+                                    [
+                                        "Masters",
+                                        "Plugin File",
+                                        "Community-Plugins",
+                                        "68bdcf8f-5b90-4683-bd24-0cbb90649cea"
+                                    ],
+                                    [
+                                        "Masters",
+                                        "Plugin File Position",
+                                        "Community-Plugins",
+                                        "09e63cdb-2302-4f8a-a747-ef205912c685"
+                                    ]
+                                ]
                             }
                         },
                         {
@@ -49766,9 +49797,28 @@
                                 "referenceParent": {
                                     "type": "Plugin Trading Systems",
                                     "name": "New Plugin Trading Systems",
-                                    "id": "3569d452-c593-4e54-a356-7ff8c6b519f3"
+                                    "id": "ed5fbe5f-6957-47d7-b776-f4868b521378"
                                 },
-                                "referenceParentCombinedNodePath": []
+                                "referenceParentCombinedNodePath": [
+                                    [
+                                        "New Plugins",
+                                        "Plugins",
+                                        "Community-Plugins",
+                                        "bfb0b514-3b9f-4e9a-85ca-d0ca714b09f6"
+                                    ],
+                                    [
+                                        "Algorithmic-Trading",
+                                        "Plugin Project",
+                                        "Community-Plugins",
+                                        "252daf71-559e-4a54-a534-42ec1e7f1a31"
+                                    ],
+                                    [
+                                        "New Plugin Trading Systems",
+                                        "Plugin Trading Systems",
+                                        "Community-Plugins",
+                                        "ed5fbe5f-6957-47d7-b776-f4868b521378"
+                                    ]
+                                ]
                             }
                         },
                         {
