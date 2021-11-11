@@ -49578,7 +49578,7 @@
                                 "referenceParent": {
                                     "type": "Workspace",
                                     "name": "Getting-Started-Tutorials",
-                                    "id": "65f6745c-6249-4ff1-b87b-40b6545ca5af"
+                                    "id": "7ca7a57e-9ec4-4027-911a-e376813a35de"
                                 },
                                 "referenceParentCombinedNodePath": [
                                     [
@@ -57114,6 +57114,7 @@
                     "arrangementStyle": 0
                 },
                 "uiObject": {
+                    "isPlaying": true,
                     "isRunning": false
                 },
                 "tutorial": {
