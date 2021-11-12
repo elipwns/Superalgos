@@ -1749,7 +1749,7 @@
                         "projectTradingTasks": [
                             {
                                 "type": "Project Trading Tasks",
-                                "name": "Foundations",
+                                "name": "Algorithmic-Trading",
                                 "project": "Foundations",
                                 "exchangeTradingTasks": [
                                     {
@@ -2510,21 +2510,17 @@
                                     },
                                     "referenceParent": {
                                         "type": "Project Definition",
-                                        "name": "Foundations",
-                                        "id": "a2a04e12-604e-43f8-a986-1b8ca3b043cb"
+                                        "name": "Algorithmic-Trading",
+                                        "id": "159d6c95-233b-4d79-8fe0-b1d75d40f90b"
                                     },
                                     "referenceParentCombinedNodePath": [
                                         [
-                                            "New Foundations Project",
-                                            "Foundations Project",
-                                            "Foundations",
-                                            "cf9f8b3b-77c6-43c6-b01f-95cf366a91f6"
+                                            "New Algorithmic-Trading Project",
+                                            "Algorithmic-Trading Project"
                                         ],
                                         [
-                                            "Foundations",
-                                            "Project Definition",
-                                            "Foundations",
-                                            "a2a04e12-604e-43f8-a986-1b8ca3b043cb"
+                                            "Algorithmic-Trading",
+                                            "Project Definition"
                                         ]
                                     ]
                                 }
@@ -10241,7 +10237,7 @@
                                                                         "673caa5f-511d-4688-9305-e5f0f0f780cd"
                                                                     ],
                                                                     [
-                                                                        "Foundations",
+                                                                        "Algorithmic-Trading",
                                                                         "Project Trading Tasks",
                                                                         "Foundations",
                                                                         "f79c3f13-37eb-4f88-ae83-78554db337c5"
@@ -44563,7 +44559,7 @@
                                                 "673caa5f-511d-4688-9305-e5f0f0f780cd"
                                             ],
                                             [
-                                                "Foundations",
+                                                "Algorithmic-Trading",
                                                 "Project Trading Tasks",
                                                 "Foundations",
                                                 "f79c3f13-37eb-4f88-ae83-78554db337c5"
@@ -49578,7 +49574,7 @@
                                 "referenceParent": {
                                     "type": "Workspace",
                                     "name": "Getting-Started-Tutorials",
-                                    "id": "88c7750c-4f14-492e-bbc9-462ce1a06f3a"
+                                    "id": "54ba909c-94c0-4115-9ae0-2e8ec771e0be"
                                 },
                                 "referenceParentCombinedNodePath": [
                                     [
@@ -49728,10 +49724,41 @@
                                 },
                                 "referenceParent": {
                                     "type": "Plugin File Position",
-                                    "name": "Masters-Lightning-Strike",
-                                    "id": "37ab4b0d-6bd8-46b6-9778-e193c32669a4"
+                                    "name": "Masters",
+                                    "id": "09e63cdb-2302-4f8a-a747-ef205912c685"
                                 },
-                                "referenceParentCombinedNodePath": []
+                                "referenceParentCombinedNodePath": [
+                                    [
+                                        "New Plugins",
+                                        "Plugins",
+                                        "Community-Plugins",
+                                        "bfb0b514-3b9f-4e9a-85ca-d0ca714b09f6"
+                                    ],
+                                    [
+                                        "Algorithmic-Trading",
+                                        "Plugin Project",
+                                        "Community-Plugins",
+                                        "252daf71-559e-4a54-a534-42ec1e7f1a31"
+                                    ],
+                                    [
+                                        "New Plugin Trading Mines",
+                                        "Plugin Trading Mines",
+                                        "Community-Plugins",
+                                        "b784724f-9692-4365-8e01-032158248fc4"
+                                    ],
+                                    [
+                                        "Masters",
+                                        "Plugin File",
+                                        "Community-Plugins",
+                                        "68bdcf8f-5b90-4683-bd24-0cbb90649cea"
+                                    ],
+                                    [
+                                        "Masters",
+                                        "Plugin File Position",
+                                        "Community-Plugins",
+                                        "09e63cdb-2302-4f8a-a747-ef205912c685"
+                                    ]
+                                ]
                             }
                         },
                         {
@@ -49766,9 +49793,28 @@
                                 "referenceParent": {
                                     "type": "Plugin Trading Systems",
                                     "name": "New Plugin Trading Systems",
-                                    "id": "3569d452-c593-4e54-a356-7ff8c6b519f3"
+                                    "id": "ed5fbe5f-6957-47d7-b776-f4868b521378"
                                 },
-                                "referenceParentCombinedNodePath": []
+                                "referenceParentCombinedNodePath": [
+                                    [
+                                        "New Plugins",
+                                        "Plugins",
+                                        "Community-Plugins",
+                                        "bfb0b514-3b9f-4e9a-85ca-d0ca714b09f6"
+                                    ],
+                                    [
+                                        "Algorithmic-Trading",
+                                        "Plugin Project",
+                                        "Community-Plugins",
+                                        "252daf71-559e-4a54-a534-42ec1e7f1a31"
+                                    ],
+                                    [
+                                        "New Plugin Trading Systems",
+                                        "Plugin Trading Systems",
+                                        "Community-Plugins",
+                                        "ed5fbe5f-6957-47d7-b776-f4868b521378"
+                                    ]
+                                ]
                             }
                         },
                         {
@@ -55534,7 +55580,7 @@
                                                 "673caa5f-511d-4688-9305-e5f0f0f780cd"
                                             ],
                                             [
-                                                "Foundations",
+                                                "Algorithmic-Trading",
                                                 "Project Trading Tasks",
                                                 "Foundations",
                                                 "f79c3f13-37eb-4f88-ae83-78554db337c5"
@@ -55971,7 +56017,7 @@
                                                 "673caa5f-511d-4688-9305-e5f0f0f780cd"
                                             ],
                                             [
-                                                "Foundations",
+                                                "Algorithmic-Trading",
                                                 "Project Trading Tasks",
                                                 "Foundations",
                                                 "f79c3f13-37eb-4f88-ae83-78554db337c5"
@@ -56063,7 +56109,7 @@
                                                 "673caa5f-511d-4688-9305-e5f0f0f780cd"
                                             ],
                                             [
-                                                "Foundations",
+                                                "Algorithmic-Trading",
                                                 "Project Trading Tasks",
                                                 "Foundations",
                                                 "f79c3f13-37eb-4f88-ae83-78554db337c5"
@@ -57117,7 +57163,7 @@
                 "floatingObject": {
                     "isPinned": true,
                     "isFrozen": false,
-                    "isCollapsed": false,
+                    "isCollapsed": true,
                     "angleToParent": 1,
                     "distanceToParent": 3,
                     "arrangementStyle": 0
