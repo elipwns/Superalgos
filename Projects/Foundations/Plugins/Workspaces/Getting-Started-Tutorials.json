@@ -1749,7 +1749,7 @@
                         "projectTradingTasks": [
                             {
                                 "type": "Project Trading Tasks",
-                                "name": "Foundations",
+                                "name": "Algorithmic-Trading",
                                 "project": "Foundations",
                                 "exchangeTradingTasks": [
                                     {
@@ -2510,21 +2510,17 @@
                                     },
                                     "referenceParent": {
                                         "type": "Project Definition",
-                                        "name": "Foundations",
-                                        "id": "a2a04e12-604e-43f8-a986-1b8ca3b043cb"
+                                        "name": "Algorithmic-Trading",
+                                        "id": "159d6c95-233b-4d79-8fe0-b1d75d40f90b"
                                     },
                                     "referenceParentCombinedNodePath": [
                                         [
-                                            "New Foundations Project",
-                                            "Foundations Project",
-                                            "Foundations",
-                                            "cf9f8b3b-77c6-43c6-b01f-95cf366a91f6"
+                                            "New Algorithmic-Trading Project",
+                                            "Algorithmic-Trading Project"
                                         ],
                                         [
-                                            "Foundations",
-                                            "Project Definition",
-                                            "Foundations",
-                                            "a2a04e12-604e-43f8-a986-1b8ca3b043cb"
+                                            "Algorithmic-Trading",
+                                            "Project Definition"
                                         ]
                                     ]
                                 }
@@ -10241,7 +10237,7 @@
                                                                         "673caa5f-511d-4688-9305-e5f0f0f780cd"
                                                                     ],
                                                                     [
-                                                                        "Foundations",
+                                                                        "Algorithmic-Trading",
                                                                         "Project Trading Tasks",
                                                                         "Foundations",
                                                                         "f79c3f13-37eb-4f88-ae83-78554db337c5"
@@ -44563,7 +44559,7 @@
                                                 "673caa5f-511d-4688-9305-e5f0f0f780cd"
                                             ],
                                             [
-                                                "Foundations",
+                                                "Algorithmic-Trading",
                                                 "Project Trading Tasks",
                                                 "Foundations",
                                                 "f79c3f13-37eb-4f88-ae83-78554db337c5"
@@ -49578,7 +49574,7 @@
                                 "referenceParent": {
                                     "type": "Workspace",
                                     "name": "Getting-Started-Tutorials",
-                                    "id": "7ca7a57e-9ec4-4027-911a-e376813a35de"
+                                    "id": "54ba909c-94c0-4115-9ae0-2e8ec771e0be"
                                 },
                                 "referenceParentCombinedNodePath": [
                                     [
@@ -55584,7 +55580,7 @@
                                                 "673caa5f-511d-4688-9305-e5f0f0f780cd"
                                             ],
                                             [
-                                                "Foundations",
+                                                "Algorithmic-Trading",
                                                 "Project Trading Tasks",
                                                 "Foundations",
                                                 "f79c3f13-37eb-4f88-ae83-78554db337c5"
@@ -56021,7 +56017,7 @@
                                                 "673caa5f-511d-4688-9305-e5f0f0f780cd"
                                             ],
                                             [
-                                                "Foundations",
+                                                "Algorithmic-Trading",
                                                 "Project Trading Tasks",
                                                 "Foundations",
                                                 "f79c3f13-37eb-4f88-ae83-78554db337c5"
@@ -56113,7 +56109,7 @@
                                                 "673caa5f-511d-4688-9305-e5f0f0f780cd"
                                             ],
                                             [
-                                                "Foundations",
+                                                "Algorithmic-Trading",
                                                 "Project Trading Tasks",
                                                 "Foundations",
                                                 "f79c3f13-37eb-4f88-ae83-78554db337c5"
@@ -57167,7 +57163,7 @@
                 "floatingObject": {
                     "isPinned": true,
                     "isFrozen": false,
-                    "isCollapsed": false,
+                    "isCollapsed": true,
                     "angleToParent": 1,
                     "distanceToParent": 3,
                     "arrangementStyle": 0
