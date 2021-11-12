@@ -18692,8 +18692,8 @@
                     },
                     "frame": {
                         "position": {
-                            "x": 524.1504820936639,
-                            "y": 69.24999999999994
+                            "x": 488.50071534577637,
+                            "y": -52.63959674236639
                         }
                     }
                 }
@@ -18769,7 +18769,7 @@
                                     "timeScale": {
                                         "type": "Time Scale",
                                         "name": "New Time Scale",
-                                        "config": "{ \n\"autoMinScale\": true,\n\"autoMaxScale\": true,\n\"fromDate\": \"2018-01-01\",\n\"toDate\": \"2020-12-31\"\n}",
+                                        "config": "{\n    \"autoMinScale\": true,\n    \"autoMaxScale\": true,\n    \"fromDate\": \"2020-01-01T00:00:00.000Z\",\n    \"toDate\": \"2021-11-11T23:59:59.999Z\"\n}",
                                         "project": "Foundations",
                                         "id": "7e8d05ad-df01-4315-97f3-89dc566e2be0",
                                         "savedPayload": {
@@ -18797,7 +18797,7 @@
                                     "rateScale": {
                                         "type": "Rate Scale",
                                         "name": "New Rate Scale",
-                                        "config": "{ \n\"autoMinScale\": true,\n\"autoMaxScale\": true,\n\"minValue\": 0,\n\"maxValue\": 25000\n}",
+                                        "config": "{\n    \"autoMinScale\": true,\n    \"autoMaxScale\": true,\n    \"minValue\": 3744.3087,\n    \"maxValue\": 69690\n}",
                                         "project": "Foundations",
                                         "id": "eefac221-7143-42c2-af57-ce883dc4d2ec",
                                         "savedPayload": {
@@ -18858,7 +18858,7 @@
                                             "layerManager": {
                                                 "type": "Layer Manager",
                                                 "name": "Masters",
-                                                "config": "{ \n\"visibleLayers\": 5\n}",
+                                                "config": "{\n    \"visibleLayers\": 0,\n    \"panelLocation\": {\n        \"upOrDown\": \"up\",\n        \"leftOrRight\": \"left\"\n    }\n}",
                                                 "project": "Foundations",
                                                 "layers": [],
                                                 "botLayers": [
@@ -23330,6 +23330,15 @@
                                                     "uiObject": {
                                                         "isRunning": false
                                                     },
+                                                    "frame": {
+                                                        "position": {
+                                                            "x": 0,
+                                                            "y": 80
+                                                        },
+                                                        "width": 150,
+                                                        "height": 40,
+                                                        "radius": 0
+                                                    },
                                                     "referenceParent": {
                                                         "type": "Trading Mine Products",
                                                         "name": "Masters",
@@ -23423,7 +23432,7 @@
                                             "layerManager": {
                                                 "type": "Layer Manager",
                                                 "name": "Masters",
-                                                "config": "{ \n\"visibleLayers\": 5\n}",
+                                                "config": "{\n    \"visibleLayers\": 0,\n    \"panelLocation\": {\n        \"upOrDown\": \"up\",\n        \"leftOrRight\": \"left\"\n    }\n}",
                                                 "project": "Foundations",
                                                 "layers": [],
                                                 "botLayers": [
@@ -24976,6 +24985,15 @@
                                                     "uiObject": {
                                                         "isRunning": false
                                                     },
+                                                    "frame": {
+                                                        "position": {
+                                                            "x": 150,
+                                                            "y": 80
+                                                        },
+                                                        "width": 150,
+                                                        "height": 40,
+                                                        "radius": 0
+                                                    },
                                                     "referenceParent": {
                                                         "type": "Trading Mine Products",
                                                         "name": "Masters",
@@ -25069,7 +25087,7 @@
                                             "layerManager": {
                                                 "type": "Layer Manager",
                                                 "name": "Masters",
-                                                "config": "{ \n\"visibleLayers\": 5\n}",
+                                                "config": "{\n    \"visibleLayers\": 0,\n    \"panelLocation\": {\n        \"upOrDown\": \"up\",\n        \"leftOrRight\": \"left\"\n    }\n}",
                                                 "project": "Foundations",
                                                 "layers": [],
                                                 "botLayers": [
@@ -32299,6 +32317,15 @@
                                                     "uiObject": {
                                                         "isRunning": false
                                                     },
+                                                    "frame": {
+                                                        "position": {
+                                                            "x": 300,
+                                                            "y": 80
+                                                        },
+                                                        "width": 150,
+                                                        "height": 40,
+                                                        "radius": 0
+                                                    },
                                                     "referenceParent": {
                                                         "type": "Trading Mine Products",
                                                         "name": "Masters",
@@ -32392,7 +32419,7 @@
                                             "layerManager": {
                                                 "type": "Layer Manager",
                                                 "name": "Sparta",
-                                                "config": "{ \n\"visibleLayers\": 5\n}",
+                                                "config": "{\n    \"visibleLayers\": 0,\n    \"panelLocation\": {\n        \"upOrDown\": \"up\",\n        \"leftOrRight\": \"left\"\n    }\n}",
                                                 "project": "Foundations",
                                                 "layers": [],
                                                 "botLayers": [
@@ -40689,6 +40716,15 @@
                                                     "uiObject": {
                                                         "isRunning": false
                                                     },
+                                                    "frame": {
+                                                        "position": {
+                                                            "x": 450,
+                                                            "y": 80
+                                                        },
+                                                        "width": 150,
+                                                        "height": 40,
+                                                        "radius": 0
+                                                    },
                                                     "referenceParent": {
                                                         "type": "Data Mine Products",
                                                         "name": "Sparta",
@@ -40776,7 +40812,7 @@
                                             "layerManager": {
                                                 "type": "Layer Manager",
                                                 "name": "Masters",
-                                                "config": "{ \n\"visibleLayers\": 5\n}",
+                                                "config": "{\n    \"visibleLayers\": 0,\n    \"panelLocation\": {\n        \"upOrDown\": \"up\",\n        \"leftOrRight\": \"left\"\n    }\n}",
                                                 "project": "Foundations",
                                                 "layers": [],
                                                 "botLayers": [
@@ -43426,7 +43462,7 @@
                                                             {
                                                                 "type": "Layer",
                                                                 "name": "Volume Analysis",
-                                                                "config": "{ \n\"status\": \"off\"\n}",
+                                                                "config": "{\n    \"status\": \"on\"\n}",
                                                                 "project": "Foundations",
                                                                 "layerPanels": {
                                                                     "type": "Layer Panels",
@@ -44443,6 +44479,15 @@
                                                     "uiObject": {
                                                         "isRunning": false
                                                     },
+                                                    "frame": {
+                                                        "position": {
+                                                            "x": 600,
+                                                            "y": 80
+                                                        },
+                                                        "width": 150,
+                                                        "height": 40,
+                                                        "radius": 0
+                                                    },
                                                     "referenceParent": {
                                                         "type": "Data Mine Products",
                                                         "name": "Masters",
@@ -44530,7 +44575,7 @@
                                             "layerManager": {
                                                 "type": "Layer Manager",
                                                 "name": "Candles",
-                                                "config": "{ \n\"visibleLayers\": 5\n}",
+                                                "config": "{\n    \"visibleLayers\": 5,\n    \"panelLocation\": {\n        \"upOrDown\": \"up\",\n        \"leftOrRight\": \"left\"\n    }\n}",
                                                 "project": "Foundations",
                                                 "layers": [],
                                                 "botLayers": [
@@ -44571,7 +44616,7 @@
                                                             {
                                                                 "type": "Layer",
                                                                 "name": "Candles",
-                                                                "config": "{ \n\"status\": \"off\"\n}",
+                                                                "config": "{\n    \"status\": \"on\",\n    \"showPanels\": true\n}",
                                                                 "project": "Foundations",
                                                                 "layerPanels": {
                                                                     "type": "Layer Panels",
@@ -45037,6 +45082,15 @@
                                                     "uiObject": {
                                                         "isRunning": false
                                                     },
+                                                    "frame": {
+                                                        "position": {
+                                                            "x": 750,
+                                                            "y": 80
+                                                        },
+                                                        "width": 150,
+                                                        "height": 190,
+                                                        "radius": 0
+                                                    },
                                                     "referenceParent": {
                                                         "type": "Data Mine Products",
                                                         "name": "Candles",
@@ -45138,6 +45192,15 @@
                                         },
                                         "uiObject": {
                                             "isRunning": false
+                                        },
+                                        "frame": {
+                                            "position": {
+                                                "x": 0,
+                                                "y": 214.25
+                                            },
+                                            "width": 163.875,
+                                            "height": 107.125,
+                                            "radius": 0
                                         },
                                         "referenceParent": {
                                             "type": "Backtesting Session",
@@ -45281,7 +45344,7 @@
                                     "timeScale": {
                                         "type": "Time Scale",
                                         "name": "New Time Scale",
-                                        "config": "{ \n\"autoMinScale\": true,\n\"autoMaxScale\": true,\n\"fromDate\": \"2018-01-01\",\n\"toDate\": \"2020-12-31\"\n}",
+                                        "config": "{\n    \"autoMinScale\": true,\n    \"autoMaxScale\": true,\n    \"fromDate\": \"2020-01-01T00:00:00.000Z\",\n    \"toDate\": \"2021-11-11T23:59:59.999Z\"\n}",
                                         "project": "Foundations",
                                         "id": "d20e636b-3b7d-4e76-b52e-49af645eeff6",
                                         "savedPayload": {
@@ -45309,7 +45372,7 @@
                                     "rateScale": {
                                         "type": "Rate Scale",
                                         "name": "New Rate Scale",
-                                        "config": "{ \n\"autoMinScale\": true,\n\"autoMaxScale\": true,\n\"minValue\": 0,\n\"maxValue\": 25000\n}",
+                                        "config": "{\n    \"autoMinScale\": true,\n    \"autoMaxScale\": true,\n    \"minValue\": 3744.3087,\n    \"maxValue\": 69690\n}",
                                         "project": "Foundations",
                                         "id": "355056c5-9067-4d17-8e6b-4564553a84c9",
                                         "savedPayload": {
@@ -45370,7 +45433,7 @@
                                             "layerManager": {
                                                 "type": "Layer Manager",
                                                 "name": "Masters",
-                                                "config": "{ \n\"visibleLayers\": 5\n}",
+                                                "config": "{\n    \"visibleLayers\": 0,\n    \"panelLocation\": {\n        \"upOrDown\": \"up\",\n        \"leftOrRight\": \"left\"\n    }\n}",
                                                 "project": "Foundations",
                                                 "layers": [],
                                                 "botLayers": [
@@ -49842,6 +49905,15 @@
                                                     "uiObject": {
                                                         "isRunning": false
                                                     },
+                                                    "frame": {
+                                                        "position": {
+                                                            "x": 0,
+                                                            "y": 80
+                                                        },
+                                                        "width": 150,
+                                                        "height": 40,
+                                                        "radius": 0
+                                                    },
                                                     "referenceParent": {
                                                         "type": "Trading Mine Products",
                                                         "name": "Masters",
@@ -49935,7 +50007,7 @@
                                             "layerManager": {
                                                 "type": "Layer Manager",
                                                 "name": "Masters",
-                                                "config": "{ \n\"visibleLayers\": 5\n}",
+                                                "config": "{\n    \"visibleLayers\": 0,\n    \"panelLocation\": {\n        \"upOrDown\": \"up\",\n        \"leftOrRight\": \"left\"\n    }\n}",
                                                 "project": "Foundations",
                                                 "layers": [],
                                                 "botLayers": [
@@ -50116,7 +50188,7 @@
                                                                     {
                                                                         "type": "Layer",
                                                                         "name": "Trading System Highlights",
-                                                                        "config": "{ \n\"status\": \"off\"\n}",
+                                                                        "config": "{\n    \"status\": \"on\"\n}",
                                                                         "project": "Foundations",
                                                                         "layerPanels": {
                                                                             "type": "Layer Panels",
@@ -51488,6 +51560,15 @@
                                                     "uiObject": {
                                                         "isRunning": false
                                                     },
+                                                    "frame": {
+                                                        "position": {
+                                                            "x": 150,
+                                                            "y": 80
+                                                        },
+                                                        "width": 150,
+                                                        "height": 40,
+                                                        "radius": 0
+                                                    },
                                                     "referenceParent": {
                                                         "type": "Trading Mine Products",
                                                         "name": "Masters",
@@ -51581,7 +51662,7 @@
                                             "layerManager": {
                                                 "type": "Layer Manager",
                                                 "name": "Masters",
-                                                "config": "{ \n\"visibleLayers\": 5\n}",
+                                                "config": "{\n    \"visibleLayers\": 0,\n    \"panelLocation\": {\n        \"upOrDown\": \"up\",\n        \"leftOrRight\": \"left\"\n    }\n}",
                                                 "project": "Foundations",
                                                 "layers": [],
                                                 "botLayers": [
@@ -58811,6 +58892,15 @@
                                                     "uiObject": {
                                                         "isRunning": false
                                                     },
+                                                    "frame": {
+                                                        "position": {
+                                                            "x": 300,
+                                                            "y": 80
+                                                        },
+                                                        "width": 150,
+                                                        "height": 40,
+                                                        "radius": 0
+                                                    },
                                                     "referenceParent": {
                                                         "type": "Trading Mine Products",
                                                         "name": "Masters",
@@ -58904,7 +58994,7 @@
                                             "layerManager": {
                                                 "type": "Layer Manager",
                                                 "name": "Sparta",
-                                                "config": "{ \n\"visibleLayers\": 5\n}",
+                                                "config": "{\n    \"visibleLayers\": 0,\n    \"panelLocation\": {\n        \"upOrDown\": \"up\",\n        \"leftOrRight\": \"left\"\n    }\n}",
                                                 "project": "Foundations",
                                                 "layers": [],
                                                 "botLayers": [
@@ -67201,6 +67291,15 @@
                                                     "uiObject": {
                                                         "isRunning": false
                                                     },
+                                                    "frame": {
+                                                        "position": {
+                                                            "x": 450,
+                                                            "y": 80
+                                                        },
+                                                        "width": 150,
+                                                        "height": 40,
+                                                        "radius": 0
+                                                    },
                                                     "referenceParent": {
                                                         "type": "Data Mine Products",
                                                         "name": "Sparta",
@@ -67288,7 +67387,7 @@
                                             "layerManager": {
                                                 "type": "Layer Manager",
                                                 "name": "Masters",
-                                                "config": "{ \n\"visibleLayers\": 5\n}",
+                                                "config": "{\n    \"visibleLayers\": 0,\n    \"panelLocation\": {\n        \"upOrDown\": \"up\",\n        \"leftOrRight\": \"left\"\n    }\n}",
                                                 "project": "Foundations",
                                                 "layers": [],
                                                 "botLayers": [
@@ -70955,6 +71054,15 @@
                                                     "uiObject": {
                                                         "isRunning": false
                                                     },
+                                                    "frame": {
+                                                        "position": {
+                                                            "x": 600,
+                                                            "y": 80
+                                                        },
+                                                        "width": 150,
+                                                        "height": 40,
+                                                        "radius": 0
+                                                    },
                                                     "referenceParent": {
                                                         "type": "Data Mine Products",
                                                         "name": "Masters",
@@ -71042,7 +71150,7 @@
                                             "layerManager": {
                                                 "type": "Layer Manager",
                                                 "name": "Candles",
-                                                "config": "{ \n\"visibleLayers\": 5\n}",
+                                                "config": "{\n    \"visibleLayers\": 5,\n    \"panelLocation\": {\n        \"upOrDown\": \"up\",\n        \"leftOrRight\": \"left\"\n    }\n}",
                                                 "project": "Foundations",
                                                 "layers": [],
                                                 "botLayers": [
@@ -71083,7 +71191,7 @@
                                                             {
                                                                 "type": "Layer",
                                                                 "name": "Candles",
-                                                                "config": "{ \n\"status\": \"off\"\n}",
+                                                                "config": "{\n    \"status\": \"on\",\n    \"showPanels\": true\n}",
                                                                 "project": "Foundations",
                                                                 "layerPanels": {
                                                                     "type": "Layer Panels",
@@ -71549,6 +71657,15 @@
                                                     "uiObject": {
                                                         "isRunning": false
                                                     },
+                                                    "frame": {
+                                                        "position": {
+                                                            "x": 750,
+                                                            "y": 80
+                                                        },
+                                                        "width": 150,
+                                                        "height": 190,
+                                                        "radius": 0
+                                                    },
                                                     "referenceParent": {
                                                         "type": "Data Mine Products",
                                                         "name": "Candles",
@@ -71650,6 +71767,15 @@
                                         },
                                         "uiObject": {
                                             "isRunning": false
+                                        },
+                                        "frame": {
+                                            "position": {
+                                                "x": 0,
+                                                "y": 428.5
+                                            },
+                                            "width": 163.875,
+                                            "height": 107.125,
+                                            "radius": 0
                                         },
                                         "referenceParent": {
                                             "type": "Live Trading Session",
@@ -71928,7 +72054,7 @@
                         "floatingObject": {
                             "isPinned": false,
                             "isFrozen": false,
-                            "isCollapsed": false,
+                            "isCollapsed": true,
                             "angleToParent": 1,
                             "distanceToParent": 5,
                             "arrangementStyle": 0
@@ -71960,8 +72086,8 @@
                                     "id": "5c8279ae-a7c2-425e-854e-35364b672fd1",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 29657.849989217466,
-                                            "y": 10887.699379495838
+                                            "x": 19475.633867276887,
+                                            "y": 10901.529348986125
                                         },
                                         "targetPosition": {
                                             "x": 30942.37790256661,
@@ -72044,8 +72170,8 @@
                                     "id": "eac02d38-9240-43b5-85c8-935455afdbf8",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 30368.981037924153,
-                                            "y": 19568.757918552037
+                                            "x": 36251.745232646834,
+                                            "y": 29195.624332977583
                                         },
                                         "targetPosition": {
                                             "x": 30925.061692352778,
@@ -72380,8 +72506,8 @@
                                     "id": "3c284f69-4803-4b6c-b6a5-254df6d203e9",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 19546.418163672653,
-                                            "y": 10787.91980894922
+                                            "x": 30479.782608695656,
+                                            "y": 19626.225186766278
                                         },
                                         "targetPosition": {
                                             "x": 30348.421787653817,
@@ -72490,8 +72616,8 @@
                                     "id": "a81c5ad2-a2b5-475c-a825-450fa9e894e0",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 36235.923153692616,
-                                            "y": 10749.887631975867
+                                            "x": 36229.60640732265,
+                                            "y": 19564.139807897544
                                         },
                                         "targetPosition": {
                                             "x": 29951.727992220363,
@@ -73227,7 +73353,7 @@
                                         "referenceParent": {
                                             "type": "Workspace",
                                             "name": "Custom Charts Tutorials",
-                                            "id": "dcfc14e2-14f5-4cc9-8ad2-7c960ce4cf2d"
+                                            "id": "998c211a-2e33-4c14-8b28-0b1f57d7387c"
                                         },
                                         "referenceParentCombinedNodePath": [
                                             [
@@ -73568,15 +73694,21 @@
                                 "referenceParentCombinedNodePath": [
                                     [
                                         "New Charting Space",
-                                        "Charting Space"
+                                        "Charting Space",
+                                        "Foundations",
+                                        "21d2ec55-9e56-4652-8e96-c7e451262c36"
                                     ],
                                     [
                                         "Foundations",
-                                        "Project Dashboards"
+                                        "Project Dashboards",
+                                        "Foundations",
+                                        "791858ad-5870-465d-aada-42e2d2ef2279"
                                     ],
                                     [
                                         "Learning Tasks My Computer",
-                                        "Dashboard"
+                                        "Dashboard",
+                                        "Foundations",
+                                        "6e1f0dfb-5724-42b1-9f14-e47c6d0c969f"
                                     ]
                                 ]
                             }
@@ -73693,19 +73825,27 @@
                                 "referenceParentCombinedNodePath": [
                                     [
                                         "New Charting Space",
-                                        "Charting Space"
+                                        "Charting Space",
+                                        "Foundations",
+                                        "21d2ec55-9e56-4652-8e96-c7e451262c36"
                                     ],
                                     [
                                         "Foundations",
-                                        "Project Dashboards"
+                                        "Project Dashboards",
+                                        "Foundations",
+                                        "791858ad-5870-465d-aada-42e2d2ef2279"
                                     ],
                                     [
                                         "Testing Trading Tasks My Computer",
-                                        "Dashboard"
+                                        "Dashboard",
+                                        "Foundations",
+                                        "d3ec1242-145e-451e-a9c9-e08aa9a14612"
                                     ],
                                     [
                                         "Lightning Strike Backtesting Session My Computer Binance BTC/USDT",
-                                        "Time Machine"
+                                        "Time Machine",
+                                        "Foundations",
+                                        "f7352151-3601-40b7-aa78-2b6a261e7c7b"
                                     ]
                                 ]
                             }
@@ -73788,11 +73928,15 @@
                                         "referenceParentCombinedNodePath": [
                                             [
                                                 "New Charting Space",
-                                                "Charting Space"
+                                                "Charting Space",
+                                                "Foundations",
+                                                "21d2ec55-9e56-4652-8e96-c7e451262c36"
                                             ],
                                             [
                                                 "Foundations",
-                                                "Project Dashboards"
+                                                "Project Dashboards",
+                                                "Foundations",
+                                                "791858ad-5870-465d-aada-42e2d2ef2279"
                                             ]
                                         ]
                                     }
@@ -74346,35 +74490,51 @@
                                         "referenceParentCombinedNodePath": [
                                             [
                                                 "My LAN Network",
-                                                "LAN Network"
+                                                "LAN Network",
+                                                "Foundations",
+                                                "3c165071-7558-4708-9999-8ffe71d346b1"
                                             ],
                                             [
                                                 "My Computer",
-                                                "LAN Network Node"
+                                                "LAN Network Node",
+                                                "Foundations",
+                                                "e452cf65-2b2b-44f2-9e67-bdd9d3c008e4"
                                             ],
                                             [
                                                 "New Data Storage",
-                                                "Data Storage"
+                                                "Data Storage",
+                                                "Foundations",
+                                                "e2697759-6038-4943-b90c-5a68651ff9a8"
                                             ],
                                             [
                                                 "New Data Mines Data",
-                                                "Data Mines Data"
+                                                "Data Mines Data",
+                                                "Foundations",
+                                                "32e7c122-fa5a-4d00-9d71-d54e890e32de"
                                             ],
                                             [
                                                 "Foundations",
-                                                "Project Data Products"
+                                                "Project Data Products",
+                                                "Foundations",
+                                                "e31257d8-a327-4c60-80f8-2da91e61ac74"
                                             ],
                                             [
                                                 "Binance",
-                                                "Exchange Data Products"
+                                                "Exchange Data Products",
+                                                "Foundations",
+                                                "12bf1bf7-0242-46c7-8ab5-a773cc6352a8"
                                             ],
                                             [
                                                 " BTC/USDT",
-                                                "Market Data Products"
+                                                "Market Data Products",
+                                                "Foundations",
+                                                "16db7ab7-5a4e-410e-b922-2ec72350ff6e"
                                             ],
                                             [
                                                 "Sparta",
-                                                "Data Mine Products"
+                                                "Data Mine Products",
+                                                "Foundations",
+                                                "b36db75d-a49a-4c82-9ff3-cca56e6751d9"
                                             ]
                                         ]
                                     }
@@ -74743,51 +74903,75 @@
                                         "referenceParentCombinedNodePath": [
                                             [
                                                 "My LAN Network",
-                                                "LAN Network"
+                                                "LAN Network",
+                                                "Foundations",
+                                                "3c165071-7558-4708-9999-8ffe71d346b1"
                                             ],
                                             [
                                                 "My Computer",
-                                                "LAN Network Node"
+                                                "LAN Network Node",
+                                                "Foundations",
+                                                "e452cf65-2b2b-44f2-9e67-bdd9d3c008e4"
                                             ],
                                             [
                                                 "New Testing Trading Tasks",
-                                                "Testing Trading Tasks"
+                                                "Testing Trading Tasks",
+                                                "Foundations",
+                                                "8117db0a-e418-4f56-8fe4-fda2ddac1cbb"
                                             ],
                                             [
                                                 "Algorithmic-Trading",
-                                                "Project Trading Tasks"
+                                                "Project Trading Tasks",
+                                                "Foundations",
+                                                "b91bdbf3-63b8-448d-9d65-d3e270d7dd51"
                                             ],
                                             [
                                                 "Binance",
-                                                "Exchange Trading Tasks"
+                                                "Exchange Trading Tasks",
+                                                "Foundations",
+                                                "366a2681-71f0-45d2-be3e-f84185d039c3"
                                             ],
                                             [
                                                 " BTC/USDT",
-                                                "Market Trading Tasks"
+                                                "Market Trading Tasks",
+                                                "Foundations",
+                                                "bb4a4967-2a22-45e0-aca2-9cc820acaa8b"
                                             ],
                                             [
                                                 "Masters",
-                                                "Trading Mine Tasks"
+                                                "Trading Mine Tasks",
+                                                "Foundations",
+                                                "7e7febce-95c6-416f-b1cf-a49a02bc5752"
                                             ],
                                             [
                                                 "Masters",
-                                                "Task Manager"
+                                                "Task Manager",
+                                                "Foundations",
+                                                "a232cd33-5b88-4494-8a3b-9fd3ef480428"
                                             ],
                                             [
                                                 "Lightning Strike",
-                                                "Task"
+                                                "Task",
+                                                "Foundations",
+                                                "8e3ca62e-3174-4031-9b17-fe1d7fdb46db"
                                             ],
                                             [
                                                 "Low Frequency",
-                                                "Trading Bot Instance"
+                                                "Trading Bot Instance",
+                                                "Foundations",
+                                                "1afb3c4a-a3ad-4bab-b3f1-39e7e3686eca"
                                             ],
                                             [
                                                 "Low Frequency Trading",
-                                                "Trading Process Instance"
+                                                "Trading Process Instance",
+                                                "Foundations",
+                                                "4993b85b-16e4-419c-aae9-1de477d65a47"
                                             ],
                                             [
                                                 "Lightning Strike",
-                                                "Backtesting Session"
+                                                "Backtesting Session",
+                                                "Foundations",
+                                                "6fec8682-8880-4bde-a4b7-19dc91eb360b"
                                             ]
                                         ]
                                     }
@@ -74956,35 +75140,51 @@
                                         "referenceParentCombinedNodePath": [
                                             [
                                                 "My LAN Network",
-                                                "LAN Network"
+                                                "LAN Network",
+                                                "Foundations",
+                                                "3c165071-7558-4708-9999-8ffe71d346b1"
                                             ],
                                             [
                                                 "My Computer",
-                                                "LAN Network Node"
+                                                "LAN Network Node",
+                                                "Foundations",
+                                                "e452cf65-2b2b-44f2-9e67-bdd9d3c008e4"
                                             ],
                                             [
                                                 "New Data Storage",
-                                                "Data Storage"
+                                                "Data Storage",
+                                                "Foundations",
+                                                "e2697759-6038-4943-b90c-5a68651ff9a8"
                                             ],
                                             [
                                                 "New Trading Mines Data",
-                                                "Trading Mines Data"
+                                                "Trading Mines Data",
+                                                "Foundations",
+                                                "e4e268f3-a677-4f90-90a1-d87244e647e5"
                                             ],
                                             [
                                                 "Foundations",
-                                                "Project Trading Products"
+                                                "Project Trading Products",
+                                                "Foundations",
+                                                "a4e77d85-e74b-4948-95f9-015297f18915"
                                             ],
                                             [
                                                 "Binance",
-                                                "Exchange Trading Products"
+                                                "Exchange Trading Products",
+                                                "Foundations",
+                                                "5cd38684-3a78-4e9e-8a01-01c032eea41f"
                                             ],
                                             [
                                                 " BTC/USDT",
-                                                "Market Trading Products"
+                                                "Market Trading Products",
+                                                "Foundations",
+                                                "c2da32c1-036c-4559-967b-f0e1962822f4"
                                             ],
                                             [
                                                 "Lightning Strike Backtesting Session",
-                                                "Trading Session Reference"
+                                                "Trading Session Reference",
+                                                "Foundations",
+                                                "a34af5e7-2c32-42df-ab83-c5ae7b6283e9"
                                             ]
                                         ]
                                     }
