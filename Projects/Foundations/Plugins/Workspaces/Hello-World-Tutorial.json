@@ -76,7 +76,7 @@
                                                                                             "arrangementStyle": 0
                                                                                         },
                                                                                         "uiObject": {
-                                                                                            "isRunning": true
+                                                                                            "isRunning": false
                                                                                         },
                                                                                         "referenceParent": {
                                                                                             "type": "Process Definition",
@@ -128,7 +128,7 @@
                                                                                             "arrangementStyle": 0
                                                                                         },
                                                                                         "uiObject": {
-                                                                                            "isRunning": true
+                                                                                            "isRunning": false
                                                                                         },
                                                                                         "referenceParent": {
                                                                                             "type": "Process Definition",
@@ -200,7 +200,7 @@
                                                                                 "arrangementStyle": 0
                                                                             },
                                                                             "uiObject": {
-                                                                                "isRunning": true
+                                                                                "isRunning": false
                                                                             }
                                                                         }
                                                                     }
@@ -224,7 +224,7 @@
                                                                         "arrangementStyle": 0
                                                                     },
                                                                     "uiObject": {
-                                                                        "isRunning": true
+                                                                        "isRunning": false
                                                                     }
                                                                 }
                                                             }
@@ -248,7 +248,7 @@
                                                                 "arrangementStyle": 0
                                                             },
                                                             "uiObject": {
-                                                                "isRunning": true
+                                                                "isRunning": false
                                                             },
                                                             "referenceParent": {
                                                                 "type": "Data Mine",
@@ -380,7 +380,7 @@
                                                                                 "arrangementStyle": 0
                                                                             },
                                                                             "uiObject": {
-                                                                                "isRunning": true
+                                                                                "isRunning": false
                                                                             }
                                                                         }
                                                                     },
@@ -541,7 +541,7 @@
                                                                                 "arrangementStyle": 0
                                                                             },
                                                                             "uiObject": {
-                                                                                "isRunning": true
+                                                                                "isRunning": false
                                                                             }
                                                                         }
                                                                     }
@@ -565,7 +565,7 @@
                                                                         "arrangementStyle": 0
                                                                     },
                                                                     "uiObject": {
-                                                                        "isRunning": true
+                                                                        "isRunning": false
                                                                     }
                                                                 }
                                                             }
@@ -589,7 +589,7 @@
                                                                 "arrangementStyle": 0
                                                             },
                                                             "uiObject": {
-                                                                "isRunning": true
+                                                                "isRunning": false
                                                             },
                                                             "referenceParent": {
                                                                 "type": "Data Mine",
@@ -626,7 +626,7 @@
                                                         "arrangementStyle": 0
                                                     },
                                                     "uiObject": {
-                                                        "isRunning": true
+                                                        "isRunning": false
                                                     },
                                                     "referenceParent": {
                                                         "type": "Market",
@@ -687,7 +687,7 @@
                                                 "arrangementStyle": 0
                                             },
                                             "uiObject": {
-                                                "isRunning": true
+                                                "isRunning": false
                                             },
                                             "referenceParent": {
                                                 "type": "Crypto Exchange",
@@ -736,7 +736,7 @@
                                         "arrangementStyle": 0
                                     },
                                     "uiObject": {
-                                        "isRunning": true
+                                        "isRunning": false
                                     },
                                     "referenceParent": {
                                         "type": "Project Definition",
@@ -779,7 +779,7 @@
                                 "arrangementStyle": 0
                             },
                             "uiObject": {
-                                "isRunning": true
+                                "isRunning": false
                             }
                         }
                     },
@@ -2321,12 +2321,12 @@
                                                     "id": "f8a3ec60-ebb6-4d0a-9768-9c2314b5bbeb",
                                                     "savedPayload": {
                                                         "position": {
-                                                            "x": 24837.19913560607,
-                                                            "y": 31459.15985816277
+                                                            "x": 25698.5771121102,
+                                                            "y": 32435.574217628837
                                                         },
                                                         "targetPosition": {
-                                                            "x": 24936.19913560607,
-                                                            "y": 31559.15985816277
+                                                            "x": 25583.772082400672,
+                                                            "y": 32158.41035787545
                                                         },
                                                         "floatingObject": {
                                                             "isPinned": false,
@@ -2382,12 +2382,12 @@
                                             "id": "0fe46371-7774-47ab-b78b-50cb9e8b10b9",
                                             "savedPayload": {
                                                 "position": {
-                                                    "x": 24936.19913560607,
-                                                    "y": 31559.15985816277
+                                                    "x": 25583.772082400672,
+                                                    "y": 32158.41035787545
                                                 },
                                                 "targetPosition": {
-                                                    "x": 24988.19913560607,
-                                                    "y": 31497.15985816277
+                                                    "x": 25468.967052691143,
+                                                    "y": 31881.246498122066
                                                 },
                                                 "floatingObject": {
                                                     "isPinned": false,
@@ -2431,12 +2431,12 @@
                                     "id": "c1d0a770-858a-4f4e-a35e-e76aa20cdd5f",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 24988.19913560607,
-                                            "y": 31497.15985816277
+                                            "x": 25468.967052691143,
+                                            "y": 31881.246498122066
                                         },
                                         "targetPosition": {
-                                            "x": 25050.19913560607,
-                                            "y": 31584.15985816277
+                                            "x": 25354.162022981614,
+                                            "y": 31604.08263836868
                                         },
                                         "floatingObject": {
                                             "isPinned": false,
@@ -2474,12 +2474,12 @@
                             "id": "32e7c122-fa5a-4d00-9d71-d54e890e32de",
                             "savedPayload": {
                                 "position": {
-                                    "x": 25050.19913560607,
-                                    "y": 31584.15985816277
+                                    "x": 25354.162022981614,
+                                    "y": 31604.08263836868
                                 },
                                 "targetPosition": {
-                                    "x": 25089.356993272086,
-                                    "y": 31286.726399750627
+                                    "x": 25239.356993272086,
+                                    "y": 31326.918778615294
                                 },
                                 "floatingObject": {
                                     "isPinned": false,
@@ -9481,12 +9481,12 @@
                                                     "id": "08489b84-68a9-4a3d-9a84-067b0cf50eef",
                                                     "savedPayload": {
                                                         "position": {
-                                                            "x": 24815.356993272086,
-                                                            "y": 31366.53402088596
+                                                            "x": 25239.356993272086,
+                                                            "y": 32526.918778615294
                                                         },
                                                         "targetPosition": {
-                                                            "x": 24914.356993272086,
-                                                            "y": 31379.53402088596
+                                                            "x": 25239.356993272086,
+                                                            "y": 32226.918778615294
                                                         },
                                                         "floatingObject": {
                                                             "isPinned": false,
@@ -9542,12 +9542,12 @@
                                             "id": "dad1f99f-f5c0-4768-a18f-ab6f88f7e3ef",
                                             "savedPayload": {
                                                 "position": {
-                                                    "x": 24914.356993272086,
-                                                    "y": 31379.53402088596
+                                                    "x": 25239.356993272086,
+                                                    "y": 32226.918778615294
                                                 },
                                                 "targetPosition": {
-                                                    "x": 24867.356993272086,
-                                                    "y": 31451.53402088596
+                                                    "x": 25239.356993272086,
+                                                    "y": 31926.918778615294
                                                 },
                                                 "floatingObject": {
                                                     "isPinned": false,
@@ -9591,12 +9591,12 @@
                                     "id": "5d23f563-16c4-414d-9307-0263429f4e6b",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 24867.356993272086,
-                                            "y": 31451.53402088596
+                                            "x": 25239.356993272086,
+                                            "y": 31926.918778615294
                                         },
                                         "targetPosition": {
-                                            "x": 24939.356993272086,
-                                            "y": 31546.53402088596
+                                            "x": 25239.356993272086,
+                                            "y": 31626.918778615294
                                         },
                                         "floatingObject": {
                                             "isPinned": false,
@@ -9634,12 +9634,12 @@
                             "id": "e4e268f3-a677-4f90-90a1-d87244e647e5",
                             "savedPayload": {
                                 "position": {
-                                    "x": 24939.356993272086,
-                                    "y": 31546.53402088596
+                                    "x": 25239.356993272086,
+                                    "y": 31626.918778615294
                                 },
                                 "targetPosition": {
-                                    "x": 25089.356993272086,
-                                    "y": 31286.726399750627
+                                    "x": 25239.356993272086,
+                                    "y": 31326.918778615294
                                 },
                                 "floatingObject": {
                                     "isPinned": false,
@@ -9677,12 +9677,12 @@
                                                     "id": "ae136c4b-be48-48b5-b7bc-1ec09807042b",
                                                     "savedPayload": {
                                                         "position": {
-                                                            "x": 24884.350991184714,
-                                                            "y": 31365.354828453244
+                                                            "x": 24780.136874433985,
+                                                            "y": 32435.574217628837
                                                         },
                                                         "targetPosition": {
-                                                            "x": 24790.350991184714,
-                                                            "y": 31430.354828453244
+                                                            "x": 24894.94190414351,
+                                                            "y": 32158.41035787545
                                                         },
                                                         "floatingObject": {
                                                             "isPinned": false,
@@ -9738,12 +9738,12 @@
                                             "id": "f0b00013-73b6-4b45-a394-c83b2bd85ea4",
                                             "savedPayload": {
                                                 "position": {
-                                                    "x": 24790.350991184714,
-                                                    "y": 31430.354828453244
+                                                    "x": 24894.94190414351,
+                                                    "y": 32158.41035787545
                                                 },
                                                 "targetPosition": {
-                                                    "x": 24843.350991184714,
-                                                    "y": 31529.354828453244
+                                                    "x": 25009.746933853035,
+                                                    "y": 31881.246498122066
                                                 },
                                                 "floatingObject": {
                                                     "isPinned": false,
@@ -9787,12 +9787,12 @@
                                     "id": "24b6c396-f3fe-4a0a-a8ba-5c0e4eb40a21",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 24843.350991184714,
-                                            "y": 31529.354828453244
+                                            "x": 25009.746933853035,
+                                            "y": 31881.246498122066
                                         },
                                         "targetPosition": {
-                                            "x": 24851.350991184714,
-                                            "y": 31469.354828453244
+                                            "x": 25124.55196356256,
+                                            "y": 31604.08263836868
                                         },
                                         "floatingObject": {
                                             "isPinned": false,
@@ -9830,12 +9830,12 @@
                             "id": "2845a687-becc-4c3b-bc79-b2293ba876ba",
                             "savedPayload": {
                                 "position": {
-                                    "x": 24851.350991184714,
-                                    "y": 31469.354828453244
+                                    "x": 25124.55196356256,
+                                    "y": 31604.08263836868
                                 },
                                 "targetPosition": {
-                                    "x": 25089.356993272086,
-                                    "y": 31286.726399750627
+                                    "x": 25239.356993272086,
+                                    "y": 31326.918778615294
                                 },
                                 "floatingObject": {
                                     "isPinned": false,
@@ -15197,7 +15197,7 @@
             "viewport": {
                 "type": "Viewport",
                 "name": "New Viewport",
-                "config": "{\"zoom\":\"1.40\"}",
+                "config": "{\"zoom\":\"0.00\"}",
                 "project": "Foundations",
                 "id": "01713f1d-91b8-44f9-9c5d-a0c12fd09037",
                 "savedPayload": {
@@ -15222,8 +15222,8 @@
                     },
                     "frame": {
                         "position": {
-                            "x": 0,
-                            "y": -1702
+                            "x": 550.5,
+                            "y": 167.8125
                         }
                     }
                 }
@@ -19809,7 +19809,7 @@
                                                     },
                                                     "frame": {
                                                         "position": {
-                                                            "x": 1530,
+                                                            "x": 1311,
                                                             "y": 80
                                                         },
                                                         "width": 150,
@@ -21464,7 +21464,7 @@
                                                     },
                                                     "frame": {
                                                         "position": {
-                                                            "x": 1380,
+                                                            "x": 1311,
                                                             "y": 80
                                                         },
                                                         "width": 150,
@@ -28796,7 +28796,7 @@
                                                     },
                                                     "frame": {
                                                         "position": {
-                                                            "x": 1230,
+                                                            "x": 1311,
                                                             "y": 80
                                                         },
                                                         "width": 150,
@@ -160525,9 +160525,7 @@
                         "uiObject": {
                             "isRunning": false
                         },
-                        "tutorial": {
-                            "status": "Done"
-                        },
+                        "tutorial": {},
                         "referenceParent": {
                             "type": "Tutorial",
                             "name": "Hello World Tutorial",
@@ -160649,8 +160647,62 @@
                         "referenceParent": {
                             "type": "Trading Parameters",
                             "name": "New Trading Parameters",
-                            "id": "85d5b9da-c460-4524-9559-e672af19d0e7"
-                        }
+                            "id": "5dba580a-bbc4-46b8-addc-897b707d8f13"
+                        },
+                        "referenceParentCombinedNodePath": [
+                            [
+                                "My LAN Network",
+                                "LAN Network"
+                            ],
+                            [
+                                "My Computer",
+                                "LAN Network Node"
+                            ],
+                            [
+                                "New Testing Trading Tasks",
+                                "Testing Trading Tasks"
+                            ],
+                            [
+                                "Algorithmic-Trading",
+                                "Project Trading Tasks"
+                            ],
+                            [
+                                "Binance",
+                                "Exchange Trading Tasks"
+                            ],
+                            [
+                                " BTC/USDT",
+                                "Market Trading Tasks"
+                            ],
+                            [
+                                "Masters",
+                                "Trading Mine Tasks"
+                            ],
+                            [
+                                "Masters",
+                                "Task Manager"
+                            ],
+                            [
+                                "Hello World Trading System",
+                                "Task"
+                            ],
+                            [
+                                "Low Frequency",
+                                "Trading Bot Instance"
+                            ],
+                            [
+                                "Low Frequency Trading",
+                                "Trading Process Instance"
+                            ],
+                            [
+                                "Hello World Trading System",
+                                "Backtesting Session"
+                            ],
+                            [
+                                "New Trading Parameters",
+                                "Trading Parameters"
+                            ]
+                        ]
                     }
                 },
                 {
@@ -160741,8 +160793,26 @@
                         "referenceParent": {
                             "type": "Time Machine",
                             "name": "Hello World Trading System Backtesting Session My Computer Binance BTC/USDT",
-                            "id": "ae3cca29-d5d8-4869-9203-0ad91dd0cba9"
-                        }
+                            "id": "49e4cc0a-afa5-4893-a38f-7e9cb73222ac"
+                        },
+                        "referenceParentCombinedNodePath": [
+                            [
+                                "New Charting Space",
+                                "Charting Space"
+                            ],
+                            [
+                                "Foundations",
+                                "Project Dashboards"
+                            ],
+                            [
+                                "Testing Trading Tasks My Computer",
+                                "Dashboard"
+                            ],
+                            [
+                                "Hello World Trading System Backtesting Session My Computer Binance BTC/USDT",
+                                "Time Machine"
+                            ]
+                        ]
                     }
                 },
                 {
@@ -160810,6 +160880,7 @@
                     "arrangementStyle": 0
                 },
                 "uiObject": {
+                    "isPlaying": true,
                     "isRunning": false
                 },
                 "tutorial": {
