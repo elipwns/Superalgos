@@ -1,10 +1,10 @@
 {
-    "type": "Strategy Manage Stage",
+    "type": "Portfolio Strategy",
     "menuItems": [
         {
             "action": "Add Missing Children",
-            "label": "Add Missing Children",
-            "relatedUiObject": "Trading Parameters",
+            "label": "Add Missing Stages",
+            "relatedUiObject": "Portfolio Strategy",
             "actionFunction": "payload.executeAction",
             "actionProject": "Visual-Scripting",
             "relatedUiObjectProject": "Foundations"
@@ -20,48 +20,37 @@
             "actionFunction": "payload.executeAction"
         }
     ],
+    "isTitleAllwaysVisible": true,
     "addLeftIcons": true,
-    "level": 3,
+    "level": 1,
     "attachingRules": {
-        "compatibleTypes": "->Trading Current->Portfolio Current->"
+        "compatibleTypes": "->Portfolio System->"
     },
-    "propertyNameAtParent": "strategyManageStage",
     "childrenNodesProperties": [
         {
-            "name": "begin",
+            "name": "triggerStage",
             "type": "node",
-            "childType": "Begin",
+            "childType": "Trigger Stage",
             "autoAdd": true
         },
         {
-            "name": "end",
+            "name": "openStage",
             "type": "node",
-            "childType": "End",
+            "childType": "Open Stage",
             "autoAdd": true
         },
         {
-            "name": "exitType",
+            "name": "manageStage",
             "type": "node",
-            "childType": "Exit Type",
+            "childType": "Manage Stage",
             "autoAdd": true
         },
         {
-            "name": "status",
+            "name": "closeStage",
             "type": "node",
-            "childType": "Status",
-            "autoAdd": true
-        },
-        {
-            "name": "beginRate",
-            "type": "node",
-            "childType": "Begin Rate",
-            "autoAdd": true
-        },
-        {
-            "name": "endRate",
-            "type": "node",
-            "childType": "End Rate",
+            "childType": "Close Stage",
             "autoAdd": true
         }
-    ]
+    ],
+    "propertyNameAtParent": "portfolioStrategies"
 }

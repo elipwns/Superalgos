@@ -1,10 +1,10 @@
 {
-    "type": "Strategy Manage Stage",
+    "type": "Portfolio Last",
     "menuItems": [
         {
             "action": "Add Missing Children",
             "label": "Add Missing Children",
-            "relatedUiObject": "Trading Parameters",
+            "relatedUiObject": "Portfolio Parameters",
             "actionFunction": "payload.executeAction",
             "actionProject": "Visual-Scripting",
             "relatedUiObjectProject": "Foundations"
@@ -23,44 +23,32 @@
     "addLeftIcons": true,
     "level": 3,
     "attachingRules": {
-        "compatibleTypes": "->Trading Current->Portfolio Current->"
+        "compatibleTypes": "->Portfolio Engine->"
     },
-    "propertyNameAtParent": "strategyManageStage",
+    "propertyNameAtParent": "portfolioLast",
     "childrenNodesProperties": [
         {
-            "name": "begin",
+            "name": "position",
             "type": "node",
-            "childType": "Begin",
+            "childType": "Position",
             "autoAdd": true
         },
         {
-            "name": "end",
+            "name": "strategy",
             "type": "node",
-            "childType": "End",
+            "childType": "Strategy",
             "autoAdd": true
         },
         {
-            "name": "exitType",
+            "name": "limitOrders",
             "type": "node",
-            "childType": "Exit Type",
+            "childType": "Limit Order",
             "autoAdd": true
         },
         {
-            "name": "status",
+            "name": "marketOrders",
             "type": "node",
-            "childType": "Status",
-            "autoAdd": true
-        },
-        {
-            "name": "beginRate",
-            "type": "node",
-            "childType": "Begin Rate",
-            "autoAdd": true
-        },
-        {
-            "name": "endRate",
-            "type": "node",
-            "childType": "End Rate",
+            "childType": "Market Order",
             "autoAdd": true
         }
     ]

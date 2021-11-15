@@ -1,10 +1,10 @@
 {
-    "type": "Strategy Open Stage",
+    "type": "Portfolio Current",
     "menuItems": [
         {
             "action": "Add Missing Children",
             "label": "Add Missing Children",
-            "relatedUiObject": "Trading Parameters",
+            "relatedUiObject": "Portfolio Parameters",
             "actionFunction": "payload.executeAction",
             "actionProject": "Visual-Scripting",
             "relatedUiObjectProject": "Foundations"
@@ -23,62 +23,50 @@
     "addLeftIcons": true,
     "level": 3,
     "attachingRules": {
-        "compatibleTypes": "->Trading Current->Portfolio Current->"
+        "compatibleTypes": "->Portfolio Engine->"
     },
-    "propertyNameAtParent": "strategyOpenStage",
+    "propertyNameAtParent": "portfolioCurrent",
     "childrenNodesProperties": [
         {
-            "name": "begin",
+            "name": "portfolioEpisode",
             "type": "node",
-            "childType": "Begin",
+            "childType": "Portfolio Episode",
             "autoAdd": true
         },
         {
-            "name": "end",
+            "name": "strategy",
             "type": "node",
-            "childType": "End",
+            "childType": "Strategy",
             "autoAdd": true
         },
         {
-            "name": "exitType",
+            "name": "position",
             "type": "node",
-            "childType": "Exit Type",
+            "childType": "Position",
             "autoAdd": true
         },
         {
-            "name": "status",
+            "name": "strategyTriggerStage",
             "type": "node",
-            "childType": "Status",
+            "childType": "Strategy Trigger Stage",
             "autoAdd": true
         },
         {
-            "name": "beginRate",
+            "name": "strategyOpenStage",
             "type": "node",
-            "childType": "Begin Rate",
+            "childType": "Strategy Open Stage",
             "autoAdd": true
         },
         {
-            "name": "endRate",
+            "name": "strategyManageStage",
             "type": "node",
-            "childType": "End Rate",
+            "childType": "Strategy Manage Stage",
             "autoAdd": true
         },
         {
-            "name": "stageDefinedIn",
+            "name": "strategyCloseStage",
             "type": "node",
-            "childType": "Stage Defined In",
-            "autoAdd": true
-        },
-        {
-            "name": "stageBaseAsset",
-            "type": "node",
-            "childType": "Stage Base Asset",
-            "autoAdd": true
-        },
-        {
-            "name": "stageQuotedAsset",
-            "type": "node",
-            "childType": "Stage Quoted Asset",
+            "childType": "Strategy Close Stage",
             "autoAdd": true
         }
     ]
