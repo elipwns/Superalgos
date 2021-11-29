@@ -1,9 +1,9 @@
 {
-    "type": "Managed Tasks",
+    "type": "Portfolio Task Manager",
     "menuItems": [
         {
-            "action": "Run All Managed Tasks",
-            "label": "Run All Managed Tasks",
+            "action": "Run All Tasks",
+            "label": "Run All Tasks",
             "askConfirmation": true,
             "confirmationLabel": "Confirm to Run",
             "workDoneLabel": "Run Request Sent",
@@ -12,8 +12,8 @@
             "actionFunction": "payload.executeAction"
         },
         {
-            "action": "Stop All Managed Tasks",
-            "label": "Stop All Managed Tasks",
+            "action": "Stop All Tasks",
+            "label": "Stop All Tasks",
             "askConfirmation": true,
             "confirmationLabel": "Confirm to Stop",
             "workDoneLabel": "Stop Request Sent",
@@ -23,8 +23,8 @@
         },
         {
             "action": "Add UI Object",
-            "label": "Add Task Reference",
-            "relatedUiObject": "Task Reference",
+            "label": "Add Portfolio Task",
+            "relatedUiObject": "Portfolio Task",
             "actionFunction": "payload.executeAction",
             "actionProject": "Visual-Scripting",
             "relatedUiObjectProject": "Foundations"
@@ -43,16 +43,16 @@
     "addLeftIcons": true,
     "level": 2,
     "attachingRules": {
-        "compatibleTypes": "->Portfolio Task->"
+        "compatibleTypes": "Portfolio Mine Tasks->"
     },
     "childrenNodesProperties": [
         {
-            "name": "taskReference",
+            "name": "portfolioTasks",
             "type": "array",
-            "childType": "Task Reference",
+            "childType": "Portfolio Task",
             "autoAdd": false,
             "monitorChildrenRunning": true
         }
     ],
-    "propertyNameAtParent": "managedTasks"
+    "propertyNameAtParent": "portfolioTaskManagers"
 }
