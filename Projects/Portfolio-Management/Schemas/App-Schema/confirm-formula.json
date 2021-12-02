@@ -1,5 +1,5 @@
 {
-    "type": "Take Position PM Event",
+    "type": "Confirm Formula",
     "menuItems": [
         {
             "action": "Delete UI Object",
@@ -13,17 +13,11 @@
         }
     ],
     "addLeftIcons": true,
-    "initialValues": {
-        "config": "{}"
-    },
-    "editors": {
-        "config": true
-    },
     "level": 2,
     "attachingRules": {
-        "compatibleTypes": "->Take Position Event->"
+        "compatibleTypes": "->Ask Portfolio Formula Manager->"
     },
     "childrenNodesProperties": [
     ],
-    "propertyNameAtParent": "takePositionPMEvent"
+    "propertyNameAtParent": "confirmFormula"
 }

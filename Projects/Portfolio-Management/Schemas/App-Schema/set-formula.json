@@ -1,5 +1,5 @@
 {
-    "type": "Cancel Order PM Event",
+    "type": "Set Formula",
     "menuItems": [
         {
             "action": "Delete UI Object",
@@ -13,17 +13,11 @@
         }
     ],
     "addLeftIcons": true,
-    "initialValues": {
-        "config": "{}"
-    },
-    "editors": {
-        "config": true
-    },
-    "level": 4,
+    "level": 2,
     "attachingRules": {
-        "compatibleTypes": "->Cancel Order Event->"
+        "compatibleTypes": "->Ask Portfolio Formula Manager->"
     },
     "childrenNodesProperties": [
     ],
-    "propertyNameAtParent": "cancelOrderPMEvent"
+    "propertyNameAtParent": "setFormula"
 }
