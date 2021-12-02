@@ -1,22 +1,22 @@
 {
-    "type": "Target Rate",
+    "type": "Ask Portfolio Formula Manager",
     "menuItems": [
         {
             "action": "Add UI Object",
+            "label": "Add Confirm Formula",
             "disableIfPropertyIsDefined": true,
-            "propertyToCheckFor": "formula",
-            "label": "Add Formula",
-            "relatedUiObject": "Formula",
+            "propertyToCheckFor": "confirmFormula",
+            "relatedUiObject": "Confirm Formula",
             "actionFunction": "payload.executeAction",
-            "actionProject": "Visual-Scripting",
-            "relatedUiObjectProject": "Foundations"
+            "relatedUiObjectProject": "Portfolio-Management",
+            "actionProject": "Visual-Scripting"
         },
         {
             "action": "Add UI Object",
-            "label": "Add Ask Portfolio Formula Manager",
+            "label": "Add Set Formula",
             "disableIfPropertyIsDefined": true,
-            "propertyToCheckFor": "askPortfolioFormulaManager",
-            "relatedUiObject": "Ask Portfolio Formula Manager",
+            "propertyToCheckFor": "setFormula",
+            "relatedUiObject": "Set Formula",
             "actionFunction": "payload.executeAction",
             "relatedUiObjectProject": "Portfolio-Management",
             "actionProject": "Visual-Scripting"
@@ -33,22 +33,21 @@
         }
     ],
     "addLeftIcons": true,
-    "level": 4,
+    "level": 2,
     "attachingRules": {
-        "compatibleTypes": "->Initial Targets->"
+        "compatibleTypes": "->Target Rate->Target Size In Base Asset->Target Size In Quoted Asset->Managed Stop Loss->Managed Take Profit->Order Rate->"
     },
     "childrenNodesProperties": [
         {
-            "name": "formula",
+            "name": "confirmFormula",
             "type": "node",
-            "childType": "Formula",
-            "autoAdd": true
+            "childType": "Confirm Formula"
         },
         {
-            "name": "askPortfolioFormulaManager",
+            "name": "setFormula",
             "type": "node",
-            "childType": "Ask Portfolio Formula Manager"
+            "childType": "Set Formula"
         }
     ],
-    "propertyNameAtParent": "targetRate"
+    "propertyNameAtParent": "askPortfolioFormulaManager"
 }

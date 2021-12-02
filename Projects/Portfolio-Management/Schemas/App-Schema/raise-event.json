@@ -1,5 +1,5 @@
 {
-    "type": "Target Size In Quoted Asset PM Formula",
+    "type": "Raise Event",
     "menuItems": [
         {
             "action": "Delete UI Object",
@@ -13,17 +13,11 @@
         }
     ],
     "addLeftIcons": true,
-    "initialValues": {
-        "config": "{}"
-    },
-    "editors": {
-        "config": true
-    },
-    "level": 4,
+    "level": 2,
     "attachingRules": {
-        "compatibleTypes": "->Target Size In Quoted Asset->"
+        "compatibleTypes": "->Ask Portfolio Events Manager->"
     },
     "childrenNodesProperties": [
     ],
-    "propertyNameAtParent": "targetSizeInQuotedAssetPMFormula"
+    "propertyNameAtParent": "raiseEvent"
 }

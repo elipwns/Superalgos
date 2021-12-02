@@ -1,22 +1,22 @@
 {
-    "type": "Target Rate",
+    "type": "Ask Portfolio Events Manager",
     "menuItems": [
         {
             "action": "Add UI Object",
+            "label": "Add Confirm Event",
             "disableIfPropertyIsDefined": true,
-            "propertyToCheckFor": "formula",
-            "label": "Add Formula",
-            "relatedUiObject": "Formula",
+            "propertyToCheckFor": "confirmEvent",
+            "relatedUiObject": "Confirm Event",
             "actionFunction": "payload.executeAction",
-            "actionProject": "Visual-Scripting",
-            "relatedUiObjectProject": "Foundations"
+            "relatedUiObjectProject": "Portfolio-Management",
+            "actionProject": "Visual-Scripting"
         },
         {
             "action": "Add UI Object",
-            "label": "Add Ask Portfolio Formula Manager",
+            "label": "Add Raise Event",
             "disableIfPropertyIsDefined": true,
-            "propertyToCheckFor": "askPortfolioFormulaManager",
-            "relatedUiObject": "Ask Portfolio Formula Manager",
+            "propertyToCheckFor": "raiseEvent",
+            "relatedUiObject": "Raise Event",
             "actionFunction": "payload.executeAction",
             "relatedUiObjectProject": "Portfolio-Management",
             "actionProject": "Visual-Scripting"
@@ -33,22 +33,21 @@
         }
     ],
     "addLeftIcons": true,
-    "level": 4,
+    "level": 2,
     "attachingRules": {
-        "compatibleTypes": "->Initial Targets->"
+        "compatibleTypes": "->Trigger On Event->Trigger Off Event->Take Position Event->Create Order Event->Cancel Order Event->Close Stage Event->Next Phase Event->Move To Phase Event->"
     },
     "childrenNodesProperties": [
         {
-            "name": "formula",
+            "name": "confirmEvent",
             "type": "node",
-            "childType": "Formula",
-            "autoAdd": true
+            "childType": "Confirm Event"
         },
         {
-            "name": "askPortfolioFormulaManager",
+            "name": "raiseEvent",
             "type": "node",
-            "childType": "Ask Portfolio Formula Manager"
+            "childType": "Raise Event"
         }
     ],
-    "propertyNameAtParent": "targetRate"
+    "propertyNameAtParent": "askPortfolioEventsManager"
 }

@@ -1,5 +1,5 @@
 {
-    "type": "Create Order PM Event",
+    "type": "Confirm Event",
     "menuItems": [
         {
             "action": "Delete UI Object",
@@ -13,17 +13,11 @@
         }
     ],
     "addLeftIcons": true,
-    "initialValues": {
-        "config": "{}"
-    },
-    "editors": {
-        "config": true
-    },
     "level": 2,
     "attachingRules": {
-        "compatibleTypes": "->Create Order Event->"
+        "compatibleTypes": "->Ask Portfolio Events Manager->"
     },
     "childrenNodesProperties": [
     ],
-    "propertyNameAtParent": "createOrderPMEvent"
+    "propertyNameAtParent": "confirmEvent"
 }
