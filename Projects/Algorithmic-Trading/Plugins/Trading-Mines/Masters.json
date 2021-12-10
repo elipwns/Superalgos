@@ -22173,7 +22173,7 @@
                             },
                             {
                                 "type": "Data Mine Data Dependencies",
-                                "name": "",
+                                "name": "Polus",
                                 "project": "Foundations",
                                 "botDataDependencies": [
                                     {
@@ -22183,7 +22183,7 @@
                                         "dataDependencies": [
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "Fisher MFI Multi-Time-Frame-Market",
                                                 "project": "Foundations",
                                                 "id": "f62adc87-8d85-4887-9ecb-b85c9af2e3c1",
                                                 "savedPayload": {
@@ -22209,39 +22209,31 @@
                                                     "referenceParent": {
                                                         "type": "Dataset Definition",
                                                         "name": "Multi-Time-Frame-Market",
-                                                        "id": "bbe99317-411b-45a4-ba5d-7d422c48e18e"
+                                                        "id": "764f8540-b671-463d-b238-d77067c20807"
                                                     },
                                                     "referenceParentCombinedNodePath": [
                                                         [
                                                             "Polus",
-                                                            "Data Mine",
-                                                            "Data-Mining",
-                                                            "ad7f9ab4-6f68-43e1-821b-085134ee1793"
+                                                            "Data Mine"
                                                         ],
                                                         [
                                                             "Fisher MFI",
-                                                            "Indicator Bot",
-                                                            "Data-Mining",
-                                                            "562feb95-cec8-4d04-b7e6-5f2e97767c79"
+                                                            "Indicator Bot"
                                                         ],
                                                         [
                                                             "Fisher MFI",
-                                                            "Product Definition",
-                                                            "Foundations",
-                                                            "f4ebd003-1c87-483c-86e9-61c9a43d70d3"
+                                                            "Product Definition"
                                                         ],
                                                         [
                                                             "Multi-Time-Frame-Market",
-                                                            "Dataset Definition",
-                                                            "Foundations",
-                                                            "bbe99317-411b-45a4-ba5d-7d422c48e18e"
+                                                            "Dataset Definition"
                                                         ]
                                                     ]
                                                 }
                                             },
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "Fisher MFI Multi-Time-Frame-Daily",
                                                 "project": "Foundations",
                                                 "id": "9c56511d-7619-4797-8208-d88956c86d0d",
                                                 "savedPayload": {
@@ -22267,32 +22259,24 @@
                                                     "referenceParent": {
                                                         "type": "Dataset Definition",
                                                         "name": "Multi-Time-Frame-Daily",
-                                                        "id": "c5575c4e-4f43-488f-b0c0-e71af1dfce8d"
+                                                        "id": "bb9e490f-355e-4e97-99f7-a971c9d2a140"
                                                     },
                                                     "referenceParentCombinedNodePath": [
                                                         [
                                                             "Polus",
-                                                            "Data Mine",
-                                                            "Data-Mining",
-                                                            "ad7f9ab4-6f68-43e1-821b-085134ee1793"
+                                                            "Data Mine"
                                                         ],
                                                         [
                                                             "Fisher MFI",
-                                                            "Indicator Bot",
-                                                            "Data-Mining",
-                                                            "562feb95-cec8-4d04-b7e6-5f2e97767c79"
+                                                            "Indicator Bot"
                                                         ],
                                                         [
                                                             "Fisher MFI",
-                                                            "Product Definition",
-                                                            "Foundations",
-                                                            "f4ebd003-1c87-483c-86e9-61c9a43d70d3"
+                                                            "Product Definition"
                                                         ],
                                                         [
                                                             "Multi-Time-Frame-Daily",
-                                                            "Dataset Definition",
-                                                            "Foundations",
-                                                            "c5575c4e-4f43-488f-b0c0-e71af1dfce8d"
+                                                            "Dataset Definition"
                                                         ]
                                                     ]
                                                 }
@@ -22329,7 +22313,7 @@
                                         "dataDependencies": [
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "Monte Carlo Forecast Multi-Time-Frame-Market",
                                                 "project": "Foundations",
                                                 "id": "8a35840e-644a-48c1-9f73-3d09da3a3286",
                                                 "savedPayload": {
@@ -22355,39 +22339,31 @@
                                                     "referenceParent": {
                                                         "type": "Dataset Definition",
                                                         "name": "Multi-Time-Frame-Market",
-                                                        "id": "f9149165-daaf-42a2-8f28-94b7d41fdc74"
+                                                        "id": "af017c5d-58ce-42c1-8c9b-6be2a2b52c47"
                                                     },
                                                     "referenceParentCombinedNodePath": [
                                                         [
                                                             "Polus",
-                                                            "Data Mine",
-                                                            "Data-Mining",
-                                                            "ad7f9ab4-6f68-43e1-821b-085134ee1793"
+                                                            "Data Mine"
                                                         ],
                                                         [
                                                             "Monte Carlo Forecast",
-                                                            "Indicator Bot",
-                                                            "Data-Mining",
-                                                            "fb088db6-39a0-4289-bc27-2584a48c3a42"
+                                                            "Indicator Bot"
                                                         ],
                                                         [
                                                             "Monte Carlo Forecast",
-                                                            "Product Definition",
-                                                            "Foundations",
-                                                            "6d1d7189-8b30-4b7a-9e1b-d92ae438d4bc"
+                                                            "Product Definition"
                                                         ],
                                                         [
                                                             "Multi-Time-Frame-Market",
-                                                            "Dataset Definition",
-                                                            "Foundations",
-                                                            "f9149165-daaf-42a2-8f28-94b7d41fdc74"
+                                                            "Dataset Definition"
                                                         ]
                                                     ]
                                                 }
                                             },
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "Monte Carlo Forecast Multi-Time-Frame-Daily",
                                                 "project": "Foundations",
                                                 "id": "d77cd949-1089-47d8-8395-fc7d92b3f29f",
                                                 "savedPayload": {
@@ -22413,32 +22389,24 @@
                                                     "referenceParent": {
                                                         "type": "Dataset Definition",
                                                         "name": "Multi-Time-Frame-Daily",
-                                                        "id": "9b813e27-77e6-4a8e-9b5f-f3395360d623"
+                                                        "id": "dc478532-4ea2-42e8-b854-e0bfac13069c"
                                                     },
                                                     "referenceParentCombinedNodePath": [
                                                         [
                                                             "Polus",
-                                                            "Data Mine",
-                                                            "Data-Mining",
-                                                            "ad7f9ab4-6f68-43e1-821b-085134ee1793"
+                                                            "Data Mine"
                                                         ],
                                                         [
                                                             "Monte Carlo Forecast",
-                                                            "Indicator Bot",
-                                                            "Data-Mining",
-                                                            "fb088db6-39a0-4289-bc27-2584a48c3a42"
+                                                            "Indicator Bot"
                                                         ],
                                                         [
                                                             "Monte Carlo Forecast",
-                                                            "Product Definition",
-                                                            "Foundations",
-                                                            "6d1d7189-8b30-4b7a-9e1b-d92ae438d4bc"
+                                                            "Product Definition"
                                                         ],
                                                         [
                                                             "Multi-Time-Frame-Daily",
-                                                            "Dataset Definition",
-                                                            "Foundations",
-                                                            "9b813e27-77e6-4a8e-9b5f-f3395360d623"
+                                                            "Dataset Definition"
                                                         ]
                                                     ]
                                                 }
@@ -22475,7 +22443,7 @@
                                         "dataDependencies": [
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "MAMA_PLUV Multi-Time-Frame-Market",
                                                 "project": "Foundations",
                                                 "id": "df87398e-fbf7-486b-aacd-531557dbc3b8",
                                                 "savedPayload": {
@@ -22501,39 +22469,31 @@
                                                     "referenceParent": {
                                                         "type": "Dataset Definition",
                                                         "name": "Multi-Time-Frame-Market",
-                                                        "id": "7377ab5d-c90c-44fb-9b2a-7266c4561f44"
+                                                        "id": "4f579fb7-dade-47e5-bc23-171439873b2b"
                                                     },
                                                     "referenceParentCombinedNodePath": [
                                                         [
                                                             "Polus",
-                                                            "Data Mine",
-                                                            "Data-Mining",
-                                                            "ad7f9ab4-6f68-43e1-821b-085134ee1793"
+                                                            "Data Mine"
                                                         ],
                                                         [
                                                             "Keltner",
-                                                            "Indicator Bot",
-                                                            "Data-Mining",
-                                                            "f4a1f3d3-157d-45a3-a7aa-46ee3e569e21"
+                                                            "Indicator Bot"
                                                         ],
                                                         [
                                                             "MAMA_PLUV",
-                                                            "Product Definition",
-                                                            "Foundations",
-                                                            "144cd1a6-c72c-4ab9-8852-41007533cf34"
+                                                            "Product Definition"
                                                         ],
                                                         [
                                                             "Multi-Time-Frame-Market",
-                                                            "Dataset Definition",
-                                                            "Foundations",
-                                                            "7377ab5d-c90c-44fb-9b2a-7266c4561f44"
+                                                            "Dataset Definition"
                                                         ]
                                                     ]
                                                 }
                                             },
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "MAMA_PLUV Multi-Time-Frame-Daily",
                                                 "project": "Foundations",
                                                 "id": "22cdcd39-e541-429f-82aa-5da94d602c6b",
                                                 "savedPayload": {
@@ -22559,39 +22519,31 @@
                                                     "referenceParent": {
                                                         "type": "Dataset Definition",
                                                         "name": "Multi-Time-Frame-Daily",
-                                                        "id": "549ca751-796e-4319-b665-da2c55cf604c"
+                                                        "id": "d6abca04-2bc2-4a68-b89a-82b6d914a293"
                                                     },
                                                     "referenceParentCombinedNodePath": [
                                                         [
                                                             "Polus",
-                                                            "Data Mine",
-                                                            "Data-Mining",
-                                                            "ad7f9ab4-6f68-43e1-821b-085134ee1793"
+                                                            "Data Mine"
                                                         ],
                                                         [
                                                             "Keltner",
-                                                            "Indicator Bot",
-                                                            "Data-Mining",
-                                                            "f4a1f3d3-157d-45a3-a7aa-46ee3e569e21"
+                                                            "Indicator Bot"
                                                         ],
                                                         [
                                                             "MAMA_PLUV",
-                                                            "Product Definition",
-                                                            "Foundations",
-                                                            "144cd1a6-c72c-4ab9-8852-41007533cf34"
+                                                            "Product Definition"
                                                         ],
                                                         [
                                                             "Multi-Time-Frame-Daily",
-                                                            "Dataset Definition",
-                                                            "Foundations",
-                                                            "549ca751-796e-4319-b665-da2c55cf604c"
+                                                            "Dataset Definition"
                                                         ]
                                                     ]
                                                 }
                                             },
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "Keltner MAMA Multi-Time-Frame-Market",
                                                 "project": "Foundations",
                                                 "id": "71ad0f43-0d76-4eba-aba9-cbb9ab04358e",
                                                 "savedPayload": {
@@ -22617,39 +22569,31 @@
                                                     "referenceParent": {
                                                         "type": "Dataset Definition",
                                                         "name": "Multi-Time-Frame-Market",
-                                                        "id": "afb8375a-2f8e-47c2-8ef5-46d2beaa7070"
+                                                        "id": "0e2f9a9e-06e9-48f6-895e-255d34d21f07"
                                                     },
                                                     "referenceParentCombinedNodePath": [
                                                         [
                                                             "Polus",
-                                                            "Data Mine",
-                                                            "Data-Mining",
-                                                            "ad7f9ab4-6f68-43e1-821b-085134ee1793"
+                                                            "Data Mine"
                                                         ],
                                                         [
                                                             "Keltner",
-                                                            "Indicator Bot",
-                                                            "Data-Mining",
-                                                            "f4a1f3d3-157d-45a3-a7aa-46ee3e569e21"
+                                                            "Indicator Bot"
                                                         ],
                                                         [
                                                             "Keltner MAMA",
-                                                            "Product Definition",
-                                                            "Foundations",
-                                                            "027ff656-cff6-4ddd-bc53-c32628fc3141"
+                                                            "Product Definition"
                                                         ],
                                                         [
                                                             "Multi-Time-Frame-Market",
-                                                            "Dataset Definition",
-                                                            "Foundations",
-                                                            "afb8375a-2f8e-47c2-8ef5-46d2beaa7070"
+                                                            "Dataset Definition"
                                                         ]
                                                     ]
                                                 }
                                             },
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "Keltner MAMA Multi-Time-Frame-Daily",
                                                 "project": "Foundations",
                                                 "id": "f335a721-7627-4d75-9ded-f5dc290faa7b",
                                                 "savedPayload": {
@@ -22675,39 +22619,31 @@
                                                     "referenceParent": {
                                                         "type": "Dataset Definition",
                                                         "name": "Multi-Time-Frame-Daily",
-                                                        "id": "81726cc3-cb63-482a-b142-c2ea551cb0a1"
+                                                        "id": "e0c07a18-6962-4e11-8657-a450924b6062"
                                                     },
                                                     "referenceParentCombinedNodePath": [
                                                         [
                                                             "Polus",
-                                                            "Data Mine",
-                                                            "Data-Mining",
-                                                            "ad7f9ab4-6f68-43e1-821b-085134ee1793"
+                                                            "Data Mine"
                                                         ],
                                                         [
                                                             "Keltner",
-                                                            "Indicator Bot",
-                                                            "Data-Mining",
-                                                            "f4a1f3d3-157d-45a3-a7aa-46ee3e569e21"
+                                                            "Indicator Bot"
                                                         ],
                                                         [
                                                             "Keltner MAMA",
-                                                            "Product Definition",
-                                                            "Foundations",
-                                                            "027ff656-cff6-4ddd-bc53-c32628fc3141"
+                                                            "Product Definition"
                                                         ],
                                                         [
                                                             "Multi-Time-Frame-Daily",
-                                                            "Dataset Definition",
-                                                            "Foundations",
-                                                            "81726cc3-cb63-482a-b142-c2ea551cb0a1"
+                                                            "Dataset Definition"
                                                         ]
                                                     ]
                                                 }
                                             },
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "Keltner EMA Multi-Time-Frame-Market",
                                                 "project": "Foundations",
                                                 "id": "d39f7cc8-aa25-4049-a238-0ed850df0aae",
                                                 "savedPayload": {
@@ -22733,39 +22669,31 @@
                                                     "referenceParent": {
                                                         "type": "Dataset Definition",
                                                         "name": "Multi-Time-Frame-Market",
-                                                        "id": "48fb3d36-b2d4-4813-9c5c-9ff28ec7e386"
+                                                        "id": "f98fe6b0-7143-4246-9acd-89812651f8e1"
                                                     },
                                                     "referenceParentCombinedNodePath": [
                                                         [
                                                             "Polus",
-                                                            "Data Mine",
-                                                            "Data-Mining",
-                                                            "ad7f9ab4-6f68-43e1-821b-085134ee1793"
+                                                            "Data Mine"
                                                         ],
                                                         [
                                                             "Keltner",
-                                                            "Indicator Bot",
-                                                            "Data-Mining",
-                                                            "f4a1f3d3-157d-45a3-a7aa-46ee3e569e21"
+                                                            "Indicator Bot"
                                                         ],
                                                         [
                                                             "Keltner EMA",
-                                                            "Product Definition",
-                                                            "Foundations",
-                                                            "e74cb1fd-b21c-45b6-949d-13fd91cd134b"
+                                                            "Product Definition"
                                                         ],
                                                         [
                                                             "Multi-Time-Frame-Market",
-                                                            "Dataset Definition",
-                                                            "Foundations",
-                                                            "48fb3d36-b2d4-4813-9c5c-9ff28ec7e386"
+                                                            "Dataset Definition"
                                                         ]
                                                     ]
                                                 }
                                             },
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "Keltner EMA Multi-Time-Frame-Daily",
                                                 "project": "Foundations",
                                                 "id": "b235dd2f-6d03-44f7-a31d-f59e3ef8aa6a",
                                                 "savedPayload": {
@@ -22791,32 +22719,24 @@
                                                     "referenceParent": {
                                                         "type": "Dataset Definition",
                                                         "name": "Multi-Time-Frame-Daily",
-                                                        "id": "20916735-45fb-4fc5-be38-84ae6a591f8e"
+                                                        "id": "5a0d50fa-57ce-45b0-a90f-03d2ad7825b0"
                                                     },
                                                     "referenceParentCombinedNodePath": [
                                                         [
                                                             "Polus",
-                                                            "Data Mine",
-                                                            "Data-Mining",
-                                                            "ad7f9ab4-6f68-43e1-821b-085134ee1793"
+                                                            "Data Mine"
                                                         ],
                                                         [
                                                             "Keltner",
-                                                            "Indicator Bot",
-                                                            "Data-Mining",
-                                                            "f4a1f3d3-157d-45a3-a7aa-46ee3e569e21"
+                                                            "Indicator Bot"
                                                         ],
                                                         [
                                                             "Keltner EMA",
-                                                            "Product Definition",
-                                                            "Foundations",
-                                                            "e74cb1fd-b21c-45b6-949d-13fd91cd134b"
+                                                            "Product Definition"
                                                         ],
                                                         [
                                                             "Multi-Time-Frame-Daily",
-                                                            "Dataset Definition",
-                                                            "Foundations",
-                                                            "20916735-45fb-4fc5-be38-84ae6a591f8e"
+                                                            "Dataset Definition"
                                                         ]
                                                     ]
                                                 }
@@ -22853,7 +22773,7 @@
                                         "dataDependencies": [
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "One minute counters Multi-Time-Frame-Market",
                                                 "project": "Foundations",
                                                 "id": "c143017a-1fcf-4d93-a259-685e66714ee4",
                                                 "savedPayload": {
@@ -22879,39 +22799,31 @@
                                                     "referenceParent": {
                                                         "type": "Dataset Definition",
                                                         "name": "Multi-Time-Frame-Market",
-                                                        "id": "84e92999-5612-44b1-923b-a3cfe8f57f8d"
+                                                        "id": "d1c59568-0a52-4384-a9c4-d580b9db6f6f"
                                                     },
                                                     "referenceParentCombinedNodePath": [
                                                         [
                                                             "Polus",
-                                                            "Data Mine",
-                                                            "Data-Mining",
-                                                            "ad7f9ab4-6f68-43e1-821b-085134ee1793"
+                                                            "Data Mine"
                                                         ],
                                                         [
                                                             "One-Min counters",
-                                                            "Indicator Bot",
-                                                            "Data-Mining",
-                                                            "11ee259b-adec-4c26-9c07-d61ed37ca3a3"
+                                                            "Indicator Bot"
                                                         ],
                                                         [
                                                             "One minute counters",
-                                                            "Product Definition",
-                                                            "Foundations",
-                                                            "76779c52-55f0-4443-b95d-fe95776124a2"
+                                                            "Product Definition"
                                                         ],
                                                         [
                                                             "Multi-Time-Frame-Market",
-                                                            "Dataset Definition",
-                                                            "Foundations",
-                                                            "84e92999-5612-44b1-923b-a3cfe8f57f8d"
+                                                            "Dataset Definition"
                                                         ]
                                                     ]
                                                 }
                                             },
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "One minute counters Multi-Time-Frame-Daily",
                                                 "project": "Foundations",
                                                 "id": "fdfa506e-23d8-4dc5-b8f8-b397c6dc59f0",
                                                 "savedPayload": {
@@ -22937,32 +22849,24 @@
                                                     "referenceParent": {
                                                         "type": "Dataset Definition",
                                                         "name": "Multi-Time-Frame-Daily",
-                                                        "id": "22d5337b-5287-4660-8ad2-5915843c0081"
+                                                        "id": "ce5ea430-b5e3-4809-b463-c3113b5c127a"
                                                     },
                                                     "referenceParentCombinedNodePath": [
                                                         [
                                                             "Polus",
-                                                            "Data Mine",
-                                                            "Data-Mining",
-                                                            "ad7f9ab4-6f68-43e1-821b-085134ee1793"
+                                                            "Data Mine"
                                                         ],
                                                         [
                                                             "One-Min counters",
-                                                            "Indicator Bot",
-                                                            "Data-Mining",
-                                                            "11ee259b-adec-4c26-9c07-d61ed37ca3a3"
+                                                            "Indicator Bot"
                                                         ],
                                                         [
                                                             "One minute counters",
-                                                            "Product Definition",
-                                                            "Foundations",
-                                                            "76779c52-55f0-4443-b95d-fe95776124a2"
+                                                            "Product Definition"
                                                         ],
                                                         [
                                                             "Multi-Time-Frame-Daily",
-                                                            "Dataset Definition",
-                                                            "Foundations",
-                                                            "22d5337b-5287-4660-8ad2-5915843c0081"
+                                                            "Dataset Definition"
                                                         ]
                                                     ]
                                                 }
@@ -23017,14 +22921,12 @@
                                     "referenceParent": {
                                         "type": "Data Mine",
                                         "name": "Polus",
-                                        "id": "ad7f9ab4-6f68-43e1-821b-085134ee1793"
+                                        "id": "5c424572-8ea8-4267-8ee1-00c35c511cc6"
                                     },
                                     "referenceParentCombinedNodePath": [
                                         [
                                             "Polus",
-                                            "Data Mine",
-                                            "Data-Mining",
-                                            "ad7f9ab4-6f68-43e1-821b-085134ee1793"
+                                            "Data Mine"
                                         ]
                                     ]
                                 }
@@ -25149,7 +25051,7 @@
                             },
                             {
                                 "type": "Data Mine Data Dependencies",
-                                "name": "Enhanced_Bollinger_Stochastic",
+                                "name": "",
                                 "project": "Foundations",
                                 "botDataDependencies": [
                                     {
@@ -25159,7 +25061,7 @@
                                         "dataDependencies": [
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "Stochastic Multi-Time-Frame-Market",
+                                                "name": "",
                                                 "project": "Foundations",
                                                 "id": "10e66cfd-add8-4f89-92a1-d39f471843e9",
                                                 "savedPayload": {
@@ -25209,7 +25111,7 @@
                                             },
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "Stochastic Multi-Time-Frame-Daily",
+                                                "name": "",
                                                 "project": "Foundations",
                                                 "id": "033071da-a505-4ff1-9248-6bcf32ae3dd8",
                                                 "savedPayload": {
@@ -25289,7 +25191,7 @@
                                         "dataDependencies": [
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "Enhanced_Bollinger Multi-Time-Frame-Market",
+                                                "name": "",
                                                 "project": "Foundations",
                                                 "id": "c7d4fdea-61f1-4097-8549-ebf655272990",
                                                 "savedPayload": {
@@ -25339,7 +25241,7 @@
                                             },
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "Enhanced_Bollinger Multi-Time-Frame-Daily",
+                                                "name": "",
                                                 "project": "Foundations",
                                                 "id": "ce662910-5967-47b9-ba07-b0007223756d",
                                                 "savedPayload": {
@@ -25419,7 +25321,7 @@
                                         "dataDependencies": [
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "New Data Dependency",
+                                                "name": "",
                                                 "project": "Foundations",
                                                 "id": "e1f3196f-3001-4819-bbb1-5dba67d1e3dc",
                                                 "savedPayload": {
@@ -25469,7 +25371,7 @@
                                             },
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "New Data Dependency",
+                                                "name": "",
                                                 "project": "Foundations",
                                                 "id": "2b17b795-0fa3-43bc-9b71-0b6ea865cea3",
                                                 "savedPayload": {
@@ -25572,6 +25474,176 @@
                                     "referenceParentCombinedNodePath": [
                                         [
                                             "Enhanced_Bollinger_Stochastic",
+                                            "Data Mine"
+                                        ]
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "Data Mine Data Dependencies",
+                                "name": "New Data Mine Data Dependencies",
+                                "project": "Foundations",
+                                "botDataDependencies": [
+                                    {
+                                        "type": "Bot Data Dependencies",
+                                        "name": "MACD R2",
+                                        "project": "Foundations",
+                                        "dataDependencies": [
+                                            {
+                                                "type": "Data Dependency",
+                                                "name": "New Data Dependency",
+                                                "project": "Foundations",
+                                                "id": "f55ad029-72ab-425e-bc82-d26ba6cc030a",
+                                                "savedPayload": {
+                                                    "position": {
+                                                        "x": 25649.80415831964,
+                                                        "y": 17964.25901084486
+                                                    },
+                                                    "targetPosition": {
+                                                        "x": 25555.80415831964,
+                                                        "y": 18027.25901084486
+                                                    },
+                                                    "floatingObject": {
+                                                        "isPinned": false,
+                                                        "isFrozen": false,
+                                                        "isCollapsed": false,
+                                                        "angleToParent": 2,
+                                                        "distanceToParent": 3,
+                                                        "arrangementStyle": 0
+                                                    },
+                                                    "uiObject": {
+                                                        "isRunning": false
+                                                    },
+                                                    "referenceParent": {
+                                                        "type": "Dataset Definition",
+                                                        "name": "Multi-Time-Frame-Market",
+                                                        "id": "de36a17c-c790-4fd6-8b27-01ce4880a537"
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "MCAD R1 & R2",
+                                                            "Data Mine"
+                                                        ],
+                                                        [
+                                                            "MACD R2",
+                                                            "Indicator Bot"
+                                                        ],
+                                                        [
+                                                            "MACD R2",
+                                                            "Product Definition"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Market",
+                                                            "Dataset Definition"
+                                                        ]
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "type": "Data Dependency",
+                                                "name": "New Data Dependency",
+                                                "project": "Foundations",
+                                                "id": "7393e75e-45f1-412b-b3eb-28f126d2ee67",
+                                                "savedPayload": {
+                                                    "position": {
+                                                        "x": 25494.80415831964,
+                                                        "y": 18036.25901084486
+                                                    },
+                                                    "targetPosition": {
+                                                        "x": 25555.80415831964,
+                                                        "y": 18027.25901084486
+                                                    },
+                                                    "floatingObject": {
+                                                        "isPinned": false,
+                                                        "isFrozen": false,
+                                                        "isCollapsed": false,
+                                                        "angleToParent": 2,
+                                                        "distanceToParent": 3,
+                                                        "arrangementStyle": 0
+                                                    },
+                                                    "uiObject": {
+                                                        "isRunning": false
+                                                    },
+                                                    "referenceParent": {
+                                                        "type": "Dataset Definition",
+                                                        "name": "Multi-Time-Frame-Daily",
+                                                        "id": "481dc0bd-9866-4c44-9395-9acde8f419bc"
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "MCAD R1 & R2",
+                                                            "Data Mine"
+                                                        ],
+                                                        [
+                                                            "MACD R2",
+                                                            "Indicator Bot"
+                                                        ],
+                                                        [
+                                                            "MACD R2",
+                                                            "Product Definition"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Daily",
+                                                            "Dataset Definition"
+                                                        ]
+                                                    ]
+                                                }
+                                            }
+                                        ],
+                                        "dataDependencyFolders": [],
+                                        "id": "9fd7e1ac-7322-42f2-b2b3-9223d995c783",
+                                        "savedPayload": {
+                                            "position": {
+                                                "x": 25555.80415831964,
+                                                "y": 18027.25901084486
+                                            },
+                                            "targetPosition": {
+                                                "x": 25629.80415831964,
+                                                "y": 17976.25901084486
+                                            },
+                                            "floatingObject": {
+                                                "isPinned": false,
+                                                "isFrozen": false,
+                                                "isCollapsed": false,
+                                                "angleToParent": 2,
+                                                "distanceToParent": 3,
+                                                "arrangementStyle": 0
+                                            },
+                                            "uiObject": {
+                                                "isRunning": false
+                                            }
+                                        }
+                                    }
+                                ],
+                                "id": "ff391191-aa73-4ca3-909e-bf6ce65d40cc",
+                                "savedPayload": {
+                                    "position": {
+                                        "x": 25629.80415831964,
+                                        "y": 17976.25901084486
+                                    },
+                                    "targetPosition": {
+                                        "x": 25725.80415831964,
+                                        "y": 17917.25901084486
+                                    },
+                                    "floatingObject": {
+                                        "isPinned": false,
+                                        "isFrozen": false,
+                                        "isCollapsed": false,
+                                        "angleToParent": 2,
+                                        "distanceToParent": 3,
+                                        "arrangementStyle": 0
+                                    },
+                                    "uiObject": {
+                                        "isRunning": false
+                                    },
+                                    "referenceParent": {
+                                        "type": "Data Mine",
+                                        "name": "MCAD R1 & R2",
+                                        "id": "c8e9b9b2-86c3-4cb9-9408-c647b64e9b9c"
+                                    },
+                                    "referenceParentCombinedNodePath": [
+                                        [
+                                            "MCAD R1 & R2",
                                             "Data Mine"
                                         ]
                                     ]
