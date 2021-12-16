@@ -6977,8 +6977,8 @@
                                 "id": "ac3fb379-037f-4a18-9716-6c3f7e99535b",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 25286.756132236744,
-                                        "y": 17818.583629960303
+                                        "x": 25285.637737989426,
+                                        "y": 17823.69874997687
                                     },
                                     "targetPosition": {
                                         "x": 25725.80415831964,
@@ -7036,8 +7036,8 @@
                                 "id": "35ab5861-af3d-431e-89c0-8c39e48c4345",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 25301.180330442527,
-                                        "y": 17768.28047279663
+                                        "x": 25297.82872598682,
+                                        "y": 17778.201363376134
                                     },
                                     "targetPosition": {
                                         "x": 25725.80415831964,
@@ -7095,8 +7095,8 @@
                                 "id": "fc8576f6-ddc2-4a70-aece-71ea0a653f5f",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 25321.346837485013,
-                                        "y": 17719.991994789776
+                                        "x": 25314.708702380467,
+                                        "y": 17734.22752146075
                                     },
                                     "targetPosition": {
                                         "x": 25725.80415831964,
@@ -9482,8 +9482,8 @@
                                 "id": "e6a34103-41ef-4eed-89e8-75026ae6500a",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 25346.98293595177,
-                                        "y": 17674.37121476668
+                                        "x": 25336.09272661664,
+                                        "y": 17692.25901084486
                                     },
                                     "targetPosition": {
                                         "x": 25725.80415831964,
@@ -9527,7 +9527,7 @@
                                         "dataDependencies": [
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "Super Trend 14-3 Multi-Time-Frame-Market",
                                                 "project": "Foundations",
                                                 "id": "14b27e51-7713-4c02-80ab-08b32158b568",
                                                 "savedPayload": {
@@ -9557,10 +9557,10 @@
                                                     },
                                                     "referenceParentCombinedNodePath": [
                                                         [
-                                                            "Quasar",
+                                                            "Keltner_Bollinger_Strategy",
                                                             "Data Mine",
                                                             "Data-Mining",
-                                                            "821a251f-0408-42c6-bfcf-f21666dbb8c2"
+                                                            "692938c9-ebca-4163-99e0-ccc58ad80e1d"
                                                         ],
                                                         [
                                                             "Super Trend 14-3",
@@ -9585,7 +9585,7 @@
                                             },
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "Super Trend 14-3 Multi-Time-Frame-Daily",
                                                 "project": "Foundations",
                                                 "id": "971cee00-f594-41fc-bc6b-2026c926d0fd",
                                                 "savedPayload": {
@@ -9615,10 +9615,10 @@
                                                     },
                                                     "referenceParentCombinedNodePath": [
                                                         [
-                                                            "Quasar",
+                                                            "Keltner_Bollinger_Strategy",
                                                             "Data Mine",
                                                             "Data-Mining",
-                                                            "821a251f-0408-42c6-bfcf-f21666dbb8c2"
+                                                            "692938c9-ebca-4163-99e0-ccc58ad80e1d"
                                                         ],
                                                         [
                                                             "Super Trend 14-3",
@@ -11684,8 +11684,8 @@
                                 "id": "521c1e34-a6ae-45eb-9589-715f5ab3fe3e",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 25377.741941589356,
-                                        "y": 17632.03507551544
+                                        "x": 25361.746510850913,
+                                        "y": 17652.755647313246
                                     },
                                     "targetPosition": {
                                         "x": 25725.80415831964,
@@ -12544,8 +12544,8 @@
                                 "id": "f7d49b57-9b11-453d-98ca-5d97bed4f905",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 25413.20789161309,
-                                        "y": 17593.55610069247
+                                        "x": 25391.38898685481,
+                                        "y": 17616.150237983373
                                     },
                                     "targetPosition": {
                                         "x": 25725.80415831964,
@@ -12878,8 +12878,8 @@
                                 "id": "c34b92cc-80a2-4ad6-ab0c-afb87f9e6fcc",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 25452.901169890174,
-                                        "y": 17559.45465242218
+                                        "x": 25424.69538545815,
+                                        "y": 17582.84383938003
                                     },
                                     "targetPosition": {
                                         "x": 25725.80415831964,
@@ -12913,7 +12913,7 @@
                             },
                             {
                                 "type": "Data Mine Data Dependencies",
-                                "name": "Masters",
+                                "name": "",
                                 "project": "Foundations",
                                 "botDataDependencies": [
                                     {
@@ -12923,7 +12923,7 @@
                                         "dataDependencies": [
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "Candles Channels Multi-Time-Frame-Market",
+                                                "name": "",
                                                 "project": "Foundations",
                                                 "id": "b39e187e-206a-4c5c-b352-0dd24e0c5655",
                                                 "savedPayload": {
@@ -12981,7 +12981,7 @@
                                             },
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "Candles Channels Multi-Time-Frame-Daily",
+                                                "name": "",
                                                 "project": "Foundations",
                                                 "id": "7c122e76-c5e9-46ab-a640-f9a20a476324",
                                                 "savedPayload": {
@@ -13039,7 +13039,7 @@
                                             },
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "Candles Channels Objects Multi-Time-Frame-Market",
+                                                "name": "",
                                                 "project": "Foundations",
                                                 "id": "1ed57b87-fa6f-40c7-9287-5c9907707ed5",
                                                 "savedPayload": {
@@ -13097,7 +13097,7 @@
                                             },
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "Candles Channels Objects Multi-Time-Frame-Daily",
+                                                "name": "",
                                                 "project": "Foundations",
                                                 "id": "e3e8d7af-5d64-4545-aaf7-1182c5ca0c26",
                                                 "savedPayload": {
@@ -13243,7 +13243,7 @@
                                         "dataDependencies": [
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "Resistances Multi-Time-Frame-Market",
+                                                "name": "",
                                                 "project": "Foundations",
                                                 "id": "6fe1e819-cdc7-400f-94d8-77b54165d4cc",
                                                 "savedPayload": {
@@ -13301,7 +13301,7 @@
                                             },
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "Resistances Multi-Time-Frame-Daily",
+                                                "name": "",
                                                 "project": "Foundations",
                                                 "id": "8df0d18d-a655-4aaa-bb55-e22f267df436",
                                                 "savedPayload": {
@@ -13359,7 +13359,7 @@
                                             },
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "Supports Multi-Time-Frame-Market",
+                                                "name": "",
                                                 "project": "Foundations",
                                                 "id": "ff990e21-f57d-403f-adfe-a40d26ff4635",
                                                 "savedPayload": {
@@ -13417,7 +13417,7 @@
                                             },
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "Supports Multi-Time-Frame-Daily",
+                                                "name": "",
                                                 "project": "Foundations",
                                                 "id": "4a828e29-2c32-4c38-bb7b-9edc53d5fd33",
                                                 "savedPayload": {
@@ -13505,7 +13505,7 @@
                                         "dataDependencies": [
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "Volume Analysis Multi-Time-Frame-Market",
+                                                "name": "",
                                                 "project": "Foundations",
                                                 "id": "29338154-6cf7-441a-a9cc-4c0c2019e122",
                                                 "savedPayload": {
@@ -13563,7 +13563,7 @@
                                             },
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "Volume Analysis Multi-Time-Frame-Daily",
+                                                "name": "",
                                                 "project": "Foundations",
                                                 "id": "49b93f67-865e-4527-82e6-56df64feea88",
                                                 "savedPayload": {
@@ -13651,7 +13651,7 @@
                                         "dataDependencies": [
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "Candle Analysis Multi-Time-Frame-Market",
+                                                "name": "",
                                                 "project": "Foundations",
                                                 "id": "e037462e-7d48-485c-97ac-f5ec5c7db046",
                                                 "savedPayload": {
@@ -13709,7 +13709,7 @@
                                             },
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "Candle Analysis Multi-Time-Frame-Daily",
+                                                "name": "",
                                                 "project": "Foundations",
                                                 "id": "77dd93aa-2251-43a3-9f58-990c7ba6c422",
                                                 "savedPayload": {
@@ -13794,8 +13794,8 @@
                                 "id": "64651b44-25cb-4d9a-97d3-f97316da7031",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 25496.284992925084,
-                                        "y": 17530.191894291947
+                                        "x": 25461.300794788025,
+                                        "y": 17553.201363376134
                                     },
                                     "targetPosition": {
                                         "x": 25725.80415831964,
@@ -16026,8 +16026,8 @@
                                 "id": "7ce8a594-2e1e-47cc-bdd8-7e6a41b85e2d",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 25542.77266893553,
-                                        "y": 17506.16355490569
+                                        "x": 25500.80415831964,
+                                        "y": 17527.54757914186
                                     },
                                     "targetPosition": {
                                         "x": 25725.80415831964,
@@ -16824,8 +16824,8 @@
                                 "id": "a2e46ec1-9b91-4451-9738-9f1912c7333f",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 25591.735531852322,
-                                        "y": 17487.694576333382
+                                        "x": 25542.77266893553,
+                                        "y": 17506.16355490569
                                     },
                                     "targetPosition": {
                                         "x": 25725.80415831964,
@@ -17158,8 +17158,8 @@
                                 "id": "1a17de66-1818-412f-b40f-9ce2d416a26b",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 25642.51144294952,
-                                        "y": 17475.034719826974
+                                        "x": 25586.746510850913,
+                                        "y": 17489.28357851204
                                     },
                                     "targetPosition": {
                                         "x": 25725.80415831964,
@@ -17930,8 +17930,8 @@
                                 "id": "62a56ec0-ad03-4ee4-a162-5cdd74e631db",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 25694.41374513478,
-                                        "y": 17468.35518822794
+                                        "x": 25632.243897451648,
+                                        "y": 17477.092590514647
                                     },
                                     "targetPosition": {
                                         "x": 25725.80415831964,
@@ -18234,8 +18234,8 @@
                                 "id": "802c8a13-b47b-4bdb-8406-ed37f481cdda",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 25746.740548808626,
-                                        "y": 17467.746310742525
+                                        "x": 25678.766349849197,
+                                        "y": 17469.724157929137
                                     },
                                     "targetPosition": {
                                         "x": 25725.80415831964,
@@ -18714,8 +18714,8 @@
                                 "id": "70de822f-b644-4c97-b362-9199e02cd45f",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 25798.784223717146,
-                                        "y": 17473.2163213942
+                                        "x": 25725.80415831964,
+                                        "y": 17467.25901084486
                                     },
                                     "targetPosition": {
                                         "x": 25725.80415831964,
@@ -19630,8 +19630,8 @@
                                 "id": "a34b8eef-baca-45d7-9544-d9a6fcbd766f",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 25849.84096843729,
-                                        "y": 17484.691247672617
+                                        "x": 25772.84196679008,
+                                        "y": 17469.724157929137
                                     },
                                     "targetPosition": {
                                         "x": 25725.80415831964,
@@ -20166,8 +20166,8 @@
                                 "id": "0be85f22-d936-4554-bd2e-4080a423108b",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 25899.220328083742,
-                                        "y": 17502.01591088491
+                                        "x": 25819.36441918763,
+                                        "y": 17477.092590514647
                                     },
                                     "targetPosition": {
                                         "x": 25725.80415831964,
@@ -20296,8 +20296,8 @@
                                 "id": "e6342d6c-9075-4bdf-b666-bfec788b15e9",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 25946.254531526778,
-                                        "y": 17524.956024681316
+                                        "x": 25864.861805788365,
+                                        "y": 17489.28357851204
                                     },
                                     "targetPosition": {
                                         "x": 25725.80415831964,
@@ -21124,8 +21124,8 @@
                                 "id": "b35b73a3-4665-4cf8-86f2-f4f070a6d3f4",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 25990.307521851253,
-                                        "y": 17553.201363376134
+                                        "x": 25908.83564770375,
+                                        "y": 17506.16355490569
                                     },
                                     "targetPosition": {
                                         "x": 25725.80415831964,
@@ -21312,8 +21312,8 @@
                                 "id": "c297f8c8-1e52-4948-b71f-887ffd43ae89",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 26030.783557935218,
-                                        "y": 17586.369957217936
+                                        "x": 25950.80415831964,
+                                        "y": 17527.54757914186
                                     },
                                     "targetPosition": {
                                         "x": 25725.80415831964,
@@ -21616,8 +21616,8 @@
                                 "id": "56f98c6d-30bc-4606-8bba-8682535b5d03",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 26067.13527082663,
-                                        "y": 17624.013257875205
+                                        "x": 25990.307521851253,
+                                        "y": 17553.201363376134
                                     },
                                     "targetPosition": {
                                         "x": 25725.80415831964,
@@ -21950,8 +21950,8 @@
                                 "id": "f3b4e8cf-b12a-4a62-9a00-f84e6e32fd74",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 26098.871065969408,
-                                        "y": 17665.622204283023
+                                        "x": 26026.912931181127,
+                                        "y": 17582.84383938003
                                     },
                                     "targetPosition": {
                                         "x": 25725.80415831964,
@@ -22138,8 +22138,8 @@
                                 "id": "639c3f39-7617-47a7-be6e-e8a42bb2004b",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 26125.56177117649,
-                                        "y": 17710.634106820704
+                                        "x": 26060.219329784468,
+                                        "y": 17616.150237983373
                                     },
                                     "targetPosition": {
                                         "x": 25725.80415831964,
@@ -22996,8 +22996,8 @@
                                 "id": "a08428e9-12d4-4665-8d48-d8efd3f8729c",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 26146.84644044743,
-                                        "y": 17758.44025672362
+                                        "x": 26089.861805788365,
+                                        "y": 17652.755647313246
                                     },
                                     "targetPosition": {
                                         "x": 25725.80415831964,
@@ -23622,8 +23622,8 @@
                                 "id": "1d1eda54-2648-453b-8a51-d14a0c81ad07",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 26162.437235143836,
-                                        "y": 17808.39415782501
+                                        "x": 26115.51559002264,
+                                        "y": 17692.25901084486
                                     },
                                     "targetPosition": {
                                         "x": 25725.80415831964,
@@ -24626,8 +24626,8 @@
                                 "id": "95c0c2b3-e363-4d3a-bb0a-a26cc03a5b65",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 26172.123316513207,
-                                        "y": 17859.820269307595
+                                        "x": 26136.89961425881,
+                                        "y": 17734.22752146075
                                     },
                                     "targetPosition": {
                                         "x": 25725.80415831964,
@@ -24676,12 +24676,12 @@
                                                 "id": "646ecd15-9807-47df-97d5-f2d4c44a4dab",
                                                 "savedPayload": {
                                                     "position": {
-                                                        "x": 26783.291186681385,
-                                                        "y": 17290.200989676134
+                                                        "x": 26548.448624381937,
+                                                        "y": 17003.619771581092
                                                     },
                                                     "targetPosition": {
-                                                        "x": 26562.840813474246,
-                                                        "y": 17682.503975839678
+                                                        "x": 26454.888363513946,
+                                                        "y": 17443.786191911306
                                                     },
                                                     "floatingObject": {
                                                         "isPinned": false,
@@ -24734,12 +24734,12 @@
                                                 "id": "d16702ac-3dcf-49e5-82b0-7a17e187774d",
                                                 "savedPayload": {
                                                     "position": {
-                                                        "x": 27012.81035207594,
-                                                        "y": 17677.26810622905
+                                                        "x": 26882.863795846766,
+                                                        "y": 17304.72854444258
                                                     },
                                                     "targetPosition": {
-                                                        "x": 26562.840813474246,
-                                                        "y": 17682.503975839678
+                                                        "x": 26454.888363513946,
+                                                        "y": 17443.786191911306
                                                     },
                                                     "floatingObject": {
                                                         "isPinned": false,
@@ -24790,12 +24790,12 @@
                                         "id": "c39de876-a2a1-4454-9062-f218414cf94c",
                                         "savedPayload": {
                                             "position": {
-                                                "x": 26562.840813474246,
-                                                "y": 17682.503975839678
+                                                "x": 26454.888363513946,
+                                                "y": 17443.786191911306
                                             },
                                             "targetPosition": {
-                                                "x": 26175.773696921333,
-                                                "y": 17912.023141234233
+                                                "x": 26153.77959065246,
+                                                "y": 17778.201363376134
                                             },
                                             "floatingObject": {
                                                 "isPinned": false,
@@ -24822,12 +24822,12 @@
                                                 "id": "6ef9f440-c261-4e5a-956a-62e792a88315",
                                                 "savedPayload": {
                                                     "position": {
-                                                        "x": 27018.04622168657,
-                                                        "y": 18127.237644830744
+                                                        "x": 27021.921443315492,
+                                                        "y": 17732.7039767754
                                                     },
                                                     "targetPosition": {
-                                                        "x": 26568.076683084877,
-                                                        "y": 18132.47351444137
+                                                        "x": 26593.946010982672,
+                                                        "y": 17871.761624244125
                                                     },
                                                     "floatingObject": {
                                                         "isPinned": false,
@@ -24872,12 +24872,12 @@
                                                 "id": "9d6f8165-6d15-41c5-8c78-8e3b451b4908",
                                                 "savedPayload": {
                                                     "position": {
-                                                        "x": 26797.595848479432,
-                                                        "y": 18519.540630994285
+                                                        "x": 26928.3611824475,
+                                                        "y": 18172.870397105613
                                                     },
                                                     "targetPosition": {
-                                                        "x": 26568.076683084877,
-                                                        "y": 18132.47351444137
+                                                        "x": 26593.946010982672,
+                                                        "y": 17871.761624244125
                                                     },
                                                     "floatingObject": {
                                                         "isPinned": false,
@@ -24920,12 +24920,12 @@
                                         "id": "a4ed66cb-5003-428c-9d3c-4a23423c1256",
                                         "savedPayload": {
                                             "position": {
-                                                "x": 26568.076683084877,
-                                                "y": 18132.47351444137
+                                                "x": 26593.946010982672,
+                                                "y": 17871.761624244125
                                             },
                                             "targetPosition": {
-                                                "x": 26175.773696921333,
-                                                "y": 17912.023141234233
+                                                "x": 26153.77959065246,
+                                                "y": 17778.201363376134
                                             },
                                             "floatingObject": {
                                                 "isPinned": false,
@@ -24944,8 +24944,8 @@
                                 "id": "e1cea17f-78ff-4c22-92d4-041d8f64e443",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 26175.773696921333,
-                                        "y": 17912.023141234233
+                                        "x": 26153.77959065246,
+                                        "y": 17778.201363376134
                                     },
                                     "targetPosition": {
                                         "x": 25725.80415831964,
@@ -24994,12 +24994,12 @@
                                                 "id": "5f0f70b2-f8da-4086-a232-425ac08c48cb",
                                                 "savedPayload": {
                                                     "position": {
-                                                        "x": 25805.80415831964,
-                                                        "y": 17770.25901084486
+                                                        "x": 26940.552170444895,
+                                                        "y": 17429.02971624739
                                                     },
                                                     "targetPosition": {
-                                                        "x": 25707.80415831964,
-                                                        "y": 17743.25901084486
+                                                        "x": 26606.136998980066,
+                                                        "y": 17730.13848910888
                                                     },
                                                     "floatingObject": {
                                                         "isPinned": false,
@@ -25044,12 +25044,12 @@
                                                 "id": "a5a23a54-9bab-4a46-b4d0-87ecd71323eb",
                                                 "savedPayload": {
                                                     "position": {
-                                                        "x": 25787.80415831964,
-                                                        "y": 17695.25901084486
+                                                        "x": 27034.112431312886,
+                                                        "y": 17869.196136577604
                                                     },
                                                     "targetPosition": {
-                                                        "x": 25707.80415831964,
-                                                        "y": 17743.25901084486
+                                                        "x": 26606.136998980066,
+                                                        "y": 17730.13848910888
                                                     },
                                                     "floatingObject": {
                                                         "isPinned": false,
@@ -25092,12 +25092,12 @@
                                         "id": "58b6456f-f6af-4764-8182-025af567ff96",
                                         "savedPayload": {
                                             "position": {
-                                                "x": 25707.80415831964,
-                                                "y": 17743.25901084486
+                                                "x": 26606.136998980066,
+                                                "y": 17730.13848910888
                                             },
                                             "targetPosition": {
-                                                "x": 25773.80415831964,
-                                                "y": 17828.25901084486
+                                                "x": 26165.970578649853,
+                                                "y": 17823.69874997687
                                             },
                                             "floatingObject": {
                                                 "isPinned": false,
@@ -25116,8 +25116,8 @@
                                 "id": "6bfb6263-e948-434a-bd2a-284249532b25",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 25773.80415831964,
-                                        "y": 17828.25901084486
+                                        "x": 26165.970578649853,
+                                        "y": 17823.69874997687
                                     },
                                     "targetPosition": {
                                         "x": 25725.80415831964,
@@ -25149,7 +25149,7 @@
                             },
                             {
                                 "type": "Data Mine Data Dependencies",
-                                "name": "Enhanced_Bollinger_Stochastic",
+                                "name": "",
                                 "project": "Foundations",
                                 "botDataDependencies": [
                                     {
@@ -25159,17 +25159,17 @@
                                         "dataDependencies": [
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "Stochastic Multi-Time-Frame-Market",
+                                                "name": "",
                                                 "project": "Foundations",
                                                 "id": "10e66cfd-add8-4f89-92a1-d39f471843e9",
                                                 "savedPayload": {
                                                     "position": {
-                                                        "x": 25669.80415831964,
-                                                        "y": 17949.25901084486
+                                                        "x": 26526.928696475894,
+                                                        "y": 17076.045766450967
                                                     },
                                                     "targetPosition": {
-                                                        "x": 25644.80415831964,
-                                                        "y": 17954.25901084486
+                                                        "x": 26456.53318720779,
+                                                        "y": 17520.50551971878
                                                     },
                                                     "floatingObject": {
                                                         "isPinned": false,
@@ -25209,17 +25209,17 @@
                                             },
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "Stochastic Multi-Time-Frame-Daily",
+                                                "name": "",
                                                 "project": "Foundations",
                                                 "id": "033071da-a505-4ff1-9248-6bcf32ae3dd8",
                                                 "savedPayload": {
                                                     "position": {
-                                                        "x": 25652.80415831964,
-                                                        "y": 17893.25901084486
+                                                        "x": 26876.644379131532,
+                                                        "y": 17359.239942423395
                                                     },
                                                     "targetPosition": {
-                                                        "x": 25644.80415831964,
-                                                        "y": 17954.25901084486
+                                                        "x": 26456.53318720779,
+                                                        "y": 17520.50551971878
                                                     },
                                                     "floatingObject": {
                                                         "isPinned": false,
@@ -25262,12 +25262,12 @@
                                         "id": "88fb80bf-017f-4fbc-b27c-d2a9d5587317",
                                         "savedPayload": {
                                             "position": {
-                                                "x": 25644.80415831964,
-                                                "y": 17954.25901084486
+                                                "x": 26456.53318720779,
+                                                "y": 17520.50551971878
                                             },
                                             "targetPosition": {
-                                                "x": 25648.80415831964,
-                                                "y": 17986.25901084486
+                                                "x": 26173.339011235363,
+                                                "y": 17870.221202374418
                                             },
                                             "floatingObject": {
                                                 "isPinned": false,
@@ -25289,17 +25289,17 @@
                                         "dataDependencies": [
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "Enhanced_Bollinger Multi-Time-Frame-Market",
+                                                "name": "",
                                                 "project": "Foundations",
                                                 "id": "c7d4fdea-61f1-4097-8549-ebf655272990",
                                                 "savedPayload": {
                                                     "position": {
-                                                        "x": 25767.80415831964,
-                                                        "y": 17920.25901084486
+                                                        "x": 26984.931511619812,
+                                                        "y": 17558.68003037236
                                                     },
                                                     "targetPosition": {
-                                                        "x": 25683.80415831964,
-                                                        "y": 17933.25901084486
+                                                        "x": 26620.873864151086,
+                                                        "y": 17823.183393903975
                                                     },
                                                     "floatingObject": {
                                                         "isPinned": false,
@@ -25339,17 +25339,17 @@
                                             },
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "Enhanced_Bollinger Multi-Time-Frame-Daily",
+                                                "name": "",
                                                 "project": "Foundations",
                                                 "id": "ce662910-5967-47b9-ba07-b0007223756d",
                                                 "savedPayload": {
                                                     "position": {
-                                                        "x": 25684.80415831964,
-                                                        "y": 17833.25901084486
+                                                        "x": 27031.96932009026,
+                                                        "y": 18006.214883288085
                                                     },
                                                     "targetPosition": {
-                                                        "x": 25683.80415831964,
-                                                        "y": 17933.25901084486
+                                                        "x": 26620.873864151086,
+                                                        "y": 17823.183393903975
                                                     },
                                                     "floatingObject": {
                                                         "isPinned": false,
@@ -25392,12 +25392,12 @@
                                         "id": "6a893ab6-b727-4ea2-b8ee-b84231c7a4a3",
                                         "savedPayload": {
                                             "position": {
-                                                "x": 25683.80415831964,
-                                                "y": 17933.25901084486
+                                                "x": 26620.873864151086,
+                                                "y": 17823.183393903975
                                             },
                                             "targetPosition": {
-                                                "x": 25648.80415831964,
-                                                "y": 17986.25901084486
+                                                "x": 26173.339011235363,
+                                                "y": 17870.221202374418
                                             },
                                             "floatingObject": {
                                                 "isPinned": false,
@@ -25419,17 +25419,17 @@
                                         "dataDependencies": [
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "New Data Dependency",
+                                                "name": "",
                                                 "project": "Foundations",
                                                 "id": "e1f3196f-3001-4819-bbb1-5dba67d1e3dc",
                                                 "savedPayload": {
                                                     "position": {
-                                                        "x": 25668.80415831964,
-                                                        "y": 18039.25901084486
+                                                        "x": 26967.514447158814,
+                                                        "y": 18223.81088761495
                                                     },
                                                     "targetPosition": {
-                                                        "x": 25608.80415831964,
-                                                        "y": 17961.25901084486
+                                                        "x": 26523.054693891,
+                                                        "y": 18153.415378346846
                                                     },
                                                     "floatingObject": {
                                                         "isPinned": false,
@@ -25469,17 +25469,17 @@
                                             },
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "New Data Dependency",
+                                                "name": "",
                                                 "project": "Foundations",
                                                 "id": "2b17b795-0fa3-43bc-9b71-0b6ea865cea3",
                                                 "savedPayload": {
                                                     "position": {
-                                                        "x": 25559.80415831964,
-                                                        "y": 18031.25901084486
+                                                        "x": 26684.320271186385,
+                                                        "y": 18573.526570270587
                                                     },
                                                     "targetPosition": {
-                                                        "x": 25608.80415831964,
-                                                        "y": 17961.25901084486
+                                                        "x": 26523.054693891,
+                                                        "y": 18153.415378346846
                                                     },
                                                     "floatingObject": {
                                                         "isPinned": false,
@@ -25522,12 +25522,12 @@
                                         "id": "4c3a7942-08a4-4de0-8ff0-6c2a16bdd281",
                                         "savedPayload": {
                                             "position": {
-                                                "x": 25608.80415831964,
-                                                "y": 17961.25901084486
+                                                "x": 26523.054693891,
+                                                "y": 18153.415378346846
                                             },
                                             "targetPosition": {
-                                                "x": 25648.80415831964,
-                                                "y": 17986.25901084486
+                                                "x": 26173.339011235363,
+                                                "y": 17870.221202374418
                                             },
                                             "floatingObject": {
                                                 "isPinned": false,
@@ -25546,8 +25546,8 @@
                                 "id": "b40ab6bb-5092-4933-b132-fe7a86f39f3f",
                                 "savedPayload": {
                                     "position": {
-                                        "x": 25648.80415831964,
-                                        "y": 17986.25901084486
+                                        "x": 26173.339011235363,
+                                        "y": 17870.221202374418
                                     },
                                     "targetPosition": {
                                         "x": 25725.80415831964,
@@ -25576,6 +25576,766 @@
                                         ]
                                     ]
                                 }
+                            },
+                            {
+                                "type": "Data Mine Data Dependencies",
+                                "name": "Keltner_Bollinger_Strategy",
+                                "project": "Foundations",
+                                "botDataDependencies": [
+                                    {
+                                        "type": "Bot Data Dependencies",
+                                        "name": "Super Trend 14-3",
+                                        "project": "Foundations",
+                                        "dataDependencies": [
+                                            {
+                                                "type": "Data Dependency",
+                                                "name": "Super Trend 14-3 Multi-Time-Frame-Market",
+                                                "project": "Foundations",
+                                                "id": "65825f08-caa1-4cc4-a0b8-085c4b431fc0",
+                                                "savedPayload": {
+                                                    "position": {
+                                                        "x": 26487.345330321696,
+                                                        "y": 17105.66651046041
+                                                    },
+                                                    "targetPosition": {
+                                                        "x": 26440.307521851253,
+                                                        "y": 17553.201363376134
+                                                    },
+                                                    "floatingObject": {
+                                                        "isPinned": false,
+                                                        "isFrozen": false,
+                                                        "isCollapsed": false,
+                                                        "angleToParent": 2,
+                                                        "distanceToParent": 3,
+                                                        "arrangementStyle": 0
+                                                    },
+                                                    "uiObject": {
+                                                        "isRunning": false
+                                                    },
+                                                    "referenceParent": {
+                                                        "type": "Dataset Definition",
+                                                        "name": "Multi-Time-Frame-Market",
+                                                        "id": "00c41fe8-02dd-45d8-9233-9a31652055f2"
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Keltner_Bollinger_Strategy",
+                                                            "Data Mine"
+                                                        ],
+                                                        [
+                                                            "Super Trend 14-3",
+                                                            "Indicator Bot"
+                                                        ],
+                                                        [
+                                                            "Super Trend 14-3",
+                                                            "Product Definition"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Market",
+                                                            "Dataset Definition"
+                                                        ]
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "type": "Data Dependency",
+                                                "name": "Super Trend 14-3 Multi-Time-Frame-Daily",
+                                                "project": "Foundations",
+                                                "id": "d87e05ef-71f1-4c48-baf8-70aea9596618",
+                                                "savedPayload": {
+                                                    "position": {
+                                                        "x": 26851.402977790425,
+                                                        "y": 17370.169873992025
+                                                    },
+                                                    "targetPosition": {
+                                                        "x": 26440.307521851253,
+                                                        "y": 17553.201363376134
+                                                    },
+                                                    "floatingObject": {
+                                                        "isPinned": false,
+                                                        "isFrozen": false,
+                                                        "isCollapsed": false,
+                                                        "angleToParent": 2,
+                                                        "distanceToParent": 3,
+                                                        "arrangementStyle": 0
+                                                    },
+                                                    "uiObject": {
+                                                        "isRunning": false
+                                                    },
+                                                    "referenceParent": {
+                                                        "type": "Dataset Definition",
+                                                        "name": "Multi-Time-Frame-Daily",
+                                                        "id": "0bb91809-ee7d-40ca-8d12-7f12e56e148e"
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Keltner_Bollinger_Strategy",
+                                                            "Data Mine"
+                                                        ],
+                                                        [
+                                                            "Super Trend 14-3",
+                                                            "Indicator Bot"
+                                                        ],
+                                                        [
+                                                            "Super Trend 14-3",
+                                                            "Product Definition"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Daily",
+                                                            "Dataset Definition"
+                                                        ]
+                                                    ]
+                                                }
+                                            }
+                                        ],
+                                        "dataDependencyFolders": [],
+                                        "id": "5355afc0-3efc-4462-9dfe-37665ff71c31",
+                                        "savedPayload": {
+                                            "position": {
+                                                "x": 26440.307521851253,
+                                                "y": 17553.201363376134
+                                            },
+                                            "targetPosition": {
+                                                "x": 26175.80415831964,
+                                                "y": 17917.25901084486
+                                            },
+                                            "floatingObject": {
+                                                "isPinned": false,
+                                                "isFrozen": false,
+                                                "isCollapsed": false,
+                                                "angleToParent": 2,
+                                                "distanceToParent": 3,
+                                                "arrangementStyle": 0
+                                            },
+                                            "uiObject": {
+                                                "isRunning": false
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Bot Data Dependencies",
+                                        "name": "Keltner",
+                                        "project": "Foundations",
+                                        "dataDependencies": [
+                                            {
+                                                "type": "Data Dependency",
+                                                "name": "Keltner EMA Multi-Time-Frame-Market",
+                                                "project": "Foundations",
+                                                "id": "fd781766-e077-4d19-8e88-75991b54b2b3",
+                                                "savedPayload": {
+                                                    "position": {
+                                                        "x": 26664.1845602704,
+                                                        "y": 17332.273970580565
+                                                    },
+                                                    "targetPosition": {
+                                                        "x": 26603.77959065246,
+                                                        "y": 17778.201363376134
+                                                    },
+                                                    "floatingObject": {
+                                                        "isPinned": false,
+                                                        "isFrozen": false,
+                                                        "isCollapsed": false,
+                                                        "angleToParent": 2,
+                                                        "distanceToParent": 3,
+                                                        "arrangementStyle": 0
+                                                    },
+                                                    "uiObject": {
+                                                        "isRunning": false
+                                                    },
+                                                    "referenceParent": {
+                                                        "type": "Dataset Definition",
+                                                        "name": "Multi-Time-Frame-Market",
+                                                        "id": "e5977f4d-1298-4a65-a820-7df9c8a23f19"
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Keltner_Bollinger_Strategy",
+                                                            "Data Mine"
+                                                        ],
+                                                        [
+                                                            "Keltner",
+                                                            "Indicator Bot"
+                                                        ],
+                                                        [
+                                                            "Keltner EMA",
+                                                            "Product Definition"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Market",
+                                                            "Dataset Definition"
+                                                        ]
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "type": "Data Dependency",
+                                                "name": "Keltner EMA Multi-Time-Frame-Daily",
+                                                "project": "Foundations",
+                                                "id": "829d6211-33af-4560-843b-450864bced3e",
+                                                "savedPayload": {
+                                                    "position": {
+                                                        "x": 26851.683232305906,
+                                                        "y": 17402.643399201548
+                                                    },
+                                                    "targetPosition": {
+                                                        "x": 26603.77959065246,
+                                                        "y": 17778.201363376134
+                                                    },
+                                                    "floatingObject": {
+                                                        "isPinned": false,
+                                                        "isFrozen": false,
+                                                        "isCollapsed": false,
+                                                        "angleToParent": 2,
+                                                        "distanceToParent": 3,
+                                                        "arrangementStyle": 0
+                                                    },
+                                                    "uiObject": {
+                                                        "isRunning": false
+                                                    },
+                                                    "referenceParent": {
+                                                        "type": "Dataset Definition",
+                                                        "name": "Multi-Time-Frame-Daily",
+                                                        "id": "c95b4d85-08a7-4650-b6d6-132843f3e032"
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Keltner_Bollinger_Strategy",
+                                                            "Data Mine"
+                                                        ],
+                                                        [
+                                                            "Keltner",
+                                                            "Indicator Bot"
+                                                        ],
+                                                        [
+                                                            "Keltner EMA",
+                                                            "Product Definition"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Daily",
+                                                            "Dataset Definition"
+                                                        ]
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "type": "Data Dependency",
+                                                "name": "Keltner MAMA Multi-Time-Frame-Market",
+                                                "project": "Foundations",
+                                                "id": "4008fd03-ace6-4125-b3bf-bcd29d5d9a10",
+                                                "savedPayload": {
+                                                    "position": {
+                                                        "x": 26990.081547773298,
+                                                        "y": 17547.396688543475
+                                                    },
+                                                    "targetPosition": {
+                                                        "x": 26603.77959065246,
+                                                        "y": 17778.201363376134
+                                                    },
+                                                    "floatingObject": {
+                                                        "isPinned": false,
+                                                        "isFrozen": false,
+                                                        "isCollapsed": false,
+                                                        "angleToParent": 2,
+                                                        "distanceToParent": 3,
+                                                        "arrangementStyle": 0
+                                                    },
+                                                    "uiObject": {
+                                                        "isRunning": false
+                                                    },
+                                                    "referenceParent": {
+                                                        "type": "Dataset Definition",
+                                                        "name": "Multi-Time-Frame-Market",
+                                                        "id": "92250f0f-5d39-439e-81dc-c85e9c0e59ef"
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Keltner_Bollinger_Strategy",
+                                                            "Data Mine"
+                                                        ],
+                                                        [
+                                                            "Keltner",
+                                                            "Indicator Bot"
+                                                        ],
+                                                        [
+                                                            "Keltner MAMA",
+                                                            "Product Definition"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Market",
+                                                            "Dataset Definition"
+                                                        ]
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "type": "Data Dependency",
+                                                "name": "Keltner MAMA Multi-Time-Frame-Daily",
+                                                "project": "Foundations",
+                                                "id": "e9427dbc-7c1f-4ee4-8100-aa2ec69eed66",
+                                                "savedPayload": {
+                                                    "position": {
+                                                        "x": 27051.968022950317,
+                                                        "y": 17737.86367436959
+                                                    },
+                                                    "targetPosition": {
+                                                        "x": 26603.77959065246,
+                                                        "y": 17778.201363376134
+                                                    },
+                                                    "floatingObject": {
+                                                        "isPinned": false,
+                                                        "isFrozen": false,
+                                                        "isCollapsed": false,
+                                                        "angleToParent": 2,
+                                                        "distanceToParent": 3,
+                                                        "arrangementStyle": 0
+                                                    },
+                                                    "uiObject": {
+                                                        "isRunning": false
+                                                    },
+                                                    "referenceParent": {
+                                                        "type": "Dataset Definition",
+                                                        "name": "Multi-Time-Frame-Daily",
+                                                        "id": "260d2515-1d0c-4d61-94c9-b0adda0b5ef3"
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Keltner_Bollinger_Strategy",
+                                                            "Data Mine"
+                                                        ],
+                                                        [
+                                                            "Keltner",
+                                                            "Indicator Bot"
+                                                        ],
+                                                        [
+                                                            "Keltner MAMA",
+                                                            "Product Definition"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Daily",
+                                                            "Dataset Definition"
+                                                        ]
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "type": "Data Dependency",
+                                                "name": "MAMA_PLUV Multi-Time-Frame-Market",
+                                                "project": "Foundations",
+                                                "id": "a24c42d1-58e3-47db-9057-3eb7513a5275",
+                                                "savedPayload": {
+                                                    "position": {
+                                                        "x": 27025.08528244034,
+                                                        "y": 17936.32003421274
+                                                    },
+                                                    "targetPosition": {
+                                                        "x": 26603.77959065246,
+                                                        "y": 17778.201363376134
+                                                    },
+                                                    "floatingObject": {
+                                                        "isPinned": false,
+                                                        "isFrozen": false,
+                                                        "isCollapsed": false,
+                                                        "angleToParent": 2,
+                                                        "distanceToParent": 3,
+                                                        "arrangementStyle": 0
+                                                    },
+                                                    "uiObject": {
+                                                        "isRunning": false
+                                                    },
+                                                    "referenceParent": {
+                                                        "type": "Dataset Definition",
+                                                        "name": "Multi-Time-Frame-Market",
+                                                        "id": "ff81f519-afeb-4b72-98af-608f960b7402"
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Keltner_Bollinger_Strategy",
+                                                            "Data Mine"
+                                                        ],
+                                                        [
+                                                            "Keltner",
+                                                            "Indicator Bot"
+                                                        ],
+                                                        [
+                                                            "MAMA_PLUV",
+                                                            "Product Definition"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Market",
+                                                            "Dataset Definition"
+                                                        ]
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "type": "Data Dependency",
+                                                "name": "MAMA_PLUV Multi-Time-Frame-Daily",
+                                                "project": "Foundations",
+                                                "id": "fec13822-ec1a-41bc-94d5-28521e36f8e1",
+                                                "savedPayload": {
+                                                    "position": {
+                                                        "x": 26914.75778269655,
+                                                        "y": 18103.45905209846
+                                                    },
+                                                    "targetPosition": {
+                                                        "x": 26603.77959065246,
+                                                        "y": 17778.201363376134
+                                                    },
+                                                    "floatingObject": {
+                                                        "isPinned": false,
+                                                        "isFrozen": false,
+                                                        "isCollapsed": false,
+                                                        "angleToParent": 2,
+                                                        "distanceToParent": 3,
+                                                        "arrangementStyle": 0
+                                                    },
+                                                    "uiObject": {
+                                                        "isRunning": false
+                                                    },
+                                                    "referenceParent": {
+                                                        "type": "Dataset Definition",
+                                                        "name": "Multi-Time-Frame-Daily",
+                                                        "id": "00af5401-70a1-40da-9f44-2fc4ad1a434d"
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Keltner_Bollinger_Strategy",
+                                                            "Data Mine"
+                                                        ],
+                                                        [
+                                                            "Keltner",
+                                                            "Indicator Bot"
+                                                        ],
+                                                        [
+                                                            "MAMA_PLUV",
+                                                            "Product Definition"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Daily",
+                                                            "Dataset Definition"
+                                                        ]
+                                                    ]
+                                                }
+                                            }
+                                        ],
+                                        "dataDependencyFolders": [],
+                                        "id": "009de234-0fb7-4256-9a76-f3245a33a4b6",
+                                        "savedPayload": {
+                                            "position": {
+                                                "x": 26603.77959065246,
+                                                "y": 17778.201363376134
+                                            },
+                                            "targetPosition": {
+                                                "x": 26175.80415831964,
+                                                "y": 17917.25901084486
+                                            },
+                                            "floatingObject": {
+                                                "isPinned": false,
+                                                "isFrozen": false,
+                                                "isCollapsed": false,
+                                                "angleToParent": 2,
+                                                "distanceToParent": 3,
+                                                "arrangementStyle": 0
+                                            },
+                                            "uiObject": {
+                                                "isRunning": false
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Bot Data Dependencies",
+                                        "name": "Enhanced_Bollinger",
+                                        "project": "Foundations",
+                                        "dataDependencies": [
+                                            {
+                                                "type": "Data Dependency",
+                                                "name": "Enhanced_Bollinger Multi-Time-Frame-Market",
+                                                "project": "Foundations",
+                                                "id": "e86f8f99-87f0-42b4-9aa6-8f63d8916d3d",
+                                                "savedPayload": {
+                                                    "position": {
+                                                        "x": 27043.946010982672,
+                                                        "y": 17962.756397445595
+                                                    },
+                                                    "targetPosition": {
+                                                        "x": 26603.77959065246,
+                                                        "y": 18056.316658313586
+                                                    },
+                                                    "floatingObject": {
+                                                        "isPinned": false,
+                                                        "isFrozen": false,
+                                                        "isCollapsed": false,
+                                                        "angleToParent": 2,
+                                                        "distanceToParent": 3,
+                                                        "arrangementStyle": 0
+                                                    },
+                                                    "uiObject": {
+                                                        "isRunning": false
+                                                    },
+                                                    "referenceParent": {
+                                                        "type": "Dataset Definition",
+                                                        "name": "Multi-Time-Frame-Market",
+                                                        "id": "0ba1eac0-a52e-4e9c-941d-9fb12d8ee4fc"
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Keltner_Bollinger_Strategy",
+                                                            "Data Mine"
+                                                        ],
+                                                        [
+                                                            "Enhanced_Bollinger",
+                                                            "Indicator Bot"
+                                                        ],
+                                                        [
+                                                            "Enhanced_Bollinger",
+                                                            "Product Definition"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Market",
+                                                            "Dataset Definition"
+                                                        ]
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "type": "Data Dependency",
+                                                "name": "Enhanced_Bollinger Multi-Time-Frame-Daily",
+                                                "project": "Foundations",
+                                                "id": "75757353-5534-4088-af4b-25c8de8ee777",
+                                                "savedPayload": {
+                                                    "position": {
+                                                        "x": 26904.888363513946,
+                                                        "y": 18390.731829778415
+                                                    },
+                                                    "targetPosition": {
+                                                        "x": 26603.77959065246,
+                                                        "y": 18056.316658313586
+                                                    },
+                                                    "floatingObject": {
+                                                        "isPinned": false,
+                                                        "isFrozen": false,
+                                                        "isCollapsed": false,
+                                                        "angleToParent": 2,
+                                                        "distanceToParent": 3,
+                                                        "arrangementStyle": 0
+                                                    },
+                                                    "uiObject": {
+                                                        "isRunning": false
+                                                    },
+                                                    "referenceParent": {
+                                                        "type": "Dataset Definition",
+                                                        "name": "Multi-Time-Frame-Daily",
+                                                        "id": "06ba0a59-7c49-43ff-9ea4-3eb866f10662"
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Keltner_Bollinger_Strategy",
+                                                            "Data Mine"
+                                                        ],
+                                                        [
+                                                            "Enhanced_Bollinger",
+                                                            "Indicator Bot"
+                                                        ],
+                                                        [
+                                                            "Enhanced_Bollinger",
+                                                            "Product Definition"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Daily",
+                                                            "Dataset Definition"
+                                                        ]
+                                                    ]
+                                                }
+                                            }
+                                        ],
+                                        "dataDependencyFolders": [],
+                                        "id": "07455fbe-798e-4039-81e9-7e15ac4dfe65",
+                                        "savedPayload": {
+                                            "position": {
+                                                "x": 26603.77959065246,
+                                                "y": 18056.316658313586
+                                            },
+                                            "targetPosition": {
+                                                "x": 26175.80415831964,
+                                                "y": 17917.25901084486
+                                            },
+                                            "floatingObject": {
+                                                "isPinned": false,
+                                                "isFrozen": false,
+                                                "isCollapsed": false,
+                                                "angleToParent": 2,
+                                                "distanceToParent": 3,
+                                                "arrangementStyle": 0
+                                            },
+                                            "uiObject": {
+                                                "isRunning": false
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Bot Data Dependencies",
+                                        "name": "ATR",
+                                        "project": "Foundations",
+                                        "dataDependencies": [
+                                            {
+                                                "type": "Data Dependency",
+                                                "name": "ATR Multi-Time-Frame-Market",
+                                                "project": "Foundations",
+                                                "id": "4eb39e9a-b310-412a-bcb4-bbded2e16cb8",
+                                                "savedPayload": {
+                                                    "position": {
+                                                        "x": 26851.402977790425,
+                                                        "y": 18464.348147697696
+                                                    },
+                                                    "targetPosition": {
+                                                        "x": 26440.307521851253,
+                                                        "y": 18281.316658313586
+                                                    },
+                                                    "floatingObject": {
+                                                        "isPinned": false,
+                                                        "isFrozen": false,
+                                                        "isCollapsed": false,
+                                                        "angleToParent": 2,
+                                                        "distanceToParent": 3,
+                                                        "arrangementStyle": 0
+                                                    },
+                                                    "uiObject": {
+                                                        "isRunning": false
+                                                    },
+                                                    "referenceParent": {
+                                                        "type": "Dataset Definition",
+                                                        "name": "Multi-Time-Frame-Market",
+                                                        "id": "af135fd6-50fe-4cea-825e-a97576fbabe5"
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Keltner_Bollinger_Strategy",
+                                                            "Data Mine"
+                                                        ],
+                                                        [
+                                                            "ATR",
+                                                            "Indicator Bot"
+                                                        ],
+                                                        [
+                                                            "ATR",
+                                                            "Product Definition"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Market",
+                                                            "Dataset Definition"
+                                                        ]
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "type": "Data Dependency",
+                                                "name": "ATR Multi-Time-Frame-Daily",
+                                                "project": "Foundations",
+                                                "id": "7e8b4116-0ddb-4a94-9efa-f8f0c973d9d8",
+                                                "savedPayload": {
+                                                    "position": {
+                                                        "x": 26487.345330321696,
+                                                        "y": 18728.85151122931
+                                                    },
+                                                    "targetPosition": {
+                                                        "x": 26440.307521851253,
+                                                        "y": 18281.316658313586
+                                                    },
+                                                    "floatingObject": {
+                                                        "isPinned": false,
+                                                        "isFrozen": false,
+                                                        "isCollapsed": false,
+                                                        "angleToParent": 2,
+                                                        "distanceToParent": 3,
+                                                        "arrangementStyle": 0
+                                                    },
+                                                    "uiObject": {
+                                                        "isRunning": false
+                                                    },
+                                                    "referenceParent": {
+                                                        "type": "Dataset Definition",
+                                                        "name": "Multi-Time-Frame-Daily",
+                                                        "id": "9c2ce457-ea1f-4a2b-af70-dee3a2a2d0fb"
+                                                    },
+                                                    "referenceParentCombinedNodePath": [
+                                                        [
+                                                            "Keltner_Bollinger_Strategy",
+                                                            "Data Mine"
+                                                        ],
+                                                        [
+                                                            "ATR",
+                                                            "Indicator Bot"
+                                                        ],
+                                                        [
+                                                            "ATR",
+                                                            "Product Definition"
+                                                        ],
+                                                        [
+                                                            "Multi-Time-Frame-Daily",
+                                                            "Dataset Definition"
+                                                        ]
+                                                    ]
+                                                }
+                                            }
+                                        ],
+                                        "dataDependencyFolders": [],
+                                        "id": "82381879-e5ba-44d3-aa3d-cfcfacb877de",
+                                        "savedPayload": {
+                                            "position": {
+                                                "x": 26440.307521851253,
+                                                "y": 18281.316658313586
+                                            },
+                                            "targetPosition": {
+                                                "x": 26175.80415831964,
+                                                "y": 17917.25901084486
+                                            },
+                                            "floatingObject": {
+                                                "isPinned": false,
+                                                "isFrozen": false,
+                                                "isCollapsed": false,
+                                                "angleToParent": 2,
+                                                "distanceToParent": 3,
+                                                "arrangementStyle": 0
+                                            },
+                                            "uiObject": {
+                                                "isRunning": false
+                                            }
+                                        }
+                                    }
+                                ],
+                                "id": "97dfae71-4784-47aa-a0d3-901bbc805119",
+                                "savedPayload": {
+                                    "position": {
+                                        "x": 26175.80415831964,
+                                        "y": 17917.25901084486
+                                    },
+                                    "targetPosition": {
+                                        "x": 25725.80415831964,
+                                        "y": 17917.25901084486
+                                    },
+                                    "floatingObject": {
+                                        "isPinned": false,
+                                        "isFrozen": false,
+                                        "isCollapsed": false,
+                                        "angleToParent": 2,
+                                        "distanceToParent": 3,
+                                        "arrangementStyle": 0
+                                    },
+                                    "uiObject": {
+                                        "isRunning": false
+                                    },
+                                    "referenceParent": {
+                                        "type": "Data Mine",
+                                        "name": "Keltner_Bollinger_Strategy",
+                                        "id": "692938c9-ebca-4163-99e0-ccc58ad80e1d"
+                                    },
+                                    "referenceParentCombinedNodePath": [
+                                        [
+                                            "Keltner_Bollinger_Strategy",
+                                            "Data Mine"
+                                        ]
+                                    ]
+                                }
                             }
                         ],
                         "id": "2118b5aa-3cf9-41da-b976-1079746269ab",
@@ -25591,7 +26351,7 @@
                             "floatingObject": {
                                 "isPinned": false,
                                 "isFrozen": false,
-                                "isCollapsed": true,
+                                "isCollapsed": false,
                                 "angleToParent": 2,
                                 "distanceToParent": 3,
                                 "arrangementStyle": 0
@@ -25619,7 +26379,7 @@
                             "floatingObject": {
                                 "isPinned": false,
                                 "isFrozen": false,
-                                "isCollapsed": false,
+                                "isCollapsed": true,
                                 "angleToParent": 2,
                                 "distanceToParent": 3,
                                 "arrangementStyle": 0
@@ -86144,7 +86904,7 @@
         "floatingObject": {
             "isPinned": true,
             "isFrozen": false,
-            "isCollapsed": false,
+            "isCollapsed": true,
             "angleToParent": 1,
             "distanceToParent": 4,
             "arrangementStyle": 0
