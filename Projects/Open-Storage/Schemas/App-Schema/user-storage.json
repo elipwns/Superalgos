@@ -1,5 +1,5 @@
 {
-    "type": "Social Persona",
+    "type": "User Storage",
     "menuItems": [
         {
             "action": "Configure",
@@ -10,24 +10,24 @@
         },
         {
             "action": "Add UI Object",
-            "actionProject": "Visual-Scripting",
             "disableIfPropertyIsDefined": true,
-            "propertyToCheckFor": "tradingBotsFollowing",
+            "propertyToCheckFor": "githubStorage",
+            "actionProject": "Visual-Scripting",
             "actionFunction": "payload.executeAction",
-            "label": "Add Social Personas Following",
-            "relatedUiObject": "Social Personas Following",
-            "relatedUiObjectProject": "Governance"
+            "label": "Add Github Storage",
+            "relatedUiObject": "Github Storage",
+            "relatedUiObjectProject": "Open-Storage"
         },
         {
             "action": "Add UI Object",
-            "actionProject": "Visual-Scripting",
             "disableIfPropertyIsDefined": true,
-            "propertyToCheckFor": "availableStorage",
+            "propertyToCheckFor": "superalgosStorage",
+            "actionProject": "Visual-Scripting",
             "actionFunction": "payload.executeAction",
-            "label": "Add Available Storage",
-            "relatedUiObject": "Available Storage",
+            "label": "Add Superalgos Storage",
+            "relatedUiObject": "Superalgos Storage",
             "relatedUiObjectProject": "Open-Storage"
-        },   
+        },        
         {
             "action": "Delete UI Object",
             "actionProject": "Visual-Scripting",
@@ -43,32 +43,25 @@
         "config": true
     },
     "initialValues": {
-        "config": "{\"socialHandle\": \"\",\"bio\": \"\"}"
+        "config": "{}"
     },
     "addLeftIcons": true,
     "level": 2,
     "attachingRules": {
-        "compatibleTypes": "->Social Personas->"
+        "compatibleTypes": "->User Profile->"
     },
-    "propertyNameAtParent": "socialPersonas",
+    "propertyNameAtParent": "userStorage",
     "childrenNodesProperties": [
         {
-            "name": "socialPersonasFollowing",
+            "name": "githubStorage",
             "type": "node",
-            "childType": "Social Personas Following",
+            "childType": "Github Storage",
             "autoAdd": false
         },
         {
-            "name": "signingAccount",
+            "name": "superalgosStorage",
             "type": "node",
-            "childType": "Signing Account",
-            "autoAdd": false
-        },
-        {
-            "name": "availableStorage",
-            "type": "node",
-            "childType": "Available Storage",
-            "actionProject": "Foundations",
+            "childType": "Superalgos Storage",
             "autoAdd": false
         }
     ]
