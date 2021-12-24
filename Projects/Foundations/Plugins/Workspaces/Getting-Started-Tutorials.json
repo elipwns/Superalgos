@@ -2218,7 +2218,7 @@
                                                                         },
                                                                         "keyReference": {
                                                                             "type": "Key Reference",
-                                                                            "name": "",
+                                                                            "name": "Exchange Account Key",
                                                                             "project": "Foundations",
                                                                             "id": "e951b233-273f-4fee-922a-acdc0cd036a9",
                                                                             "savedPayload": {
@@ -2516,11 +2516,15 @@
                                     "referenceParentCombinedNodePath": [
                                         [
                                             "New Algorithmic-Trading Project",
-                                            "Algorithmic-Trading Project"
+                                            "Algorithmic-Trading Project",
+                                            "Algorithmic-Trading",
+                                            "96734230-bb91-4527-b2a9-e2f16eb0be96"
                                         ],
                                         [
                                             "Algorithmic-Trading",
-                                            "Project Definition"
+                                            "Project Definition",
+                                            "Foundations",
+                                            "159d6c95-233b-4d79-8fe0-b1d75d40f90b"
                                         ]
                                     ]
                                 }
@@ -19057,7 +19061,7 @@
                                                                                     "layerPolygons": [
                                                                                         {
                                                                                             "type": "Layer Polygon",
-                                                                                            "name": "",
+                                                                                            "name": "Polygon",
                                                                                             "config": "{ \n\"status\": \"on\"\n}",
                                                                                             "project": "Foundations",
                                                                                             "id": "9a786034-1b65-4bec-bd80-8b55e48fd0d7",
@@ -19529,7 +19533,7 @@
                                                                                     "layerPolygons": [
                                                                                         {
                                                                                             "type": "Layer Polygon",
-                                                                                            "name": "",
+                                                                                            "name": "Polygon",
                                                                                             "config": "{ \n\"status\": \"on\"\n}",
                                                                                             "project": "Foundations",
                                                                                             "id": "6bc939a5-47ec-4b8b-bc01-7f43c756c0fc",
@@ -24317,7 +24321,7 @@
                                                                                     "layerPolygons": [
                                                                                         {
                                                                                             "type": "Layer Polygon",
-                                                                                            "name": "",
+                                                                                            "name": "Polygon",
                                                                                             "config": "{ \n\"status\": \"on\"\n}",
                                                                                             "project": "Foundations",
                                                                                             "id": "57baff4d-b1fa-4f7b-8bab-0459c214a360",
@@ -24612,7 +24616,7 @@
                                                                                     "layerPolygons": [
                                                                                         {
                                                                                             "type": "Layer Polygon",
-                                                                                            "name": "",
+                                                                                            "name": "Polygon",
                                                                                             "config": "{ \n\"status\": \"on\"\n}",
                                                                                             "project": "Foundations",
                                                                                             "id": "6952915c-172c-42d2-b718-d89aaad339aa",
@@ -35718,7 +35722,7 @@
                                                                                     "layerPolygons": [
                                                                                         {
                                                                                             "type": "Layer Polygon",
-                                                                                            "name": "",
+                                                                                            "name": "Polygon",
                                                                                             "config": "{ \n\"status\": \"on\"\n}",
                                                                                             "project": "Foundations",
                                                                                             "id": "cb66e3db-7fa0-4616-8e86-85717c0ff844",
@@ -36190,7 +36194,7 @@
                                                                                     "layerPolygons": [
                                                                                         {
                                                                                             "type": "Layer Polygon",
-                                                                                            "name": "",
+                                                                                            "name": "Polygon",
                                                                                             "config": "{ \n\"status\": \"on\"\n}",
                                                                                             "project": "Foundations",
                                                                                             "id": "3cc5da8c-d56b-4902-9730-2f3f1c2b3714",
@@ -40978,7 +40982,7 @@
                                                                                     "layerPolygons": [
                                                                                         {
                                                                                             "type": "Layer Polygon",
-                                                                                            "name": "",
+                                                                                            "name": "Polygon",
                                                                                             "config": "{ \n\"status\": \"on\"\n}",
                                                                                             "project": "Foundations",
                                                                                             "id": "6746ff63-0a0b-46d2-97a1-18cc90389a49",
@@ -41273,7 +41277,7 @@
                                                                                     "layerPolygons": [
                                                                                         {
                                                                                             "type": "Layer Polygon",
-                                                                                            "name": "",
+                                                                                            "name": "Polygon",
                                                                                             "config": "{ \n\"status\": \"on\"\n}",
                                                                                             "project": "Foundations",
                                                                                             "id": "048d94cf-89b9-4914-bdf3-caf5f9d3495f",
@@ -49574,7 +49578,7 @@
                                 "referenceParent": {
                                     "type": "Workspace",
                                     "name": "Getting-Started-Tutorials",
-                                    "id": "54ba909c-94c0-4115-9ae0-2e8ec771e0be"
+                                    "id": "c723de50-c58c-4938-8db3-1c06fc1c916b"
                                 },
                                 "referenceParentCombinedNodePath": [
                                     [
@@ -55447,12 +55451,12 @@
                                     "id": "42d95de3-1a3e-43dc-b075-994bf30c8a97",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 18073.774917816387,
-                                            "y": 40243.204714217376
+                                            "x": 18312.238834099815,
+                                            "y": 40214.69286249506
                                         },
                                         "targetPosition": {
-                                            "x": 18399.45523496367,
-                                            "y": 39932.66915905043
+                                            "x": 18529.359045531335,
+                                            "y": 40007.66915905043
                                         },
                                         "floatingObject": {
                                             "isPinned": false,
@@ -55503,12 +55507,12 @@
                                     "id": "ac4949b3-f1ee-4113-917d-7d5c13891598",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 17999.479283068955,
-                                            "y": 40138.87109382776
+                                            "x": 18262.708410934858,
+                                            "y": 40145.13711556865
                                         },
                                         "targetPosition": {
-                                            "x": 18399.45523496367,
-                                            "y": 39932.66915905043
+                                            "x": 18529.359045531335,
+                                            "y": 40007.66915905043
                                         },
                                         "floatingObject": {
                                             "isPinned": false,
@@ -55534,12 +55538,12 @@
                                     "id": "8f64bf00-d829-4bdf-bc83-7c32916f51c4",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 17957.58732119545,
-                                            "y": 40017.83221901261
+                                            "x": 18234.780436352525,
+                                            "y": 40064.44453235855
                                         },
                                         "targetPosition": {
-                                            "x": 18399.45523496367,
-                                            "y": 39932.66915905043
+                                            "x": 18529.359045531335,
+                                            "y": 40007.66915905043
                                         },
                                         "floatingObject": {
                                             "isPinned": false,
@@ -55651,17 +55655,17 @@
                                 {
                                     "type": "Tutorial Step",
                                     "name": "Check your Spot Balance!",
-                                    "config": "{\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"positionAtReferenceParent\": true,\n    \"documentationURL\": \"\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Check Your Spot Balance!\"\n    },\n    \"icon\": {\n        \"name\": \"Crypto-Exchanges\\\\binance\",\n        \"project\": \"Foundations\"\n    }\n}",
+                                    "config": "{\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"positionAtReferenceParent\": true,\n    \"documentationURL\": \"\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Check Your Spot Balance!\"\n    },\n    \"icon\": {\n        \"name\": \"crypto-exchange\",\n        \"project\": \"Foundations\"\n    }\n}",
                                     "project": "Education",
                                     "id": "7d6448bf-eb35-45d0-ab93-744f3cb3b406",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 17951.49286980578,
-                                            "y": 39889.893939563546
+                                            "x": 18230.71746875941,
+                                            "y": 39979.15234605917
                                         },
                                         "targetPosition": {
-                                            "x": 18399.45523496367,
-                                            "y": 39932.66915905043
+                                            "x": 18529.359045531335,
+                                            "y": 40007.66915905043
                                         },
                                         "floatingObject": {
                                             "isPinned": false,
@@ -55682,17 +55686,17 @@
                                 {
                                     "type": "Tutorial Step",
                                     "name": "Enjoy the Outdoors!",
-                                    "config": "{\"position\":\"Left\",\"slider\":\"toTop\",\"positionAtReferenceParent\":true,\"documentationURL\":\"\",\"docs\":{\"project\":\"Foundations\",\"category\":\"Tutorial\",\"type\":\"Tutorial Step - Enjoy the Outdoors!\"},\"icon\":{\"name\":\"crypto-ecosystem\",\"project\":\"Foundations\"}}",
+                                    "config": "{\r\n    \"position\": \"Left\",\r\n    \"slider\": \"toTop\",\r\n    \"positionAtReferenceParent\": true,\r\n    \"documentationURL\": \"\",\r\n    \"docs\": {\r\n        \"project\": \"Foundations\",\r\n        \"category\": \"Tutorial\",\r\n        \"type\": \"Tutorial Step - Enjoy the Outdoors!\"\r\n    },\r\n    \"icon\": {\r\n        \"name\": \"crypto-ecosystem\",\r\n        \"project\": \"Foundations\"\r\n    }\r\n}",
                                     "project": "Education",
                                     "id": "40cd9486-d751-4aed-8fbc-ba23a2789eb5",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 17981.689665106434,
-                                            "y": 39765.42105400328
+                                            "x": 18250.848665626512,
+                                            "y": 39896.17042235233
                                         },
                                         "targetPosition": {
-                                            "x": 18399.45523496367,
-                                            "y": 39932.66915905043
+                                            "x": 18529.359045531335,
+                                            "y": 40007.66915905043
                                         },
                                         "floatingObject": {
                                             "isPinned": false,
@@ -55731,12 +55735,12 @@
                                     "id": "3acced8f-fde1-4549-865d-dd59902d804f",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 18045.731342329414,
-                                            "y": 39654.49761525115
+                                            "x": 18293.5431171085,
+                                            "y": 39822.22146318424
                                         },
                                         "targetPosition": {
-                                            "x": 18399.45523496367,
-                                            "y": 39932.66915905043
+                                            "x": 18529.359045531335,
+                                            "y": 40007.66915905043
                                         },
                                         "floatingObject": {
                                             "isPinned": false,
@@ -55811,12 +55815,12 @@
                                     "id": "178a3937-072f-475c-ba56-f56b60c6487d",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 18138.42962565663,
-                                            "y": 39566.10998062778
+                                            "x": 18355.341972659975,
+                                            "y": 39763.296373435325
                                         },
                                         "targetPosition": {
-                                            "x": 18399.45523496367,
-                                            "y": 39932.66915905043
+                                            "x": 18529.359045531335,
+                                            "y": 40007.66915905043
                                         },
                                         "floatingObject": {
                                             "isPinned": false,
@@ -55867,12 +55871,12 @@
                                     "id": "a2834a77-a3ed-4101-aebd-f066b7f48a04",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 18252.27465147083,
-                                            "y": 39507.41879062883
+                                            "x": 18431.23865653611,
+                                            "y": 39724.16891343603
                                         },
                                         "targetPosition": {
-                                            "x": 18399.45523496367,
-                                            "y": 39932.66915905043
+                                            "x": 18529.359045531335,
+                                            "y": 40007.66915905043
                                         },
                                         "floatingObject": {
                                             "isPinned": false,
@@ -55971,12 +55975,12 @@
                                     "id": "9b362b6b-389e-42e3-b4ad-6fc8bfa07e34",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 18378.043372842985,
-                                            "y": 39483.178856418075
+                                            "x": 18515.08447078421,
+                                            "y": 39708.008957295526
                                         },
                                         "targetPosition": {
-                                            "x": 18399.45523496367,
-                                            "y": 39932.66915905043
+                                            "x": 18529.359045531335,
+                                            "y": 40007.66915905043
                                         },
                                         "floatingObject": {
                                             "isPinned": false,
@@ -56063,12 +56067,12 @@
                                     "id": "6a610041-5a2d-4040-9226-968d9eb6f23f",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 18505.54675594291,
-                                            "y": 39495.35395330483
+                                            "x": 18600.086726184163,
+                                            "y": 39716.125688553366
                                         },
                                         "targetPosition": {
-                                            "x": 18399.45523496367,
-                                            "y": 39932.66915905043
+                                            "x": 18529.359045531335,
+                                            "y": 40007.66915905043
                                         },
                                         "floatingObject": {
                                             "isPinned": false,
@@ -56258,7 +56262,7 @@
                                 {
                                     "type": "Tutorial Step",
                                     "name": "Is It Working?",
-                                    "config": "{\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"documentationURL\": \"\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Is It Working?\"\n    },\n    \"icon\": {\n        \"name\": \"Crypto-Exchanges\\\\binance\",\n        \"project\": \"Foundations\"\n    }\n}",
+                                    "config": "{\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"documentationURL\": \"\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Is It Working?\"\n    },\n    \"icon\": {\n        \"name\": \"crypto-exchange\",\n        \"project\": \"Foundations\"\n    }\n}",
                                     "project": "Education",
                                     "id": "4fad500a-616e-47cc-94ce-f3d61de18d1d",
                                     "savedPayload": {
@@ -56516,8 +56520,8 @@
                             "id": "d0971551-1077-4d2f-b51f-194031e6a33a",
                             "savedPayload": {
                                 "position": {
-                                    "x": 18731.453498831415,
-                                    "y": 39972.0344542821
+                                    "x": 18726.37684210907,
+                                    "y": 39981.19298544633
                                 },
                                 "targetPosition": {
                                     "x": 18991.261119966748,
@@ -56560,8 +56564,8 @@
                             "id": "43cfe24a-01d4-4924-90d3-eb5aa3650e0a",
                             "savedPayload": {
                                 "position": {
-                                    "x": 18798.424837060786,
-                                    "y": 39892.2211213464
+                                    "x": 18782.863608829048,
+                                    "y": 39906.232514180505
                                 },
                                 "targetPosition": {
                                     "x": 18991.261119966748,
@@ -56604,8 +56608,8 @@
                             "id": "a5949f55-dc76-4c61-888b-45bc1e7c6ef1",
                             "savedPayload": {
                                 "position": {
-                                    "x": 18888.655076969048,
-                                    "y": 39840.12666804632
+                                    "x": 18859.749775930024,
+                                    "y": 39852.39624039234
                                 },
                                 "targetPosition": {
                                     "x": 18991.261119966748,
@@ -56648,8 +56652,8 @@
                             "id": "192af355-57c9-4c62-a79d-245a0705c180",
                             "savedPayload": {
                                 "position": {
-                                    "x": 18991.261119966748,
-                                    "y": 39822.0344542821
+                                    "x": 18949.509189678727,
+                                    "y": 39824.954033659626
                                 },
                                 "targetPosition": {
                                     "x": 18991.261119966748,
@@ -56679,8 +56683,8 @@
                             "id": "a40f204e-469b-4d14-a4cf-e3d1eea8fd72",
                             "savedPayload": {
                                 "position": {
-                                    "x": 19093.86716296445,
-                                    "y": 39840.12666804632
+                                    "x": 19043.35557326683,
+                                    "y": 39826.592128378434
                                 },
                                 "targetPosition": {
                                     "x": 18991.261119966748,
@@ -56723,8 +56727,8 @@
                             "id": "85233174-cdcc-4c3b-84b3-6447c7a95fd9",
                             "savedPayload": {
                                 "position": {
-                                    "x": 19184.09740287271,
-                                    "y": 39892.2211213464
+                                    "x": 19132.102588802514,
+                                    "y": 39857.15017642442
                                 },
                                 "targetPosition": {
                                     "x": 18991.261119966748,
@@ -56767,8 +56771,8 @@
                             "id": "45549599-0051-46be-9847-495c856dd182",
                             "savedPayload": {
                                 "position": {
-                                    "x": 19251.06874110208,
-                                    "y": 39972.0344542821
+                                    "x": 19207.063060068343,
+                                    "y": 39913.636943144396
                                 },
                                 "targetPosition": {
                                     "x": 18991.261119966748,
@@ -56798,8 +56802,52 @@
                             "id": "bc08da7d-e803-458d-99fa-8aae1f64d929",
                             "savedPayload": {
                                 "position": {
-                                    "x": 19286.70344587041,
-                                    "y": 40069.94000098202
+                                    "x": 19260.899333856498,
+                                    "y": 39990.523110245376
+                                },
+                                "targetPosition": {
+                                    "x": 18991.261119966748,
+                                    "y": 40122.0344542821
+                                },
+                                "floatingObject": {
+                                    "isPinned": false,
+                                    "isFrozen": false,
+                                    "isCollapsed": false,
+                                    "angleToParent": 2,
+                                    "distanceToParent": 3,
+                                    "arrangementStyle": 0
+                                },
+                                "uiObject": {
+                                    "isRunning": false
+                                },
+                                "tutorial": {
+                                    "status": "Reset"
+                                },
+                                "referenceParent": {
+                                    "type": "Tutorial",
+                                    "name": "Welcome to Superalgos!",
+                                    "id": "c598fe19-7375-400c-95b9-ff1c0c38ec1e"
+                                },
+                                "referenceParentCombinedNodePath": [
+                                    [
+                                        "Welcome to Superalgos!",
+                                        "Tutorial",
+                                        "Education",
+                                        "c598fe19-7375-400c-95b9-ff1c0c38ec1e"
+                                    ]
+                                ]
+                            }
+                        },
+                        {
+                            "type": "Tutorial Step",
+                            "name": "Buy the Token!",
+                            "config": "{\n    \"position\": \"\",\n    \"slider\": \"\",\n    \"documentationURL\": \"\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Buy the Token!\"\n    },\n    \"icon\": {\n        \"name\": \"Crypto-Exchanges\\\\pancakeswap\",\n        \"project\": \"Foundations\"\n    }\n}",
+                            "project": "Education",
+                            "id": "0c5a9826-0e13-4a93-9a9d-fc3c0187517a",
+                            "savedPayload": {
+                                "position": {
+                                    "x": 19288.34154058922,
+                                    "y": 40080.28252399408
                                 },
                                 "targetPosition": {
                                     "x": 18991.261119966748,
@@ -57290,7 +57338,7 @@
             "githubAPI": {
                 "type": "Github API",
                 "name": "New Github API",
-                "config": "{ \n\"username\": \"\", \n\"token\": \"\"\n}",
+                "config": "{\n    \"username\": \"\",\n    \"token\": \"\"\n}",
                 "project": "Foundations",
                 "id": "626ea393-1d22-4fb3-8b6b-7f6f15b56954",
                 "savedPayload": {
