@@ -1,43 +1,44 @@
-exports.newMachineLearningBotModulesLearningRecords = function (processIndex) {
+exports.newSimulationFunctionLibrariesOutputRecordsFunctions = function () {
     /*
-    This module facilitates the appending of records to the output of the process.
+    This module contains the functions that are used at Simulations.
     */
-    const MODULE_NAME = 'Learning Records'
+    const MODULE_NAME = "Output Records Functions"
 
     let thisObject = {
-        appendRecords: appendRecords,
-        initialize: initialize,
-        finalize: finalize
+        appendRecords: appendRecords
     }
-
-    let learningEngine
-    let learningSystem
-    let sessionParameters
-    let outputDatasetsMap
 
     return thisObject
 
-    function initialize(pOutputDatasetsMap) {
-        learningEngine = TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).SIMULATION_STATE.learningEngine
-        learningSystem = TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).SIMULATION_STATE.learningSystem
-        sessionParameters = TS.projects.foundations.globals.processConstants.CONSTANTS_BY_PROCESS_INDEX_MAP.get(processIndex).SESSION_NODE.learningParameters
-        outputDatasetsMap = pOutputDatasetsMap  // These are the files turned into arrays, stored in a Map by Product codeName.
-    }
+    function appendRecords(
+        cycle,
+        candleEnd,
+        outputDatasetsMap,
+        engine,
+        system,
+        sessionParameters,
+        processIndex
+    ) {
+        /*
+        Since we are going to be evaluating the nodePaths at Products Records Configs, 
+        which are referencing either a tradingEngine, portfolioEngine, or LearningEngine
+        we will need to define these variables here and assign to them the engine received.
+        */
+        let tradingEngine = engine
+        let portfolioEngine = engine
+        let learningEngine = engine
 
-    function finalize() {
-        learningEngine = undefined
-        learningSystem = undefined
-        sessionParameters = undefined
-        outputDatasetsMap = undefined
-    }
-
-    function appendRecords() {
+        let tradingSystem = system
+        let portfolioSystem = system
+        let learningSystem = system
         /*
             Here we add records to the output files. At the product config property nodePath
             we have a pointer to the node that have the information we need to extract.
             Later, based on the product record definition we will extract each individual value.
        */
-        let outputDatasets = SA.projects.visualScripting.utilities.nodeFunctions.nodeBranchToArray(TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.processOutput, 'Output Dataset')
+        let outputDatasets = SA.projects.visualScripting.utilities.nodeFunctions.nodeBranchToArray(
+            TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.processOutput, 'Output Dataset'
+        )
 
         for (let i = 0; i < outputDatasets.length; i++) {
             let outputDatasetNode = outputDatasets[i]
@@ -45,11 +46,16 @@ exports.newMachineLearningBotModulesLearningRecords = function (processIndex) {
             let product = dataset.parentNode
             let outputDatasetArray = outputDatasetsMap.get(product.config.codeName)
 
-            if (TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).ARE_WE_PROCESSING_DAILY_FILES === true && dataset.config.type === 'Daily Files') {
+            if (
+                TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).ARE_WE_PROCESSING_DAILY_FILES === true &&
+                dataset.config.type === 'Daily Files'
+            ) {
                 persistRecords()
             }
 
-            if (TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).ARE_WE_PROCESSING_DAILY_FILES === false && dataset.config.type === 'Market Files') {
+            if (
+                TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).ARE_WE_PROCESSING_DAILY_FILES === false &&
+                dataset.config.type === 'Market Files') {
                 persistRecords()
             }
 
@@ -58,13 +64,13 @@ exports.newMachineLearningBotModulesLearningRecords = function (processIndex) {
                 There are a few products configured to be saved only at an specific cycle.
                 */
                 if (product.config.saveAtCycle !== undefined) {
-                    if (learningEngine.learningCurrent.learningEpisode.cycle.value !== product.config.saveAtCycle) {
+                    if (cycle !== product.config.saveAtCycle) {
                         return
                     }
                 }
 
                 /* Clean the file from information of previous executions */
-                //pruneOutputFile(product, outputDatasetArray, learningEngine.learningCurrent.learningEpisode.candle.end.value)
+                //pruneOutputFile(product, outputDatasetArray, candleEnd)
 
                 /* Clean Open Records */
                 if (product.config.saveAsObjects === true) {
@@ -77,7 +83,6 @@ exports.newMachineLearningBotModulesLearningRecords = function (processIndex) {
                         }
                     }
                 }
-
                 /*
                 The product root can be a node or a node property of type array.
                 */
@@ -91,7 +96,7 @@ exports.newMachineLearningBotModulesLearningRecords = function (processIndex) {
                 if (product.config.nodePathType === 'array') {
                     /* 
                     This means that the configured nodePath is not pointing to a node, but to a node property that is an array.
-                    For that reason we will assume that each element of the array is a record to be outputted
+                    For that reason we will assume that each element of the array is a record to be outputed
                     */
                     for (let index = 0; index < productRoot.length; index++) {
                         /*
@@ -102,7 +107,7 @@ exports.newMachineLearningBotModulesLearningRecords = function (processIndex) {
                         if (record !== undefined) {
                             /*
                             We will add the index value to the record itself, so that the plotter can know to which 
-                            branch of the learning engine data structure it belongs.
+                            branch of the engine data structure it belongs.
                             */
                             record.push(index)
                             persistIndividualRecord(record, product, outputDatasetArray)
@@ -187,7 +192,7 @@ exports.newMachineLearningBotModulesLearningRecords = function (processIndex) {
                 of Nodes defined in the Record Properties but not all of them exist at the Root Node.
                 We filter out those cases by not extracting the value from the value property.
                 */
-                let value = 0 // This is a default value, since we do not want null in files because it breaks JSON format.
+                let value = 0 // This is a default value, since we do not want null in files because it brakes JSON format.
                 if (targetNode !== undefined) {
                     if (targetNode.type !== undefined) {
                         /*
@@ -195,12 +200,13 @@ exports.newMachineLearningBotModulesLearningRecords = function (processIndex) {
                         from its value property.
                         */
                         value = targetNode.value
-
-                        if (recordProperty.config.decimals !== undefined) {
-                            try {
-                                value = Number(value.toFixed(recordProperty.config.decimals))
-                            } catch (err) {
-                                badDefinitionUnhandledException(err, 'Error applying configured decimals.', product, recordProperty)
+                        if (value !== undefined && value !== null) {
+                            if (recordProperty.config.decimals !== undefined) {
+                                try {
+                                    value = Number(value.toFixed(recordProperty.config.decimals))
+                                } catch (err) {
+                                    badDefinitionUnhandledException(err, 'Error applying configured decimals.', product, recordProperty)
+                                }
                             }
                         }
                     } else {
@@ -253,8 +259,8 @@ exports.newMachineLearningBotModulesLearningRecords = function (processIndex) {
                                 of the day? Easy: the end of the candle must be 1 millisecond before the next day. That happens at any
                                 time frame. 
                                 */
-                                let currentDay = new Date(learningEngine.learningCurrent.learningEpisode.candle.end.value)
-                                let nextDay = new Date(learningEngine.learningCurrent.learningEpisode.candle.end.value + 1)
+                                let currentDay = new Date(candleEnd)
+                                let nextDay = new Date(candleEnd + 1)
                                 if (currentDay.getUTCDate() !== nextDay.getUTCDate()) {
                                     /*
                                     We will save the object only if it is closed, because we are at the last candle of the day.
@@ -293,7 +299,7 @@ exports.newMachineLearningBotModulesLearningRecords = function (processIndex) {
                         let recordProperty = product.record.properties[j]
                         if (recordProperty.config.codeName === product.config.propertyNameThatDefinesStatus) {
                             let propertyValue = record[j]
-                            
+
                             if (product.config.propertyValueThatPreventsSavingObject === "->Empty Array->" && propertyValue.length === 0) {
                                 break
                             }
@@ -392,22 +398,22 @@ exports.newMachineLearningBotModulesLearningRecords = function (processIndex) {
                 }
             }
         }
-    }
 
-    function badDefinitionUnhandledException(err, message, product, recordProperty) {
-        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME, "[ERROR] appendRecords -> " + message);
-        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME, "[ERROR] appendRecords -> product.name = " + product.name);
-        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME, "[ERROR] appendRecords -> product.config = " + JSON.stringify(product.config));
+        function badDefinitionUnhandledException(err, message, product, recordProperty) {
+            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME, "[ERROR] appendRecords -> " + message);
+            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME, "[ERROR] appendRecords -> product.name = " + product.name);
+            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME, "[ERROR] appendRecords -> product.config = " + JSON.stringify(product.config));
 
-        if (recordProperty) {
-            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME, "[ERROR] appendRecords -> recordProperty.name = " + recordProperty.name);
-            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME, "[ERROR] appendRecords -> recordProperty.config.codeName = " + recordProperty.config.codeName);
-            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME, "[ERROR] appendRecords -> recordProperty.config = " + JSON.stringify(recordProperty.config));
+            if (recordProperty) {
+                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME, "[ERROR] appendRecords -> recordProperty.name = " + recordProperty.name);
+                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME, "[ERROR] appendRecords -> recordProperty.config.codeName = " + recordProperty.config.codeName);
+                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME, "[ERROR] appendRecords -> recordProperty.config = " + JSON.stringify(recordProperty.config));
+            }
+
+            if (err) {
+                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME, "[ERROR] appendRecords -> err.stack = " + err.stack);
+            }
+            throw 'Can not continue with a Definition Error like this.'
         }
-
-        if (err) {
-            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME, "[ERROR] appendRecords -> err.stack = " + err.stack);
-        }
-        throw 'Can not continue with a Definition Error like this.'
     }
 }
