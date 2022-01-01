@@ -75191,12 +75191,12 @@
             "id": "cf9f8b3b-77c6-43c6-b01f-95cf366a91f6",
             "savedPayload": {
                 "position": {
-                    "x": 7364.94889851932,
-                    "y": 10696.22850678733
+                    "x": 5000,
+                    "y": 10000
                 },
                 "targetPosition": {
-                    "x": 7364.94889851932,
-                    "y": 10696.22850678733
+                    "x": 5000,
+                    "y": 10000
                 },
                 "floatingObject": {
                     "isPinned": true,
@@ -78756,12 +78756,12 @@
             "id": "f65dd22b-2d2a-4dff-9eb5-e4c5544c4960",
             "savedPayload": {
                 "position": {
-                    "x": 7338.5523654749,
-                    "y": 18620.738813474105
+                    "x": 5000,
+                    "y": 17500
                 },
                 "targetPosition": {
-                    "x": 7338.5523654749,
-                    "y": 18620.738813474105
+                    "x": 5000,
+                    "y": 17500
                 },
                 "floatingObject": {
                     "isPinned": true,
@@ -78811,12 +78811,12 @@
             "id": "45afe681-2190-41d8-9b4e-6371136b020b",
             "savedPayload": {
                 "position": {
-                    "x": 7320.328999638859,
-                    "y": 30966.67772750126
+                    "x": 5000,
+                    "y": 32500
                 },
                 "targetPosition": {
-                    "x": 7320.328999638859,
-                    "y": 30966.67772750126
+                    "x": 5000,
+                    "y": 32500
                 },
                 "floatingObject": {
                     "isPinned": true,
@@ -78866,12 +78866,39 @@
             "id": "f716c4e2-1618-4c4d-a377-cfcffb5177c6",
             "savedPayload": {
                 "position": {
-                    "x": 7324.576561935719,
-                    "y": 24516.442182001003
+                    "x": 5000,
+                    "y": 25000
                 },
                 "targetPosition": {
-                    "x": 7324.576561935719,
-                    "y": 24516.442182001003
+                    "x": 5000,
+                    "y": 25000
+                },
+                "floatingObject": {
+                    "isPinned": true,
+                    "isFrozen": false,
+                    "isCollapsed": true,
+                    "angleToParent": 1,
+                    "distanceToParent": 3,
+                    "arrangementStyle": 0
+                },
+                "uiObject": {
+                    "isRunning": false
+                }
+            }
+        },
+        {
+            "type": "Workspaces Project",
+            "name": "New Workspaces Project",
+            "project": "Workspaces",
+            "id": "680001f8-64a8-453e-ae6f-9c415d9d10b4",
+            "savedPayload": {
+                "position": {
+                    "x": 5000,
+                    "y": 40000
+                },
+                "targetPosition": {
+                    "x": 5000,
+                    "y": 40000
                 },
                 "floatingObject": {
                     "isPinned": true,
@@ -78921,12 +78948,12 @@
             "id": "12ffd359-f032-493d-b70b-8ec08b31edb4",
             "savedPayload": {
                 "position": {
-                    "x": 7341.381184543156,
-                    "y": 39055.72976370035
+                    "x": 10000,
+                    "y": 40000
                 },
                 "targetPosition": {
-                    "x": 7341.381184543156,
-                    "y": 39055.72976370035
+                    "x": 10000,
+                    "y": 40000
                 },
                 "floatingObject": {
                     "isPinned": true,
