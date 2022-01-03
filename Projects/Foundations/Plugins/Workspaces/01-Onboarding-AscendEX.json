@@ -27291,7 +27291,7 @@
                                                             {
                                                                 "type": "Layer",
                                                                 "name": "Candles",
-                                                                "config": "{\n    \"status\": \"on\",\n    \"showPanels\": false\n}",
+                                                                "config": "{\n    \"status\": \"loading\",\n    \"showPanels\": false\n}",
                                                                 "project": "Foundations",
                                                                 "layerPanels": {
                                                                     "type": "Layer Panels",
@@ -36392,7 +36392,7 @@
                                                                             {
                                                                                 "type": "Layer",
                                                                                 "name": "Limit Buy Orders",
-                                                                                "config": "{\n    \"status\": \"on\",\n    \"showPanels\": false\n}",
+                                                                                "config": "{\n    \"status\": \"loading\",\n    \"showPanels\": false\n}",
                                                                                 "project": "Foundations",
                                                                                 "layerPanels": {
                                                                                     "type": "Layer Panels",
@@ -36994,7 +36994,7 @@
                                                                             {
                                                                                 "type": "Layer",
                                                                                 "name": "Limit Sell Orders",
-                                                                                "config": "{\n    \"status\": \"on\",\n    \"showPanels\": false\n}",
+                                                                                "config": "{\n    \"status\": \"loading\",\n    \"showPanels\": false\n}",
                                                                                 "project": "Foundations",
                                                                                 "layerPanels": {
                                                                                     "type": "Layer Panels",
@@ -43952,7 +43952,7 @@
                                                             {
                                                                 "type": "Layer",
                                                                 "name": "Candles",
-                                                                "config": "{\n    \"status\": \"on\",\n    \"showPanels\": true\n}",
+                                                                "config": "{\n    \"status\": \"loading\",\n    \"showPanels\": true\n}",
                                                                 "project": "Foundations",
                                                                 "layerPanels": {
                                                                     "type": "Layer Panels",
@@ -45705,12 +45705,12 @@
                 "id": "a2a04e12-604e-43f8-a986-1b8ca3b043cb",
                 "savedPayload": {
                     "position": {
-                        "x": 4560.875,
-                        "y": 40334.982972136226
+                        "x": 5300,
+                        "y": 10000
                     },
                     "targetPosition": {
-                        "x": 4260.875,
-                        "y": 40334.982972136226
+                        "x": 5000,
+                        "y": 10000
                     },
                     "floatingObject": {
                         "isPinned": false,
@@ -45732,12 +45732,12 @@
                 "id": "4d0ee814-4e48-4688-9cc5-7ee03de5192b",
                 "savedPayload": {
                     "position": {
-                        "x": 4410.875,
-                        "y": 40594.79059327156
+                        "x": 5150,
+                        "y": 10259.807621135331
                     },
                     "targetPosition": {
-                        "x": 4260.875,
-                        "y": 40334.982972136226
+                        "x": 5000,
+                        "y": 10000
                     },
                     "floatingObject": {
                         "isPinned": false,
@@ -45759,12 +45759,12 @@
                 "id": "b979e3a3-9316-4e5a-831b-c503b4b0e507",
                 "savedPayload": {
                     "position": {
-                        "x": 4110.875,
-                        "y": 40594.79059327156
+                        "x": 4850,
+                        "y": 10259.807621135331
                     },
                     "targetPosition": {
-                        "x": 4260.875,
-                        "y": 40334.982972136226
+                        "x": 5000,
+                        "y": 10000
                     },
                     "floatingObject": {
                         "isPinned": false,
@@ -45786,12 +45786,12 @@
                 "id": "b6ac4d4f-0b4a-4fb0-a0c2-7cd10ca1ca49",
                 "savedPayload": {
                     "position": {
-                        "x": 3960.875,
-                        "y": 40334.982972136226
+                        "x": 4700,
+                        "y": 10000
                     },
                     "targetPosition": {
-                        "x": 4260.875,
-                        "y": 40334.982972136226
+                        "x": 5000,
+                        "y": 10000
                     },
                     "floatingObject": {
                         "isPinned": false,
@@ -45813,12 +45813,12 @@
                 "id": "01371968-6af6-4c3f-8de7-91cbb4cae031",
                 "savedPayload": {
                     "position": {
-                        "x": 4110.875,
-                        "y": 40075.17535100089
+                        "x": 4850,
+                        "y": 9740.192378864669
                     },
                     "targetPosition": {
-                        "x": 4260.875,
-                        "y": 40334.982972136226
+                        "x": 5000,
+                        "y": 10000
                     },
                     "floatingObject": {
                         "isPinned": false,
@@ -45840,12 +45840,12 @@
                 "id": "0a1ff755-8e0b-4f62-976e-df76c8139c6f",
                 "savedPayload": {
                     "position": {
-                        "x": 4410.875,
-                        "y": 40075.17535100089
+                        "x": 5150,
+                        "y": 9740.192378864669
                     },
                     "targetPosition": {
-                        "x": 4260.875,
-                        "y": 40334.982972136226
+                        "x": 5000,
+                        "y": 10000
                     },
                     "floatingObject": {
                         "isPinned": false,
@@ -49578,11 +49578,11 @@
                                 "referenceParent": {
                                     "type": "Workspace",
                                     "name": "01-Onboarding-AscendEX",
-                                    "id": "dab9c94e-8ebc-49ae-924e-c1ecf2bbe10a"
+                                    "id": "40445706-0ce1-4357-9f43-ee4e21073757"
                                 },
                                 "referenceParentCombinedNodePath": [
                                     [
-                                        "AscendEX",
+                                        "01-Onboarding-AscendEX",
                                         "Workspace"
                                     ]
                                 ]
@@ -50619,12 +50619,12 @@
                 "id": "588e6946-31d9-4389-8cf2-37715795ba4d",
                 "savedPayload": {
                     "position": {
-                        "x": 4601.708333333332,
-                        "y": 19847.940660474716
+                        "x": 5300,
+                        "y": 25000
                     },
                     "targetPosition": {
-                        "x": 4301.708333333332,
-                        "y": 19847.940660474716
+                        "x": 5000,
+                        "y": 25000
                     },
                     "floatingObject": {
                         "isPinned": false,
@@ -50674,12 +50674,12 @@
                 "id": "b15d5bbb-0433-40c3-bdd7-3d2aa0ddc389",
                 "savedPayload": {
                     "position": {
-                        "x": 4587.75,
-                        "y": 30875.953560371516
+                        "x": 5300,
+                        "y": 32500
                     },
                     "targetPosition": {
-                        "x": 4287.75,
-                        "y": 30875.953560371516
+                        "x": 5000,
+                        "y": 32500
                     },
                     "floatingObject": {
                         "isPinned": false,
@@ -56209,7 +56209,7 @@
                                 {
                                     "type": "Tutorial Step",
                                     "name": "GIF",
-                                    "config": "{\n    \"position\": \"Left\",\n    \"positionAtReferenceParent\": true,\n    \"slider\": \"toTop\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Welcome Live Trading Process Progress\"\n    },\n    \"icon\": {\n        \"project\": \"Foundations\"\n    }\n}",
+                                    "config": "{\n    \"position\": \"Left\",\n    \"positionAtReferenceParent\": true,\n    \"slider\": \"toTop\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Welcome AscendEX Live Trading Process Progress\"\n    },\n    \"icon\": {\n        \"project\": \"Foundations\"\n    }\n}",
                                     "project": "Education",
                                     "id": "6a610041-5a2d-4040-9226-968d9eb6f23f",
                                     "savedPayload": {
