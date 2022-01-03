@@ -16859,7 +16859,7 @@
                             },
                             {
                                 "type": "Data Mine Data Dependencies",
-                                "name": "",
+                                "name": "Heikin",
                                 "project": "Foundations",
                                 "botDataDependencies": [
                                     {
@@ -16869,7 +16869,7 @@
                                         "dataDependencies": [
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "Super Trend Heikin Multi-Time-Frame-Market",
                                                 "project": "Foundations",
                                                 "id": "6a804be1-aff6-4a1b-a525-16259384e1ac",
                                                 "savedPayload": {
@@ -16927,7 +16927,7 @@
                                             },
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "Super Trend Heikin Multi-Time-Frame-Daily",
                                                 "project": "Foundations",
                                                 "id": "4adec7b4-f389-4278-8719-9beaa4e328e3",
                                                 "savedPayload": {
@@ -17015,7 +17015,7 @@
                                         "dataDependencies": [
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "Heikin-Ashi Candles Multi-Time-Frame-Market",
                                                 "project": "Foundations",
                                                 "id": "7bc73b15-92a4-4f2e-920d-dbca6032e545",
                                                 "savedPayload": {
@@ -17073,7 +17073,7 @@
                                             },
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "Heikin-Ashi Candles Multi-Time-Frame-Daily",
                                                 "project": "Foundations",
                                                 "id": "8be19611-a94e-40c1-b7b2-416e253ceb2d",
                                                 "savedPayload": {
@@ -21651,7 +21651,7 @@
                             },
                             {
                                 "type": "Data Mine Data Dependencies",
-                                "name": "",
+                                "name": "Delta",
                                 "project": "Foundations",
                                 "botDataDependencies": [
                                     {
@@ -21661,7 +21661,7 @@
                                         "dataDependencies": [
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "RSI-W14 Multi-Time-Frame-Daily",
                                                 "project": "Foundations",
                                                 "id": "912d212c-7de8-4c04-844b-1357a61b267c",
                                                 "savedPayload": {
@@ -21719,7 +21719,7 @@
                                             },
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "RSI-W14 Multi-Time-Frame-Market",
                                                 "project": "Foundations",
                                                 "id": "7f2ae964-a022-4411-bcd9-d5dbf3917e5f",
                                                 "savedPayload": {
@@ -21807,7 +21807,7 @@
                                         "dataDependencies": [
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "MFI Multi-Time-Frame-Daily",
                                                 "project": "Foundations",
                                                 "id": "a462fda9-5b28-4c35-83fa-e33b9dcbd7b0",
                                                 "savedPayload": {
@@ -21865,7 +21865,7 @@
                                             },
                                             {
                                                 "type": "Data Dependency",
-                                                "name": "",
+                                                "name": "MFI Multi-Time-Frame-Market",
                                                 "project": "Foundations",
                                                 "id": "0d998685-ada7-4ba6-bf55-237db7259fda",
                                                 "savedPayload": {
@@ -25620,19 +25620,27 @@
                                                     "referenceParentCombinedNodePath": [
                                                         [
                                                             "Keltner_Bollinger_Strategy",
-                                                            "Data Mine"
+                                                            "Data Mine",
+                                                            "Data-Mining",
+                                                            "692938c9-ebca-4163-99e0-ccc58ad80e1d"
                                                         ],
                                                         [
                                                             "Super Trend 14-3",
-                                                            "Indicator Bot"
+                                                            "Indicator Bot",
+                                                            "Data-Mining",
+                                                            "d1a32797-f03d-4ac6-b085-1956a4b300a4"
                                                         ],
                                                         [
                                                             "Super Trend 14-3",
-                                                            "Product Definition"
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "9aa5f428-33ab-4e48-ac93-8333873548db"
                                                         ],
                                                         [
                                                             "Multi-Time-Frame-Market",
-                                                            "Dataset Definition"
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "00c41fe8-02dd-45d8-9233-9a31652055f2"
                                                         ]
                                                     ]
                                                 }
@@ -25670,19 +25678,27 @@
                                                     "referenceParentCombinedNodePath": [
                                                         [
                                                             "Keltner_Bollinger_Strategy",
-                                                            "Data Mine"
+                                                            "Data Mine",
+                                                            "Data-Mining",
+                                                            "692938c9-ebca-4163-99e0-ccc58ad80e1d"
                                                         ],
                                                         [
                                                             "Super Trend 14-3",
-                                                            "Indicator Bot"
+                                                            "Indicator Bot",
+                                                            "Data-Mining",
+                                                            "d1a32797-f03d-4ac6-b085-1956a4b300a4"
                                                         ],
                                                         [
                                                             "Super Trend 14-3",
-                                                            "Product Definition"
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "9aa5f428-33ab-4e48-ac93-8333873548db"
                                                         ],
                                                         [
                                                             "Multi-Time-Frame-Daily",
-                                                            "Dataset Definition"
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "0bb91809-ee7d-40ca-8d12-7f12e56e148e"
                                                         ]
                                                     ]
                                                 }
@@ -25750,19 +25766,27 @@
                                                     "referenceParentCombinedNodePath": [
                                                         [
                                                             "Keltner_Bollinger_Strategy",
-                                                            "Data Mine"
+                                                            "Data Mine",
+                                                            "Data-Mining",
+                                                            "692938c9-ebca-4163-99e0-ccc58ad80e1d"
                                                         ],
                                                         [
                                                             "Keltner",
-                                                            "Indicator Bot"
+                                                            "Indicator Bot",
+                                                            "Data-Mining",
+                                                            "ff2d169b-09fe-42a1-bc72-f5d4ff8c2da9"
                                                         ],
                                                         [
                                                             "Keltner EMA",
-                                                            "Product Definition"
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "9d7ba9cc-53f3-4452-9867-b0ffae8d9b7c"
                                                         ],
                                                         [
                                                             "Multi-Time-Frame-Market",
-                                                            "Dataset Definition"
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "e5977f4d-1298-4a65-a820-7df9c8a23f19"
                                                         ]
                                                     ]
                                                 }
@@ -25800,19 +25824,27 @@
                                                     "referenceParentCombinedNodePath": [
                                                         [
                                                             "Keltner_Bollinger_Strategy",
-                                                            "Data Mine"
+                                                            "Data Mine",
+                                                            "Data-Mining",
+                                                            "692938c9-ebca-4163-99e0-ccc58ad80e1d"
                                                         ],
                                                         [
                                                             "Keltner",
-                                                            "Indicator Bot"
+                                                            "Indicator Bot",
+                                                            "Data-Mining",
+                                                            "ff2d169b-09fe-42a1-bc72-f5d4ff8c2da9"
                                                         ],
                                                         [
                                                             "Keltner EMA",
-                                                            "Product Definition"
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "9d7ba9cc-53f3-4452-9867-b0ffae8d9b7c"
                                                         ],
                                                         [
                                                             "Multi-Time-Frame-Daily",
-                                                            "Dataset Definition"
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "c95b4d85-08a7-4650-b6d6-132843f3e032"
                                                         ]
                                                     ]
                                                 }
@@ -25850,19 +25882,27 @@
                                                     "referenceParentCombinedNodePath": [
                                                         [
                                                             "Keltner_Bollinger_Strategy",
-                                                            "Data Mine"
+                                                            "Data Mine",
+                                                            "Data-Mining",
+                                                            "692938c9-ebca-4163-99e0-ccc58ad80e1d"
                                                         ],
                                                         [
                                                             "Keltner",
-                                                            "Indicator Bot"
+                                                            "Indicator Bot",
+                                                            "Data-Mining",
+                                                            "ff2d169b-09fe-42a1-bc72-f5d4ff8c2da9"
                                                         ],
                                                         [
                                                             "Keltner MAMA",
-                                                            "Product Definition"
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "8f78704d-1f56-4882-8805-34b732f109e8"
                                                         ],
                                                         [
                                                             "Multi-Time-Frame-Market",
-                                                            "Dataset Definition"
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "92250f0f-5d39-439e-81dc-c85e9c0e59ef"
                                                         ]
                                                     ]
                                                 }
@@ -25900,19 +25940,27 @@
                                                     "referenceParentCombinedNodePath": [
                                                         [
                                                             "Keltner_Bollinger_Strategy",
-                                                            "Data Mine"
+                                                            "Data Mine",
+                                                            "Data-Mining",
+                                                            "692938c9-ebca-4163-99e0-ccc58ad80e1d"
                                                         ],
                                                         [
                                                             "Keltner",
-                                                            "Indicator Bot"
+                                                            "Indicator Bot",
+                                                            "Data-Mining",
+                                                            "ff2d169b-09fe-42a1-bc72-f5d4ff8c2da9"
                                                         ],
                                                         [
                                                             "Keltner MAMA",
-                                                            "Product Definition"
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "8f78704d-1f56-4882-8805-34b732f109e8"
                                                         ],
                                                         [
                                                             "Multi-Time-Frame-Daily",
-                                                            "Dataset Definition"
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "260d2515-1d0c-4d61-94c9-b0adda0b5ef3"
                                                         ]
                                                     ]
                                                 }
@@ -25950,19 +25998,27 @@
                                                     "referenceParentCombinedNodePath": [
                                                         [
                                                             "Keltner_Bollinger_Strategy",
-                                                            "Data Mine"
+                                                            "Data Mine",
+                                                            "Data-Mining",
+                                                            "692938c9-ebca-4163-99e0-ccc58ad80e1d"
                                                         ],
                                                         [
                                                             "Keltner",
-                                                            "Indicator Bot"
+                                                            "Indicator Bot",
+                                                            "Data-Mining",
+                                                            "ff2d169b-09fe-42a1-bc72-f5d4ff8c2da9"
                                                         ],
                                                         [
                                                             "MAMA_PLUV",
-                                                            "Product Definition"
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "9563601d-5e30-4296-85d2-0953178e94dd"
                                                         ],
                                                         [
                                                             "Multi-Time-Frame-Market",
-                                                            "Dataset Definition"
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "ff81f519-afeb-4b72-98af-608f960b7402"
                                                         ]
                                                     ]
                                                 }
@@ -26000,19 +26056,27 @@
                                                     "referenceParentCombinedNodePath": [
                                                         [
                                                             "Keltner_Bollinger_Strategy",
-                                                            "Data Mine"
+                                                            "Data Mine",
+                                                            "Data-Mining",
+                                                            "692938c9-ebca-4163-99e0-ccc58ad80e1d"
                                                         ],
                                                         [
                                                             "Keltner",
-                                                            "Indicator Bot"
+                                                            "Indicator Bot",
+                                                            "Data-Mining",
+                                                            "ff2d169b-09fe-42a1-bc72-f5d4ff8c2da9"
                                                         ],
                                                         [
                                                             "MAMA_PLUV",
-                                                            "Product Definition"
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "9563601d-5e30-4296-85d2-0953178e94dd"
                                                         ],
                                                         [
                                                             "Multi-Time-Frame-Daily",
-                                                            "Dataset Definition"
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "00af5401-70a1-40da-9f44-2fc4ad1a434d"
                                                         ]
                                                     ]
                                                 }
@@ -26080,19 +26144,27 @@
                                                     "referenceParentCombinedNodePath": [
                                                         [
                                                             "Keltner_Bollinger_Strategy",
-                                                            "Data Mine"
+                                                            "Data Mine",
+                                                            "Data-Mining",
+                                                            "692938c9-ebca-4163-99e0-ccc58ad80e1d"
                                                         ],
                                                         [
                                                             "Enhanced_Bollinger",
-                                                            "Indicator Bot"
+                                                            "Indicator Bot",
+                                                            "Data-Mining",
+                                                            "fcd03f56-91b8-426e-8980-b00da44362e1"
                                                         ],
                                                         [
                                                             "Enhanced_Bollinger",
-                                                            "Product Definition"
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "dccdab5f-4146-469d-a6d8-4d048f10d35b"
                                                         ],
                                                         [
                                                             "Multi-Time-Frame-Market",
-                                                            "Dataset Definition"
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "0ba1eac0-a52e-4e9c-941d-9fb12d8ee4fc"
                                                         ]
                                                     ]
                                                 }
@@ -26130,19 +26202,27 @@
                                                     "referenceParentCombinedNodePath": [
                                                         [
                                                             "Keltner_Bollinger_Strategy",
-                                                            "Data Mine"
+                                                            "Data Mine",
+                                                            "Data-Mining",
+                                                            "692938c9-ebca-4163-99e0-ccc58ad80e1d"
                                                         ],
                                                         [
                                                             "Enhanced_Bollinger",
-                                                            "Indicator Bot"
+                                                            "Indicator Bot",
+                                                            "Data-Mining",
+                                                            "fcd03f56-91b8-426e-8980-b00da44362e1"
                                                         ],
                                                         [
                                                             "Enhanced_Bollinger",
-                                                            "Product Definition"
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "dccdab5f-4146-469d-a6d8-4d048f10d35b"
                                                         ],
                                                         [
                                                             "Multi-Time-Frame-Daily",
-                                                            "Dataset Definition"
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "06ba0a59-7c49-43ff-9ea4-3eb866f10662"
                                                         ]
                                                     ]
                                                 }
@@ -26210,19 +26290,27 @@
                                                     "referenceParentCombinedNodePath": [
                                                         [
                                                             "Keltner_Bollinger_Strategy",
-                                                            "Data Mine"
+                                                            "Data Mine",
+                                                            "Data-Mining",
+                                                            "692938c9-ebca-4163-99e0-ccc58ad80e1d"
                                                         ],
                                                         [
                                                             "ATR",
-                                                            "Indicator Bot"
+                                                            "Indicator Bot",
+                                                            "Data-Mining",
+                                                            "9132b90a-d276-45e2-99af-6a478c3d4a99"
                                                         ],
                                                         [
                                                             "ATR",
-                                                            "Product Definition"
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "41c38c29-5e68-4962-82cf-bfb2818d852d"
                                                         ],
                                                         [
                                                             "Multi-Time-Frame-Market",
-                                                            "Dataset Definition"
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "af135fd6-50fe-4cea-825e-a97576fbabe5"
                                                         ]
                                                     ]
                                                 }
@@ -26260,19 +26348,27 @@
                                                     "referenceParentCombinedNodePath": [
                                                         [
                                                             "Keltner_Bollinger_Strategy",
-                                                            "Data Mine"
+                                                            "Data Mine",
+                                                            "Data-Mining",
+                                                            "692938c9-ebca-4163-99e0-ccc58ad80e1d"
                                                         ],
                                                         [
                                                             "ATR",
-                                                            "Indicator Bot"
+                                                            "Indicator Bot",
+                                                            "Data-Mining",
+                                                            "9132b90a-d276-45e2-99af-6a478c3d4a99"
                                                         ],
                                                         [
                                                             "ATR",
-                                                            "Product Definition"
+                                                            "Product Definition",
+                                                            "Foundations",
+                                                            "41c38c29-5e68-4962-82cf-bfb2818d852d"
                                                         ],
                                                         [
                                                             "Multi-Time-Frame-Daily",
-                                                            "Dataset Definition"
+                                                            "Dataset Definition",
+                                                            "Foundations",
+                                                            "9c2ce457-ea1f-4a2b-af70-dee3a2a2d0fb"
                                                         ]
                                                     ]
                                                 }
@@ -26332,7 +26428,9 @@
                                     "referenceParentCombinedNodePath": [
                                         [
                                             "Keltner_Bollinger_Strategy",
-                                            "Data Mine"
+                                            "Data Mine",
+                                            "Data-Mining",
+                                            "692938c9-ebca-4163-99e0-ccc58ad80e1d"
                                         ]
                                     ]
                                 }
