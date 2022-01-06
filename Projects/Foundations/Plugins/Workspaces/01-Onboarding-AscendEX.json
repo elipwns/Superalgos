@@ -1825,7 +1825,7 @@
                                                                                             "sessionQuotedAsset": {
                                                                                                 "type": "Session Quoted Asset",
                                                                                                 "name": "",
-                                                                                                "config": "{\n    \"initialBalance\": 5\n}",
+                                                                                                "config": "{\n    \"initialBalance\": 10\n}",
                                                                                                 "project": "Foundations",
                                                                                                 "id": "f6cd46c1-66df-422c-82d4-02ac8e37f689",
                                                                                                 "savedPayload": {
@@ -27291,7 +27291,7 @@
                                                             {
                                                                 "type": "Layer",
                                                                 "name": "Candles",
-                                                                "config": "{\n    \"status\": \"on\",\n    \"showPanels\": false\n}",
+                                                                "config": "{\n    \"status\": \"loading\",\n    \"showPanels\": false\n}",
                                                                 "project": "Foundations",
                                                                 "layerPanels": {
                                                                     "type": "Layer Panels",
@@ -28019,7 +28019,7 @@
                                     "timeScale": {
                                         "type": "Time Scale",
                                         "name": "New Time Scale",
-                                        "config": "{\n    \"autoMinScale\": false,\n    \"autoMaxScale\": false,\n    \"fromDate\": \"2021-11-02T13:22:53.380Z\",\n    \"toDate\": \"2021-11-02T17:22:53.380Z\"\n}",
+                                        "config": "{\"autoMinScale\":false,\"autoMaxScale\":false,\"fromDate\":\"2022-01-03T21:39:30.973Z\",\"toDate\":\"2022-01-04T01:39:30.973Z\"}",
                                         "project": "Foundations",
                                         "id": "6f094d2b-fb7c-4fa6-840b-dfbc9cb46d35",
                                         "savedPayload": {
@@ -36392,7 +36392,7 @@
                                                                             {
                                                                                 "type": "Layer",
                                                                                 "name": "Limit Buy Orders",
-                                                                                "config": "{\n    \"status\": \"on\",\n    \"showPanels\": false\n}",
+                                                                                "config": "{\n    \"status\": \"loading\",\n    \"showPanels\": false\n}",
                                                                                 "project": "Foundations",
                                                                                 "layerPanels": {
                                                                                     "type": "Layer Panels",
@@ -36994,7 +36994,7 @@
                                                                             {
                                                                                 "type": "Layer",
                                                                                 "name": "Limit Sell Orders",
-                                                                                "config": "{\n    \"status\": \"on\",\n    \"showPanels\": false\n}",
+                                                                                "config": "{\n    \"status\": \"loading\",\n    \"showPanels\": false\n}",
                                                                                 "project": "Foundations",
                                                                                 "layerPanels": {
                                                                                     "type": "Layer Panels",
@@ -43952,7 +43952,7 @@
                                                             {
                                                                 "type": "Layer",
                                                                 "name": "Candles",
-                                                                "config": "{\n    \"status\": \"on\",\n    \"showPanels\": true\n}",
+                                                                "config": "{\n    \"status\": \"loading\",\n    \"showPanels\": true\n}",
                                                                 "project": "Foundations",
                                                                 "layerPanels": {
                                                                     "type": "Layer Panels",
@@ -45705,12 +45705,12 @@
                 "id": "a2a04e12-604e-43f8-a986-1b8ca3b043cb",
                 "savedPayload": {
                     "position": {
-                        "x": 4560.875,
-                        "y": 40334.982972136226
+                        "x": 5300,
+                        "y": 10000
                     },
                     "targetPosition": {
-                        "x": 4260.875,
-                        "y": 40334.982972136226
+                        "x": 5000,
+                        "y": 10000
                     },
                     "floatingObject": {
                         "isPinned": false,
@@ -45732,12 +45732,12 @@
                 "id": "4d0ee814-4e48-4688-9cc5-7ee03de5192b",
                 "savedPayload": {
                     "position": {
-                        "x": 4410.875,
-                        "y": 40594.79059327156
+                        "x": 5150,
+                        "y": 10259.807621135331
                     },
                     "targetPosition": {
-                        "x": 4260.875,
-                        "y": 40334.982972136226
+                        "x": 5000,
+                        "y": 10000
                     },
                     "floatingObject": {
                         "isPinned": false,
@@ -45759,12 +45759,12 @@
                 "id": "b979e3a3-9316-4e5a-831b-c503b4b0e507",
                 "savedPayload": {
                     "position": {
-                        "x": 4110.875,
-                        "y": 40594.79059327156
+                        "x": 4850,
+                        "y": 10259.807621135331
                     },
                     "targetPosition": {
-                        "x": 4260.875,
-                        "y": 40334.982972136226
+                        "x": 5000,
+                        "y": 10000
                     },
                     "floatingObject": {
                         "isPinned": false,
@@ -45786,12 +45786,12 @@
                 "id": "b6ac4d4f-0b4a-4fb0-a0c2-7cd10ca1ca49",
                 "savedPayload": {
                     "position": {
-                        "x": 3960.875,
-                        "y": 40334.982972136226
+                        "x": 4700,
+                        "y": 10000
                     },
                     "targetPosition": {
-                        "x": 4260.875,
-                        "y": 40334.982972136226
+                        "x": 5000,
+                        "y": 10000
                     },
                     "floatingObject": {
                         "isPinned": false,
@@ -45813,12 +45813,12 @@
                 "id": "01371968-6af6-4c3f-8de7-91cbb4cae031",
                 "savedPayload": {
                     "position": {
-                        "x": 4110.875,
-                        "y": 40075.17535100089
+                        "x": 4850,
+                        "y": 9740.192378864669
                     },
                     "targetPosition": {
-                        "x": 4260.875,
-                        "y": 40334.982972136226
+                        "x": 5000,
+                        "y": 10000
                     },
                     "floatingObject": {
                         "isPinned": false,
@@ -45840,12 +45840,12 @@
                 "id": "0a1ff755-8e0b-4f62-976e-df76c8139c6f",
                 "savedPayload": {
                     "position": {
-                        "x": 4410.875,
-                        "y": 40075.17535100089
+                        "x": 5150,
+                        "y": 9740.192378864669
                     },
                     "targetPosition": {
-                        "x": 4260.875,
-                        "y": 40334.982972136226
+                        "x": 5000,
+                        "y": 10000
                     },
                     "floatingObject": {
                         "isPinned": false,
@@ -45863,12 +45863,12 @@
             "id": "cf9f8b3b-77c6-43c6-b01f-95cf366a91f6",
             "savedPayload": {
                 "position": {
-                    "x": 4260.875,
-                    "y": 40334.982972136226
+                    "x": 5000,
+                    "y": 10000
                 },
                 "targetPosition": {
-                    "x": 4260.875,
-                    "y": 40334.982972136226
+                    "x": 5000,
+                    "y": 10000
                 },
                 "floatingObject": {
                     "isPinned": true,
@@ -49578,11 +49578,11 @@
                                 "referenceParent": {
                                     "type": "Workspace",
                                     "name": "01-Onboarding-AscendEX",
-                                    "id": "dab9c94e-8ebc-49ae-924e-c1ecf2bbe10a"
+                                    "id": "ca1e477a-e095-48f4-9771-17cdfc4dfd35"
                                 },
                                 "referenceParentCombinedNodePath": [
                                     [
-                                        "AscendEX",
+                                        "01-Onboarding-AscendEX",
                                         "Workspace"
                                     ]
                                 ]
@@ -50587,12 +50587,12 @@
             "id": "96734230-bb91-4527-b2a9-e2f16eb0be96",
             "savedPayload": {
                 "position": {
-                    "x": 4313.125,
-                    "y": 10824.41124871001
+                    "x": 5000,
+                    "y": 17500
                 },
                 "targetPosition": {
-                    "x": 4313.125,
-                    "y": 10824.41124871001
+                    "x": 5000,
+                    "y": 17500
                 },
                 "floatingObject": {
                     "isPinned": true,
@@ -50619,12 +50619,12 @@
                 "id": "588e6946-31d9-4389-8cf2-37715795ba4d",
                 "savedPayload": {
                     "position": {
-                        "x": 4601.708333333332,
-                        "y": 19847.940660474716
+                        "x": 5300,
+                        "y": 25000
                     },
                     "targetPosition": {
-                        "x": 4301.708333333332,
-                        "y": 19847.940660474716
+                        "x": 5000,
+                        "y": 25000
                     },
                     "floatingObject": {
                         "isPinned": false,
@@ -50642,12 +50642,12 @@
             "id": "c80ac0bd-1c21-4e7c-b4b8-020e212bd6f4",
             "savedPayload": {
                 "position": {
-                    "x": 4301.708333333332,
-                    "y": 19847.940660474716
+                    "x": 5000,
+                    "y": 25000
                 },
                 "targetPosition": {
-                    "x": 4301.708333333332,
-                    "y": 19847.940660474716
+                    "x": 5000,
+                    "y": 25000
                 },
                 "floatingObject": {
                     "isPinned": true,
@@ -50674,12 +50674,12 @@
                 "id": "b15d5bbb-0433-40c3-bdd7-3d2aa0ddc389",
                 "savedPayload": {
                     "position": {
-                        "x": 4587.75,
-                        "y": 30875.953560371516
+                        "x": 5300,
+                        "y": 32500
                     },
                     "targetPosition": {
-                        "x": 4287.75,
-                        "y": 30875.953560371516
+                        "x": 5000,
+                        "y": 32500
                     },
                     "floatingObject": {
                         "isPinned": false,
@@ -50697,17 +50697,44 @@
             "id": "949164da-b9f8-4e0a-8482-f1fd06a22cd0",
             "savedPayload": {
                 "position": {
-                    "x": 4287.75,
-                    "y": 30875.953560371516
+                    "x": 5000,
+                    "y": 32500
                 },
                 "targetPosition": {
-                    "x": 4287.75,
-                    "y": 30875.953560371516
+                    "x": 5000,
+                    "y": 32500
                 },
                 "floatingObject": {
                     "isPinned": true,
                     "isFrozen": false,
                     "isCollapsed": false,
+                    "angleToParent": 1,
+                    "distanceToParent": 3,
+                    "arrangementStyle": 0
+                },
+                "uiObject": {
+                    "isRunning": false
+                }
+            }
+        },
+        {
+            "type": "Workspaces Project",
+            "name": "New Workspaces Project",
+            "project": "Workspaces",
+            "id": "680001f8-64a8-453e-ae6f-9c415d9d10b4",
+            "savedPayload": {
+                "position": {
+                    "x": 5000,
+                    "y": 40000
+                },
+                "targetPosition": {
+                    "x": 5000,
+                    "y": 40000
+                },
+                "floatingObject": {
+                    "isPinned": true,
+                    "isFrozen": false,
+                    "isCollapsed": true,
                     "angleToParent": 1,
                     "distanceToParent": 3,
                     "arrangementStyle": 0
@@ -55571,8 +55598,8 @@
                                     "id": "42d95de3-1a3e-43dc-b075-994bf30c8a97",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 18273.238834099815,
-                                            "y": 40131.69286249506
+                                            "x": 18267.415597888117,
+                                            "y": 40125.408340958085
                                         },
                                         "targetPosition": {
                                             "x": 18490.359045531335,
@@ -55627,8 +55654,8 @@
                                     "id": "ac4949b3-f1ee-4113-917d-7d5c13891598",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 18223.708410934858,
-                                            "y": 40062.13711556865
+                                            "x": 18216.295408238555,
+                                            "y": 40046.69015197317
                                         },
                                         "targetPosition": {
                                             "x": 18490.359045531335,
@@ -55652,14 +55679,14 @@
                                 },
                                 {
                                     "type": "Tutorial Step",
-                                    "name": "Let's Start With 5 Bucks!",
-                                    "config": "{\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"positionAtReferenceParent\": true,\n    \"documentationURL\": \"\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Let's Start With 5 Bucks!\"\n    },\n    \"icon\": {\n        \"name\": \"session-quoted-asset\",\n        \"project\": \"Foundations\"\n    }\n}",
+                                    "name": "Let's Start With 10 Bucks!",
+                                    "config": "{\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"positionAtReferenceParent\": true,\n    \"documentationURL\": \"\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Let's Start With 10 Bucks!\"\n    },\n    \"icon\": {\n        \"name\": \"session-quoted-asset\",\n        \"project\": \"Foundations\"\n    }\n}",
                                     "project": "Education",
                                     "id": "8f64bf00-d829-4bdf-bc83-7c32916f51c4",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 18195.780436352525,
-                                            "y": 39981.44453235855
+                                            "x": 18192.002476920854,
+                                            "y": 39956.027698030724
                                         },
                                         "targetPosition": {
                                             "x": 18490.359045531335,
@@ -55780,8 +55807,8 @@
                                     "id": "7d6448bf-eb35-45d0-ab93-744f3cb3b406",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 18191.71746875941,
-                                            "y": 39896.15234605917
+                                            "x": 18196.914765311194,
+                                            "y": 39862.2956518051
                                         },
                                         "targetPosition": {
                                             "x": 18490.359045531335,
@@ -55811,8 +55838,8 @@
                                     "id": "40cd9486-d751-4aed-8fbc-ba23a2789eb5",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 18211.848665626512,
-                                            "y": 39813.17042235233
+                                            "x": 18230.551424396002,
+                                            "y": 39774.66915905043
                                         },
                                         "targetPosition": {
                                             "x": 18490.359045531335,
@@ -55855,8 +55882,8 @@
                                     "id": "3acced8f-fde1-4549-865d-dd59902d804f",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 18254.5431171085,
-                                            "y": 39739.22146318424
+                                            "x": 18289.619863623677,
+                                            "y": 39701.725711407205
                                         },
                                         "targetPosition": {
                                             "x": 18490.359045531335,
@@ -55935,8 +55962,8 @@
                                     "id": "178a3937-072f-475c-ba56-f56b60c6487d",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 18316.341972659975,
-                                            "y": 39680.296373435325
+                                            "x": 18368.338052608597,
+                                            "y": 39650.60552175764
                                         },
                                         "targetPosition": {
                                             "x": 18490.359045531335,
@@ -55991,8 +56018,8 @@
                                     "id": "a2834a77-a3ed-4101-aebd-f066b7f48a04",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 18392.23865653611,
-                                            "y": 39641.16891343603
+                                            "x": 18459.000506551038,
+                                            "y": 39626.31259043994
                                         },
                                         "targetPosition": {
                                             "x": 18490.359045531335,
@@ -56095,8 +56122,8 @@
                                     "id": "9b362b6b-389e-42e3-b4ad-6fc8bfa07e34",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 18476.08447078421,
-                                            "y": 39625.008957295526
+                                            "x": 18552.732552776662,
+                                            "y": 39631.22487883028
                                         },
                                         "targetPosition": {
                                             "x": 18490.359045531335,
@@ -56178,110 +56205,6 @@
                                             ]
                                         ]
                                     }
-                                },
-                                {
-                                    "type": "Tutorial Step",
-                                    "name": "GIF",
-                                    "config": "{\n    \"position\": \"Left\",\n    \"positionAtReferenceParent\": true,\n    \"slider\": \"toTop\",\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Welcome Live Trading Process Progress\"\n    },\n    \"icon\": {\n        \"project\": \"Foundations\"\n    }\n}",
-                                    "project": "Education",
-                                    "id": "6a610041-5a2d-4040-9226-968d9eb6f23f",
-                                    "savedPayload": {
-                                        "position": {
-                                            "x": 18561.086726184163,
-                                            "y": 39633.125688553366
-                                        },
-                                        "targetPosition": {
-                                            "x": 18490.359045531335,
-                                            "y": 39924.66915905043
-                                        },
-                                        "floatingObject": {
-                                            "isPinned": false,
-                                            "isFrozen": false,
-                                            "isCollapsed": false,
-                                            "angleToParent": 2,
-                                            "distanceToParent": 3,
-                                            "arrangementStyle": 0
-                                        },
-                                        "uiObject": {
-                                            "isRunning": false
-                                        },
-                                        "tutorial": {
-                                            "status": "Reset"
-                                        },
-                                        "referenceParent": {
-                                            "type": "Trading Process Instance",
-                                            "name": "Low Frequency Trading",
-                                            "id": "0eecc0c8-ab19-4499-8dbd-3cd72cfbebb6"
-                                        },
-                                        "referenceParentCombinedNodePath": [
-                                            [
-                                                "My LAN Network",
-                                                "LAN Network",
-                                                "Foundations",
-                                                "3c165071-7558-4708-9999-8ffe71d346b1"
-                                            ],
-                                            [
-                                                "My Computer",
-                                                "LAN Network Node",
-                                                "Foundations",
-                                                "e452cf65-2b2b-44f2-9e67-bdd9d3c008e4"
-                                            ],
-                                            [
-                                                "New Production Trading Tasks",
-                                                "Production Trading Tasks",
-                                                "Foundations",
-                                                "673caa5f-511d-4688-9305-e5f0f0f780cd"
-                                            ],
-                                            [
-                                                "Algorithmic-Trading",
-                                                "Project Trading Tasks",
-                                                "Foundations",
-                                                "f79c3f13-37eb-4f88-ae83-78554db337c5"
-                                            ],
-                                            [
-                                                "AscendEX",
-                                                "Exchange Trading Tasks",
-                                                "Foundations",
-                                                "2a7e13fe-d0ec-4b84-9dee-8fed802cb654"
-                                            ],
-                                            [
-                                                " BTC/USDT",
-                                                "Market Trading Tasks",
-                                                "Foundations",
-                                                "319f0e77-1baf-4d06-97ad-53c4318961b4"
-                                            ],
-                                            [
-                                                "Masters",
-                                                "Trading Mine Tasks",
-                                                "Foundations",
-                                                "ded4c303-68fd-4729-ae29-023eaf55d0a9"
-                                            ],
-                                            [
-                                                "Masters",
-                                                "Task Manager",
-                                                "Foundations",
-                                                "9e6c529d-e259-4e87-ac51-3da9cc67d48d"
-                                            ],
-                                            [
-                                                "Lightning Strike",
-                                                "Task",
-                                                "Foundations",
-                                                "0a7dd929-d643-407f-a10c-580aef796d75"
-                                            ],
-                                            [
-                                                "Low Frequency",
-                                                "Trading Bot Instance",
-                                                "Foundations",
-                                                "3869d3a2-b85d-4473-ba74-6ef8b3ef156b"
-                                            ],
-                                            [
-                                                "Low Frequency Trading",
-                                                "Trading Process Instance",
-                                                "Foundations",
-                                                "0eecc0c8-ab19-4499-8dbd-3cd72cfbebb6"
-                                            ]
-                                        ]
-                                    }
                                 }
                             ],
                             "tutorialTopics": [],
@@ -56325,12 +56248,12 @@
                                     "id": "ecd04d8a-2fcd-4369-96c8-23d3eb830e30",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 18487.87600629594,
-                                            "y": 39751.50403731516
+                                            "x": 18479.87600629594,
+                                            "y": 39644.50403731516
                                         },
                                         "targetPosition": {
-                                            "x": 18758.166666666668,
-                                            "y": 39881.66915905043
+                                            "x": 18750.166666666668,
+                                            "y": 39774.66915905043
                                         },
                                         "floatingObject": {
                                             "isPinned": false,
@@ -56356,12 +56279,12 @@
                                     "id": "6aac1ef5-fb87-4569-85e1-aa330eef9fbf",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 18571.11972610905,
-                                            "y": 39647.11971431002
+                                            "x": 18563.11972610905,
+                                            "y": 39540.11971431002
                                         },
                                         "targetPosition": {
-                                            "x": 18758.166666666668,
-                                            "y": 39881.66915905043
+                                            "x": 18750.166666666668,
+                                            "y": 39774.66915905043
                                         },
                                         "floatingObject": {
                                             "isPinned": false,
@@ -56387,12 +56310,12 @@
                                     "id": "4fad500a-616e-47cc-94ce-f3d61de18d1d",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 18691.410386479773,
-                                            "y": 39589.19078539588
+                                            "x": 18683.410386479773,
+                                            "y": 39482.19078539588
                                         },
                                         "targetPosition": {
-                                            "x": 18758.166666666668,
-                                            "y": 39881.66915905043
+                                            "x": 18750.166666666668,
+                                            "y": 39774.66915905043
                                         },
                                         "floatingObject": {
                                             "isPinned": false,
@@ -56413,17 +56336,17 @@
                                 {
                                     "type": "Tutorial Step",
                                     "name": "GIF",
-                                    "config": "{\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"changeNodeConfigWithEvalReferenceParent\": {\n        \"autoMinScale\": false,\n        \"autoMaxScale\": false,\n        \"fromDate\": \"(new Date((new Date()).valueOf() - 60000 * 120)).toISOString()\",\n        \"toDate\": \"(new Date((new Date()).valueOf() + 60000 * 120)).toISOString()\"\n    },\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Welcome Live Trading Binance Orders\"\n    },\n    \"icon\": {\n        \"project\": \"Foundations\"\n    }\n}",
+                                    "config": "{\n    \"position\": \"Left\",\n    \"slider\": \"toTop\",\n    \"changeNodeConfigWithEvalReferenceParent\": {\n        \"autoMinScale\": false,\n        \"autoMaxScale\": false,\n        \"fromDate\": \"(new Date((new Date()).valueOf() - 60000 * 120)).toISOString()\",\n        \"toDate\": \"(new Date((new Date()).valueOf() + 60000 * 120)).toISOString()\"\n    },\n    \"docs\": {\n        \"project\": \"Foundations\",\n        \"category\": \"Tutorial\",\n        \"type\": \"Tutorial Step - Welcome AscendEX Live Trading Process Progress\"\n    },\n    \"icon\": {\n        \"project\": \"Foundations\"\n    }\n}",
                                     "project": "Education",
                                     "id": "4a628f64-79d1-4dc4-b908-cc93a06289a3",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 18824.922946853563,
-                                            "y": 39589.19078539588
+                                            "x": 18816.922946853563,
+                                            "y": 39482.19078539588
                                         },
                                         "targetPosition": {
-                                            "x": 18758.166666666668,
-                                            "y": 39881.66915905043
+                                            "x": 18750.166666666668,
+                                            "y": 39774.66915905043
                                         },
                                         "floatingObject": {
                                             "isPinned": false,
@@ -56486,12 +56409,12 @@
                                     "id": "37d42cdc-08b2-4eee-9c76-b06b1bcd239f",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 18945.213607224287,
-                                            "y": 39647.119714310014
+                                            "x": 18937.213607224287,
+                                            "y": 39540.119714310014
                                         },
                                         "targetPosition": {
-                                            "x": 18758.166666666668,
-                                            "y": 39881.66915905043
+                                            "x": 18750.166666666668,
+                                            "y": 39774.66915905043
                                         },
                                         "floatingObject": {
                                             "isPinned": false,
@@ -56548,12 +56471,12 @@
                                     "id": "2a1b57cb-cca4-457a-a37d-c3643f9376f9",
                                     "savedPayload": {
                                         "position": {
-                                            "x": 19028.457327037395,
-                                            "y": 39751.50403731516
+                                            "x": 19020.457327037395,
+                                            "y": 39644.50403731516
                                         },
                                         "targetPosition": {
-                                            "x": 18758.166666666668,
-                                            "y": 39881.66915905043
+                                            "x": 18750.166666666668,
+                                            "y": 39774.66915905043
                                         },
                                         "floatingObject": {
                                             "isPinned": false,
