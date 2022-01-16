@@ -9,7 +9,7 @@
             "relatedUiObject": "Live Portfolio Session",
             "actionFunction": "payload.executeAction",
             "actionProject": "Visual-Scripting",
-            "relatedUiObjectProject": "Foundations"
+            "relatedUiObjectProject": "Portfolio-Management"
         },
         {
             "action": "Add UI Object",
@@ -19,7 +19,7 @@
             "relatedUiObject": "Backtesting Portfolio Session",
             "actionFunction": "payload.executeAction",
             "actionProject": "Visual-Scripting",
-            "relatedUiObjectProject": "Foundations"
+            "relatedUiObjectProject": "Portfolio-Management"
         },
         {
             "action": "Add UI Object",

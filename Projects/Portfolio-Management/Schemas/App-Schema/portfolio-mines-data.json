@@ -1,23 +1,23 @@
 {
-    "type": "Project Portfolio Products",
+    "type": "Portfolio Mines Data",
     "menuItems": [
         {
             "action": "Add UI Object",
-            "label": "Add Exchange Portfolio Products",
-            "relatedUiObject": "Exchange Portfolio Products",
+            "label": "Add Project Portfolio Products",
+            "relatedUiObject": "Project Portfolio Products",
             "actionFunction": "payload.executeAction",
             "actionProject": "Visual-Scripting",
-            "relatedUiObjectProject": "Foundations"
+            "relatedUiObjectProject": "Portfolio-Management"
         },
         {
-            "action": "Add Missing Exchange Portfolio Products",
-            "label": "Add Missing Exchanges",
+            "action": "Add Missing Project Portfolio Products",
+            "label": "Add Missing Projects",
             "askConfirmation": true,
             "confirmationLabel": "Confirm to Proceed",
             "workDoneLabel": "Done",
-            "relatedUiObject": "Exchange Portfolio Products",
+            "relatedUiObject": "Project Portfolio Products",
             "actionFunction": "payload.executeAction",
-            "relatedUiObjectProject": "Foundations"
+            "relatedUiObjectProject": "Portfolio-Management"
         },
         {
             "action": "Delete UI Object",
@@ -30,24 +30,17 @@
             "actionFunction": "payload.executeAction"
         }
     ],
-    "title": [
-        "Use Reference Parent"
-    ],
-    "alternativeIcons": "Use Reference Parent Parent",
     "addLeftIcons": true,
-    "level": 2,
-    "referencingRules": {
-        "compatibleTypes": "->Project Definition->"
-    },
+    "level": 3,
     "attachingRules": {
-        "compatibleTypes": "->Portfolio Mines Data->"
+        "compatibleTypes": "->Data Storage->"
     },
-    "propertyNameAtParent": "projectPortfolioProducts",
+    "propertyNameAtParent": "portfolioMinesData",
     "childrenNodesProperties": [
         {
-            "name": "exchangePortfolioProducts",
+            "name": "projectPortfolioProducts",
             "type": "array",
-            "childType": "Exchange Portfolio Products"
+            "childType": "Project Portfolio Products"
         }
     ]
 }

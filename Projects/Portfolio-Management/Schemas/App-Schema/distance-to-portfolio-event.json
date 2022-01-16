@@ -1,13 +1,13 @@
 {
-    "type": "Portfolio Parameters",
+    "type": "Distance To Portfolio Event",
     "menuItems": [
         {
             "action": "Add Missing Children",
-            "label": "Add Missing Parameters",
+            "label": "Add Missing Children",
             "relatedUiObject": "Portfolio Parameters",
             "actionFunction": "payload.executeAction",
             "actionProject": "Visual-Scripting",
-            "relatedUiObjectProject": "Foundations"
+            "relatedUiObjectProject": "Portfolio-Management"
         },
         {
             "action": "Delete UI Object",
@@ -21,53 +21,65 @@
         }
     ],
     "addLeftIcons": true,
-    "level": 2,
+    "level": 3,
     "attachingRules": {
-        "compatibleTypes": "->Backtesting Portfolio Session->Live Portfolio Session->"
+        "compatibleTypes": "->Portfolio Episode->"
     },
+    "propertyNameAtParent": "distanceToPortfolioEvent",
     "childrenNodesProperties": [
         {
-            "name": "timeRange",
+            "name": "triggerOn",
             "type": "node",
-            "childType": "Time Range",
+            "childType": "Trigger On",
             "autoAdd": true
         },
         {
-            "name": "timeFrame",
+            "name": "triggerOff",
             "type": "node",
-            "childType": "Time Frame",
+            "childType": "Trigger Off",
             "autoAdd": true
         },
         {
-            "name": "slippage",
+            "name": "takePosition",
             "type": "node",
-            "childType": "Slippage",
+            "childType": "Take Position",
             "autoAdd": true
         },
         {
-            "name": "feeStructure",
+            "name": "closePosition",
             "type": "node",
-            "childType": "Fee Structure",
+            "childType": "Close Position",
             "autoAdd": true
         },
         {
-            "name": "snapshots",
+            "name": "nextPhase",
             "type": "node",
-            "childType": "Snapshots",
+            "childType": "Next Phase",
             "autoAdd": true
         },
         {
-            "name": "heartbeats",
+            "name": "moveToPhase",
             "type": "node",
-            "childType": "Heartbeats",
+            "childType": "Move To Phase",
             "autoAdd": true
         },
         {
-            "name": "userDefinedParameters",
+            "name": "createOrder",
             "type": "node",
-            "childType": "User Defined Parameters",
+            "childType": "Create Order",
+            "autoAdd": true
+        },
+        {
+            "name": "cancelOrder",
+            "type": "node",
+            "childType": "Cancel Order",
+            "autoAdd": true
+        },
+        {
+            "name": "closeOrder",
+            "type": "node",
+            "childType": "Close Order",
             "autoAdd": true
         }
-    ],
-    "propertyNameAtParent": "portfolioParameters"
+    ]
 }

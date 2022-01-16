@@ -1,23 +1,23 @@
 {
-    "type": "Market Portfolio Products",
+    "type": "Project Portfolio Products",
     "menuItems": [
         {
             "action": "Add UI Object",
-            "label": "Add Portfolio Session Reference",
-            "relatedUiObject": "Portfolio Session Reference",
+            "label": "Add Exchange Portfolio Products",
+            "relatedUiObject": "Exchange Portfolio Products",
             "actionFunction": "payload.executeAction",
             "actionProject": "Visual-Scripting",
             "relatedUiObjectProject": "Foundations"
         },
         {
-            "action": "Add Missing Portfolio Session References",
-            "label": "Add Missing Sessions",
+            "action": "Add Missing Exchange Portfolio Products",
+            "label": "Add Missing Exchanges",
             "askConfirmation": true,
             "confirmationLabel": "Confirm to Proceed",
             "workDoneLabel": "Done",
-            "relatedUiObject": "Portfolio Session Reference",
+            "relatedUiObject": "Exchange Portfolio Products",
             "actionFunction": "payload.executeAction",
-            "relatedUiObjectProject": "Foundations"
+            "relatedUiObjectProject": "Portfolio-Management"
         },
         {
             "action": "Delete UI Object",
@@ -30,25 +30,24 @@
             "actionFunction": "payload.executeAction"
         }
     ],
-    "addLeftIcons": true,
-    "level": 3,
-    "isTitleAllwaysVisible": true,
     "title": [
-        "Use Reference Parent Parent Parent",
         "Use Reference Parent"
     ],
+    "alternativeIcons": "Use Reference Parent Parent",
+    "addLeftIcons": true,
+    "level": 2,
     "referencingRules": {
-        "compatibleTypes": "->Market->"
+        "compatibleTypes": "->Project Definition->"
     },
     "attachingRules": {
-        "compatibleTypes": "->Exchange Portfolio Products->"
+        "compatibleTypes": "->Portfolio Mines Data->"
     },
-    "propertyNameAtParent": "marketPortfolioProducts",
+    "propertyNameAtParent": "projectPortfolioProducts",
     "childrenNodesProperties": [
         {
-            "name": "portfolioSessionReferences",
+            "name": "exchangePortfolioProducts",
             "type": "array",
-            "childType": "Portfolio Session Reference"
+            "childType": "Exchange Portfolio Products"
         }
     ]
 }

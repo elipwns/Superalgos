@@ -1,13 +1,13 @@
 {
-    "type": "Portfolio Strategy",
+    "type": "Portfolio Last",
     "menuItems": [
         {
             "action": "Add Missing Children",
-            "label": "Add Missing Stages",
-            "relatedUiObject": "Portfolio Strategy",
+            "label": "Add Missing Children",
+            "relatedUiObject": "Portfolio Parameters",
             "actionFunction": "payload.executeAction",
             "actionProject": "Visual-Scripting",
-            "relatedUiObjectProject": "Foundations"
+            "relatedUiObjectProject": "Portfolio-Management"
         },
         {
             "action": "Delete UI Object",
@@ -20,37 +20,36 @@
             "actionFunction": "payload.executeAction"
         }
     ],
-    "isTitleAllwaysVisible": true,
     "addLeftIcons": true,
-    "level": 1,
+    "level": 3,
     "attachingRules": {
-        "compatibleTypes": "->Portfolio System->"
+        "compatibleTypes": "->Portfolio Engine->"
     },
+    "propertyNameAtParent": "portfolioLast",
     "childrenNodesProperties": [
         {
-            "name": "triggerStage",
+            "name": "position",
             "type": "node",
-            "childType": "Trigger Stage",
+            "childType": "Position",
             "autoAdd": true
         },
         {
-            "name": "openStage",
+            "name": "strategy",
             "type": "node",
-            "childType": "Open Stage",
+            "childType": "Strategy",
             "autoAdd": true
         },
         {
-            "name": "manageStage",
+            "name": "limitOrders",
             "type": "node",
-            "childType": "Manage Stage",
+            "childType": "Limit Order",
             "autoAdd": true
         },
         {
-            "name": "closeStage",
+            "name": "marketOrders",
             "type": "node",
-            "childType": "Close Stage",
+            "childType": "Market Order",
             "autoAdd": true
         }
-    ],
-    "propertyNameAtParent": "portfolioStrategies"
+    ]
 }

@@ -1,10 +1,10 @@
 {
-    "type": "Portfolio Engine",
+    "type": "Portfolio Strategy",
     "menuItems": [
         {
             "action": "Add Missing Children",
-            "label": "Add Missing Children",
-            "relatedUiObject": "Portfolio Engine",
+            "label": "Add Missing Stages",
+            "relatedUiObject": "Portfolio Strategy",
             "actionFunction": "payload.executeAction",
             "actionProject": "Visual-Scripting",
             "relatedUiObjectProject": "Portfolio-Management"
@@ -20,23 +20,13 @@
             "actionFunction": "payload.executeAction"
         }
     ],
-    "isHierarchyHead": true,
+    "isTitleAllwaysVisible": true,
     "addLeftIcons": true,
-    "level": 0,
+    "level": 1,
+    "attachingRules": {
+        "compatibleTypes": "->Portfolio System->"
+    },
     "childrenNodesProperties": [
-        {
-            "name": "portfolioCurrent",
-            "type": "node",
-            "childType": "Portfolio Current",
-            "autoAdd": false,
-            "project": "Portfolio-Management"
-        },
-        {
-            "name": "portfolioLast",
-            "type": "node",
-            "childType": "Portfolio Last",
-            "autoAdd": false,
-            "project": "Portfolio-Management"
-        }
-    ]
+    ],
+    "propertyNameAtParent": "portfolioStrategies"
 }
