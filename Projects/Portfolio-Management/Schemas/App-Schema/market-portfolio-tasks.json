@@ -1,9 +1,9 @@
 {
-    "type": "Project Portfolio Tasks",
+    "type": "Market Portfolio Tasks",
     "menuItems": [
         {
-            "action": "Run All Exchange Portfolio Tasks",
-            "label": "Run All Exchange Portfolio Tasks",
+            "action": "Run All Portfolio Mine Tasks",
+            "label": "Run All Portfolio Mine Tasks",
             "askConfirmation": true,
             "confirmationLabel": "Confirm to Run",
             "workDoneLabel": "Run Request Sent",
@@ -12,8 +12,8 @@
             "actionFunction": "payload.executeAction"
         },
         {
-            "action": "Stop All Exchange Portfolio Tasks",
-            "label": "Stop All Exchange Portfolio Tasks",
+            "action": "Stop All Portfolio Mine Tasks",
+            "label": "Stop All Portfolio Mine Tasks",
             "askConfirmation": true,
             "confirmationLabel": "Confirm to Stop",
             "workDoneLabel": "Stop Request Sent",
@@ -23,21 +23,21 @@
         },
         {
             "action": "Add UI Object",
-            "label": "Add Exchange Portfolio Tasks",
-            "relatedUiObject": "Exchange Portfolio Tasks",
+            "label": "Add Portfolio Mine Tasks",
+            "relatedUiObject": "Portfolio Mine Tasks",
             "actionFunction": "payload.executeAction",
             "actionProject": "Visual-Scripting",
-            "relatedUiObjectProject": "Foundations"
+            "relatedUiObjectProject": "Portfolio-Management"
         },
         {
-            "action": "Add Missing Exchange Portfolio Tasks",
-            "label": "Add Missing Exchanges",
+            "action": "Add Missing Portfolio Mine Tasks",
+            "label": "Add Missing Portfolio Mine Tasks",
             "askConfirmation": true,
             "confirmationLabel": "Confirm to Proceed",
             "workDoneLabel": "Done",
-            "relatedUiObject": "Exchange Portfolio Tasks",
+            "relatedUiObject": "Portfolio Mine Tasks",
             "actionFunction": "payload.executeAction",
-            "relatedUiObjectProject": "Foundations"
+            "relatedUiObjectProject": "Portfolio-Management"
         },
         {
             "action": "Delete UI Object",
@@ -50,24 +50,26 @@
             "actionFunction": "payload.executeAction"
         }
     ],
-    "title": [
-        "Use Reference Parent"
-    ],
-    "alternativeIcons": "Use Reference Parent Parent",
     "addLeftIcons": true,
     "level": 2,
     "referencingRules": {
-        "compatibleTypes": "->Project Definition->"
+        "compatibleTypes": "->Market->"
     },
     "attachingRules": {
-        "compatibleTypes": "->Testing Portfolio Tasks->Production Portfolio Tasks->"
+        "compatibleTypes": "->Exchange Portfolio Tasks->"
     },
-    "propertyNameAtParent": "projectPortfolioTasks",
+    "alternativeIcons": "Use Reference Parent",
+    "title": [
+        "Use Reference Parent Parent Parent",
+        "Use Reference Parent"
+    ],
+    "isTitleAllwaysVisible": true,
+    "propertyNameAtParent": "marketPortfolioTasks",
     "childrenNodesProperties": [
         {
-            "name": "exchangePortfolioTasks",
+            "name": "portfolioMineTasks",
             "type": "array",
-            "childType": "Exchange Portfolio Tasks",
+            "childType": "Portfolio Mine Tasks",
             "monitorChildrenRunning": true
         }
     ]

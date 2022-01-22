@@ -1,23 +1,23 @@
 {
-    "type": "Portfolio Mines Data",
+    "type": "Exchange Portfolio Products",
     "menuItems": [
         {
             "action": "Add UI Object",
-            "label": "Add Project Portfolio Products",
-            "relatedUiObject": "Project Portfolio Products",
+            "label": "Add Market Portfolio Products",
+            "relatedUiObject": "Market Portfolio Products",
             "actionFunction": "payload.executeAction",
             "actionProject": "Visual-Scripting",
-            "relatedUiObjectProject": "Foundations"
+            "relatedUiObjectProject": "Portfolio-Management"
         },
         {
-            "action": "Add Missing Project Portfolio Products",
-            "label": "Add Missing Projects",
+            "action": "Add Missing Market Portfolio Products",
+            "label": "Add Missing Markets",
             "askConfirmation": true,
             "confirmationLabel": "Confirm to Proceed",
             "workDoneLabel": "Done",
-            "relatedUiObject": "Project Portfolio Products",
+            "relatedUiObject": "Market Portfolio Products",
             "actionFunction": "payload.executeAction",
-            "relatedUiObjectProject": "Foundations"
+            "relatedUiObjectProject": "Portfolio-Management"
         },
         {
             "action": "Delete UI Object",
@@ -30,17 +30,26 @@
             "actionFunction": "payload.executeAction"
         }
     ],
+    "alternativeIcons": "Use Reference Parent",
+    "title": [
+        "Use Reference Parent"
+    ],
+    "isTitleAllwaysVisible": true,
     "addLeftIcons": true,
     "level": 3,
-    "attachingRules": {
-        "compatibleTypes": "->Data Storage->"
+    "referencingRules": {
+        "compatibleTypes": "->Crypto Exchange->"
     },
-    "propertyNameAtParent": "portfolioMinesData",
+    "attachingRules": {
+        "compatibleTypes": "->Project Portfolio Products->"
+    },
+    "propertyNameAtParent": "exchangePortfolioProducts",
     "childrenNodesProperties": [
         {
-            "name": "projectPortfolioProducts",
+            "name": "marketPortfolioProducts",
             "type": "array",
-            "childType": "Project Portfolio Products"
+            "childType": "Market Portfolio Products",
+            "autoAdd": false
         }
     ]
 }

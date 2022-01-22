@@ -1,13 +1,13 @@
 {
-    "type": "Portfolio Bot Instance",
+    "type": "Exchange Managed Assets",
     "menuItems": [
         {
             "action": "Add UI Object",
-            "label": "Add Process Instance",
-            "relatedUiObject": "Portfolio Process Instance",
+            "label": "Add Exchange Managed Asset",
+            "relatedUiObject": "Exchange Managed Asset",
+            "relatedUiObjectProject": "Portfolio-Management",
             "actionFunction": "payload.executeAction",
-            "actionProject": "Visual-Scripting",
-            "relatedUiObjectProject": "Foundations"
+            "actionProject": "Visual-Scripting"
         },
         {
             "action": "Delete UI Object",
@@ -21,17 +21,16 @@
         }
     ],
     "addLeftIcons": true,
-    "level": 2,
+    "level": 3,
     "attachingRules": {
-        "compatibleTypes": "->Task->"
+        "compatibleTypes": "->Portfolio Episode->Portfolio Last->"
     },
+    "propertyNameAtParent": "exchangeManagedAssets",
     "childrenNodesProperties": [
         {
-            "name": "processes",
+            "name": "exchangeManagedAsset",
             "type": "array",
-            "childType": "Portfolio Process Instance",
-            "autoAdd": false
+            "childType": "Exchange Managed Asset"
         }
-    ],
-    "propertyNameAtParent": "bot"
+    ]
 }

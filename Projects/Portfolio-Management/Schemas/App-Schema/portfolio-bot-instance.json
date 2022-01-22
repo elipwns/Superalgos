@@ -1,10 +1,10 @@
 {
-    "type": "Portfolio Engine",
+    "type": "Portfolio Bot Instance",
     "menuItems": [
         {
-            "action": "Add Missing Children",
-            "label": "Add Missing Children",
-            "relatedUiObject": "Portfolio Engine",
+            "action": "Add UI Object",
+            "label": "Add Process Instance",
+            "relatedUiObject": "Portfolio Process Instance",
             "actionFunction": "payload.executeAction",
             "actionProject": "Visual-Scripting",
             "relatedUiObjectProject": "Portfolio-Management"
@@ -20,23 +20,18 @@
             "actionFunction": "payload.executeAction"
         }
     ],
-    "isHierarchyHead": true,
     "addLeftIcons": true,
-    "level": 0,
+    "level": 2,
+    "attachingRules": {
+        "compatibleTypes": "->Task->"
+    },
     "childrenNodesProperties": [
         {
-            "name": "portfolioCurrent",
-            "type": "node",
-            "childType": "Portfolio Current",
-            "autoAdd": false,
-            "project": "Portfolio-Management"
-        },
-        {
-            "name": "portfolioLast",
-            "type": "node",
-            "childType": "Portfolio Last",
-            "autoAdd": false,
-            "project": "Portfolio-Management"
+            "name": "processes",
+            "type": "array",
+            "childType": "Portfolio Process Instance",
+            "autoAdd": false
         }
-    ]
+    ],
+    "propertyNameAtParent": "bot"
 }
