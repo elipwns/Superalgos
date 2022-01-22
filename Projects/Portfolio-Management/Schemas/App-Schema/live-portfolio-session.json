@@ -1,5 +1,5 @@
 {
-    "type": "Backtesting Portfolio Session",
+    "type": "Live Portfolio Session",
     "menuItems": [
         {
             "action": "Run Portfolio Session",
@@ -62,11 +62,11 @@
             "relatedUiObjectProject": "Foundations"
         },
         {
-            "action": "Switch To Live Portfolio",
-            "label": "Switch To Live Portfolio",
-            "relatedUiObject": "Live Portfolio Session",
+            "action": "Switch To Backtesting Portfolio",
+            "label": "Switch To Backtesting Portfolio",
+            "relatedUiObject": "Backtesting Portfolio Session",
             "actionFunction": "payload.executeAction",
-            "relatedUiObjectProject": "Foundations"
+            "relatedUiObjectProject": "Portfolio-Management"
         },
         {
             "action": "Add Missing Children",
@@ -74,7 +74,7 @@
             "relatedUiObject": "Portfolio Parameters",
             "actionFunction": "payload.executeAction",
             "actionProject": "Visual-Scripting",
-            "relatedUiObjectProject": "Foundations"
+            "relatedUiObjectProject": "Portfolio-Management"
         },
         {
             "action": "Delete UI Object",

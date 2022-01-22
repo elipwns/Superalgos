@@ -1,23 +1,23 @@
 {
-    "type": "Exchange Portfolio Products",
+    "type": "Market Portfolio Products",
     "menuItems": [
         {
             "action": "Add UI Object",
-            "label": "Add Market Portfolio Products",
-            "relatedUiObject": "Market Portfolio Products",
+            "label": "Add Portfolio Session Reference",
+            "relatedUiObject": "Portfolio Session Reference",
             "actionFunction": "payload.executeAction",
             "actionProject": "Visual-Scripting",
-            "relatedUiObjectProject": "Foundations"
+            "relatedUiObjectProject": "Portfolio-Management"
         },
         {
-            "action": "Add Missing Market Portfolio Products",
-            "label": "Add Missing Markets",
+            "action": "Add Missing Portfolio Session References",
+            "label": "Add Missing Sessions",
             "askConfirmation": true,
             "confirmationLabel": "Confirm to Proceed",
             "workDoneLabel": "Done",
-            "relatedUiObject": "Market Portfolio Products",
+            "relatedUiObject": "Portfolio Session Reference",
             "actionFunction": "payload.executeAction",
-            "relatedUiObjectProject": "Foundations"
+            "relatedUiObjectProject": "Portfolio-Management"
         },
         {
             "action": "Delete UI Object",
@@ -30,26 +30,25 @@
             "actionFunction": "payload.executeAction"
         }
     ],
-    "alternativeIcons": "Use Reference Parent",
-    "title": [
-        "Use Reference Parent"
-    ],
-    "isTitleAllwaysVisible": true,
     "addLeftIcons": true,
     "level": 3,
+    "isTitleAllwaysVisible": true,
+    "title": [
+        "Use Reference Parent Parent Parent",
+        "Use Reference Parent"
+    ],
     "referencingRules": {
-        "compatibleTypes": "->Crypto Exchange->"
+        "compatibleTypes": "->Market->"
     },
     "attachingRules": {
-        "compatibleTypes": "->Project Portfolio Products->"
+        "compatibleTypes": "->Exchange Portfolio Products->"
     },
-    "propertyNameAtParent": "exchangePortfolioProducts",
+    "propertyNameAtParent": "marketPortfolioProducts",
     "childrenNodesProperties": [
         {
-            "name": "marketPortfolioProducts",
+            "name": "portfolioSessionReferences",
             "type": "array",
-            "childType": "Market Portfolio Products",
-            "autoAdd": false
+            "childType": "Portfolio Session Reference"
         }
     ]
 }

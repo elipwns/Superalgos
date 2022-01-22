@@ -1,10 +1,18 @@
 {
-    "type": "Distance To Portfolio Event",
+    "type": "Portfolio Episode Statistics",
     "menuItems": [
         {
             "action": "Add Missing Children",
             "label": "Add Missing Children",
             "relatedUiObject": "Portfolio Parameters",
+            "actionFunction": "payload.executeAction",
+            "actionProject": "Visual-Scripting",
+            "relatedUiObjectProject": "Portfolio-Management"
+        },
+        {
+            "action": "Add UI Object",
+            "label": "Add User Defined Statistic",
+            "relatedUiObject": "User Defined Statistic",
             "actionFunction": "payload.executeAction",
             "actionProject": "Visual-Scripting",
             "relatedUiObjectProject": "Foundations"
@@ -25,60 +33,42 @@
     "attachingRules": {
         "compatibleTypes": "->Portfolio Episode->"
     },
-    "propertyNameAtParent": "distanceToPortfolioEvent",
+    "propertyNameAtParent": "portfolioEpisodeStatistics",
     "childrenNodesProperties": [
         {
-            "name": "triggerOn",
+            "name": "profitLoss",
             "type": "node",
-            "childType": "Trigger On",
+            "childType": "Profit Loss",
             "autoAdd": true
         },
         {
-            "name": "triggerOff",
+            "name": "ROI",
             "type": "node",
-            "childType": "Trigger Off",
+            "childType": "ROI",
             "autoAdd": true
         },
         {
-            "name": "takePosition",
+            "name": "hitFail",
             "type": "node",
-            "childType": "Take Position",
+            "childType": "Hit Fail",
             "autoAdd": true
         },
         {
-            "name": "closePosition",
+            "name": "days",
             "type": "node",
-            "childType": "Close Position",
+            "childType": "Days",
             "autoAdd": true
         },
         {
-            "name": "nextPhase",
+            "name": "annualizedRateOfReturn",
             "type": "node",
-            "childType": "Next Phase",
+            "childType": "Annualized Rate Of Return",
             "autoAdd": true
         },
         {
-            "name": "moveToPhase",
-            "type": "node",
-            "childType": "Move To Phase",
-            "autoAdd": true
-        },
-        {
-            "name": "createOrder",
-            "type": "node",
-            "childType": "Create Order",
-            "autoAdd": true
-        },
-        {
-            "name": "cancelOrder",
-            "type": "node",
-            "childType": "Cancel Order",
-            "autoAdd": true
-        },
-        {
-            "name": "closeOrder",
-            "type": "node",
-            "childType": "Close Order",
+            "name": "userDefinedStatistics",
+            "type": "array",
+            "childType": "User Defined Statistic",
             "autoAdd": true
         }
     ]

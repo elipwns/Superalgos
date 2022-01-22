@@ -7,7 +7,7 @@
             "relatedUiObject": "Portfolio Strategy",
             "actionFunction": "payload.executeAction",
             "actionProject": "Visual-Scripting",
-            "relatedUiObjectProject": "Foundations"
+            "relatedUiObjectProject": "Portfolio-Management"
         },
         {
             "action": "Delete UI Object",
@@ -27,30 +27,6 @@
         "compatibleTypes": "->Portfolio System->"
     },
     "childrenNodesProperties": [
-        {
-            "name": "triggerStage",
-            "type": "node",
-            "childType": "Trigger Stage",
-            "autoAdd": true
-        },
-        {
-            "name": "openStage",
-            "type": "node",
-            "childType": "Open Stage",
-            "autoAdd": true
-        },
-        {
-            "name": "manageStage",
-            "type": "node",
-            "childType": "Manage Stage",
-            "autoAdd": true
-        },
-        {
-            "name": "closeStage",
-            "type": "node",
-            "childType": "Close Stage",
-            "autoAdd": true
-        }
     ],
     "propertyNameAtParent": "portfolioStrategies"
 }

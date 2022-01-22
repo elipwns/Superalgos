@@ -1,9 +1,9 @@
 {
-    "type": "Portfolio Mine Tasks",
+    "type": "Exchange Portfolio Tasks",
     "menuItems": [
         {
-            "action": "Run All Task Managers",
-            "label": "Run All Task Managers",
+            "action": "Run All Market Portfolio Tasks",
+            "label": "Run All Market Portfolio Tasks",
             "askConfirmation": true,
             "confirmationLabel": "Confirm to Run",
             "workDoneLabel": "Run Request Sent",
@@ -12,8 +12,8 @@
             "actionFunction": "payload.executeAction"
         },
         {
-            "action": "Stop All Task Managers",
-            "label": "Stop All Task Managers",
+            "action": "Stop All Market Portfolio Tasks",
+            "label": "Stop All Market Portfolio Tasks",
             "askConfirmation": true,
             "confirmationLabel": "Confirm to Stop",
             "workDoneLabel": "Stop Request Sent",
@@ -23,21 +23,21 @@
         },
         {
             "action": "Add UI Object",
-            "label": "Add Task Manager",
-            "relatedUiObject": "Task Manager",
+            "label": "Add Market Portfolio Tasks",
+            "relatedUiObject": "Market Portfolio Tasks",
             "actionFunction": "payload.executeAction",
             "actionProject": "Visual-Scripting",
-            "relatedUiObjectProject": "Foundations"
+            "relatedUiObjectProject": "Portfolio-Management"
         },
         {
-            "action": "Add All Tasks",
-            "label": "Add All Tasks",
+            "action": "Add Missing Market Portfolio Tasks",
+            "label": "Add Missing Markets",
             "askConfirmation": true,
             "confirmationLabel": "Confirm to Proceed",
             "workDoneLabel": "Done",
-            "relatedUiObject": "Task",
+            "relatedUiObject": "Market Portfolio Tasks",
             "actionFunction": "payload.executeAction",
-            "relatedUiObjectProject": "Foundations"
+            "relatedUiObjectProject": "Portfolio-Management"
         },
         {
             "action": "Delete UI Object",
@@ -53,22 +53,22 @@
     "addLeftIcons": true,
     "level": 2,
     "referencingRules": {
-        "compatibleTypes": "->Portfolio Mine->"
+        "compatibleTypes": "->Crypto Exchange->"
     },
     "attachingRules": {
-        "compatibleTypes": "->Market Portfolio Tasks->"
+        "compatibleTypes": "->Project Portfolio Tasks->"
     },
     "alternativeIcons": "Use Reference Parent",
     "title": [
         "Use Reference Parent"
     ],
     "isTitleAllwaysVisible": true,
-    "propertyNameAtParent": "portfolioMineTasks",
+    "propertyNameAtParent": "exchangePortfolioTasks",
     "childrenNodesProperties": [
         {
-            "name": "taskManagers",
+            "name": "marketPortfolioTasks",
             "type": "array",
-            "childType": "Task Manager",
+            "childType": "Market Portfolio Tasks",
             "monitorChildrenRunning": true
         }
     ]

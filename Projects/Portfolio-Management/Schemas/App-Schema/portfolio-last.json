@@ -1,10 +1,10 @@
 {
-    "type": "Portfolio Engine",
+    "type": "Portfolio Last",
     "menuItems": [
         {
             "action": "Add Missing Children",
             "label": "Add Missing Children",
-            "relatedUiObject": "Portfolio Engine",
+            "relatedUiObject": "Portfolio Parameters",
             "actionFunction": "payload.executeAction",
             "actionProject": "Visual-Scripting",
             "relatedUiObjectProject": "Portfolio-Management"
@@ -20,23 +20,18 @@
             "actionFunction": "payload.executeAction"
         }
     ],
-    "isHierarchyHead": true,
     "addLeftIcons": true,
-    "level": 0,
+    "level": 3,
+    "attachingRules": {
+        "compatibleTypes": "->Portfolio Engine->"
+    },
+    "propertyNameAtParent": "portfolioLast",
     "childrenNodesProperties": [
         {
-            "name": "portfolioCurrent",
+            "name": "exchangeManagedAssets",
             "type": "node",
-            "childType": "Portfolio Current",
-            "autoAdd": false,
-            "project": "Portfolio-Management"
-        },
-        {
-            "name": "portfolioLast",
-            "type": "node",
-            "childType": "Portfolio Last",
-            "autoAdd": false,
-            "project": "Portfolio-Management"
+            "childType": "Exchange Managed Assets",
+            "autoAdd": true
         }
     ]
 }

@@ -27,17 +27,17 @@
             "relatedUiObject": "Project Portfolio Tasks",
             "actionFunction": "payload.executeAction",
             "actionProject": "Visual-Scripting",
-            "relatedUiObjectProject": "Foundations"
+            "relatedUiObjectProject": "Portfolio-Management"
         },
         {
             "action": "Add Missing Project Portfolio Tasks",
-            "label": "Add Missing Projects",
+            "label": "Add Missing Project Portfolio Tasks",
             "askConfirmation": true,
             "confirmationLabel": "Confirm to Proceed",
             "workDoneLabel": "Done",
             "relatedUiObject": "Project Portfolio Tasks",
             "actionFunction": "payload.executeAction",
-            "relatedUiObjectProject": "Foundations"
+            "relatedUiObjectProject": "Portfolio-Management"
         },
         {
             "action": "Delete UI Object",

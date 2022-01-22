@@ -1,21 +1,13 @@
 {
-    "type": "Portfolio Episode Statistics",
+    "type": "Portfolio Parameters",
     "menuItems": [
         {
             "action": "Add Missing Children",
-            "label": "Add Missing Children",
+            "label": "Add Missing Parameters",
             "relatedUiObject": "Portfolio Parameters",
             "actionFunction": "payload.executeAction",
             "actionProject": "Visual-Scripting",
-            "relatedUiObjectProject": "Foundations"
-        },
-        {
-            "action": "Add UI Object",
-            "label": "Add User Defined Statistic",
-            "relatedUiObject": "User Defined Statistic",
-            "actionFunction": "payload.executeAction",
-            "actionProject": "Visual-Scripting",
-            "relatedUiObjectProject": "Foundations"
+            "relatedUiObjectProject": "Portfolio-Management"
         },
         {
             "action": "Delete UI Object",
@@ -29,47 +21,59 @@
         }
     ],
     "addLeftIcons": true,
-    "level": 3,
+    "level": 2,
     "attachingRules": {
-        "compatibleTypes": "->Portfolio Episode->"
+        "compatibleTypes": "->Backtesting Portfolio Session->Live Portfolio Session->"
     },
-    "propertyNameAtParent": "portfolioEpisodeStatistics",
     "childrenNodesProperties": [
         {
-            "name": "profitLoss",
+            "name": "timeRange",
             "type": "node",
-            "childType": "Profit Loss",
+            "childType": "Time Range",
             "autoAdd": true
         },
         {
-            "name": "ROI",
+            "name": "timeFrame",
             "type": "node",
-            "childType": "ROI",
+            "childType": "Time Frame",
             "autoAdd": true
         },
         {
-            "name": "hitFail",
+            "name": "slippage",
             "type": "node",
-            "childType": "Hit Fail",
+            "childType": "Slippage",
             "autoAdd": true
         },
         {
-            "name": "days",
+            "name": "feeStructure",
             "type": "node",
-            "childType": "Days",
+            "childType": "Fee Structure",
             "autoAdd": true
         },
         {
-            "name": "annualizedRateOfReturn",
+            "name": "snapshots",
             "type": "node",
-            "childType": "Annualized Rate Of Return",
+            "childType": "Snapshots",
             "autoAdd": true
         },
         {
-            "name": "userDefinedStatistics",
-            "type": "array",
-            "childType": "User Defined Statistic",
+            "name": "heartbeats",
+            "type": "node",
+            "childType": "Heartbeats",
+            "autoAdd": true
+        },
+        {
+            "name": "managedAssets",
+            "type": "node",
+            "childType": "Managed Assets",
+            "autoAdd": true
+        },
+        {
+            "name": "userDefinedParameters",
+            "type": "node",
+            "childType": "User Defined Parameters",
             "autoAdd": true
         }
-    ]
+    ],
+    "propertyNameAtParent": "portfolioParameters"
 }
