@@ -42592,7 +42592,7 @@
                             {
                                 "type": "Plugin File",
                                 "name": "Masters",
-                                "config": "{\n    \"project\": \"Algorithmic-Trading\",\n    \"fileName\": \"Masters\",\n    \"folderName\": \"Trading-Mines\",\n    \"nodeType\": \"Trading Mine\",\n    \"saveWithWorkspace\": true\n}",
+                                "config": "{\n    \"project\": \"Algorithmic-Trading\",\n    \"fileName\": \"Masters\",\n    \"folderName\": \"Trading-Mines\",\n    \"nodeType\": \"Trading Mine\",\n    \"saveWithWorkspace\": false\n}",
                                 "project": "Community-Plugins",
                                 "pluginFilePosition": {
                                     "type": "Plugin File Position",
