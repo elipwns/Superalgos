@@ -7,62 +7,20 @@ exports.newDataMiningBotModulesHistoricOHLCVs = function (processIndex) {
     }
 
     let dataStorage
-    let statusDependencies
     let exchange
     let symbol
     let exchangeId
-    let uiStartDate = new Date(TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.config.startDate)
     let rateLimit = 100   // Fast rate limit - 10 req/sec (well under 400/sec limit)
     let limit = 1000     // Keep 1000 records per call
 
     return thisObject
 
-    function createCompatibleFiles(ohlcvData, callback) {
-        try {
-            const SQLiteFileAdapter = require('../../../Function-Libraries/SQLiteFileAdapter')
-            const adapter = SQLiteFileAdapter.newDataMiningFunctionLibrariesSQLiteFileAdapter()
-            
-            adapter.createFileStructure(exchangeId, symbol, (err, paths) => {
-                if (err) return callback(err)
-                
-                // Group data by day and create daily files
-                const dailyData = {}
-                ohlcvData.forEach(ohlcv => {
-                    const date = new Date(ohlcv[0])
-                    const dateKey = date.getUTCFullYear() + '/' + 
-                        String(date.getUTCMonth() + 1).padStart(2, '0') + '/' + 
-                        String(date.getUTCDate()).padStart(2, '0')
-                    
-                    if (!dailyData[dateKey]) dailyData[dateKey] = []
-                    dailyData[dateKey].push(ohlcv)
-                })
-                
-                // Create files for each day
-                Object.keys(dailyData).forEach(dateKey => {
-                    const candlesFile = path.join(paths.candlesPath, dateKey, 'Data.json')
-                    const volumesFile = path.join(paths.volumesPath, dateKey, 'Data.json')
-                    
-                    // Create date directories
-                    require('fs').mkdirSync(path.dirname(candlesFile), { recursive: true })
-                    require('fs').mkdirSync(path.dirname(volumesFile), { recursive: true })
-                    
-                    adapter.generateCandlesFile(dailyData[dateKey], candlesFile, () => {})
-                    adapter.generateVolumesFile(dailyData[dateKey], volumesFile, () => {})
-                })
-                
-                callback()
-            })
-        } catch (err) {
-            callback(err)
-        }
-    }
+
 
     function initialize(pStatusDependencies, callBackFunction) {
         try {
             TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
                 "[INFO] initialize -> Starting initialization")
-                
-            statusDependencies = pStatusDependencies
             
             // Get exchange configuration
             let exchangeConfig = TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.parentNode.parentNode.config
@@ -89,9 +47,9 @@ exports.newDataMiningBotModulesHistoricOHLCVs = function (processIndex) {
             TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
                 "[INFO] initialize -> Initializing SQLite storage system")
             
-            // Initialize SQLite storage and virtual file system
+            // Initialize SQLite storage and global virtual file system
             const OptimizedDataStorage = require('../../../Function-Libraries/OptimizedDataStorage')
-            const SQLiteVirtualFS = require('../../../Function-Libraries/SQLiteVirtualFS')
+            const GlobalSQLiteVFS = require('../../../Function-Libraries/GlobalSQLiteVFS')
             
             dataStorage = OptimizedDataStorage.newDataMiningFunctionLibrariesOptimizedDataStorage()
             dataStorage.initialize(exchangeId, symbol, (err) => {
@@ -104,12 +62,19 @@ exports.newDataMiningBotModulesHistoricOHLCVs = function (processIndex) {
                 TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
                     "[INFO] initialize -> Data storage initialized successfully")
 
-                // Initialize virtual file system
-                const virtualFS = SQLiteVirtualFS.newDataMiningFunctionLibrariesSQLiteVirtualFS()
-                virtualFS.initialize(dataStorage, exchangeId, symbol)
+                // Initialize global virtual file system
+                if (!global.SUPERALGOS_SQLITE_VFS) {
+                    global.SUPERALGOS_SQLITE_VFS = GlobalSQLiteVFS.newDataMiningFunctionLibrariesGlobalSQLiteVFS()
+                    global.SUPERALGOS_SQLITE_VFS.initialize()
+                    TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                        "[INFO] initialize -> Global SQLite VFS initialized")
+                }
+                
+                // Register this exchange/symbol with the global VFS
+                global.SUPERALGOS_SQLITE_VFS.addExchangeSymbol(exchangeId, symbol, dataStorage)
 
                 TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                    "[INFO] initialize -> SQLite storage and virtual FS initialized for " + exchangeId + " " + symbol)
+                    "[INFO] initialize -> SQLite storage and global VFS initialized for " + exchangeId + " " + symbol)
                 callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE)
             })
 
@@ -285,41 +250,5 @@ exports.newDataMiningBotModulesHistoricOHLCVs = function (processIndex) {
         }
     }
 
-    function updateStatusReport(lastTimestamp, callBackFunction) {
-        try {
-            let reportKey = TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.parentNode.parentNode.config.codeName + "-" + 
-                TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.parentNode.config.codeName + "-" + 
-                TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.config.codeName
 
-            let thisReport = statusDependencies.statusReports.get(reportKey)
-            let lastDate = new Date(lastTimestamp)
-
-            thisReport.file = {
-                lastTimestamp: lastTimestamp,
-                lastFile: {
-                    year: lastDate.getUTCFullYear(),
-                    month: (lastDate.getUTCMonth() + 1),
-                    days: lastDate.getUTCDate(),
-                    hours: lastDate.getUTCHours(),
-                    minutes: lastDate.getUTCMinutes()
-                },
-                uiStartDate: uiStartDate.toUTCString(),
-                storageType: 'sqlite'
-            }
-
-            thisReport.save((err) => {
-                if (err.result !== TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE.result) {
-                    TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                        "[ERROR] updateStatusReport -> err = " + err.stack)
-                    return callBackFunction(err)
-                }
-                callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE)
-            })
-
-        } catch (err) {
-            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                "[ERROR] updateStatusReport -> err = " + err.stack)
-            callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_FAIL_RESPONSE)
-        }
-    }
 }

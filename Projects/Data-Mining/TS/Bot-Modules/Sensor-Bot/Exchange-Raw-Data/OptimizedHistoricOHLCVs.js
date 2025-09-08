@@ -7,20 +7,18 @@ exports.newDataMiningBotModulesOptimizedHistoricOHLCVs = function (processIndex)
     }
 
     let dataStorage
-    let statusDependencies
     let exchange
     let symbol
     let exchangeId
     let uiStartDate = new Date(TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.config.startDate)
     let rateLimit = 500
     let limit = 1000
-    let maxRecordsPerBatch = 1000000 // Allow much larger batches
+    // Batch processing configuration
 
     return thisObject
 
     function initialize(pStatusDependencies, callBackFunction) {
         try {
-            statusDependencies = pStatusDependencies
             
             // Get exchange configuration
             let exchangeConfig = TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.parentNode.parentNode.config
@@ -179,41 +177,5 @@ exports.newDataMiningBotModulesOptimizedHistoricOHLCVs = function (processIndex)
         }
     }
 
-    function updateStatusReport(lastTimestamp, callBackFunction) {
-        try {
-            let reportKey = TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.parentNode.parentNode.config.codeName + "-" + 
-                TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.parentNode.config.codeName + "-" + 
-                TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.config.codeName
 
-            let thisReport = statusDependencies.statusReports.get(reportKey)
-            let lastDate = new Date(lastTimestamp)
-
-            thisReport.file = {
-                lastTimestamp: lastTimestamp,
-                lastFile: {
-                    year: lastDate.getUTCFullYear(),
-                    month: (lastDate.getUTCMonth() + 1),
-                    days: lastDate.getUTCDate(),
-                    hours: lastDate.getUTCHours(),
-                    minutes: lastDate.getUTCMinutes()
-                },
-                uiStartDate: uiStartDate.toUTCString(),
-                storageType: 'sqlite'
-            }
-
-            thisReport.save((err) => {
-                if (err.result !== TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE.result) {
-                    TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                        "[ERROR] updateStatusReport -> err = " + err.stack)
-                    return callBackFunction(err)
-                }
-                callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE)
-            })
-
-        } catch (err) {
-            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                "[ERROR] updateStatusReport -> err = " + err.stack)
-            callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_FAIL_RESPONSE)
-        }
-    }
 }

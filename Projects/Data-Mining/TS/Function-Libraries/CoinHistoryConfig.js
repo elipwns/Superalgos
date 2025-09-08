@@ -19,10 +19,10 @@ exports.newDataMiningFunctionLibrariesCoinHistoryConfig = function () {
         'DOT': '2022-01-01',  // Polkadot - last 3 years
         
         // Popular altcoins - conservative dates
-        'DOGE': '2018-01-01',  // Dogecoin - safe start
+        'DOGE': '2024-12-01',  // Dogecoin - start from recent data (2024+ available)
         'SHIB': '2021-01-01',  // Shiba Inu - recent
         'MATIC': '2020-01-01', // Polygon - recent
-        'LINK': '2018-01-01',  // Chainlink - safe start
+        'LINK': '2022-01-01',  // Chainlink - recent start
         'UNI': '2020-09-17',   // Uniswap - actual launch
         'AVAX': '2020-09-22',  // Avalanche - actual launch
         'SOL': '2020-04-10',   // Solana - actual launch

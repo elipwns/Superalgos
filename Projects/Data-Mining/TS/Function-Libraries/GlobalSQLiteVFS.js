@@ -1,28 +1,22 @@
-exports.newDataMiningFunctionLibrariesSQLiteVirtualFS = function () {
+exports.newDataMiningFunctionLibrariesGlobalSQLiteVFS = function () {
     const originalReadFile = require('fs').readFile
     const originalReadFileSync = require('fs').readFileSync
     const originalExistsSync = require('fs').existsSync
     
     let thisObject = {
         initialize: initialize,
-        interceptFileSystem: interceptFileSystem
+        addExchangeSymbol: addExchangeSymbol
     }
 
-    let dataStorage = null
-    let exchangeName = null
-    let symbolName = null
+    let storageMap = new Map() // Map of "exchange-symbol" -> dataStorage
+    let isInitialized = false
 
     return thisObject
 
-    function initialize(storage, exchange, symbol) {
-        dataStorage = storage
-        exchangeName = exchange
-        symbolName = symbol
-        interceptFileSystem()
-    }
-
-    function interceptFileSystem() {
-        // Override fs.readFile to serve SQLite data
+    function initialize() {
+        if (isInitialized) return
+        
+        // Override fs functions globally
         require('fs').readFile = function(filePath, options, callback) {
             if (typeof options === 'function') {
                 callback = options
@@ -36,17 +30,14 @@ exports.newDataMiningFunctionLibrariesSQLiteVirtualFS = function () {
             }
         }
 
-        // Override fs.readFileSync
         require('fs').readFileSync = function(filePath, options) {
             if (isDataFile(filePath)) {
-                // For sync calls, return empty array for now
                 return JSON.stringify([])
             } else {
                 return originalReadFileSync.call(this, filePath, options)
             }
         }
 
-        // Override fs.existsSync to claim our virtual files exist
         require('fs').existsSync = function(filePath) {
             if (isDataFile(filePath)) {
                 return true
@@ -54,18 +45,54 @@ exports.newDataMiningFunctionLibrariesSQLiteVirtualFS = function () {
                 return originalExistsSync.call(this, filePath)
             }
         }
+        
+        isInitialized = true
+    }
+
+    function addExchangeSymbol(exchange, symbol, dataStorage) {
+        const key = `${exchange}-${symbol.replace('/', '-')}`
+        storageMap.set(key, dataStorage)
     }
 
     function isDataFile(filePath) {
-        // Intercept both data files and status files for network discovery
+        // Check if this is a data file we should intercept
         return (filePath.includes('Data.json') || filePath.includes('Status.json')) && 
-               filePath.includes(exchangeName) && 
-               (filePath.includes(symbolName.replace('/', '-')) || filePath.includes(symbolName.replace('/', '_')))
+               (filePath.includes('Candles') || filePath.includes('Volumes')) &&
+               hasMatchingStorage(filePath)
+    }
+
+    function hasMatchingStorage(filePath) {
+        // Check if we have storage for any exchange/symbol that matches this path
+        for (let key of storageMap.keys()) {
+            const [exchange, symbol] = key.split('-')
+            if (filePath.includes(exchange) && 
+                (filePath.includes(symbol) || filePath.includes(symbol.replace('-', '_')))) {
+                return true
+            }
+        }
+        return false
+    }
+
+    function getStorageForPath(filePath) {
+        // Find the right storage for this file path
+        for (let [key, storage] of storageMap.entries()) {
+            const [exchange, symbol] = key.split('-')
+            if (filePath.includes(exchange) && 
+                (filePath.includes(symbol) || filePath.includes(symbol.replace('-', '_')))) {
+                return storage
+            }
+        }
+        return null
     }
 
     function serveFromSQLite(filePath, callback) {
         try {
-            // Handle Status.json files for network discovery
+            const dataStorage = getStorageForPath(filePath)
+            if (!dataStorage) {
+                return callback(null, JSON.stringify([]))
+            }
+
+            // Handle Status.json files
             if (filePath.includes('Status.json')) {
                 const statusData = {
                     "file": {
