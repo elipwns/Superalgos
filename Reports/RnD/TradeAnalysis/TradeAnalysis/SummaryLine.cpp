@@ -98,6 +98,8 @@ void SummaryLine::feedToken( LineType lineType, int tokenNumber, string token)
 				status = orderStatus_filled;
 			}
 			break;
+		default:
+			break;
 		}
 		break;
 
@@ -143,7 +145,11 @@ void SummaryLine::feedToken( LineType lineType, int tokenNumber, string token)
 					feeBothEst+= atof(tempFeeValue.c_str());
 			}
 			break;
+		default:
+			break;
 		}
+		break;
+	default:
 		break;
 	}
 } // feedToken

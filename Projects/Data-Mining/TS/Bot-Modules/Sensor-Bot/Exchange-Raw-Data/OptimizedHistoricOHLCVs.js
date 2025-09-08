@@ -11,7 +11,6 @@ exports.newDataMiningBotModulesOptimizedHistoricOHLCVs = function (processIndex)
     let exchange
     let symbol
     let exchangeId
-    let lastTimestamp
     let uiStartDate = new Date(TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.config.startDate)
     let rateLimit = 500
     let limit = 1000

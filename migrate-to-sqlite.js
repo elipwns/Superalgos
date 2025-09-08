@@ -151,42 +151,10 @@ async function getFolderStats(folderPath) {
     return { size: totalSize, files: fileCount }
 }
 
-// Example usage
-async function main() {
-    console.log('🔄 Superalgos Data Migration Tool')
-    console.log('================================')
-    
-    // Example: Migrate Binance BTC/USDT data
-    // Replace these paths with your actual data locations
-    const migrations = [
-        {
-            exchange: 'binance',
-            symbol: 'BTC/USDT',
-            dataPath: './Platform/My-Data-Storage/Project/Data-Mining/Data-Mine/Binance/USDT-BTC'
-        }
-        // Add more exchanges/symbols as needed
-    ]
-    
-    for (const migration of migrations) {
-        if (fs.existsSync(migration.dataPath)) {
-            await migrateExistingData(migration.exchange, migration.symbol, migration.dataPath)
-            
-            // Show cleanup preview
-            await cleanupOldFiles(migration.dataPath, true)
-        } else {
-            console.log(`⚠ Data path not found: ${migration.dataPath}`)
-        }
-    }
-    
-    console.log('\n✅ Migration process complete!')
-    console.log('\nNext steps:')
-    console.log('1. Test the SQLite data with your trading systems')
-    console.log('2. Update your sensor bot configuration to use OptimizedHistoricOHLCVs')
-    console.log('3. Run cleanup with dryRun=false to remove old files')
-}
-
-// Uncomment to run migration
-// main().catch(console.error)
+// Example usage - uncomment and modify paths as needed:
+// migrateExistingData('binance', 'BTC/USDT', './Platform/My-Data-Storage/Project/Data-Mining/Data-Mine/Binance/USDT-BTC')
+//   .then(() => cleanupOldFiles('./Platform/My-Data-Storage/Project/Data-Mining/Data-Mine/Binance/USDT-BTC', true))
+//   .catch(console.error)
 
 module.exports = {
     migrateExistingData,

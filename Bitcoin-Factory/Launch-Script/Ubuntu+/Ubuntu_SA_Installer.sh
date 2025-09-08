@@ -68,11 +68,11 @@ function giveUserPermissions() {
     user=$(whoami)
     echo "$user"
     echo " Please Input Your User Password To Allow For sudo Commands"
-    givesudo='sudo usermod -aG sudo '$user' '
-    eval $givesudo
+    givesudo="sudo usermod -aG sudo $user"
+    eval "$givesudo"
     wait
-    giveDocker='sudo usermod -aG docker '$user' '
-    eval $giveDocker
+    giveDocker="sudo usermod -aG docker $user"
+    eval "$giveDocker"
     wait
 }
 #
@@ -80,20 +80,20 @@ function giveUserPermissions() {
 function getDependencies() {
     echo "## First Lets Update........................................"
     update='sudo apt update'
-    eval $update
+    eval "$update"
     wait
     echo "## Getting curl............................................."
     curl='sudo apt install -y curl'
-    eval $curl
+    eval "$curl"
     wait
     echo "## Getting Node From NodeSource............................."
     nodeSource='curl -sL https://deb.nodesource.com/setup_17.x | sudo -E bash -'
-    eval $nodeSource
+    eval "$nodeSource"
     wait
-    eval $update
+    eval "$update"
     wait
     node='sudo apt install -y nodejs'
-    eval $node
+    eval "$node"
     wait
     sleep 20s
 }
@@ -104,11 +104,11 @@ if [ "$docker" = "y" ]
 then
     echo "## Getting ready to get docker from docker.com............."
     locationD='curl -fsSL https://get.docker.com -o get-docker.sh'
-    eval $locationD
+    eval "$locationD"
     wait
     echo "## Getting docker.........................................."
-    getDocker='sudo sh get-docker.sh'
-    eval $getDocker
+    getDockerCmd='sudo sh get-docker.sh'
+    eval "$getDockerCmd"
     wait
 fi
 }
@@ -118,11 +118,11 @@ function cloneFork() {
     echo "## Preparing To Clone Your Fork............................"
     echo "# First We Move To The Home Directory......................"
     movehome='cd ~'
-    eval $movehome
+    eval "$movehome"
     wait
     echo "## Cloning Fork............................................"
-    clone='git clone "$fork"'
-    eval $clone
+    clone="git clone $fork"
+    eval "$clone"
     wait
     echo "## Fork Cloned"
     sleep 3s
@@ -132,48 +132,48 @@ function cloneFork() {
 function initSetup() {
     echo "## Preparing To Setup Superalgos..........................."
     homeS='cd ~/Superalgos'
-    eval $homeS
+    eval "$homeS"
     wait
     echo "## Switching To Develop Branch............................."
     devBranch='git checkout develop'
-    eval $devBranch
+    eval "$devBranch"
     wait
     echo "Running Node Setup Script.................................."
     setup='node setup'
-    eval $setup
+    eval "$setup"
     wait
     echo "## Running Node SetupPlugins Script........................"
-    plugins='node setupPlugins "$username" "$token"'
-    eval $plugins
+    plugins="node setupPlugins $username $token"
+    eval "$plugins"
     wait
     echo "## Running updateGithubRepos Script........................"
     github='node updateGithubRepos'
-    eval $github
+    eval "$github"
     wait
 }
 #
 ## Here we run the docker build command
 function buildDocker() {
     btcFactory='cd Bitcoin-Factory'
-    eval $btcFactory
+    eval "$btcFactory"
     wait
-    if [ $armP = "y" ]
+    if [ "$armP" = "y" ]
     then
         armDocker='cd ArmDockerBuild'
-        eval $armDocker
+        eval "$armDocker"
         wait
         buildDockerImageArm='sg docker "docker build -t bitcoin-factory-machine-learning ."'
-        eval $buildDockerImageArm
+        eval "$buildDockerImageArm"
         wait
         moveBack='cd ..'
-        eval $moveBack
+        eval "$moveBack"
         wait
     else
         dockerBuild='cd DockerBuild'
-        eval $dockerBuild
+        eval "$dockerBuild"
         wait
         buildDockerImage='sg docker "docker build -t bitcoin-factory-machine-learning ."'
-        eval $buildDockerImage
+        eval "$buildDockerImage"
         wait
         cd ..
         wait

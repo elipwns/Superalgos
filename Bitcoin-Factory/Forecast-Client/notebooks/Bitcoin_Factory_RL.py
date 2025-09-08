@@ -112,6 +112,12 @@ if os.path.isfile(location+instructions_file): #Forecaster
     res_dir = location + "/models/" + MODEL_FILE_NAME + "/"
     RESUME = "AUTO"
     
+    # Validate file paths to prevent directory traversal
+    if not FILENAME_parameters_dataset.replace('/', '').replace('\\', '').replace('..', '').isalnum():
+        raise ValueError("Invalid parameters dataset filename")
+    if not FILENAME_timeseries_dataset.replace('/', '').replace('\\', '').replace('..', '').replace('.', '').replace('-', '').replace('_', '').isalnum():
+        raise ValueError("Invalid timeseries dataset filename")
+    
     parameters = pd.read_csv(
         '/tf/notebooks/'+FILENAME_parameters_dataset,
         header=0,

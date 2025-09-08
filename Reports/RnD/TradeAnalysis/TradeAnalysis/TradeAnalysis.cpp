@@ -175,6 +175,7 @@ int main(int argc, char* argv[])
 						break;
 					default:
 						lineType = lineType_Unknown;
+						break;
 					}
 				}
 
@@ -188,6 +189,8 @@ int main(int argc, char* argv[])
 						break;
 					case 'D':
 						lineType = lineType_TradePiece_Heading;
+						break;
+					default:
 						break;
 					}
 				}
@@ -248,7 +251,7 @@ int main(int argc, char* argv[])
 				break;
 			case lineType_TradePiece_Piece:
 				// Update last vectorSummaryLine summaryLine
-				vectorSummaryLine[vectorSummaryLine.size() - 1].feeBothEst += summaryLine.feeBothEst;
+				vectorSummaryLine.back().feeBothEst += summaryLine.feeBothEst;
 				break;
 		}
 
