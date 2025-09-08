@@ -12,7 +12,7 @@ exports.newDataMiningBotModulesHistoricOHLCVs = function (processIndex) {
     let symbol
     let exchangeId
     let uiStartDate = new Date(TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.config.startDate)
-    let rateLimit = 1000  // Safe rate limit - 1 request per second
+    let rateLimit = 100   // Fast rate limit - 10 req/sec (well under 400/sec limit)
     let limit = 1000     // Keep 1000 records per call
 
     return thisObject
@@ -148,8 +148,14 @@ exports.newDataMiningBotModulesHistoricOHLCVs = function (processIndex) {
                 TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
                     "[INFO] start -> Got last timestamp: " + dbLastTimestamp)
 
-                // Determine starting point - collect ULTIMATE historical dataset
-                let since = dbLastTimestamp ? dbLastTimestamp + 60000 : new Date('2015-01-01').valueOf() // Start from 2015 - 10 years of data
+                // Determine starting point using smart coin-specific dates
+                const CoinHistoryConfig = require('../../../Function-Libraries/CoinHistoryConfig')
+                const coinConfig = CoinHistoryConfig.newDataMiningFunctionLibrariesCoinHistoryConfig()
+                
+                let since = dbLastTimestamp ? dbLastTimestamp + 60000 : coinConfig.getStartDate(symbol, 'default')
+                
+                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                    "[INFO] start -> Using smart start date for " + symbol + ": " + new Date(since))
                 
                 TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
                     "[INFO] Starting data collection from timestamp: " + since + " (" + new Date(since) + ")")
@@ -178,7 +184,6 @@ exports.newDataMiningBotModulesHistoricOHLCVs = function (processIndex) {
 
     async function fetchAndSaveData(since, callBackFunction) {
         try {
-            console.log("*** FETCHANDSAVEDATA CALLED WITH SINCE:", since, "***")
             TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
                 "[INFO] fetchAndSaveData -> Starting data fetch from " + new Date(since))
                 
@@ -192,7 +197,7 @@ exports.newDataMiningBotModulesHistoricOHLCVs = function (processIndex) {
                 }
                 
                 // Save batch periodically to prevent memory issues
-                if (batchData.length >= 10000) {
+                if (batchData.length >= 5000) {
                     await new Promise((resolve, reject) => {
                         dataStorage.saveOHLCVBatch(batchData, (err, savedCount) => {
                             if (err) return reject(err)
@@ -206,16 +211,13 @@ exports.newDataMiningBotModulesHistoricOHLCVs = function (processIndex) {
                 }
 
                 // Rate limiting
-                console.log("*** ABOUT TO RATE LIMIT FOR", rateLimit, "MS ***")
                 await new Promise(resolve => setTimeout(resolve, rateLimit))
-                console.log("*** RATE LIMIT COMPLETE, ABOUT TO FETCH OHLCV ***")
 
                 // Fetch OHLCV data
                 TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
                     "[INFO] fetchAndSaveData -> Requesting " + limit + " OHLCVs from " + new Date(currentSince))
                 
                 const ohlcvs = await exchange.fetchOHLCV(symbol, '1m', currentSince, limit)
-                console.log("*** EXCHANGE RETURNED", ohlcvs.length, "OHLCVS ***")
                 
                 TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
                     "[INFO] fetchAndSaveData -> Exchange returned " + ohlcvs.length + " OHLCVs")
@@ -261,7 +263,6 @@ exports.newDataMiningBotModulesHistoricOHLCVs = function (processIndex) {
             }
 
             // Save final batch and create file structure
-            console.log("*** ABOUT TO SAVE FINAL BATCH OF", batchData.length, "RECORDS ***")
             if (batchData.length > 0) {
                 dataStorage.saveOHLCVBatch(batchData, (err, savedCount) => {
                     if (err) {
@@ -269,8 +270,6 @@ exports.newDataMiningBotModulesHistoricOHLCVs = function (processIndex) {
                             "[ERROR] fetchAndSaveData -> Failed to save batch -> err = " + err.message)
                         return callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_FAIL_RESPONSE)
                     }
-
-                    console.log("*** FINAL BATCH SAVED SUCCESSFULLY, CALLING CALLBACK ***")
                     TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
                         "[INFO] fetchAndSaveData -> Successfully saved " + savedCount + " OHLCVs to SQLite (virtual FS active)")
                     callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE)
