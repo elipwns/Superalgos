@@ -14,7 +14,7 @@ exports.newDataMiningBotModulesOptimizedHistoricOHLCVs = function (processIndex)
     let uiStartDate = new Date(TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.config.startDate)
     let rateLimit = 500
     let limit = 1000
-    let maxRecordsPerBatch = 50000 // Prevent memory issues
+    let maxRecordsPerBatch = 1000000 // Allow much larger batches
 
     return thisObject
 
@@ -101,9 +101,16 @@ exports.newDataMiningBotModulesOptimizedHistoricOHLCVs = function (processIndex)
             let batchData = []
             let currentSince = since
 
-            while (totalFetched < maxRecordsPerBatch) {
+            while (true) {
                 if (TS.projects.foundations.globals.taskVariables.IS_TASK_STOPPING === true) {
                     break
+                }
+                
+                // Save batch periodically to prevent memory issues
+                if (batchData.length >= 10000) {
+                    await saveBatch(batchData)
+                    batchData = []
+                    totalFetched = 0
                 }
 
                 // Rate limiting
@@ -147,7 +154,7 @@ exports.newDataMiningBotModulesOptimizedHistoricOHLCVs = function (processIndex)
                 }
             }
 
-            // Save batch to database
+            // Save final batch
             if (batchData.length > 0) {
                 dataStorage.saveOHLCVBatch(batchData, (err, savedCount) => {
                     if (err) {
@@ -159,12 +166,9 @@ exports.newDataMiningBotModulesOptimizedHistoricOHLCVs = function (processIndex)
                     TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
                         "[INFO] fetchAndSaveData -> Successfully saved " + savedCount + " OHLCVs to database")
 
-                    // Update status report
-                    updateStatusReport(batchData[batchData.length - 1][0], callBackFunction)
+                    callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE)
                 })
             } else {
-                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                    "[INFO] fetchAndSaveData -> No new data to save")
                 callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE)
             }
 

@@ -6,6 +6,7 @@ My-Network-Nodes-Data
 My-Secrets
 My-Data-Storage
 My-Log-Files
+Data/
 debug.log
 .DS_Store
 *.db
