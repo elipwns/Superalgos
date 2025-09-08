@@ -1,0 +1,10 @@
+Superalgos SQLite Database
+Exchange: bitstamp
+Pair: BTC/USD
+Records: 1913137
+Size: 176M
+Date Range: 2015-01-01 00:00:00 to 2018-08-21 13:38:00
+Created: Mon Sep  8 11:06:59 PDT 2025
+Database: bitstamp_BTC_USD.db
+SHA256: 34404ec91592dd2766f9b877bec1850ebc8f50e5571dd5f59d0b6af51358a54c
+MD5: 73398648e6694615bcab10225fd30f25

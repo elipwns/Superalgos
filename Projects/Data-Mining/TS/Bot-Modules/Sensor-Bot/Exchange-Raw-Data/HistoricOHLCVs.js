@@ -113,14 +113,30 @@ exports.newDataMiningBotModulesHistoricOHLCVs = function (processIndex) {
                 TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
                     "[INFO] start -> Got last timestamp: " + dbLastTimestamp)
 
-                // Determine starting point using smart coin-specific dates
-                const CoinHistoryConfig = require('../../../Function-Libraries/CoinHistoryConfig')
-                const coinConfig = CoinHistoryConfig.newDataMiningFunctionLibrariesCoinHistoryConfig()
-                
-                let since = dbLastTimestamp ? dbLastTimestamp + 60000 : coinConfig.getStartDate(symbol, 'default')
+                // Determine starting point - respect user config first, then use smart defaults
+                let since
+                if (dbLastTimestamp) {
+                    // Continue from where we left off
+                    since = dbLastTimestamp + 60000
+                } else {
+                    // Check if user has configured a specific start date
+                    const userStartDate = TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.config.startDate
+                    if (userStartDate) {
+                        since = new Date(userStartDate).valueOf()
+                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                            "[INFO] start -> Using user-configured start date: " + userStartDate)
+                    } else {
+                        // Fall back to smart coin-specific dates
+                        const CoinHistoryConfig = require('../../../Function-Libraries/CoinHistoryConfig')
+                        const coinConfig = CoinHistoryConfig.newDataMiningFunctionLibrariesCoinHistoryConfig()
+                        since = coinConfig.getStartDate(symbol, 'default')
+                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                            "[INFO] start -> Using smart default start date for " + symbol)
+                    }
+                }
                 
                 TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                    "[INFO] start -> Using smart start date for " + symbol + ": " + new Date(since))
+                    "[INFO] start -> Final start date for " + symbol + ": " + new Date(since))
                 
                 TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
                     "[INFO] Starting data collection from timestamp: " + since + " (" + new Date(since) + ")")
