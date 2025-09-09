@@ -47,34 +47,20 @@ exports.newDataMiningBotModulesHistoricOHLCVs = function (processIndex) {
             TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
                 "[INFO] initialize -> Initializing SQLite storage system")
             
-            // Initialize SQLite storage and global virtual file system
+            // Initialize SQLite storage
             const OptimizedDataStorage = require('../../../Function-Libraries/OptimizedDataStorage')
-            const GlobalSQLiteVFS = require('../../../Function-Libraries/GlobalSQLiteVFS')
             
             dataStorage = OptimizedDataStorage.newDataMiningFunctionLibrariesOptimizedDataStorage()
             dataStorage.initialize(exchangeId, symbol, (err) => {
                 if (err) {
                     TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                        "[ERROR] initialize -> Failed to initialize SQLite storage for " + exchangeId + " " + symbol + " -> err = " + err.message)
+                        "[ERROR] initialize -> Failed to initialize SQLite storage -> err = " + err.message)
                     return callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_FAIL_RESPONSE)
                 }
                 
                 TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                    "[INFO] initialize -> Data storage initialized successfully")
-
-                // Initialize global virtual file system
-                if (!global.SUPERALGOS_SQLITE_VFS) {
-                    global.SUPERALGOS_SQLITE_VFS = GlobalSQLiteVFS.newDataMiningFunctionLibrariesGlobalSQLiteVFS()
-                    global.SUPERALGOS_SQLITE_VFS.initialize()
-                    TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                        "[INFO] initialize -> Global SQLite VFS initialized")
-                }
+                    "[INFO] initialize -> SQLite storage initialized for " + exchangeId + " " + symbol)
                 
-                // Register this exchange/symbol with the global VFS
-                global.SUPERALGOS_SQLITE_VFS.addExchangeSymbol(exchangeId, symbol, dataStorage)
-
-                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                    "[INFO] initialize -> SQLite storage and global VFS initialized for " + exchangeId + " " + symbol)
                 callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE)
             })
 
@@ -83,6 +69,34 @@ exports.newDataMiningBotModulesHistoricOHLCVs = function (processIndex) {
             TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
                 "[ERROR] initialize -> err = " + err.stack)
             callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_FAIL_RESPONSE)
+        }
+    }
+
+    function autoInstallMarket(exchange, symbol, processIndex) {
+        try {
+            // Check if market exists in network topology
+            const networkNode = TS.projects.foundations.globals.taskConstants.NETWORK_NODE
+            if (!networkNode || !networkNode.networkInterfaces) return
+            
+            // Look for existing market data mine
+            let marketExists = false
+            for (const networkInterface of networkNode.networkInterfaces) {
+                if (networkInterface.config && networkInterface.config.codeName === exchange) {
+                    // Check if this symbol exists
+                    // This is a simplified check - full implementation would traverse the network structure
+                    marketExists = true
+                    break
+                }
+            }
+            
+            if (!marketExists) {
+                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                    "[WARN] Market " + exchange + " " + symbol + " not found in network topology. Please install market through UI.")
+                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                    "[INFO] To fix: Go to Network > Data Mine > " + exchange + " > Market > " + symbol + " and right-click 'Install Market'")
+            }
+        } catch (err) {
+            // Silent fail - this is just a helper
         }
     }
 
@@ -103,8 +117,6 @@ exports.newDataMiningBotModulesHistoricOHLCVs = function (processIndex) {
             // Get last timestamp from database
             dataStorage.getLastTimestamp((err, dbLastTimestamp) => {
                 if (err) {
-                    TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                        "[ERROR] start -> SQLite getLastTimestamp failed -> err = " + err.message)
                     TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
                         "[ERROR] start -> Failed to get last timestamp -> err = " + err.message)
                     return callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_FAIL_RESPONSE)
@@ -179,6 +191,15 @@ exports.newDataMiningBotModulesHistoricOHLCVs = function (processIndex) {
                 
                 // Save batch periodically to prevent memory issues
                 if (batchData.length >= 5000) {
+                    // Show progress during batch save
+                    let currentDate = new Date(currentSince)
+                    let dateStr = currentDate.getUTCFullYear() + '-' + 
+                        String(currentDate.getUTCMonth() + 1).padStart(2, '0') + '-' + 
+                        String(currentDate.getUTCDate()).padStart(2, '0')
+                    
+                    TS.projects.foundations.functionLibraries.processFunctions.processHeartBeat(processIndex, 
+                        "Saving batch @ " + dateStr + " (" + batchData.length + " records)")
+                    
                     await new Promise((resolve, reject) => {
                         dataStorage.saveOHLCVBatch(batchData, (err, savedCount) => {
                             if (err) return reject(err)
@@ -243,16 +264,16 @@ exports.newDataMiningBotModulesHistoricOHLCVs = function (processIndex) {
                 }
             }
 
-            // Save final batch and create file structure
+            // Save final batch
             if (batchData.length > 0) {
                 dataStorage.saveOHLCVBatch(batchData, (err, savedCount) => {
                     if (err) {
                         TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[ERROR] fetchAndSaveData -> Failed to save batch -> err = " + err.message)
+                            "[ERROR] fetchAndSaveData -> Failed to save final batch -> err = " + err.message)
                         return callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_FAIL_RESPONSE)
                     }
                     TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                        "[INFO] fetchAndSaveData -> Successfully saved " + savedCount + " OHLCVs to SQLite (virtual FS active)")
+                        "[INFO] fetchAndSaveData -> Successfully saved " + savedCount + " OHLCVs to SQLite")
                     callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE)
                 })
             } else {

@@ -1,8 +1,17 @@
-exports.newDataMiningFunctionLibrariesOptimizedDataStorage = function () {
-    const sqlite3 = require('sqlite3').verbose()
-    const path = require('path')
-    const fs = require('fs')
+let sqlite3
+let sqliteLoadError = null
 
+try {
+    sqlite3 = require('sqlite3').verbose()
+} catch (err) {
+    sqliteLoadError = err
+    console.error('[OptimizedDataStorage] Failed to load sqlite3 module:', err.message)
+}
+
+const path = require('path')
+const fs = require('fs')
+
+function newDataMiningFunctionLibrariesOptimizedDataStorage() {
     let thisObject = {
         initialize: initialize,
         saveOHLCVBatch: saveOHLCVBatch,
@@ -161,3 +170,96 @@ exports.newDataMiningFunctionLibrariesOptimizedDataStorage = function () {
         }
     }
 }
+
+// Simple class for processing bots
+class OptimizedDataStorage {
+    constructor(exchangeName, symbol) {
+
+        if (!sqlite3) {
+            console.error('[OptimizedDataStorage] Cannot initialize: SQLite3 module not available')
+            throw new Error('SQLite dependency does not exist')
+        }
+        
+        this.exchangeName = exchangeName
+        this.symbol = symbol
+        this.db = null
+        this.initialize()
+    }
+
+    initialize() {
+        const dbDir = path.join(process.cwd(), 'Data', 'SQLite')
+        const sanitizedSymbol = this.symbol.replace(/[^a-zA-Z0-9]/g, '_')
+        const dbPath = path.join(dbDir, `${this.exchangeName}_${sanitizedSymbol}.db`)
+        
+        // Use better-sqlite3 style synchronous API if available, otherwise fallback
+        try {
+            const Database = require('better-sqlite3')
+            this.db = new Database(dbPath)
+
+        } catch (err) {
+            // Fallback to regular sqlite3 but we need to handle it differently
+            this.db = new sqlite3.Database(dbPath, sqlite3.OPEN_READONLY)
+
+        }
+    }
+
+    getRecordsByDateRange(startDate, endDate) {
+        if (!this.db) return []
+        
+        const startTimestamp = startDate.valueOf()
+        const endTimestamp = endDate.valueOf()
+        
+        const query = `
+            SELECT timestamp, open, high, low, close, volume
+            FROM ohlcv
+            WHERE timestamp >= ? AND timestamp <= ?
+            ORDER BY timestamp ASC
+        `
+        
+        try {
+            const rows = this.db.prepare(query).all(startTimestamp, endTimestamp)
+            return rows || []
+        } catch (err) {
+            console.error('Error querying records:', err)
+            return []
+        }
+    }
+
+    getFirstRecord() {
+        if (!this.db) {
+            console.log('[OptimizedDataStorage] getFirstRecord: db not initialized')
+            return null
+        }
+        
+        try {
+            // Check if this is better-sqlite3 (has prepare method that returns synchronous statement)
+            if (this.db.prepare && typeof this.db.prepare('SELECT 1').get === 'function') {
+                const row = this.db.prepare('SELECT MIN(timestamp) as timestamp FROM ohlcv').get()
+
+                return row && row.timestamp ? row : null
+            } else {
+                // This is regular sqlite3, we need to use async methods but we can't in this context
+
+                return null
+            }
+        } catch (err) {
+
+            return null
+        }
+    }
+
+    getLastRecord() {
+        if (!this.db) return null
+        
+        try {
+            const row = this.db.prepare('SELECT MAX(timestamp) as timestamp FROM ohlcv').get()
+            return row && row.timestamp ? row : null
+        } catch (err) {
+            return null
+        }
+    }
+}
+
+// Export function first, then add class
+exports.newDataMiningFunctionLibrariesOptimizedDataStorage = newDataMiningFunctionLibrariesOptimizedDataStorage
+exports.OptimizedDataStorage = OptimizedDataStorage

@@ -89,6 +89,7 @@ exports.newTaskServer = function newTaskServer() {
                 setupTaskHeartbeats()
                 await setupOpenStorage()
                 await setupP2PNetworkClient()
+
                 startProcesses()
 
                 function initializeProjectDefinitionNode() {
@@ -237,6 +238,8 @@ exports.newTaskServer = function newTaskServer() {
                         TS.projects.foundations.globals.taskConstants.EVENT_SERVER_CLIENT_MODULE_OBJECT.raiseEvent(key, 'Heartbeat', event)
                     }
                 }
+
+
 
                 function startProcesses() {
                     for (let processIndex = 0; processIndex < TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes.length; processIndex++) {

@@ -16,16 +16,30 @@
     let dataDependenciesModule
     let dataFiles = new Map()
     let studyOutputModule
+    let sqliteStorage
 
     return thisObject;
 
     function initialize(pStatusDependencies, pDataDependenciesModule, callBackFunction) {
+        try {
+            statusDependenciesModule = pStatusDependencies
+            dataDependenciesModule = pDataDependenciesModule
 
-        statusDependenciesModule = pStatusDependencies
-        dataDependenciesModule = pDataDependenciesModule
+            // Initialize SQLite storage
+            const { OptimizedDataStorage } = require('../../Function-Libraries/OptimizedDataStorage')
+            const exchangeName = TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.parentNode.parentNode.config.codeName
+            const baseAsset = TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.baseAsset.referenceParent.config.codeName
+            const quotedAsset = TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.quotedAsset.referenceParent.config.codeName
+            
+            sqliteStorage = new OptimizedDataStorage(exchangeName, `${baseAsset}_${quotedAsset}`)
 
-        studyOutputModule = TS.projects.dataMining.botModules.studyOutput.newDataMiningBotModulesStudyOutput(processIndex)
-        studyOutputModule.initialize(callBackFunction)
+            studyOutputModule = TS.projects.dataMining.botModules.studyOutput.newDataMiningBotModulesStudyOutput(processIndex)
+            studyOutputModule.initialize(callBackFunction)
+        } catch (err) {
+            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                "[ERROR] initialize -> err = " + err.stack);
+            callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_FAIL_RESPONSE);
+        }
     }
 
     function finalize() {
@@ -34,6 +48,7 @@
         statusDependenciesModule = undefined
         dataDependenciesModule = undefined
         studyOutputModule = undefined
+        sqliteStorage = undefined
         thisObject = undefined
     }
 
@@ -112,37 +127,51 @@
 
                     function dependencyLoopBody() {
                         let dependency = dataDependenciesModule.curatedDependencyNodeArray[dependencyIndex]
-                        let datasetModule = dataDependenciesModule.dataSetsModulesArray[dependencyIndex]
 
-                        getFile()
+                        getSQLiteData()
 
-                        function getFile() {
-                            let fileName = "Data.json";
-                            let filePath
-
-                            /*
-                            For datasets that are not dependent on a Time Frame we will build the file path without the timeFrameLabel
-                            */
-                            if (dependency.referenceParent.config.codeName === "Single-File") {
-                                filePath = dependency.referenceParent.parentNode.config.codeName + '/' + dependency.referenceParent.config.codeName
-                            } else {
-                                filePath = dependency.referenceParent.parentNode.config.codeName + '/' + dependency.referenceParent.config.codeName + "/" + timeFrameLabel
-                            }
-
-                            datasetModule.getTextFile(filePath, fileName, onFileReceived)
-
-                            function onFileReceived(err, text) {
-                                if (err.result !== TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE.result) {
+                        function getSQLiteData() {
+                            try {
+                                // Instead of reading JSON files, get data from SQLite
+                                const lastRecord = sqliteStorage.getLastRecord()
+                                if (!lastRecord) {
                                     TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                        "[ERROR] start -> processTimeFrames -> timeFramesLoopBody -> dependencyLoopBody -> getFile -> onFileReceived -> err = " + JSON.stringify(err))
-                                    callBackFunction(err)
+                                        "[WARN] start -> processTimeFrames -> timeFramesLoopBody -> dependencyLoopBody -> getSQLiteData -> No SQLite data available")
+                                    let customResponse = {
+                                        result: TS.projects.foundations.globals.standardResponses.CUSTOM_OK_RESPONSE.result,
+                                        message: "SQLite dependency does not exist."
+                                    }
+                                    callBackFunction(customResponse)
                                     return;
                                 }
 
-                                let dataFile = JSON.parse(text)
-                                dataFiles.set(dependency.id, dataFile)
+                                // Get data for the current timeframe
+                                const endDate = new Date(lastRecord.timestamp)
+                                const startDate = new Date(endDate.valueOf() - timeFrame) // Get data for one timeframe period
+                                
+                                const records = sqliteStorage.getRecordsByDateRange(startDate, endDate)
+                                
+                                // Convert SQLite records to the expected format
+                                let dataFile = []
+                                for (let record of records) {
+                                    dataFile.push([
+                                        record.low,      // min
+                                        record.high,     // max  
+                                        record.open,     // open
+                                        record.close,    // close
+                                        record.timestamp, // begin
+                                        record.timestamp + 60000 - 1 // end (assuming 1-minute candles)
+                                    ])
+                                }
 
+                                dataFiles.set(dependency.id, dataFile)
                                 dependencyControlLoop()
+
+                            } catch (err) {
+                                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                                    "[ERROR] start -> processTimeFrames -> timeFramesLoopBody -> dependencyLoopBody -> getSQLiteData -> err = " + err.stack)
+                                callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_FAIL_RESPONSE)
+                                return;
                             }
                         }
                     }

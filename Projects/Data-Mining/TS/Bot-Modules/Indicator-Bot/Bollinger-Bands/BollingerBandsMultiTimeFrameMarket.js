@@ -12,12 +12,22 @@
 
     let statusDependenciesModule
     let fileStorage = TS.projects.foundations.taskModules.fileStorage.newFileStorage(processIndex)
+    let processedStorage
 
     return thisObject
 
     function initialize(pStatusDependenciesModule, callBackFunction) {
         try {
             statusDependenciesModule = pStatusDependenciesModule;
+            
+            // Initialize SQLite processed data storage
+            const ProcessedDataStorage = require('../../Function-Libraries/ProcessedDataStorage')
+            const exchangeName = TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.parentNode.parentNode.config.codeName
+            const baseAsset = TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.baseAsset.referenceParent.config.codeName
+            const quotedAsset = TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.quotedAsset.referenceParent.config.codeName
+            
+            processedStorage = new ProcessedDataStorage(exchangeName, `${baseAsset}_${quotedAsset}`)
+            
             callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE);
 
         } catch (err) {
@@ -64,68 +74,46 @@
 
                             function nextCandleFile() {
                                 try {
-                                    let fileName = "Data.json";
+                                    // Get candles from SQLite processed storage
+                                    const startDate = new Date(0) // Get all data
+                                    const endDate = new Date()
+                                    const candleRecords = processedStorage.getCandlesByDateRange(timeFrame, startDate, endDate)
+                                    
+                                    if (!candleRecords || candleRecords.length === 0) {
+                                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                                            "[WARN] start -> buildBands -> loopBody -> nextCandleFile -> No candle data available for timeframe: " + timeFrame)
+                                        controlLoop()
+                                        return
+                                    }
 
-                                    let filePathRoot =
-                                        'Project/' + TS.projects.foundations.globals.taskConstants.PROJECT_DEFINITION_NODE.config.codeName + "/" +
-                                        TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.parentNode.parentNode.type.replace(' ', '-') + "/" +
-                                        'Candles' + "/" +
-                                        "Candles-Volumes" + '/' + TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.parentNode.parentNode.config.codeName + "/" +
-                                        TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.baseAsset.referenceParent.config.codeName + "-" +
-                                        TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.quotedAsset.referenceParent.config.codeName
-                                    let filePath = filePathRoot + "/Output/" + CANDLES_FOLDER_NAME + "/" + "Multi-Time-Frame-Market" + "/" + timeFrame;
-                                    filePath += '/' + fileName
+                                    let candles = []
+                                    buildCandles()
 
-                                    fileStorage.getTextFile(filePath, onFileReceived);
-
-                                    function onFileReceived(err, text) {
+                                    function buildCandles() {
                                         try {
-                                            if (err.result !== TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE.result) {
-                                                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                                    "[ERROR] start -> buildBands -> loopBody -> nextCandleFile -> onFileReceived -> err = " + err.stack)
-                                                callBackFunction(err)
-                                                return
-                                            }
-
-                                            let marketFile = JSON.parse(text)
-                                            let candles = []
-                                            buildCandles()
-
-                                            function buildCandles() {
-                                                try {
-                                                    for (let i = 0; i < marketFile.length; i++) {
-
-                                                        let candle = {
-                                                            open: undefined,
-                                                            close: undefined,
-                                                            min: 10000000000000,
-                                                            max: 0,
-                                                            begin: undefined,
-                                                            end: undefined,
-                                                            direction: undefined
-                                                        };
-
-                                                        candle.min = marketFile[i][0];
-                                                        candle.max = marketFile[i][1];
-
-                                                        candle.open = marketFile[i][2];
-                                                        candle.close = marketFile[i][3];
-
-                                                        candle.begin = marketFile[i][4];
-                                                        candle.end = marketFile[i][5];
-
-                                                        candles.push(candle);
-                                                    }
-
-                                                    buildBands()
+                                            for (let i = 0; i < candleRecords.length; i++) {
+                                                let record = candleRecords[i]
+                                                let candle = {
+                                                    open: record.open,
+                                                    close: record.close,
+                                                    min: record.low,
+                                                    max: record.high,
+                                                    begin: record.begin_time,
+                                                    end: record.end_time,
+                                                    direction: undefined
                                                 }
-                                                catch (err) {
-                                                    TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).UNEXPECTED_ERROR = err
-                                                    TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                                        "[ERROR] start -> buildBands -> loopBody -> nextCandleFile -> onFileReceived -> buildCandles -> err = " + err.stack);
-                                                    callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_FAIL_RESPONSE);
-                                                }
+                                                candles.push(candle)
                                             }
+                                            buildBands()
+                                        } catch (err) {
+                                            TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).UNEXPECTED_ERROR = err
+                                            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                                                "[ERROR] start -> buildBands -> loopBody -> nextCandleFile -> buildCandles -> err = " + err.stack);
+                                            callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_FAIL_RESPONSE);
+                                        }
+                                    }
+
+
 
                                             function buildBands() {
                                                 try {
@@ -345,14 +333,7 @@
                                                     callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_FAIL_RESPONSE);
                                                 }
                                             }
-                                        }
-                                        catch (err) {
-                                            TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).UNEXPECTED_ERROR = err
-                                            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                                "[ERROR] start -> buildBands -> loopBody -> nextCandleFile -> onFileReceived -> err = " + err.stack);
-                                            callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_FAIL_RESPONSE);
-                                        }
-                                    }
+
                                 }
                                 catch (err) {
                                     TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).UNEXPECTED_ERROR = err

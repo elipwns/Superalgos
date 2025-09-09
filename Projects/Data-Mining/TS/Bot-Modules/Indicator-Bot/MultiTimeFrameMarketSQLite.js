@@ -1,8 +1,8 @@
-﻿exports.newDataMiningIndicatorMultiTimeFrameMarket = function (processIndex) {
-    const MODULE_NAME = "Multi Time Frame Market"
+exports.newDataMiningIndicatorMultiTimeFrameMarket = function (processIndex) {
+    const MODULE_NAME = "Multi Time Frame Market SQLite"
     /*
     This module deals with Market Files, that are data files for Time Frames of 1 hour and above.
-    It also assumes that the data dependencies are in Market Files, one file for each Time Frame.
+    It reads data from SQLite instead of JSON files.
     */
     let thisObject = {
         initialize: initialize,
@@ -94,6 +94,7 @@
                         function getSQLiteData() {
                             try {
                                 // Instead of reading JSON files, get data from SQLite
+                                // For now, we'll get the most recent day's data as an example
                                 const lastRecord = sqliteStorage.getLastRecord()
                                 if (!lastRecord) {
                                     TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,

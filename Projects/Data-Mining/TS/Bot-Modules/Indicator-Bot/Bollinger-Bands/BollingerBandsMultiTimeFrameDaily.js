@@ -14,6 +14,7 @@
 
     let statusDependenciesModule;
     let beginingOfMarket
+    let processedStorage
 
     return thisObject;
 
@@ -21,6 +22,15 @@
 
         try {
             statusDependenciesModule = pStatusDependenciesModule;
+            
+            // Initialize SQLite processed data storage
+            const ProcessedDataStorage = require('../../Function-Libraries/ProcessedDataStorage')
+            const exchangeName = TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.parentNode.parentNode.config.codeName
+            const baseAsset = TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.baseAsset.referenceParent.config.codeName
+            const quotedAsset = TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.quotedAsset.referenceParent.config.codeName
+            
+            processedStorage = new ProcessedDataStorage(exchangeName, `${baseAsset}_${quotedAsset}`)
+            
             callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE);
 
         } catch (err) {
@@ -320,41 +330,29 @@
 
                             function getPreviousDayFile() {
                                 try {
-                                    let dateForPath =
-                                        previousDay.getUTCFullYear() + '/' +
-                                        SA.projects.foundations.utilities.miscellaneousFunctions.pad(previousDay.getUTCMonth() + 1, 2) + '/' +
-                                        SA.projects.foundations.utilities.miscellaneousFunctions.pad(previousDay.getUTCDate(), 2);
-                                    let fileName = "Data.json"
-                                    let filePathRoot =
-                                        'Project/' +
-                                        TS.projects.foundations.globals.taskConstants.PROJECT_DEFINITION_NODE.config.codeName + "/" +
-                                        TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.parentNode.parentNode.type.replace(' ', '-') + "/" +
-                                        'Candles' + "/" +
-                                        "Candles-Volumes" + '/' + TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.parentNode.parentNode.config.codeName + "/" +
-                                        TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.baseAsset.referenceParent.config.codeName + "-" +
-                                        TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.quotedAsset.referenceParent.config.codeName
-                                    let filePath = filePathRoot + "/Output/" + CANDLES_FOLDER_NAME + '/' + "Multi-Time-Frame-Daily" + "/" + timeFrame + "/" + dateForPath;
-                                    filePath += '/' + fileName
-
-                                    fileStorage.getTextFile(filePath, onCurrentDayFileReceived);
-
-                                    function onCurrentDayFileReceived(err, text) {
-                                        try {
-                                            previousDayFile = JSON.parse(text);
-                                            getProcessDayFile()
-
-                                        } catch (err) {
-                                            TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).UNEXPECTED_ERROR = err
-                                            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                                "[ERROR] start -> buildBands -> timeframesLoop -> loopBody -> getPreviousDayFile -> onCurrentDayFileReceived -> err = " + err.stack);
-                                            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                                "[ERROR] start -> buildBands -> timeframesLoop -> loopBody -> getPreviousDayFile -> onCurrentDayFileReceived -> filePath = " + filePath);
-                                            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                                "[ERROR] start -> buildBands -> timeframesLoop -> loopBody -> getPreviousDayFile -> onCurrentDayFileReceived -> market = " + TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.baseAsset.referenceParent.config.codeName + '_' + TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.quotedAsset.referenceParent.config.codeName);
-
-                                            callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_RETRY_RESPONSE);
-                                        }
+                                    // Get previous day candles from SQLite processed storage
+                                    const startOfPreviousDay = new Date(previousDay)
+                                    const endOfPreviousDay = new Date(previousDay.valueOf() + SA.projects.foundations.globals.timeConstants.ONE_DAY_IN_MILISECONDS - 1)
+                                    
+                                    const previousDayRecords = processedStorage.getCandlesByDateRange(timeFrame, startOfPreviousDay, endOfPreviousDay)
+                                    
+                                    if (!previousDayRecords || previousDayRecords.length === 0) {
+                                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                                            "[WARN] start -> buildBands -> timeframesLoop -> loopBody -> getPreviousDayFile -> No candle data for previous day: " + previousDay.toISOString().split('T')[0]);
+                                        previousDayFile = []
+                                    } else {
+                                        // Convert SQLite records to expected format
+                                        previousDayFile = previousDayRecords.map(record => [
+                                            record.low,
+                                            record.high,
+                                            record.open,
+                                            record.close,
+                                            record.begin_time,
+                                            record.end_time
+                                        ])
                                     }
+                                    
+                                    getProcessDayFile()
 
                                 } catch (err) {
                                     TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).UNEXPECTED_ERROR = err
@@ -366,45 +364,33 @@
 
                             function getProcessDayFile() {
                                 try {
-                                    let dateForPath =
-                                        processDate.getUTCFullYear() + '/' +
-                                        SA.projects.foundations.utilities.miscellaneousFunctions.pad(processDate.getUTCMonth() + 1, 2) + '/' +
-                                        SA.projects.foundations.utilities.miscellaneousFunctions.pad(processDate.getUTCDate(), 2);
-                                    let fileName = "Data.json"
-                                    let filePathRoot =
-                                        'Project/' +
-                                        TS.projects.foundations.globals.taskConstants.PROJECT_DEFINITION_NODE.config.codeName + "/" +
-                                        TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.parentNode.parentNode.type.replace(' ', '-') + "/" +
-                                        'Candles' + "/" +
-                                        "Candles-Volumes" + '/' + TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.parentNode.parentNode.config.codeName + "/" +
-                                        TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.baseAsset.referenceParent.config.codeName + "-" +
-                                        TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.quotedAsset.referenceParent.config.codeName
-                                    let filePath = filePathRoot + "/Output/" + CANDLES_FOLDER_NAME + '/' + "Multi-Time-Frame-Daily" + "/" + timeFrame + "/" + dateForPath;
-                                    filePath += '/' + fileName
-
-                                    fileStorage.getTextFile(filePath, onCurrentDayFileReceived);
-
-                                    function onCurrentDayFileReceived(err, text) {
-                                        try {
-                                            processDayFile = JSON.parse(text);
-                                            buildBands();
-                                        } catch (err) {
-                                            if (processDate.valueOf() > contextVariables.maxBandFile.valueOf()) {
-                                                processDayFile = [];  // we are past the head of the market, then no worries if this file is non existent.
-                                                buildBands();
-                                            } else {
-                                                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                                    "[ERROR] start -> buildBands -> timeframesLoop -> loopBody -> getProcessDayFile -> onCurrentDayFileReceived -> err = " + err.stack);
-                                                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                                    "[ERROR] start -> buildBands -> timeframesLoop -> loopBody -> getProcessDayFile -> onCurrentDayFileReceived -> filePath = " + filePath);
-                                                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                                    "[ERROR] start -> buildBands -> timeframesLoop -> loopBody -> getProcessDayFile -> onCurrentDayFileReceived -> market = " + TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.baseAsset.referenceParent.config.codeName + '_' + TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.quotedAsset.referenceParent.config.codeName);
-
-                                                callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_RETRY_RESPONSE)
-                                                return
-                                            }
+                                    // Get process day candles from SQLite processed storage
+                                    const startOfProcessDay = new Date(processDate)
+                                    const endOfProcessDay = new Date(processDate.valueOf() + SA.projects.foundations.globals.timeConstants.ONE_DAY_IN_MILISECONDS - 1)
+                                    
+                                    const processDayRecords = processedStorage.getCandlesByDateRange(timeFrame, startOfProcessDay, endOfProcessDay)
+                                    
+                                    if (!processDayRecords || processDayRecords.length === 0) {
+                                        if (processDate.valueOf() > contextVariables.maxBandFile.valueOf()) {
+                                            processDayFile = [];  // we are past the head of the market, then no worries if this file is non existent.
+                                        } else {
+                                            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                                                "[WARN] start -> buildBands -> timeframesLoop -> loopBody -> getProcessDayFile -> No candle data for process day: " + processDate.toISOString().split('T')[0]);
+                                            processDayFile = []
                                         }
+                                    } else {
+                                        // Convert SQLite records to expected format
+                                        processDayFile = processDayRecords.map(record => [
+                                            record.low,
+                                            record.high,
+                                            record.open,
+                                            record.close,
+                                            record.begin_time,
+                                            record.end_time
+                                        ])
                                     }
+                                    
+                                    buildBands()
 
                                 } catch (err) {
                                     TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).UNEXPECTED_ERROR = err

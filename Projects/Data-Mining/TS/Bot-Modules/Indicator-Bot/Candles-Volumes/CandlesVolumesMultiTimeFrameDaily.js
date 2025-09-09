@@ -14,13 +14,30 @@
     let fileStorage = TS.projects.foundations.taskModules.fileStorage.newFileStorage(processIndex)
     let statusDependenciesModule
     let beginingOfMarket
+    let sqliteStorage
 
     return thisObject;
 
     function initialize(pStatusDependenciesModule, callBackFunction) {
         try {
             statusDependenciesModule = pStatusDependenciesModule
-            callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE)
+            
+            // Initialize SQLite storage
+            const OptimizedDataStorage = require('../../../Function-Libraries/OptimizedDataStorage')
+            const exchangeName = TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.parentNode.parentNode.config.codeName
+            const baseAsset = TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.baseAsset.referenceParent.config.codeName
+            const quotedAsset = TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.quotedAsset.referenceParent.config.codeName
+            
+            sqliteStorage = OptimizedDataStorage.newDataMiningFunctionLibrariesOptimizedDataStorage()
+            sqliteStorage.initialize(exchangeName, `${baseAsset}_${quotedAsset}`, (err) => {
+                if (err) {
+                    TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                        "[ERROR] initialize -> Failed to initialize SQLite storage -> err = " + err.message)
+                    return callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_FAIL_RESPONSE)
+                }
+                callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE)
+            })
+            return // Exit early since callback is handled in initialize
 
         } catch (err) {
             TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).UNEXPECTED_ERROR = err
@@ -270,214 +287,144 @@
                             nextCandleFile();
 
                             function nextCandleFile() {
-                                let dateForPath =
-                                    contextVariables.datetimeLastProducedFile.getUTCFullYear() + '/' +
-                                    SA.projects.foundations.utilities.miscellaneousFunctions.pad(contextVariables.datetimeLastProducedFile.getUTCMonth() + 1, 2) + '/' +
-                                    SA.projects.foundations.utilities.miscellaneousFunctions.pad(contextVariables.datetimeLastProducedFile.getUTCDate(), 2)
-                                let fileName = "Data.json"
+                                try {
+                                    // Read records from SQLite for this day
+                                    const startOfDay = new Date(contextVariables.datetimeLastProducedFile)
+                                    const endOfDay = new Date(contextVariables.datetimeLastProducedFile.valueOf() + SA.projects.foundations.globals.timeConstants.ONE_DAY_IN_MILISECONDS - 1)
+                                    
+                                    let candlesFile = []
+                                    sqliteStorage.getOHLCVRange(startOfDay.valueOf(), endOfDay.valueOf(), (err, records) => {
+                                        if (err) {
+                                            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                                                "[ERROR] start -> buildCandles -> timeframesLoop -> loopBody -> nextCandleFile -> SQLite error: " + err.message)
+                                            callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_FAIL_RESPONSE)
+                                            return
+                                        }
+                                        candlesFile = records || []
+                                    
+                                    if (!candlesFile || candlesFile.length === 0) {
+                                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                                            "[WARN] start -> buildCandles -> timeframesLoop -> loopBody -> nextCandleFile -> No SQLite records found for date: " + startOfDay.toISOString().split('T')[0]);
+                                        nextVolumeFile();
+                                        return
+                                    }
+                                    
+                                    TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                                        "[INFO] start -> buildCandles -> timeframesLoop -> loopBody -> nextCandleFile -> Processing " + candlesFile.length + " SQLite records for " + startOfDay.toISOString().split('T')[0]);
 
-                                let filePathRoot =
-                                    'Project/' +
-                                    TS.projects.foundations.globals.taskConstants.PROJECT_DEFINITION_NODE.config.codeName + "/" +
-                                    TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.parentNode.parentNode.type.replace(' ', '-') + "/" +
-                                    TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.parentNode.parentNode.config.codeName + "/" +
-                                    "Exchange-Raw-Data" + '/' +
-                                    TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.parentNode.parentNode.config.codeName + "/" +
-                                    TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.baseAsset.referenceParent.config.codeName + "-" +
-                                    TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.quotedAsset.referenceParent.config.codeName
-                                let filePath = filePathRoot + "/Output/" + CANDLES_FOLDER_NAME + '/' + CANDLES_ONE_MIN + '/' + dateForPath
-                                filePath += '/' + fileName
+                                    const inputFilePeriod = 24 * 60 * 60 * 1000;        // 24 hs
+                                    let totalOutputCandles = inputFilePeriod / outputPeriod;
+                                    let beginingOutputTime = contextVariables.datetimeLastProducedFile.valueOf();
 
-                                fileStorage.getTextFile(filePath, onFileReceived)
-
-                                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                    "[INFO] start -> buildCandles -> timeframesLoop -> loopBody -> getting file at dateForPath = " + dateForPath)
-
-                                function onFileReceived(err, text) {
-                                    try {
-                                        let candlesFile;
-
-                                        if (err.result === TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE.result) {
-                                            try {
-                                                candlesFile = JSON.parse(text);
-
-                                            } catch (err) {
-                                                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                                    "[ERROR] start -> buildCandles -> timeframesLoop -> loopBody -> nextCandleFile -> onFileReceived -> Error Parsing JSON -> err = " + err.stack)
-                                                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                                    "[ERROR] start -> buildCandles -> timeframesLoop -> loopBody -> nextCandleFile -> onFileReceived -> Assuming this is a temporary situation. Requesting a Retry.");
-                                                callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_RETRY_RESPONSE)
-                                                return;
-                                            }
-                                        } else {
-
-                                            if (err.message === 'File does not exist.' || err.code === 'The specified key does not exist.') {
-
-                                                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                                    "[WARN] start -> buildCandles -> timeframesLoop -> loopBody -> nextCandleFile -> onFileReceived -> Dependency Not Ready -> err = " + err.stack)
-                                                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                                    "[WARN] start -> buildCandles -> timeframesLoop -> loopBody -> nextCandleFile -> onFileReceived -> Assuming this is a temporary situation. Requesting a Retry.");
-                                                callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_RETRY_RESPONSE)
-                                                return
-
-                                            } else {
-                                                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                                    "[ERROR] start -> buildCandles -> timeframesLoop -> loopBody -> nextCandleFile -> onFileReceived -> Error Received -> err = " + err.stack)
-                                                callBackFunction(err);
-                                                return
-                                            }
+                                    for (let i = 0; i < totalOutputCandles; i++) {
+                                        let outputCandle = {
+                                            open: 0,
+                                            close: 0,
+                                            min: 0,
+                                            max: 0,
+                                            begin: 0,
+                                            end: 0
                                         }
 
-                                        const inputCandlesPerdiod = 60 * 1000;              // 1 min
-                                        const inputFilePeriod = 24 * 60 * 60 * 1000;        // 24 hs
+                                        let saveCandle = false;
+                                        outputCandle.begin = beginingOutputTime + i * outputPeriod;
+                                        outputCandle.end = beginingOutputTime + (i + 1) * outputPeriod - 1;
 
-                                        let totalOutputCandles = inputFilePeriod / outputPeriod;
-                                        let beginingOutputTime = contextVariables.datetimeLastProducedFile.valueOf();
+                                        for (let j = 0; j < candlesFile.length; j++) {
+                                            let candle = {
+                                                open: candlesFile[j][1],  // OHLCV format: [timestamp, open, high, low, close, volume]
+                                                close: candlesFile[j][4],
+                                                min: candlesFile[j][3],
+                                                max: candlesFile[j][2],
+                                                begin: candlesFile[j][0],
+                                                end: candlesFile[j][0] + 60000 - 1 // 1 minute candle
+                                            };
 
-                                        for (let i = 0; i < totalOutputCandles; i++) {
+                                            if (candle.begin >= outputCandle.begin && candle.end <= outputCandle.end) {
+                                                if (saveCandle === false) {
+                                                    outputCandle.open = candle.open;
+                                                    outputCandle.min = candle.min
+                                                    outputCandle.max = candle.max
+                                                }
 
-                                            let outputCandle = {
-                                                open: 0,
-                                                close: 0,
-                                                min: 0,
-                                                max: 0,
-                                                begin: 0,
-                                                end: 0
-                                            }
-
-                                            let saveCandle = false;
-
-                                            outputCandle.begin = beginingOutputTime + i * outputPeriod;
-                                            outputCandle.end = beginingOutputTime + (i + 1) * outputPeriod - 1;
-
-                                            for (let j = 0; j < candlesFile.length; j++) {
-
-                                                let candle = {
-                                                    open: candlesFile[j][2],
-                                                    close: candlesFile[j][3],
-                                                    min: candlesFile[j][0],
-                                                    max: candlesFile[j][1],
-                                                    begin: candlesFile[j][4],
-                                                    end: candlesFile[j][5]
-                                                };
-
-                                                /* Here we discard all the candles out of range.  */
-                                                if (candle.begin >= outputCandle.begin && candle.end <= outputCandle.end) {
-
-                                                    if (saveCandle === false) { // this will set the value only once.
-                                                        outputCandle.open = candle.open;
-                                                        outputCandle.min = candle.min
-                                                        outputCandle.max = candle.max
-                                                    }
-
-                                                    saveCandle = true;
-                                                    outputCandle.close = candle.close;      // only the last one will be saved
-                                                    if (candle.min < outputCandle.min) {
-                                                        outputCandle.min = candle.min
-                                                    }
-                                                    if (candle.max > outputCandle.max) {
-                                                        outputCandle.max = candle.max
-                                                    }
+                                                saveCandle = true;
+                                                outputCandle.close = candle.close;
+                                                if (candle.min < outputCandle.min) {
+                                                    outputCandle.min = candle.min
+                                                }
+                                                if (candle.max > outputCandle.max) {
+                                                    outputCandle.max = candle.max
                                                 }
                                             }
-                                            if (saveCandle === true) {      // then we have a valid candle, otherwise it means there were no candles to fill this one in its time range.
-                                                outputCandles[n].push(outputCandle)
-                                            }
                                         }
-                                        nextVolumeFile();
-                                    } catch (err) {
-                                        TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).UNEXPECTED_ERROR = err
-                                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                            "[ERROR] start -> buildCandles -> timeframesLoop -> loopBody -> nextCandleFile -> onFileReceived -> err = " + err.stack);
-                                        callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_FAIL_RESPONSE);
+                                        if (saveCandle === true) {
+                                            outputCandles[n].push(outputCandle)
+                                        }
                                     }
+                                    nextVolumeFile();
+                                    }) // Close the SQLite callback
+                                } catch (err) {
+                                    TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).UNEXPECTED_ERROR = err
+                                    TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                                        "[ERROR] start -> buildCandles -> timeframesLoop -> loopBody -> nextCandleFile -> err = " + err.stack);
+                                    callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_FAIL_RESPONSE);
                                 }
                             }
 
                             function nextVolumeFile() {
                                 try {
-                                    let dateForPath = contextVariables.datetimeLastProducedFile.getUTCFullYear() + '/' + SA.projects.foundations.utilities.miscellaneousFunctions.pad(contextVariables.datetimeLastProducedFile.getUTCMonth() + 1, 2) + '/' + SA.projects.foundations.utilities.miscellaneousFunctions.pad(contextVariables.datetimeLastProducedFile.getUTCDate(), 2);
-                                    let fileName = "Data.json"
-                                    let filePathRoot =
-                                        'Project/' +
-                                        TS.projects.foundations.globals.taskConstants.PROJECT_DEFINITION_NODE.config.codeName + "/" +
-                                        TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.parentNode.parentNode.type.replace(' ', '-') + "/" +
-                                        TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.parentNode.parentNode.config.codeName + "/" +
-                                        "Exchange-Raw-Data" + '/' + TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.parentNode.parentNode.config.codeName + "/" +
-                                        TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.baseAsset.referenceParent.config.codeName + "-" +
-                                        TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.quotedAsset.referenceParent.config.codeName
-                                    let filePath =
-                                        filePathRoot +
-                                        "/Output/" +
-                                        VOLUMES_FOLDER_NAME + '/' +
-                                        VOLUMES_ONE_MIN + '/' +
-                                        dateForPath
-                                    filePath += '/' + fileName
-
-                                    fileStorage.getTextFile(filePath, onFileReceived);
-
-                                    TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                        "[INFO] start -> buildCandles -> timeframesLoop -> loopBody -> nextVolumeFile -> getting file at dateForPath = " + dateForPath);
-
-                                    function onFileReceived(err, text) {
-                                        let volumesFile
-
-                                        if (err.result === TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE.result) {
-                                            try {
-                                                volumesFile = JSON.parse(text);
-                                            } catch (err) {
-                                                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                                    "[ERROR] start -> buildCandles -> timeframesLoop -> loopBody -> nextVolumeFile -> onFileReceived -> Error Parsing JSON -> err = " + err.stack);
-                                                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                                    "[ERROR] start -> buildCandles -> timeframesLoop -> loopBody -> nextVolumeFile -> onFileReceived -> Assuming this is a temporary situation. Requesting a Retry.")
-                                                callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_RETRY_RESPONSE)
-                                                return
-                                            }
-                                        } else {
-                                            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                                "[ERROR] start -> buildCandles -> timeframesLoop -> loopBody -> nextVolumeFile -> onFileReceived -> Error Received -> err = " + err.stack)
-                                            callBackFunction(err)
-                                            return
+                                    // For volumes, we use the same SQLite data but calculate volume differently
+                                    const startOfDay = new Date(contextVariables.datetimeLastProducedFile)
+                                    const endOfDay = new Date(contextVariables.datetimeLastProducedFile.valueOf() + SA.projects.foundations.globals.timeConstants.ONE_DAY_IN_MILISECONDS - 1)
+                                    
+                                    sqliteStorage.getOHLCVRange(startOfDay.valueOf(), endOfDay.valueOf(), (err, volumesFile) => {
+                                        if (err || !volumesFile) {
+                                            writeFiles(outputCandles[n], outputVolumes[n], timeFrame, controlLoop);
+                                            return;
                                         }
-
-                                        const inputFilePeriod = 24 * 60 * 60 * 1000;        // 24 hs
-                                        let totalOutputVolumes = inputFilePeriod / outputPeriod; // this should be 2 in this case.
-                                        let beginingOutputTime = contextVariables.datetimeLastProducedFile.valueOf();
-
-                                        for (let i = 0; i < totalOutputVolumes; i++) {
-                                            let outputVolume = {
-                                                buy: 0,
-                                                sell: 0,
-                                                begin: 0,
-                                                end: 0
-                                            }
-                                            let saveVolume = false;
-
-                                            outputVolume.begin = beginingOutputTime + i * outputPeriod;
-                                            outputVolume.end = beginingOutputTime + (i + 1) * outputPeriod - 1;
-
-                                            for (let j = 0; j < volumesFile.length; j++) {
-                                                let volume = {
-                                                    buy: volumesFile[j][0],
-                                                    sell: volumesFile[j][1],
-                                                    begin: volumesFile[j][2],
-                                                    end: volumesFile[j][3]
-                                                }
-
-                                                /* Here we discard all the Volumes out of range.  */
-                                                if (volume.begin >= outputVolume.begin && volume.end <= outputVolume.end) {
-                                                    saveVolume = true
-                                                    outputVolume.buy = outputVolume.buy + volume.buy
-                                                    outputVolume.sell = outputVolume.sell + volume.sell
-                                                }
-                                            }
-
-                                            if (saveVolume === true) {
-                                                outputVolumes[n].push(outputVolume);
-                                            }
-                                        }
-                                        writeFiles(outputCandles[n], outputVolumes[n], timeFrame, controlLoop)
+                                    
+                                    if (!volumesFile || volumesFile.length === 0) {
+                                        writeFiles(outputCandles[n], outputVolumes[n], timeFrame, controlLoop);
+                                        return;
                                     }
+
+                                    const inputFilePeriod = 24 * 60 * 60 * 1000;        // 24 hs
+                                    let totalOutputVolumes = inputFilePeriod / outputPeriod;
+                                    let beginingOutputTime = contextVariables.datetimeLastProducedFile.valueOf();
+
+                                    for (let i = 0; i < totalOutputVolumes; i++) {
+                                        let outputVolume = {
+                                            buy: 0,
+                                            sell: 0,
+                                            begin: 0,
+                                            end: 0
+                                        }
+                                        let saveVolume = false;
+
+                                        outputVolume.begin = beginingOutputTime + i * outputPeriod;
+                                        outputVolume.end = beginingOutputTime + (i + 1) * outputPeriod - 1;
+
+                                        for (let j = 0; j < volumesFile.length; j++) {
+                                            let volume = {
+                                                buy: volumesFile[j][5] / 2, // OHLCV format: [timestamp, open, high, low, close, volume]
+                                                sell: volumesFile[j][5] / 2,
+                                                begin: volumesFile[j][0],
+                                                end: volumesFile[j][0] + 60000 - 1
+                                            }
+
+                                            if (volume.begin >= outputVolume.begin && volume.end <= outputVolume.end) {
+                                                saveVolume = true
+                                                outputVolume.buy = outputVolume.buy + volume.buy
+                                                outputVolume.sell = outputVolume.sell + volume.sell
+                                            }
+                                        }
+
+                                        if (saveVolume === true) {
+                                            outputVolumes[n].push(outputVolume);
+                                        }
+                                    }
+                                    writeFiles(outputCandles[n], outputVolumes[n], timeFrame, controlLoop);
+                                    }) // Close the SQLite callback
                                 } catch (err) {
                                     TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).UNEXPECTED_ERROR = err
                                     TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,

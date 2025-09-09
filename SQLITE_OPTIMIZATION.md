@@ -213,9 +213,22 @@ Priority order:
 
 ## Troubleshooting
 
+### Market Installation Required
+After collecting data for a new trading pair, you must install the market in Superalgos:
+
+1. Open Superalgos UI
+2. Navigate to: **Network > Data Mine > [Exchange] > Market > [Symbol]**
+3. Right-click the market node and select **"Install Market"**
+4. This creates the network topology that tells processing bots where to find data
+
+**Example for DOGE/USD on Bitstamp:**
+- Go to: Network > Data Mine > Bitstamp > Market > DOGE-USD
+- Right-click > Install Market
+
 ### Common Issues
 
 **"Network Node not found" errors**
+- **Most common cause**: Market not installed (see above)
 - Wait for data collection to populate databases
 - Restart system after first data is collected
 - Check VFS initialization in logs
