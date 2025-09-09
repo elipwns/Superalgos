@@ -72,33 +72,7 @@ exports.newDataMiningBotModulesHistoricOHLCVs = function (processIndex) {
         }
     }
 
-    function autoInstallMarket(exchange, symbol, processIndex) {
-        try {
-            // Check if market exists in network topology
-            const networkNode = TS.projects.foundations.globals.taskConstants.NETWORK_NODE
-            if (!networkNode || !networkNode.networkInterfaces) return
-            
-            // Look for existing market data mine
-            let marketExists = false
-            for (const networkInterface of networkNode.networkInterfaces) {
-                if (networkInterface.config && networkInterface.config.codeName === exchange) {
-                    // Check if this symbol exists
-                    // This is a simplified check - full implementation would traverse the network structure
-                    marketExists = true
-                    break
-                }
-            }
-            
-            if (!marketExists) {
-                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                    "[WARN] Market " + exchange + " " + symbol + " not found in network topology. Please install market through UI.")
-                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                    "[INFO] To fix: Go to Network > Data Mine > " + exchange + " > Market > " + symbol + " and right-click 'Install Market'")
-            }
-        } catch (err) {
-            // Silent fail - this is just a helper
-        }
-    }
+
 
     function start(callBackFunction) {
         try {

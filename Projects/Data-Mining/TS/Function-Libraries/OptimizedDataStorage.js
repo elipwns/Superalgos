@@ -1,10 +1,8 @@
 let sqlite3
-let sqliteLoadError = null
 
 try {
     sqlite3 = require('sqlite3').verbose()
 } catch (err) {
-    sqliteLoadError = err
     console.error('[OptimizedDataStorage] Failed to load sqlite3 module:', err.message)
 }
 

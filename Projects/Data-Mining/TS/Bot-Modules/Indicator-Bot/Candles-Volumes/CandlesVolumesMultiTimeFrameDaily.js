@@ -2,9 +2,7 @@
 
     const MODULE_NAME = "Candles Volumes Multi Time Frame Daily";
     const CANDLES_FOLDER_NAME = "Candles";
-    const CANDLES_ONE_MIN = "One-Min";
     const VOLUMES_FOLDER_NAME = "Volumes";
-    const VOLUMES_ONE_MIN = "One-Min";
 
     let thisObject = {
         initialize: initialize,
@@ -351,11 +349,6 @@
                                         writeFiles(outputCandles[n], outputVolumes[n], timeFrame, controlLoop);
                                         return
                                     }
-                                    if (!volumesFile) {
-                                        writeFiles(outputCandles[n], outputVolumes[n], timeFrame, controlLoop);
-                                        return;
-                                    }
-                                    
                                     if (!volumesFile || volumesFile.length === 0) {
                                         writeFiles(outputCandles[n], outputVolumes[n], timeFrame, controlLoop);
                                         return;

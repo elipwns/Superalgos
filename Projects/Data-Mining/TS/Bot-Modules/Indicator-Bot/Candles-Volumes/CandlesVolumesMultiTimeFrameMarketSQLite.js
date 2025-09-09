@@ -123,7 +123,7 @@ exports.newDataMiningBotModulesCandlesVolumesMultiTimeFrameMarketSQLite = functi
                 buildCandles();
             }
 
-            function buildCandles(allPreviousCandles, allPreviousVolumes) {
+            function buildCandles() {
                 try {
                     let fromDate = new Date(contextVariables.datetimeLastProducedFile.valueOf())
                     let lastDate = TS.projects.foundations.utilities.dateTimeFunctions.removeTime(new Date())

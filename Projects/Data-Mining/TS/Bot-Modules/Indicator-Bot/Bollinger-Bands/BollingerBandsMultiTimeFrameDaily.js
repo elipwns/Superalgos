@@ -1,7 +1,6 @@
 ﻿exports.newDataMiningBotModulesBollingerBandsMultiTimeFrameDaily = function (processIndex) {
 
     const MODULE_NAME = "Bollinger Bands Multi Time Frame Daily"
-    const CANDLES_FOLDER_NAME = "Candles"
     const BOLLINGER_BANDS_FOLDER_NAME = "Bollinger-Bands"
     const PERCENTAGE_BANDWIDTH_FOLDER_NAME = "Percentage-Bandwidth"
 

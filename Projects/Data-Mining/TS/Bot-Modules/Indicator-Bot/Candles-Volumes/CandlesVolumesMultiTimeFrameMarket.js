@@ -4,15 +4,12 @@ const ProcessedDataStorage = require('../../../Function-Libraries/ProcessedDataS
 exports.newDataMiningBotModulesCandlesVolumesMultiTimeFrameMarket = function (processIndex) {
 
     const MODULE_NAME = "Candles Volumes Multi Time Frame Market"
-    const CANDLES_FOLDER_NAME = "Candles"
-    const VOLUMES_FOLDER_NAME = "Volumes"
 
     let thisObject = {
         initialize: initialize,
         start: start
     }
 
-    let fileStorage = TS.projects.foundations.taskModules.fileStorage.newFileStorage(processIndex);
     let statusDependenciesModule;
     let beginingOfMarket
     let sqliteStorage
@@ -161,113 +158,7 @@ exports.newDataMiningBotModulesCandlesVolumesMultiTimeFrameMarket = function (pr
                 }
             }
 
-            function findPreviousContent() {
-                try {
-                    let n = 0
-                    let allPreviousCandles = []
-                    let allPreviousVolumes = []
 
-                    loopBody()
-
-                    function loopBody() {
-                        let timeFrame = TS.projects.foundations.globals.timeFrames.marketTimeFramesArray()[n][1];
-                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[INFO] start -> findPreviousContent -> loopBody -> timeFrame = " + timeFrame)
-
-                        let previousCandles
-                        let previousVolumes
-
-                        getCandles()
-
-                        function getCandles() {
-                            let fileName = 'Data.json';
-                            let filePath =
-                                TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).FILE_PATH_ROOT +
-                                "/Output/" +
-                                CANDLES_FOLDER_NAME + "/" +
-                                TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.config.codeName + "/" +
-                                timeFrame;
-                            filePath += '/' + fileName
-
-                            fileStorage.getTextFile(filePath, onFileReceived);
-
-                            function onFileReceived(err, text) {
-                                let candlesFile
-
-                                if (err.result === TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE.result) {
-                                    try {
-                                        candlesFile = JSON.parse(text);
-                                        previousCandles = candlesFile;
-                                        getVolumes();
-
-                                    } catch (err) {
-                                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                            "[ERROR] start -> findPreviousContent -> loopBody -> getCandles -> onFileReceived -> err = " + err.stack);
-                                        callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_RETRY_RESPONSE);
-                                    }
-                                } else {
-                                    TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                        "[ERROR] start -> findPreviousContent -> loopBody -> getCandles -> onFileReceived -> err = " + err.stack);
-                                    callBackFunction(err);
-                                }
-                            }
-                        }
-
-                        function getVolumes() {
-                            let fileName = 'Data.json';
-                            let filePath =
-                                TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).FILE_PATH_ROOT +
-                                "/Output/" +
-                                VOLUMES_FOLDER_NAME + "/" +
-                                TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.config.codeName + "/" +
-                                timeFrame;
-                            filePath += '/' + fileName
-
-                            fileStorage.getTextFile(filePath, onFileReceived);
-
-                            function onFileReceived(err, text) {
-                                let volumesFile
-
-                                if (err.result === TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE.result) {
-                                    try {
-                                        volumesFile = JSON.parse(text);
-                                        previousVolumes = volumesFile;
-                                        allPreviousCandles.push(previousCandles);
-                                        allPreviousVolumes.push(previousVolumes);
-
-                                        controlLoop();
-
-                                    } catch (err) {
-                                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                            "[ERROR] start -> findPreviousContent -> loopBody -> getVolumes -> onFileReceived -> err = " + err.stack);
-                                        callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_RETRY_RESPONSE);
-                                    }
-                                } else {
-                                    TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                        "[ERROR] start -> findPreviousContent -> loopBody -> getVolumes -> onFileReceived -> err = " + err.stack);
-                                    callBackFunction(err);
-                                }
-                            }
-                        }
-
-                    }
-
-                    function controlLoop() {
-                        n++
-                        if (n < TS.projects.foundations.globals.timeFrames.marketTimeFramesArray().length) {
-                            loopBody()
-                        } else {
-                            buildCandles(allPreviousCandles, allPreviousVolumes);
-                        }
-                    }
-                }
-                catch (err) {
-                    TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).UNEXPECTED_ERROR = err
-                    TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                        "[ERROR] start -> findPreviousContent -> err = " + err.stack);
-                    callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_FAIL_RESPONSE);
-                }
-            }
 
             function buildCandles(allPreviousCandles, allPreviousVolumes) {
 
