@@ -22,22 +22,18 @@
         try {
             statusDependenciesModule = pStatusDependenciesModule
             
-            // Initialize SQLite storage
-            const OptimizedDataStorage = require('../../../Function-Libraries/OptimizedDataStorage')
+            // Initialize ProcessedDataStorage for reading processed timeframes
+            const ProcessedDataStorage = require('../../../Function-Libraries/ProcessedDataStorage')
             const exchangeName = TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.parentNode.parentNode.config.codeName
             const baseAsset = TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.baseAsset.referenceParent.config.codeName
             const quotedAsset = TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.quotedAsset.referenceParent.config.codeName
             
-            sqliteStorage = OptimizedDataStorage.newDataMiningFunctionLibrariesOptimizedDataStorage()
-            sqliteStorage.initialize(exchangeName, `${baseAsset}_${quotedAsset}`, (err) => {
-                if (err) {
-                    TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                        "[ERROR] initialize -> Failed to initialize SQLite storage -> err = " + err.message)
-                    return callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_FAIL_RESPONSE)
-                }
-                callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE)
-            })
-            return // Exit early since callback is handled in initialize
+            sqliteStorage = new ProcessedDataStorage(exchangeName, `${baseAsset}_${quotedAsset}`)
+            
+            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                "[INFO] initialize -> Using ProcessedDataStorage for " + exchangeName + " " + baseAsset + "_" + quotedAsset);
+            
+            callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE)
 
         } catch (err) {
             TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).UNEXPECTED_ERROR = err
@@ -67,82 +63,52 @@
                     let thisReport
                     let statusReport
 
-                    /* We look first for Exchange Raw Data in order to get when the market starts. */
-                    statusReport = statusDependenciesModule.reportsByMainUtility.get('Market Starting Point')
-
-                    if (statusReport === undefined) { // This means the status report does not exist, that could happen for instance at the beginning of a month.
+                    // Get market dates directly from ProcessedDataStorage instead of status reports
+                    const exchangeName = TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.parentNode.parentNode.config.codeName
+                    const baseAsset = TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.baseAsset.referenceParent.config.codeName
+                    const quotedAsset = TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.quotedAsset.referenceParent.config.codeName
+                    
+                    TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                        "[INFO] start -> getContextVariables -> Getting market dates from ProcessedDataStorage for " + exchangeName + " " + baseAsset + "_" + quotedAsset);
+                    
+                    // Check if processed data exists
+                    try {
+                        // Try to get any processed data to determine market range
+                        const sampleCandles = sqliteStorage.getCandles('24-hs')
+                        
+                        if (!sampleCandles || sampleCandles.length === 0) {
+                            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                                "[HINT] start -> getContextVariables -> No processed data available yet. Waiting for Market bot to process data.");
+                            
+                            let customOK = {
+                                result: TS.projects.foundations.globals.standardResponses.CUSTOM_OK_RESPONSE.result,
+                                message: "Processed data not ready."
+                            }
+                            callBackFunction(customOK)
+                            return
+                        }
+                        
+                        // Get market start and end from processed data
+                        const firstCandle = sampleCandles[0]
+                        const lastCandle = sampleCandles[sampleCandles.length - 1]
+                        
+                        contextVariables.datetimeBeginingOfMarketFile = new Date(firstCandle.begin)
+                        contextVariables.datetimeLastAvailableDependencyFile = new Date(lastCandle.end)
+                        
                         TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[WARN] start -> getContextVariables -> Status Report does not exist. Retrying Later. ");
-                        callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_RETRY_RESPONSE);
-                        return;
-                    }
-
-                    if (statusReport.status === "Status Report is corrupt.") {
+                            "[INFO] start -> getContextVariables -> Market range: " + contextVariables.datetimeBeginingOfMarketFile.toISOString() + " to " + contextVariables.datetimeLastAvailableDependencyFile.toISOString());
+                        
+                    } catch (err) {
                         TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[ERROR] start -> getContextVariables -> Can not continue because dependency Status Report is corrupt. ");
-                        callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_RETRY_RESPONSE);
-                        return;
-                    }
-
-                    thisReport = statusReport.file
-
-                    if (thisReport.beginingOfMarket === undefined) {
-                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[HINT] start -> getContextVariables -> It is too early too run this process since the trade history of the market is not there yet.");
-
+                            "[ERROR] start -> getContextVariables -> Error accessing ProcessedDataStorage: " + err.message);
+                        
                         let customOK = {
                             result: TS.projects.foundations.globals.standardResponses.CUSTOM_OK_RESPONSE.result,
-                            message: "Dependency does not exist."
+                            message: "ProcessedDataStorage not accessible."
                         }
-                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[WARN] start -> getContextVariables -> customOK = " + customOK.message)
                         callBackFunction(customOK)
                         return
                     }
-
-                    contextVariables.datetimeBeginingOfMarketFile = new Date(
-                        thisReport.beginingOfMarket.year + "-" +
-                        thisReport.beginingOfMarket.month + "-" +
-                        thisReport.beginingOfMarket.days + " " +
-                        thisReport.beginingOfMarket.hours + ":" +
-                        thisReport.beginingOfMarket.minutes +
-                        SA.projects.foundations.globals.timeConstants.GMT_SECONDS)
-
-                    /* Second, we get the report from Exchange Raw Data, to know when the marted ends. */
-                    statusReport = statusDependenciesModule.reportsByMainUtility.get('Market Ending Point')
-
-                    if (statusReport === undefined) { // This means the status report does not exist, that could happen for instance at the beginning of a month.
-                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[WARN] start -> getContextVariables -> Status Report does not exist. Retrying Later. ");
-                        callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_RETRY_RESPONSE);
-                        return
-                    }
-
-                    if (statusReport.status === "Status Report is corrupt.") {
-                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[ERROR] start -> getContextVariables -> Can not continue because dependency Status Report is corrupt. ");
-                        callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_RETRY_RESPONSE);
-                        return
-                    }
-
-                    thisReport = statusReport.file
-
-                    if (thisReport.lastFile === undefined) {
-                        let customOK = {
-                            result: TS.projects.foundations.globals.standardResponses.CUSTOM_OK_RESPONSE.result,
-                            message: "Dependency not ready."
-                        }
-                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[WARN] start -> getContextVariables -> customOK = " + customOK.message)
-                        callBackFunction(customOK)
-                        return
-                    }
-
-                    contextVariables.datetimeLastAvailableDependencyFile = new Date(
-                        thisReport.lastFile.year + "-" +
-                        thisReport.lastFile.month + "-" +
-                        thisReport.lastFile.days + " " + "00:00" +
-                        SA.projects.foundations.globals.timeConstants.GMT_SECONDS)
 
                     /* Finally we get our own Status Report. */
                     statusReport = statusDependenciesModule.reportsByMainUtility.get('Self Reference')
@@ -288,19 +254,19 @@
 
                             function nextCandleFile() {
                                 try {
-                                    // Read records from SQLite for this day
+                                    // Read processed candles from SQLite for this timeframe
                                     const startOfDay = new Date(contextVariables.datetimeLastProducedFile)
                                     const endOfDay = new Date(contextVariables.datetimeLastProducedFile.valueOf() + SA.projects.foundations.globals.timeConstants.ONE_DAY_IN_MILISECONDS - 1)
                                     
-                                    let candlesFile = []
-                                    sqliteStorage.getOHLCVRange(startOfDay.valueOf(), endOfDay.valueOf(), (err, records) => {
-                                        if (err) {
-                                            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                                "[ERROR] start -> buildCandles -> timeframesLoop -> loopBody -> nextCandleFile -> SQLite error: " + err.message)
-                                            callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_FAIL_RESPONSE)
-                                            return
-                                        }
-                                        candlesFile = records || []
+                                    let candlesFile
+                                    try {
+                                        candlesFile = sqliteStorage.getCandlesByDateRange(timeFrame, startOfDay, endOfDay)
+                                    } catch (err) {
+                                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                                            "[WARN] start -> buildCandles -> timeframesLoop -> loopBody -> nextCandleFile -> Timeframe " + timeFrame + " not available in processed data, skipping.");
+                                        nextVolumeFile();
+                                        return
+                                    }
                                     
                                     if (!candlesFile || candlesFile.length === 0) {
                                         TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
@@ -332,12 +298,12 @@
 
                                         for (let j = 0; j < candlesFile.length; j++) {
                                             let candle = {
-                                                open: candlesFile[j][1],  // OHLCV format: [timestamp, open, high, low, close, volume]
-                                                close: candlesFile[j][4],
-                                                min: candlesFile[j][3],
-                                                max: candlesFile[j][2],
-                                                begin: candlesFile[j][0],
-                                                end: candlesFile[j][0] + 60000 - 1 // 1 minute candle
+                                                open: candlesFile[j].open,
+                                                close: candlesFile[j].close,
+                                                min: candlesFile[j].low || candlesFile[j].min,
+                                                max: candlesFile[j].high || candlesFile[j].max,
+                                                begin: candlesFile[j].begin_time,
+                                                end: candlesFile[j].end_time
                                             };
 
                                             if (candle.begin >= outputCandle.begin && candle.end <= outputCandle.end) {
@@ -362,7 +328,6 @@
                                         }
                                     }
                                     nextVolumeFile();
-                                    }) // Close the SQLite callback
                                 } catch (err) {
                                     TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).UNEXPECTED_ERROR = err
                                     TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
@@ -373,15 +338,23 @@
 
                             function nextVolumeFile() {
                                 try {
-                                    // For volumes, we use the same SQLite data but calculate volume differently
+                                    // Read processed volumes from SQLite for this timeframe
                                     const startOfDay = new Date(contextVariables.datetimeLastProducedFile)
                                     const endOfDay = new Date(contextVariables.datetimeLastProducedFile.valueOf() + SA.projects.foundations.globals.timeConstants.ONE_DAY_IN_MILISECONDS - 1)
                                     
-                                    sqliteStorage.getOHLCVRange(startOfDay.valueOf(), endOfDay.valueOf(), (err, volumesFile) => {
-                                        if (err || !volumesFile) {
-                                            writeFiles(outputCandles[n], outputVolumes[n], timeFrame, controlLoop);
-                                            return;
-                                        }
+                                    let volumesFile
+                                    try {
+                                        volumesFile = sqliteStorage.getVolumesByDateRange(timeFrame, startOfDay, endOfDay)
+                                    } catch (err) {
+                                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                                            "[WARN] start -> buildCandles -> timeframesLoop -> loopBody -> nextVolumeFile -> Timeframe " + timeFrame + " not available in processed data, skipping.");
+                                        writeFiles(outputCandles[n], outputVolumes[n], timeFrame, controlLoop);
+                                        return
+                                    }
+                                    if (!volumesFile) {
+                                        writeFiles(outputCandles[n], outputVolumes[n], timeFrame, controlLoop);
+                                        return;
+                                    }
                                     
                                     if (!volumesFile || volumesFile.length === 0) {
                                         writeFiles(outputCandles[n], outputVolumes[n], timeFrame, controlLoop);
@@ -406,10 +379,10 @@
 
                                         for (let j = 0; j < volumesFile.length; j++) {
                                             let volume = {
-                                                buy: volumesFile[j][5] / 2, // OHLCV format: [timestamp, open, high, low, close, volume]
-                                                sell: volumesFile[j][5] / 2,
-                                                begin: volumesFile[j][0],
-                                                end: volumesFile[j][0] + 60000 - 1
+                                                buy: volumesFile[j].buy_volume,
+                                                sell: volumesFile[j].sell_volume,
+                                                begin: volumesFile[j].begin_time,
+                                                end: volumesFile[j].end_time
                                             }
 
                                             if (volume.begin >= outputVolume.begin && volume.end <= outputVolume.end) {
@@ -424,7 +397,6 @@
                                         }
                                     }
                                     writeFiles(outputCandles[n], outputVolumes[n], timeFrame, controlLoop);
-                                    }) // Close the SQLite callback
                                 } catch (err) {
                                     TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).UNEXPECTED_ERROR = err
                                     TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,

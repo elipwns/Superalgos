@@ -142,7 +142,8 @@ exports.newDataMiningBotModulesCandlesVolumesMultiTimeFrameMarket = function (pr
                         contextVariables.datetimeLastProducedFile = new Date(thisReport.lastFile);
                         contextVariables.datetimeLastProducedFile = new Date(contextVariables.datetimeLastProducedFile.valueOf() - SA.projects.foundations.globals.timeConstants.ONE_DAY_IN_MILISECONDS);
 
-                        findPreviousContent()
+                        // Skip findPreviousContent since we're using SQLite now
+                        buildCandles()
                         return
                     } else {
                         beginingOfMarket = new Date(contextVariables.datetimeBeginingOfMarketFile)

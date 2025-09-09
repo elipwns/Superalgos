@@ -88,6 +88,9 @@
 
                     function dependencyLoopBody() {
                         let dependency = dataDependenciesModule.curatedDependencyNodeArray[dependencyIndex]
+                        
+                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                            "[DEBUG] dependencyLoopBody -> Processing dependency: " + dependency.referenceParent.config.codeName + ", index: " + dependencyIndex)
 
                         getSQLiteData()
 
@@ -112,18 +115,54 @@
                                 
                                 const records = sqliteStorage.getRecordsByDateRange(startDate, endDate)
                                 
-                                // Convert SQLite records to the expected format
+                                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                                    "[DEBUG] start -> getSQLiteData -> dependency: " + dependency.referenceParent.config.codeName + ", startDate: " + startDate.toISOString() + ", endDate: " + endDate.toISOString() + ", records: " + records.length)
+                                
+                                // Convert SQLite records to the expected format based on dependency type
                                 let dataFile = []
-                                for (let record of records) {
-                                    dataFile.push([
-                                        record.low,      // min
-                                        record.high,     // max  
-                                        record.open,     // open
-                                        record.close,    // close
-                                        record.timestamp, // begin
-                                        record.timestamp + 60000 - 1 // end (assuming 1-minute candles)
-                                    ])
+                                
+                                if (dependency.referenceParent.config.codeName === 'Candles') {
+                                    // Candles format
+                                    for (let record of records) {
+                                        dataFile.push([
+                                            record.low,      // min
+                                            record.high,     // max  
+                                            record.open,     // open
+                                            record.close,    // close
+                                            record.timestamp, // begin
+                                            record.timestamp + 60000 - 1 // end (assuming 1-minute candles)
+                                        ])
+                                    }
+                                } else if (dependency.referenceParent.config.codeName === 'Volumes') {
+                                    // Volumes format - split volume evenly between buy/sell
+                                    // IMPORTANT: Use exact same timestamps as candles for proper getElement matching
+                                    for (let record of records) {
+                                        dataFile.push([
+                                            record.volume / 2, // buy volume (estimated)
+                                            record.volume / 2, // sell volume (estimated)
+                                            record.timestamp,  // begin - must match candle begin exactly
+                                            record.timestamp + 60000 - 1 // end - must match candle end exactly
+                                        ])
+                                    }
+                                    
+                                    TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                                        "[DEBUG] start -> getSQLiteData -> Volumes data sample: " + JSON.stringify(dataFile.slice(0, 2)))
+                                } else {
+                                    // Default candles format for unknown types
+                                    for (let record of records) {
+                                        dataFile.push([
+                                            record.low,      // min
+                                            record.high,     // max  
+                                            record.open,     // open
+                                            record.close,    // close
+                                            record.timestamp, // begin
+                                            record.timestamp + 60000 - 1 // end
+                                        ])
+                                    }
                                 }
+                                
+                                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                                    "[DEBUG] start -> getSQLiteData -> dependency: " + dependency.referenceParent.config.codeName + ", records: " + records.length + ", dataFile: " + dataFile.length)
 
                                 dataFiles.set(dependency.id, dataFile)
                                 dependencyControlLoop()

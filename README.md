@@ -236,6 +236,8 @@ This script is going to fork all Community Plugins repositories into your own Gi
 
 **Congratulations! Your setup is complete. Now you may finally run the app for the first time. Please, follow the usage instructions below!**
 
+> :white_check_mark: **SQLite MIGRATION NOTE**: This version includes a complete migration from JSON file storage to SQLite databases for improved performance and data integrity. All bot modules now use SQLite for data storage and processing. See `SQLITE_MIGRATION_SUMMARY.md` for technical details.
+
 ### **OPTIONAL:** Update Forked Repositories from The Superalgos Upstream Repositories
 
 In case you are re-installing the platform from an older fork, you may want to update your fork's repositories.

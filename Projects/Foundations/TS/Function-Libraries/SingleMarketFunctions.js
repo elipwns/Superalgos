@@ -373,7 +373,28 @@
         */
         function getElement(dependencyName, currentRecordPrimaryDataDependency) {
             let key = currentRecordPrimaryDataDependency.begin.toString() + '-' + currentRecordPrimaryDataDependency.end.toString()
-            return dataDependencies[dependencyName].get(key)
+            let result = dataDependencies[dependencyName].get(key)
+            if (result === undefined) {
+                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                    "[DEBUG] getElement -> dependencyName: " + dependencyName + ", key: " + key + ", mapSize: " + dataDependencies[dependencyName].size + ", candle: " + JSON.stringify(currentRecordPrimaryDataDependency))
+                // Log first few keys in the map for debugging
+                let mapKeys = Array.from(dataDependencies[dependencyName].keys()).slice(0, 3)
+                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                    "[DEBUG] getElement -> Sample map keys: " + JSON.stringify(mapKeys))
+                
+                // Return a default volume object to prevent crashes
+                if (dependencyName === 'volumes') {
+                    TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                        "[WARN] getElement -> No volume data found for key " + key + ", returning default volume")
+                    return {
+                        buy: 0,
+                        sell: 0,
+                        begin: currentRecordPrimaryDataDependency.begin,
+                        end: currentRecordPrimaryDataDependency.end
+                    }
+                }
+            }
+            return result
         }
         /*
         This function allows users to locate an object at a dataset whose objects does not have a begin and end
