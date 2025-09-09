@@ -41,6 +41,7 @@ const runPlatform = () => {
     console.log('                       noBrowser:   Optional. Use it to launch Superalgos Platform Client only. The Superalgos Platform UI will not be loaded.')
     console.log('                       minMemo:     Optional. Use it when your hardware has less than 8 Gb or memory.')
     console.log('                       demoMode:    Optional. Use it to launch Superalgos in Demo Mode. Users will be able to use the UI but not run Tasks.')
+    console.log('                       sqlite:      Optional. Use it to enable SQLite storage for enhanced performance.')
     console.log('PROJECT:               The name of the project to load on startup. (use with workspace)')
     console.log('')
     console.log('WORKSPACE:             The name of the workspace to load on startup.')
@@ -88,6 +89,11 @@ const runPlatform = () => {
   if (process.argv.includes("demoMode")) {
     optionsAccepted++
     console.log('demoMode .................................................... Running without User Interface.')
+  }
+  if (process.argv.includes("sqlite")) {
+    optionsAccepted++
+    process.env.DATA_STORAGE_TYPE = 'sqlite'
+    console.log('sqlite ...................................................... Running with SQLite storage for enhanced performance.')
   }
   if (optionsAccepted === 0) {
     console.log('none ........................................................ Running without any command line options.')

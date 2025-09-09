@@ -10,7 +10,7 @@
         start: start
     };
 
-    let fileStorage = TS.projects.foundations.taskModules.fileStorage.newFileStorage(processIndex);
+    let storage
     let statusDependencies
 
     let MAX_OHLCVs_PER_EXECUTION = 10000000
@@ -99,6 +99,14 @@
         */
         try {
             statusDependencies = pStatusDependencies;
+            
+            // Initialize storage based on configuration
+            const StorageFactory = require('../../../../../../lib/StorageFactory')
+            const storageConfig = require('../../../../../../config/storage')
+            storage = StorageFactory.create(storageConfig)
+            
+            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                "[INFO] initialize -> Using " + storage.constructor.name + " storage")
             
     		/*
 	    	maxRate - sets the  maximum number of OHCLV that is pulled before the data is saved.
@@ -334,9 +342,12 @@
                             let dateForPath = datetime.getUTCFullYear() + '/' +
                                 SA.projects.foundations.utilities.miscellaneousFunctions.pad(datetime.getUTCMonth() + 1, 2) + '/' +
                                 SA.projects.foundations.utilities.miscellaneousFunctions.pad(datetime.getUTCDate(), 2)
-                            let filePath = TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).FILE_PATH_ROOT + "/Output/" + OHLCVS_FOLDER_NAME + '/' + dateForPath;
-                            let fullFileName = filePath + '/' + fileName
-                            fileStorage.getTextFile(fullFileName, onFileReceived)
+                            let filePath = "Output/" + OHLCVS_FOLDER_NAME + '/' + dateForPath + '/' + fileName
+                            storage.readFile(filePath).then(text => {
+                                onFileReceived(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE, text)
+                            }).catch(err => {
+                                onFileReceived(err)
+                            })
 
                             TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
                                 "[INFO] start -> getRawDataArray -> from file = " + fullFileName)
@@ -1065,14 +1076,20 @@
                             let fileName = 'Data.json'
 
                             filesToCreate++
-                            fileStorage.createTextFile(getFilePath(day * SA.projects.foundations.globals.timeConstants.ONE_DAY_IN_MILISECONDS, CANDLES_FOLDER_NAME) + '/' + fileName, candlesFileContent + '\n', onFileCreated);
+                            storage.writeFile(getFilePath(day * SA.projects.foundations.globals.timeConstants.ONE_DAY_IN_MILISECONDS, CANDLES_FOLDER_NAME) + '/' + fileName, candlesFileContent + '\n').then(() => {
+                                onFileCreated(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE)
+                            }).catch(onFileCreated)
 
                             filesToCreate++
-                            fileStorage.createTextFile(getFilePath(day * SA.projects.foundations.globals.timeConstants.ONE_DAY_IN_MILISECONDS, VOLUMES_FOLDER_NAME) + '/' + fileName, volumesFileContent + '\n', onFileCreated);
+                            storage.writeFile(getFilePath(day * SA.projects.foundations.globals.timeConstants.ONE_DAY_IN_MILISECONDS, VOLUMES_FOLDER_NAME) + '/' + fileName, volumesFileContent + '\n').then(() => {
+                                onFileCreated(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE)
+                            }).catch(onFileCreated)
 
                             if (ohlcvsFileContent !== undefined) {
                                 filesToCreate++
-                                fileStorage.createTextFile(getFilePath(day * SA.projects.foundations.globals.timeConstants.ONE_DAY_IN_MILISECONDS, OHLCVS_FOLDER_NAME) + '/' + fileName, ohlcvsFileContent + '\n', onFileCreated);
+                                storage.writeFile(getFilePath(day * SA.projects.foundations.globals.timeConstants.ONE_DAY_IN_MILISECONDS, OHLCVS_FOLDER_NAME) + '/' + fileName, ohlcvsFileContent + '\n').then(() => {
+                                    onFileCreated(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE)
+                                }).catch(onFileCreated)
                                 mustLoadRawData = true
                             } else {
                                 mustLoadRawData = false
@@ -1138,7 +1155,7 @@
                             let dateForPath = datetime.getUTCFullYear() + '/' +
                                 SA.projects.foundations.utilities.miscellaneousFunctions.pad(datetime.getUTCMonth() + 1, 2) + '/' +
                                 SA.projects.foundations.utilities.miscellaneousFunctions.pad(datetime.getUTCDate(), 2)
-                            let filePath = TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).FILE_PATH_ROOT + "/Output/" + folderName + '/' + dateForPath;
+                            let filePath = "Output/" + folderName + '/' + dateForPath;
                             return filePath
                         }
                     }

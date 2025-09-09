@@ -11,8 +11,8 @@ function detectOptimalStorage() {
             if (jsonFiles > 1000) {
                 console.log('\n🚀 PERFORMANCE TIP: Large dataset detected (' + jsonFiles + ' JSON files)')
                 console.log('   SQLite storage can provide 10-50x faster data operations')
-                console.log('   Enable with: set DATA_STORAGE_TYPE=sqlite && node run.js')
-                console.log('   Or create .env file with: DATA_STORAGE_TYPE=sqlite\n')
+                console.log('   Enable with: node platform sqlite')
+                console.log('   Or set environment: DATA_STORAGE_TYPE=sqlite\n')
             }
         }
     } catch (e) {}
@@ -20,7 +20,7 @@ function detectOptimalStorage() {
 
 module.exports = {
     dataStorage: {
-        type: process.env.DATA_STORAGE_TYPE || 'json', // 'json' | 'sqlite'
+        type: process.argv.includes('sqlite') ? 'sqlite' : (process.env.DATA_STORAGE_TYPE || 'json'), // 'json' | 'sqlite'
         sqlite: {
             path: process.env.SQLITE_PATH || './data',
             enableWAL: process.env.SQLITE_WAL === 'true',
