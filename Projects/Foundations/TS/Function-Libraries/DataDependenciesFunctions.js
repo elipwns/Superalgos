@@ -5,7 +5,6 @@ exports.newFoundationsFunctionLibrariesDataDependenciesFunctions = function () {
     data structures that will allow users to write conditions and formulas
     using these data structures.
     */
-    const MODULE_NAME = "Data Dependency Function"
 
     let thisObject = {
         processSingleFiles: processSingleFiles,
