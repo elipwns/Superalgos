@@ -106,6 +106,7 @@ const runPlatform = () => {
   const path = './node_modules'
   if ( fs.existsSync(path) ) {
     try {
+        options.env = process.env
         child_process.fork('./PlatformRoot.js', process.argv, options)
         return 'client running'
     } catch (err) {
