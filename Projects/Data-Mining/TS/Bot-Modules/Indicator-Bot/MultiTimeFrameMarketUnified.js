@@ -1,5 +1,6 @@
 exports.newDataMiningIndicatorMultiTimeFrameMarketUnified = function (processIndex) {
     const MODULE_NAME = "Multi Time Frame Market Unified"
+    console.log("[FORCE DEBUG] MultiTimeFrameMarketUnified module loaded for process", processIndex)
     
     let thisObject = {
         initialize: initialize,
@@ -23,6 +24,9 @@ exports.newDataMiningIndicatorMultiTimeFrameMarketUnified = function (processInd
         const StorageFactory = require('../../../../../lib/StorageFactory')
         const storageConfig = require('../../../../../config/storage')
         storage = StorageFactory.create(storageConfig)
+        
+        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+            "[INFO] initialize -> Using " + storage.constructor.name + " storage")
 
         indicatorOutputModule = TS.projects.dataMining.botModules.indicatorOutput.newDataMiningBotModulesIndicatorOutput(processIndex)
         indicatorOutputModule.initialize(callBackFunction)
@@ -39,6 +43,8 @@ exports.newDataMiningIndicatorMultiTimeFrameMarketUnified = function (processInd
 
     function start(callBackFunction) {
         try {
+            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                "[DEBUG] start -> Bot starting with " + storage.constructor.name + " storage")
             processTimeFrames()
 
             function processTimeFrames() {
@@ -84,14 +90,20 @@ exports.newDataMiningIndicatorMultiTimeFrameMarketUnified = function (processInd
                                 filePath = dependency.referenceParent.parentNode.config.codeName + '/' + dependency.referenceParent.config.codeName + "/" + timeFrameLabel + '/' + fileName
                             }
 
+                            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                                "[INFO] getFile -> Attempting to read: " + filePath + " using " + storage.constructor.name)
+
                             try {
                                 // Use unified storage interface
                                 const dataFile = await storage.readFile(filePath)
+                                const dataLength = dataFile ? JSON.parse(dataFile).length : 0
+                                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                                    "[INFO] getFile -> Successfully read " + filePath + " -> " + dataLength + " records")
                                 dataFiles.set(dependency.id, dataFile)
                                 dependencyControlLoop()
                             } catch (err) {
                                 TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                    "[ERROR] start -> processTimeFrames -> timeFramesLoopBody -> dependencyLoopBody -> getFile -> err = " + JSON.stringify(err))
+                                    "[ERROR] getFile -> Failed to read " + filePath + " -> " + (err.message || err.toString()))
                                 callBackFunction(err)
                                 return;
                             }
@@ -182,11 +194,16 @@ exports.newDataMiningIndicatorMultiTimeFrameMarketUnified = function (processInd
                 let filePath = "Output/" + productCodeName + "/" +
                     TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.config.codeName + "/Time.Frames.json";
 
+                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                    "[INFO] writeTimeFramesFile -> Writing " + filePath + " with " + timeFramesArray.length + " timeframes")
+                
                 try {
                     await storage.writeFile(filePath, timeFramesArray)
+                    TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                        "[INFO] writeTimeFramesFile -> Successfully wrote " + filePath)
                 } catch (err) {
                     TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                        "[ERROR] start -> writeTimeFramesFile -> err = " + err.stack)
+                        "[ERROR] writeTimeFramesFile -> Failed to write " + filePath + " -> " + (err.message || err.toString()))
                     throw err
                 }
             }
