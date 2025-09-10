@@ -708,7 +708,13 @@
                         TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.config.codeName
                     filePath += '/' + fileName
 
-                    fileStorage.createTextFile(filePath, fileContent + '\n', onFileCreated);
+                    // Try storage abstraction first, fall back to fileStorage for backwards compatibility
+                    storage.writeFile(filePath, fileContent + '\n').then(() => {
+                        onFileCreated(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE)
+                    }).catch(err => {
+                        // Fall back to fileStorage for backwards compatibility
+                        fileStorage.createTextFile(filePath, fileContent + '\n', onFileCreated);
+                    })
 
                     function onFileCreated(err) {
                         if (err.result !== TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE.result) {
