@@ -103,6 +103,11 @@
 
                             function onFileReceived(err, text) {
                                 if (err.result !== TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE.result) {
+                                    if (err.message === "File does not exist.") {
+                                        // Wait silently for dependency files to be created by other bots
+                                        callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_RETRY_RESPONSE)
+                                        return
+                                    }
                                     TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
                                         "[ERROR] start -> processTimeFrames -> timeFramesLoopBody -> dependencyLoopBody -> getFile -> onFileReceived -> err = " + JSON.stringify(err))
                                     callBackFunction(err)

@@ -66,12 +66,7 @@ exports.newFoundationsFunctionLibrariesDataDependenciesFunctions = function () {
                     let response = await TS.projects.foundations.utilities.miscellaneousFunctions.asyncGetDatasetFile(datasetModule, filePath, fileName)
 
                     if (response.err.message === 'File does not exist.') {
-                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[ERROR] File not Found. This process will wait until you run your Data Mining and this file is created. File = " + filePath + '/' + fileName)
-                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[ERROR] Your strategy depends on the dataset  " + dependency.name + '.')
-                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[ERROR] The reason that it depends on this dataset is because in one of your condition's Javascript Code node, you have written an expression that references this dataset. If you don't want to depend on this dataset, just locate that code and remove the mention.")
+                        // Silently return false - dependency not ready yet
                         return false
                     }
 
@@ -166,12 +161,7 @@ exports.newFoundationsFunctionLibrariesDataDependenciesFunctions = function () {
                         let response = await TS.projects.foundations.utilities.miscellaneousFunctions.asyncGetDatasetFile(datasetModule, filePath, fileName)
 
                         if (response.err.message === 'File does not exist.') {
-                            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                "[ERROR] File not Found. This process will wait until you run your Data Mining and this file is created. File = " + filePath + '/' + fileName)
-                            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                "[ERROR] Your strategy depends on the dataset  " + dependency.name + '.')
-                            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                "[ERROR] The reason that it depends on this dataset is because in one of your condition's Javascript Code node, you have written an expression that references this dataset. If you don't want to depend on this dataset, just locate that code and remove the mention.")
+                            // Silently return false - dependency not ready yet
                             return false
                         }
 
@@ -337,12 +327,7 @@ exports.newFoundationsFunctionLibrariesDataDependenciesFunctions = function () {
                             let response = await TS.projects.foundations.utilities.miscellaneousFunctions.asyncGetDatasetFile(datasetModule, filePath, fileName)
 
                             if (response.err.message === 'File does not exist.') {
-                                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                    "[ERROR] File not Found. This process will wait until you run your Data Mining and this file is created. File = " + filePath + '/' + fileName)
-                                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                    "[ERROR] Your strategy depends on the dataset  " + dependency.name + '.')
-                                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                    "[ERROR] The reason that it depends on this dataset is because in one of your condition's Javascript Code node, you have written an expression that references this dataset. If you don't want to depend on this dataset, just locate that code and remove the mention.")
+                                // Silently return false - dependency not ready yet
                                 return false
                             }
                             if (response.err.result !== TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE.result) {

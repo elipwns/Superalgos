@@ -11,6 +11,10 @@
     };
 
     let fileStorage = TS.projects.foundations.taskModules.fileStorage.newFileStorage(processIndex)
+    
+    // Initialize storage abstraction
+    const StorageFactory = require('../../../../../lib/StorageFactory')
+    let storage = StorageFactory.createStorage()
 
     let statusDependenciesModule
     let dataDependenciesModule
@@ -133,6 +137,11 @@
 
                             function onFileReceived(err, text) {
                                 if (err.result !== TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE.result) {
+                                    if (err.message === "File does not exist.") {
+                                        // Wait silently for dependency files to be created by other bots
+                                        callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_RETRY_RESPONSE)
+                                        return
+                                    }
                                     TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
                                         "[ERROR] start -> processTimeFrames -> timeFramesLoopBody -> dependencyLoopBody -> getFile -> onFileReceived -> err = " + JSON.stringify(err))
                                     callBackFunction(err)
@@ -237,7 +246,14 @@
                 let filePath = TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).FILE_PATH_ROOT + "/Output/" + productCodeName + "/" +
                     TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.config.codeName + fileName;
 
-                fileStorage.createTextFile(filePath, fileContent + '\n', onFileCreated)
+                // Try storage abstraction first, fallback to fileStorage
+                try {
+                    storage.writeFile(filePath, fileContent + '\n')
+                        .then(() => onFileCreated(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE))
+                        .catch(() => fileStorage.createTextFile(filePath, fileContent + '\n', onFileCreated))
+                } catch (err) {
+                    fileStorage.createTextFile(filePath, fileContent + '\n', onFileCreated)
+                }
 
                 function onFileCreated(err) {
                     if (err.result !== TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE.result) {
