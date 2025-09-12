@@ -20,7 +20,14 @@ exports.newAlgorithmicTradingBotModulesTradingOutput = function (processIndex) {
         tradingProcessDate
     ) {
         try {
-            let fileStorage = TS.projects.foundations.taskModules.fileStorage.newFileStorage(processIndex)
+            // Use storage abstraction with fallback to fileStorage for backwards compatibility
+            let storage
+            if (TS.projects.foundations.globals.storageConstants && TS.projects.foundations.globals.storageConstants.STORAGE_FACTORY) {
+                storage = TS.projects.foundations.globals.storageConstants.STORAGE_FACTORY.createStorage()
+            } else {
+                storage = TS.projects.foundations.taskModules.fileStorage.newFileStorage(processIndex)
+            }
+            let fileStorage = storage
 
             if (timeFrame > TS.projects.foundations.globals.timeFrames.dailyTimeFramesArray()[0][0]) {
                 TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).ARE_WE_PROCESSING_DAILY_FILES = false

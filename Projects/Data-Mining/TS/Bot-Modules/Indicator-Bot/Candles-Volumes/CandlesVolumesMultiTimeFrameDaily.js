@@ -222,14 +222,34 @@
                     let lastDate = TS.projects.foundations.utilities.dateTimeFunctions.removeTime(new Date())
                     let outputCandles
                     let outputVolumes
+                    let loopCounter = 0;
+                    const MAX_ITERATIONS = 1000; // Circuit breaker to prevent infinite loops
 
                     advanceTime()
 
                     function advanceTime() {
+                        loopCounter++;
+                        
+                        // Check if task is stopping
+                        if (TS.projects.foundations.globals.taskVariables.IS_TASK_STOPPING === true) {
+                            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                                "[INFO] start -> buildCandles -> advanceTime -> Task stopping requested, exiting gracefully.");
+                            callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE);
+                            return;
+                        }
+                        
+                        // Circuit breaker to prevent infinite loops
+                        if (loopCounter > MAX_ITERATIONS) {
+                            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                                "[ERROR] start -> buildCandles -> advanceTime -> Maximum iterations reached (" + MAX_ITERATIONS + "), breaking loop to prevent infinite processing.");
+                            callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE);
+                            return;
+                        }
+                        
                         contextVariables.datetimeLastProducedFile = new Date(contextVariables.datetimeLastProducedFile.valueOf() + SA.projects.foundations.globals.timeConstants.ONE_DAY_IN_MILISECONDS);
 
                         TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[INFO] start -> buildCandles -> advanceTime -> New processing time @ " + contextVariables.datetimeLastProducedFile.getUTCFullYear() + "/" + (contextVariables.datetimeLastProducedFile.getUTCMonth() + 1) + "/" + contextVariables.datetimeLastProducedFile.getUTCDate() + ".")
+                            "[INFO] start -> buildCandles -> advanceTime -> New processing time @ " + contextVariables.datetimeLastProducedFile.getUTCFullYear() + "/" + (contextVariables.datetimeLastProducedFile.getUTCMonth() + 1) + "/" + contextVariables.datetimeLastProducedFile.getUTCDate() + " (iteration " + loopCounter + "/" + MAX_ITERATIONS + ").")
 
                         /* Validation that we are not going past the head of the market. */
                         if (contextVariables.datetimeLastProducedFile.valueOf() > contextVariables.datetimeLastAvailableDependencyFile.valueOf()) {
@@ -238,6 +258,14 @@
 
                             callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE) // Here is where we finish processing and wait for the platform to run this module again.
                             return
+                        }
+                        
+                        /* Check if we're stuck on the same date for too long */
+                        if (loopCounter > 10) {
+                            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                                "[WARN] start -> buildCandles -> advanceTime -> Stuck on same date for " + loopCounter + " iterations, requesting retry to refresh dependencies.");
+                            callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_RETRY_RESPONSE);
+                            return;
                         }
                         /*  Telling the world we are alive and doing well */
                         let currentDateString =
@@ -330,10 +358,9 @@
                                             if (err.message === 'File does not exist.' || err.code === 'The specified key does not exist.') {
 
                                                 TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                                    "[WARN] start -> buildCandles -> timeframesLoop -> loopBody -> nextCandleFile -> onFileReceived -> Dependency Not Ready -> err = " + err.stack)
-                                                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                                    "[WARN] start -> buildCandles -> timeframesLoop -> loopBody -> nextCandleFile -> onFileReceived -> Assuming this is a temporary situation. Requesting a Retry.");
-                                                callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_RETRY_RESPONSE)
+                                                    "[WARN] start -> buildCandles -> timeframesLoop -> loopBody -> nextCandleFile -> onFileReceived -> Dependency file missing, skipping this timeframe -> " + timeFrame);
+                                                // Skip this timeframe and continue with next one instead of retrying
+                                                controlLoop();
                                                 return
 
                                             } else {
@@ -520,10 +547,19 @@
                                     if (err.result !== TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE.result) {
                                         TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
                                             "[ERROR] writeDataRanges -> writeDataRanges -> onCandlesDataRangeWritten -> err = " + err.stack)
-                                        callBack(err)
+                                        callBackFunction(err)
                                         return
                                     }
-                                    writeStatusReport(contextVariables.datetimeLastProducedFile, advanceTime);
+                                    writeStatusReport(contextVariables.datetimeLastProducedFile, function(err) {
+                                        if (err.result !== TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE.result) {
+                                            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                                                "[ERROR] start -> buildCandles -> timeframesLoop -> controlLoop -> writeStatusReport -> err = " + err.stack);
+                                            callBackFunction(err);
+                                            return;
+                                        }
+                                        // Add a small delay to prevent tight loops and allow other processes to run
+                                        setTimeout(advanceTime, 100);
+                                    });
                                 }
                             }
                         }

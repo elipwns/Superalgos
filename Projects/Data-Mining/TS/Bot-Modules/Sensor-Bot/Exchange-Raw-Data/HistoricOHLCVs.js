@@ -13,7 +13,10 @@
     let storage
     let statusDependencies
 
-    let MAX_OHLCVs_PER_EXECUTION = 10000
+    let MAX_OHLCVs_PER_EXECUTION = 100000
+    let CATCH_UP_THRESHOLD_HOURS = 24 // If more than 24 hours behind, use large batches
+    let LARGE_BATCH_SIZE = 100000
+    let SMALL_BATCH_SIZE = 10000
 
 /*  CCXT and its unifiedAPI require a different way to find the pair because now not only spot is supported
     but swaps and futures too.
@@ -55,11 +58,11 @@
     let lastFile
     let exchangeId
     let options = {}
-    let rateLimit = 500
+    let rateLimit = 2000
     let exchange
     let uiStartDate = new Date(TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.config.startDate)
     let firstTimeThisProcessRun = false
-    let limit = 1000 // This is the default value
+    let limit = 1440 // Default to full day batches for complete data collection
     let hostname
     let lastCandleOfTheDay
     let sandBox
@@ -128,6 +131,8 @@
             }                                           
             if (exchangeConfig.limit !== undefined) {
                 limit = exchangeConfig.limit                // Some exchanges need this parameter -> Bybit
+            } else {
+                limit = 1000  // Bitstamp API limit - max 1000 bars per request
             }
             if (exchangeConfig.rateLimit !== undefined) {
                 rateLimit = exchangeConfig.rateLimit        // Custom rateLimit
@@ -251,8 +256,9 @@
             let mustLoadRawData = false
 
             if (TS.projects.foundations.globals.taskVariables.IS_TASK_STOPPING === true) {
-                callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE);
-                return
+                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                    "[INFO] Task stopping requested - will save collected data before shutdown")
+                // Continue to saveOHLCVs to preserve any collected data
             }
 
             let abort = false
@@ -266,8 +272,9 @@
                 await getOHLCVs()
                 if (abort === true) { return }
                 if (TS.projects.foundations.globals.taskVariables.IS_TASK_STOPPING === true) {
-                    callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE);
-                    return
+                    TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                        "[INFO] Task stopping - saving " + rawDataArray.length + " collected OHLCVs before shutdown")
+                    // Continue to saveOHLCVs to preserve collected data
                 }
                 await saveOHLCVs()
             }
@@ -410,6 +417,29 @@
                 }
             }
 
+            function calculateDynamicBatchSize(currentSince) {
+                try {
+                    // Calculate how far behind we are from current time
+                    const now = new Date()
+                    const currentProcessingTime = new Date(currentSince || now)
+                    const hoursBehind = (now - currentProcessingTime) / (1000 * 60 * 60)
+                    
+                    if (hoursBehind > CATCH_UP_THRESHOLD_HOURS) {
+                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                            "[INFO] calculateDynamicBatchSize -> " + hoursBehind.toFixed(1) + " hours behind, using large batch size (" + LARGE_BATCH_SIZE + ")")
+                        return LARGE_BATCH_SIZE
+                    } else {
+                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                            "[INFO] calculateDynamicBatchSize -> " + hoursBehind.toFixed(1) + " hours behind, using small batch size (" + SMALL_BATCH_SIZE + ")")
+                        return SMALL_BATCH_SIZE
+                    }
+                } catch (error) {
+                    TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                        "[ERROR] calculateDynamicBatchSize -> " + error.message + ", using fallback size")
+                    return MAX_OHLCVs_PER_EXECUTION
+                }
+            }
+
             async function getFirstId() {
                 try {
                     /* We need the first id only when we are going to fetch trades based on id and it is the first time the process runs*/
@@ -454,12 +484,18 @@
                         /* Reporting we are doing well */
                         function heartBeat(noNewInternalLoop) {
                             let processingDate = new Date(since)
-                            processingDate = processingDate.getUTCFullYear() + '-' + SA.projects.foundations.utilities.miscellaneousFunctions.pad(processingDate.getUTCMonth() + 1, 2) + '-' + SA.projects.foundations.utilities.miscellaneousFunctions.pad(processingDate.getUTCDate(), 2);
-                            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                "[INFO] start -> getOHLCVs -> Fetching OHLCVs  @ " + processingDate + "-> exchange = " + TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.parentNode.parentNode.name + " -> symbol = " + symbol + " -> since = " + since + " -> limit = " + limit)
-                            let heartBeatText = "Fetching OHLCVs (" + rawDataArray.length.toFixed(0) + " collected) from " + TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.parentNode.parentNode.name + " " + symbol + " @ " + processingDate
+                            let dateStr = processingDate.getUTCFullYear() + '-' + SA.projects.foundations.utilities.miscellaneousFunctions.pad(processingDate.getUTCMonth() + 1, 2) + '-' + SA.projects.foundations.utilities.miscellaneousFunctions.pad(processingDate.getUTCDate(), 2);
+                            
+                            // Calculate collection statistics
                             let currentDate = new Date(since)
                             let percentage = TS.projects.foundations.utilities.dateTimeFunctions.getPercentage(fromDate, currentDate, lastDate)
+                            let daysSinceStart = (currentDate - fromDate) / (24 * 60 * 60 * 1000)
+                            let expectedRecords = daysSinceStart * 1440 // 1440 minutes per day
+                            let collectionRate = expectedRecords > 0 ? ((rawDataArray.length / expectedRecords) * 100).toFixed(1) : 0
+                            
+
+                            
+                            let heartBeatText = "Fetching OHLCVs (" + rawDataArray.length.toFixed(0) + " collected, " + collectionRate + "% rate) from " + TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.parentNode.parentNode.name + " " + symbol + " @ " + dateStr
                             TS.projects.foundations.functionLibraries.processFunctions.processHeartBeat(processIndex, heartBeatText, percentage) // tell the world we are alive and doing well
                             if (TS.projects.foundations.utilities.dateTimeFunctions.areTheseDatesEqual(currentDate, new Date()) === false) {
                                 if (noNewInternalLoop !== true) {
@@ -498,10 +534,16 @@
                         heartBeat()
 
                         /* Fetching the OHLCVs from the exchange.*/
+
+                        
+                        const requestStartTime = Date.now()
                         await new Promise(resolve => setTimeout(resolve, rateLimit)) // rate limit
+                        
                         const OHLCVs = useFetchTradesForFetchOHLCVs ?
                             await fetchTradesForOHLCV(symbol, '1m', since, limit, params) :
                             await exchange.fetchOHLCV(symbol, '1m', since, limit, params)
+                        
+                        const requestDuration = Date.now() - requestStartTime
 
 
                         if (OHLCVs.length === 0 && new Date(since).valueOf() !== (new Date).setSeconds(0,0)) {
@@ -590,7 +632,7 @@
                                     await exchange.fetchOHLCV(symbol, '1m', since, limit, params)
 
                                 if (nextValidOHLCVs.length === 0) {
-                                    since = (since + (SA.projects.foundations.globals.timeConstants.ONE_MIN_IN_MILISECONDS * limit))
+                                    since = (since + (SA.projects.foundations.globals.timeConstants.ONE_MIN_IN_MILISECONDS * 60)) // Jump 1 hour instead of full limit
 
                                 } else {
                                     foundDate = true
@@ -683,10 +725,13 @@
                         If (1) is the case, or if we're stopping the task or have hit the max
                         limit. then break and stop till the next loop.
                          */
+                        // Calculate dynamic batch size based on how far behind we are
+                        let dynamicBatchSize = calculateDynamicBatchSize(since)
+                        
                         if (
                             (OHLCVs.length < limit - 1 && invalidSince === false && TS.projects.foundations.utilities.dateTimeFunctions.areTheseDatesEqual(currentDate, new Date())) ||
                             TS.projects.foundations.globals.taskVariables.IS_TASK_STOPPING === true ||
-                            rawDataArray.length >= MAX_OHLCVs_PER_EXECUTION
+                            rawDataArray.length >= dynamicBatchSize
                         ) {
                             break
                         }
@@ -1116,36 +1161,15 @@
 
                         function getRawDataToSave(day) {
                             /*
-                            What we are doing here is determining whether the currently accumulated raw OHCLV's should be saved or not,
-                            so that the next time the bot process runs, it must continue from where the raw OHLCV's ended.
-                            If the current end of the array contains elements beyond the day being processed, it means that the full
-                            day has been successfully downloaded, so it is not necessary to save this data.
+                            Save all accumulated raw OHLCV data to allow continuation from where we left off.
+                            This ensures no data loss during incremental collection.
                             */
                             let rawDataFileData
                             let dataLength = rawDataArray.length
                             if (dataLength > 0) {
-                                // first get the start of the day after this day we are checking
-                                let timestamp = (day * SA.projects.foundations.globals.timeConstants.ONE_DAY_IN_MILISECONDS) +
-                                    SA.projects.foundations.globals.timeConstants.ONE_DAY_IN_MILISECONDS
-                                if (rawDataArray[dataLength - 1][0] < timestamp) {
-                                    // there is no data for the next day, so now trim this day's data to remove anything before it
-                                    timestamp -= SA.projects.foundations.globals.timeConstants.ONE_DAY_IN_MILISECONDS
-                                    let dataIndex = 0
-                                    while (dataIndex < dataLength - 1) {
-                                        if (rawDataArray[dataIndex][0] < timestamp) {  // this data is from a previous day
-                                            dataIndex++
-                                        } else {
-                                            break  // found the beginning of this day's data
-                                        }
-                                    }
-                                    if (dataIndex > 0) {
-                                        rawDataArray = rawDataArray.slice(dataIndex, dataLength)  // remove data from previous days
-                                        dataLength = rawDataArray.length
-                                    }
-                                    if (dataLength > 0) {
-                                        rawDataFileData = JSON.stringify(rawDataArray)  // finally we have what we need to save
-                                    }
-                                }
+                                rawDataFileData = JSON.stringify(rawDataArray)
+                                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                                    "[INFO] getRawDataToSave -> Saving " + dataLength + " OHLCV records for continuation")
                             }
                             return rawDataFileData
                         }

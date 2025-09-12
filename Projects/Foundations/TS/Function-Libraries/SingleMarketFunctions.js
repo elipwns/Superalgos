@@ -165,6 +165,8 @@
         What we need to do first is transform those records into JSON objects that can be used by user-defined formulas.
         The first step does that but with the not calculated properties, the second step adds the calculated properties.
         */
+        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME, "[DEBUG] inflateDatafiles -> dataFiles.size = " + dataFiles.size + ", dataDependencies.length = " + dataDependencies.length)
+        
         for (let i = 0; i < dataDependencies.length; i++) {
 
             let dataFile
@@ -175,6 +177,8 @@
 
             let dataDependencyNode = dataDependencies[i]
             dataFile = dataFiles.get(dataDependencyNode.id)
+            
+            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME, "[DEBUG] inflateDatafiles -> dependency " + i + ", id = " + dataDependencyNode.id + ", dataFile = " + (dataFile ? "found (" + dataFile.length + " records)" : "undefined"))
 
             if (dataFile === undefined) { continue } // When a datafile is not found it might be because we are processing market or daily and at the dependency array there are both types mixed up.
 
@@ -441,6 +445,10 @@
         /* Here we run the Procedure Loop Code */
         if (dataBuildingProcedure.loop !== undefined) {
             if (dataBuildingProcedure.loop.procedureJavascriptCode !== undefined) {
+                // Safety check for mainDependency.records
+                if (!mainDependency.records || mainDependency.records.length === 0) {
+                    return []
+                }
                 let lastRecord
                 for (let index = 0; index < mainDependency.records.length; index++) {
 
@@ -610,8 +618,30 @@
             let filePath = filePathRoot + "/Output/" + contextSummary.product + "/" + contextSummary.dataset + "/" + timeFrameLabel + dateForPath;
             filePath += '/' + fileName
 
+            // Try storage abstraction first, fall back to fileStorage for backwards compatibility
             let fileStorage = TS.projects.foundations.taskModules.fileStorage.newFileStorage(processIndex);
-            fileStorage.createTextFile(filePath, fileContent + '\n', onFileCreated);
+            
+            try {
+                // Initialize storage abstraction
+                const StorageFactory = require('../../../lib/StorageFactory')
+                const storageConfig = require('../../../config/storage')
+                const storage = StorageFactory.create(storageConfig)
+                
+                if (storage && storage.writeFile) {
+                    storage.writeFile(filePath, fileContent + '\n').then(() => {
+                        onFileCreated(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE)
+                    }).catch(err => {
+                        // Fall back to fileStorage for backwards compatibility
+                        fileStorage.createTextFile(filePath, fileContent + '\n', onFileCreated);
+                    })
+                } else {
+                    // Fall back to fileStorage for backwards compatibility
+                    fileStorage.createTextFile(filePath, fileContent + '\n', onFileCreated);
+                }
+            } catch (err) {
+                // Fall back to fileStorage for backwards compatibility
+                fileStorage.createTextFile(filePath, fileContent + '\n', onFileCreated);
+            }
 
             function onFileCreated(err) {
 

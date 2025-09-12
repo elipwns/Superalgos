@@ -129,7 +129,26 @@ exports.newFoundationsFunctionLibrariesOutputManagementFunctions = function () {
         async function readOutputFile(fileName, filePath, productName) {
             filePath += '/' + fileName
 
-            let response = await fileStorage.asyncGetTextFile(filePath, true)
+            // Use storage abstraction if available, otherwise fall back to fileStorage
+            let response
+            if (fileStorage.readFile) {
+                // Using storage abstraction
+                try {
+                    let content = await fileStorage.readFile(filePath)
+                    response = {
+                        err: TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE,
+                        text: content
+                    }
+                } catch (err) {
+                    response = {
+                        err: { message: 'File does not exist.' },
+                        text: null
+                    }
+                }
+            } else {
+                // Using traditional fileStorage
+                response = await fileStorage.asyncGetTextFile(filePath, true)
+            }
 
             if (response.err.message === 'File does not exist.') {
                 outputDatasetsMap.set(productName, [])
@@ -194,7 +213,24 @@ exports.newFoundationsFunctionLibrariesOutputManagementFunctions = function () {
             filePath += '/' + fileName
             let fileContent = JSON.stringify(outputDatasetsMap.get(productName))
 
-            let response = await fileStorage.asyncCreateTextFile(filePath, fileContent)
+            // Use storage abstraction if available, otherwise fall back to fileStorage
+            let response
+            if (fileStorage.writeFile) {
+                // Using storage abstraction
+                try {
+                    await fileStorage.writeFile(filePath, fileContent)
+                    response = {
+                        err: TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE
+                    }
+                } catch (err) {
+                    response = {
+                        err: TS.projects.foundations.globals.standardResponses.DEFAULT_FAIL_RESPONSE
+                    }
+                }
+            } else {
+                // Using traditional fileStorage
+                response = await fileStorage.asyncCreateTextFile(filePath, fileContent)
+            }
 
             if (response.err.result !== TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE.result) {
                 throw (response.err)

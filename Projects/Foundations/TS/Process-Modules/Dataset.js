@@ -20,6 +20,7 @@ exports.newFoundationsProcessModulesDataset = function (processIndex) {
 
     /* Storage account to be used here. */
     let fileStorage
+    let storage
 
     return thisObject;
 
@@ -102,7 +103,19 @@ exports.newFoundationsProcessModulesDataset = function (processIndex) {
             /* We found where the data is located on the network. */
             TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME, "[INFO] initialize -> Retrieving data from " + lanNetworkNode.name + "  -> host = " + lanNetworkNode.config.host + ' -> port = ' + lanNetworkNode.config.webPort + '.')
 
-            fileStorage = TS.projects.foundations.taskModules.fileStorage.newFileStorage(processIndex, lanNetworkNode.config.host, lanNetworkNode.config.webPort);
+            // Initialize storage abstraction with backwards compatibility
+            try {
+                const StorageFactory = require('../../../../lib/StorageFactory')
+                const storageConfig = require('../../../../config/storage')
+                storage = StorageFactory.create(storageConfig)
+                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME, "[INFO] initialize -> Using " + storage.constructor.name + " storage")
+            } catch (err) {
+                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME, "[WARN] initialize -> Storage abstraction failed, using fileStorage: " + err.message)
+                storage = null // Will use fileStorage fallback
+            }
+            
+            fileStorage = TS.projects.foundations.taskModules.fileStorage.newFileStorage(processIndex, lanNetworkNode.config.host, lanNetworkNode.config.webPort)
+            
             callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE, true);
 
         } catch (err) {
@@ -114,6 +127,7 @@ exports.newFoundationsProcessModulesDataset = function (processIndex) {
 
     function finalize() {
         fileStorage = undefined
+        storage = undefined
         thisObject.lanNetworkNode = undefined
         thisObject.exchange = undefined
         thisObject.market = undefined
@@ -133,7 +147,17 @@ exports.newFoundationsProcessModulesDataset = function (processIndex) {
             let filePath = filePathRoot + "/Output/" + pFolderPath;
             filePath += '/' + pFileName
 
-            fileStorage.getTextFile(filePath, onFileReceived);
+            // Use storage abstraction if available, otherwise fall back to fileStorage
+            if (storage && storage.readFile) {
+                storage.readFile(filePath).then(text => {
+                    onFileReceived(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE, text)
+                }).catch(err => {
+                    onFileReceived({result: 'Fail', message: 'File does not exist.'}, null)
+                })
+            } else {
+                // Fall back to fileStorage for backwards compatibility
+                fileStorage.getTextFile(filePath, onFileReceived)
+            }
 
             function onFileReceived(err, text) {
                 callBackFunction(err, text);
@@ -170,7 +194,17 @@ exports.newFoundationsProcessModulesDataset = function (processIndex) {
             let filePathRoot = 'Project/' + thisObject.node.project + "/" + thisObject.node.mineType + "/" + thisObject.node.dataMine + "/" + thisObject.node.bot + '/' + thisObject.exchange + "/" + thisObject.market
             let filePath = filePathRoot + "/Output/" + pFolderPath + '/' + pFileName;
 
-            fileStorage.createTextFile(filePath, pFileContent, onFileCreated);
+            // Use storage abstraction if available, otherwise fall back to fileStorage
+            if (storage && storage.writeFile) {
+                storage.writeFile(filePath, pFileContent).then(() => {
+                    onFileCreated(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE)
+                }).catch(err => {
+                    onFileCreated({result: 'Fail', message: 'Write failed: ' + err.message})
+                })
+            } else {
+                // Fall back to fileStorage for backwards compatibility
+                fileStorage.createTextFile(filePath, pFileContent, onFileCreated)
+            }
 
             function onFileCreated(err) {
                 callBackFunction(err);
