@@ -12,6 +12,7 @@
 
     let storage
     let statusDependencies
+    let statusManager // Hybrid status manager (SQLite or JSON)
 
     let MAX_OHLCVs_PER_EXECUTION = 100000
     let CATCH_UP_THRESHOLD_HOURS = 24 // If more than 24 hours behind, use large batches
@@ -90,7 +91,7 @@
 
     return thisObject;
 
-    function initialize(pStatusDependencies, callBackFunction) {
+    async function initialize(pStatusDependencies, callBackFunction) {
         let exchangeClass
         /*
         This is what we are going to do here
@@ -104,12 +105,32 @@
             statusDependencies = pStatusDependencies;
             
             // Initialize storage based on configuration
-            const StorageFactory = require('../../../../../../lib/StorageFactory')
-            const storageConfig = require('../../../../../../config/storage')
-            storage = StorageFactory.create(storageConfig)
-            
-            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                "[INFO] initialize -> Using " + storage.constructor.name + " storage")
+            try {
+                const StorageFactory = require('../../../../../../lib/StorageFactory')
+                const StatusManagerFactory = require('../../../../../../lib/StatusManagerFactory')
+                const storageConfig = require('../../../../../../config/storage')
+                
+                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                    "[INFO] initialize -> Loading storage factories...")
+                
+                storage = StorageFactory.create(storageConfig)
+                statusManager = StatusManagerFactory.create(storageConfig, statusDependencies)
+                
+                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                    "[INFO] initialize -> Storage type: " + storage.constructor.name)
+                
+                // Initialize status manager
+                await statusManager.initialize()
+                
+                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                    "[INFO] initialize -> Hybrid storage system initialized successfully")
+            } catch (storageError) {
+                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                    "[ERROR] initialize -> Storage initialization failed: " + storageError.message)
+                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                    "[ERROR] initialize -> Falling back to legacy file storage")
+                // Continue without hybrid storage - will use legacy fileStorage
+            }
             
     		/*
 	    	maxRate - sets the  maximum number of OHCLV that is pulled before the data is saved.
@@ -214,16 +235,11 @@
             
             if (sandBox) {                
                 exchange.setSandboxMode(sandBox)
-                /* Uncomment to log
-                SA.logger.info('Exchange HistoricOHLCVs connection starting.... ')
-                SA.logger.info('Sandbox mode is: ' + sandBox)
-                SA.logger.info(exchange.urls.api)
-                SA.logger.info('')
-                SA.logger.info('exchangeConstructorParams:')
-                SA.logger.info(exchangeConstructorParams)
-                SA.logger.info('')
-                SA.logger.info('limit is: ' + limit)
-                */
+                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                    "[INFO] initialize -> Connected to " + exchangeId + " (sandbox mode) for " + symbol)
+            } else {
+                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                    "[INFO] initialize -> Connected to " + exchangeId + " for " + symbol)
             }
             
 
@@ -257,7 +273,7 @@
 
             if (TS.projects.foundations.globals.taskVariables.IS_TASK_STOPPING === true) {
                 TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                    "[INFO] Task stopping requested - will save collected data before shutdown")
+                    "[INFO] start -> Task stopping, preserving " + rawDataArray.length + " collected records")
                 // Continue to saveOHLCVs to preserve any collected data
             }
 
@@ -266,20 +282,20 @@
 
             async function begin() {
 
-                getContextVariables()
+                await getContextVariables()
                 if (abort === true) { return }
                 await getFirstId()
                 await getOHLCVs()
                 if (abort === true) { return }
                 if (TS.projects.foundations.globals.taskVariables.IS_TASK_STOPPING === true) {
                     TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                        "[INFO] Task stopping - saving " + rawDataArray.length + " collected OHLCVs before shutdown")
+                        "[INFO] start -> Task stopping, preserving " + rawDataArray.length + " collected records")
                     // Continue to saveOHLCVs to preserve collected data
                 }
                 await saveOHLCVs()
             }
 
-            function getContextVariables() {
+            async function getContextVariables() {
 
                 try {
                     let reportKey
@@ -291,7 +307,10 @@
                     TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
                         "[INFO] start -> getContextVariables -> reportKey = " + reportKey)
 
-                    if (statusDependencies.statusReports.get(reportKey).status === "Status Report is corrupt.") {
+                    // Get status from hybrid manager (SQLite or JSON)
+                    thisReport = await statusManager.getStatus(reportKey)
+                    
+                    if (thisReport.status === "Status Report is corrupt.") {
                         TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
                             "[ERROR] start -> getContextVariables -> Can not continue because dependency Status Report is corrupt. ");
                         callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_RETRY_RESPONSE);
@@ -302,8 +321,6 @@
                     if(isNaN(uiStartDate)) {
                         uiStartDate = new Date(0)
                     }
-
-                    thisReport = statusDependencies.statusReports.get(reportKey)
 
                     if (thisReport.file.beginingOfMarket !== undefined) { // This means this is not the first time this process has run.
                         beginingOfMarket = new Date(thisReport.file.beginingOfMarket.year + "-" + thisReport.file.beginingOfMarket.month + "-" + thisReport.file.beginingOfMarket.days + " " + thisReport.file.beginingOfMarket.hours + ":" + thisReport.file.beginingOfMarket.minutes + SA.projects.foundations.globals.timeConstants.GMT_SECONDS);
@@ -426,11 +443,11 @@
                     
                     if (hoursBehind > CATCH_UP_THRESHOLD_HOURS) {
                         TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[INFO] calculateDynamicBatchSize -> " + hoursBehind.toFixed(1) + " hours behind, using large batch size (" + LARGE_BATCH_SIZE + ")")
+                            "[INFO] calculateDynamicBatchSize -> Catching up: " + hoursBehind.toFixed(1) + " hours behind, using large batch size: " + LARGE_BATCH_SIZE)
                         return LARGE_BATCH_SIZE
                     } else {
                         TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[INFO] calculateDynamicBatchSize -> " + hoursBehind.toFixed(1) + " hours behind, using small batch size (" + SMALL_BATCH_SIZE + ")")
+                            "[INFO] calculateDynamicBatchSize -> Near real-time: " + hoursBehind.toFixed(1) + " hours behind, using small batch size: " + SMALL_BATCH_SIZE)
                         return SMALL_BATCH_SIZE
                     }
                 } catch (error) {
@@ -495,11 +512,11 @@
                             
 
                             
-                            let heartBeatText = "Fetching OHLCVs (" + rawDataArray.length.toFixed(0) + " collected, " + collectionRate + "% rate) from " + TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.parentNode.parentNode.name + " " + symbol + " @ " + dateStr
-                            TS.projects.foundations.functionLibraries.processFunctions.processHeartBeat(processIndex, heartBeatText, percentage) // tell the world we are alive and doing well
+                            let heartBeatText = "Fetching OHLCVs (" + rawDataArray.length.toFixed(0) + " collected) from " + TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.parentNode.parentNode.name + " " + symbol + " @ " + dateStr
+                            TS.projects.foundations.functionLibraries.processFunctions.processHeartBeat(processIndex, heartBeatText, 0) // tell the world we are alive and doing well
                             if (TS.projects.foundations.utilities.dateTimeFunctions.areTheseDatesEqual(currentDate, new Date()) === false) {
                                 if (noNewInternalLoop !== true) {
-                                    TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.newInternalLoop(currentDate, percentage);
+                                    TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.newInternalLoop(currentDate, 0);
                                 }
                             }
                         }
@@ -663,15 +680,12 @@
                         ]
                         */
 
-                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[INFO] start -> getOHLCVs -> OHLCVs Fetched = " + OHLCVs.length)
                         if (OHLCVs.length > 0) {
                             let beginDate = new Date(OHLCVs[0][0])
                             let endDate = new Date(OHLCVs[OHLCVs.length - 1][0])
+                            let dateRange = `${beginDate.toISOString().split('T')[0]} to ${endDate.toISOString().split('T')[0]}`
                             TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                "[INFO] start -> getOHLCVs -> OHLCVs Fetched From " + beginDate + " -> timestamp = " + OHLCVs[0][0])
-                            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                "[INFO] start -> getOHLCVs -> OHLCVs Fetched to " + endDate + " -> timestamp = " + OHLCVs[OHLCVs.length - 1][0])
+                                "[INFO] start -> Fetched " + OHLCVs.length + " records for " + symbol + " (" + dateRange + ")")
 
                             if (firstTimeThisProcessRun === true) {
                                 let OHLCV = OHLCVs[0]
@@ -739,19 +753,19 @@
                 } catch (err) {
                     if (err.stack.toString().indexOf('ERR_RATE_LIMIT') >= 0) {
                         TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[ERROR] start -> getOHLCVs -> Retrying Later -> The Exchange " + TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.parentNode.parentNode.name + " is saying you are requesting data too often. I will retry the request later, no action is required. To avoid this happening again please increase the rateLimit at the Exchange node config. You might continue seeing this if you are retrieving data from multiple markets at the same time. In this case I tried to get 1 min OHLCVs from " + symbol);
+                            "[WARN] start -> Rate limit exceeded for " + TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.parentNode.parentNode.name + ". Increase rateLimit in Exchange config")
                         return
                     }
 
                     if (err.stack.toString().indexOf('RequestTimeout') >= 0) {
                         TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[ERROR] start -> getOHLCVs -> Retrying Later -> The Exchange " + TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.parentNode.parentNode.name + " is not responding at the moment. I will save the data already fetched and try to reconnect later to fetch the rest of the missing data.");
+                            "[WARN] start -> RequestTimeout for " + TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.parentNode.parentNode.name + ". Will retry later")
                         return
                     }
 
                     if (err.stack.toString().indexOf('ExchangeNotAvailable') >= 0) {
                         TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[ERROR] start -> getOHLCVs -> Retrying Later -> The Exchange " + TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.parentNode.parentNode.name + " is not available at the moment. I will save the data already fetched and try to reconnect later to fetch the rest of the missing data.");
+                            "[WARN] start -> ExchangeNotAvailable for " + TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.parentNode.parentNode.name + ". Will retry later")
                         return
                     }
 
@@ -850,9 +864,9 @@
                     At a macro level, we will be creating one file per day, so we will
                     run into a loop that each run will represent one day.
                     */
-                    controlLoop()
+                    await controlLoop()
 
-                    function loop() {
+                    async function loop() {
                         /*
                         Here we will try to match the OHLCVs received with each possible
                         candle of a single day.
@@ -1115,7 +1129,7 @@
                             return
                         }
 
-                        controlLoop()
+                        await controlLoop()
 
                         function saveFile(day) {
                             candlesFileContent = candlesFileContent + ']'
@@ -1174,7 +1188,7 @@
                             return rawDataFileData
                         }
 
-                        function onFileCreated(err) {
+                        async function onFileCreated(err) {
                             if (err.result !== TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE.result) {
                                 TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
                                     "[ERROR] start -> OHLCVsReadyToBeSaved -> onFileBCreated -> err = " + JSON.stringify(err));
@@ -1184,7 +1198,7 @@
                             filesCreated++
                             lastFile = new Date((currentDay * SA.projects.foundations.globals.timeConstants.ONE_DAY_IN_MILISECONDS))
                             if (filesCreated === filesToCreate) {
-                                controlLoop()
+                                await controlLoop()
                             }
                         }
 
@@ -1198,7 +1212,7 @@
                         }
                     }
 
-                    function controlLoop() {
+                    async function controlLoop() {
                         /* 
                         This loop advances one day, and if it does not need to stop
                         for any reason, it will execute the loop function so as to process
@@ -1232,7 +1246,7 @@
                         or the exchange became unavailable.
                         */
                         if (ohlcvArrayIndex >= rawDataArray.length - 1) {
-                            writeStatusReport()
+                            await writeStatusReport()
                             TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
                                 "[INFO] start -> saveOHLCVs -> controlLoop -> Exit because i reached the end of the rawDataArray array. ")
                             return
@@ -1243,7 +1257,7 @@
                         nothing else to save, so we finish here. 
                         */
                         if (savingProcedureFinished === true) {
-                            writeStatusReport()
+                            await writeStatusReport()
                             TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
                                 "[INFO] start -> saveOHLCVs -> controlLoop -> Exit because we reached the end of the market. ")
                             return
@@ -1252,7 +1266,7 @@
                         /*
                         If there is no reason to exit, we will process the next day.
                         */
-                        setImmediate(loop)
+                        setImmediate(async () => await loop())
                     }
 
                 } catch (err) {
@@ -1264,8 +1278,12 @@
                 }
             }
 
-            function writeStatusReport() {
+            async function writeStatusReport() {
                 try {
+                    let reportKey = 
+                        TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.parentNode.parentNode.config.codeName + "-" + 
+                        TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.parentNode.config.codeName + "-" + 
+                        TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.config.codeName
                     if (lastFile === undefined) { return }
                     thisReport.file = {
                         lastFile: {
@@ -1291,7 +1309,8 @@
                         thisReport.file.lastId = lastId
                     }
 
-                    thisReport.save(onSaved);
+                    // Use hybrid status manager for saving
+                    await statusManager.saveStatus(reportKey, thisReport.file, onSaved);
 
                     function onSaved(err) {
                         if (err.result !== TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE.result) {

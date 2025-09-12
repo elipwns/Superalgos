@@ -11,16 +11,29 @@
     };
 
     let fileStorage = TS.projects.foundations.taskModules.fileStorage.newFileStorage(processIndex);
+    let storage
+    let statusManager // Hybrid status manager (SQLite or JSON)
 
     let statusDependenciesModule;
     let beginingOfMarket
 
     return thisObject;
 
-    function initialize(pStatusDependenciesModule, callBackFunction) {
+    async function initialize(pStatusDependenciesModule, callBackFunction) {
 
         try {
             statusDependenciesModule = pStatusDependenciesModule;
+            
+            // Initialize storage and status manager
+            const StorageFactory = require('../../../../../../lib/StorageFactory')
+            const StatusManagerFactory = require('../../../../../../lib/StatusManagerFactory')
+            const storageConfig = require('../../../../../../config/storage')
+            storage = StorageFactory.create(storageConfig)
+            
+            // Initialize hybrid status manager
+            statusManager = StatusManagerFactory.create(storageConfig, statusDependenciesModule)
+            await statusManager.initialize()
+            
             callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE);
 
         } catch (err) {

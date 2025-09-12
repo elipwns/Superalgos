@@ -23,12 +23,24 @@
             statusDependenciesModule = pStatusDependenciesModule
             
             // Initialize storage based on configuration
-            const StorageFactory = require('../../../../../../lib/StorageFactory')
-            const storageConfig = require('../../../../../../config/storage')
-            storage = StorageFactory.create(storageConfig)
-            
-            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                "[INFO] initialize -> Using " + storage.constructor.name + " storage")
+            try {
+                const StorageFactory = require('../../../../../../lib/StorageFactory')
+                const storageConfig = require('../../../../../../config/storage')
+                
+                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                    "[INFO] initialize -> Loading storage factories...")
+                
+                storage = StorageFactory.create(storageConfig)
+                
+                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                    "[INFO] initialize -> Storage type: " + storage.constructor.name)
+            } catch (storageError) {
+                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                    "[ERROR] initialize -> Storage initialization failed: " + storageError.message)
+                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                    "[ERROR] initialize -> Falling back to legacy file storage")
+                // Continue without hybrid storage - will use legacy fileStorage
+            }
             
             callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE)
 
@@ -241,7 +253,7 @@
                         // Circuit breaker to prevent infinite loops
                         if (loopCounter > MAX_ITERATIONS) {
                             TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                "[ERROR] start -> buildCandles -> advanceTime -> Maximum iterations reached (" + MAX_ITERATIONS + "), breaking loop to prevent infinite processing.");
+                                "[WARN] buildCandles -> Circuit breaker activated: Maximum iterations reached (" + MAX_ITERATIONS + ")");
                             callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE);
                             return;
                         }
@@ -249,12 +261,12 @@
                         contextVariables.datetimeLastProducedFile = new Date(contextVariables.datetimeLastProducedFile.valueOf() + SA.projects.foundations.globals.timeConstants.ONE_DAY_IN_MILISECONDS);
 
                         TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[INFO] start -> buildCandles -> advanceTime -> New processing time @ " + contextVariables.datetimeLastProducedFile.getUTCFullYear() + "/" + (contextVariables.datetimeLastProducedFile.getUTCMonth() + 1) + "/" + contextVariables.datetimeLastProducedFile.getUTCDate() + " (iteration " + loopCounter + "/" + MAX_ITERATIONS + ").")
+                            "[INFO] buildCandles -> Processing date: " + contextVariables.datetimeLastProducedFile.toISOString().split('T')[0] + " (iteration " + loopCounter + "/" + MAX_ITERATIONS + ")")
 
                         /* Validation that we are not going past the head of the market. */
                         if (contextVariables.datetimeLastProducedFile.valueOf() > contextVariables.datetimeLastAvailableDependencyFile.valueOf()) {
                             TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                "[INFO] start -> buildCandles -> advanceTime -> Head of the market found @ " + contextVariables.datetimeLastProducedFile.getUTCFullYear() + "/" + (contextVariables.datetimeLastProducedFile.getUTCMonth() + 1) + "/" + contextVariables.datetimeLastProducedFile.getUTCDate() + ".")
+                                "[INFO] buildCandles -> Reached head of market: processing " + contextVariables.datetimeLastProducedFile.toISOString().split('T')[0] + ", available until " + contextVariables.datetimeLastAvailableDependencyFile.toISOString().split('T')[0])
 
                             callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE) // Here is where we finish processing and wait for the platform to run this module again.
                             return
@@ -263,7 +275,7 @@
                         /* Check if we're stuck on the same date for too long */
                         if (loopCounter > 10) {
                             TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                "[WARN] start -> buildCandles -> advanceTime -> Stuck on same date for " + loopCounter + " iterations, requesting retry to refresh dependencies.");
+                                "[WARN] buildCandles -> Stuck on same date for " + loopCounter + " iterations, requesting retry to refresh dependencies");
                             callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_RETRY_RESPONSE);
                             return;
                         }
@@ -335,7 +347,7 @@
                                 })
 
                                 TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                    "[INFO] start -> buildCandles -> timeframesLoop -> loopBody -> getting file at dateForPath = " + dateForPath + " using " + storage.constructor.name)
+                                    "[INFO] buildCandles -> Reading daily candles: " + dateForPath + "/" + fileName + " using " + storage.constructor.name);
 
                                 function onFileReceived(err, text) {
                                     try {
@@ -466,7 +478,7 @@
                                     })
 
                                     TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                        "[INFO] start -> buildCandles -> timeframesLoop -> loopBody -> nextVolumeFile -> getting file at dateForPath = " + dateForPath + " using " + storage.constructor.name);
+                                        "[INFO] buildCandles -> Reading daily volumes: " + dateForPath + "/" + fileName + " using " + storage.constructor.name);
 
                                     function onFileReceived(err, text) {
                                         let volumesFile
@@ -617,7 +629,7 @@
                         })
 
                         TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[INFO] start -> writeFiles -> writeCandles -> creating file at filePath = " + filePath + " using " + storage.constructor.name);
+                            "[INFO] writeFiles -> Creating candles file: " + filePath + " using " + storage.constructor.name + " (" + fileRecordCounter + " records)");
 
                         function onFileCreated(err) {
                             if (err.result !== TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE.result) {
@@ -628,7 +640,7 @@
                             }
 
                             TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                "[WARN] start -> writeFiles -> writeCandles -> onFileCreated ->  Finished with File @ " + TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.baseAsset.referenceParent.config.codeName + "_" + TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.quotedAsset.referenceParent.config.codeName + ", " + fileRecordCounter + " records inserted into " + filePath + "/" + fileName);
+                                "[INFO] writeFiles -> CANDLES SAVED: " + fileRecordCounter + " records for " + timeFrame + " -> " + filePath);
 
                             writeVolumes();
                         }
@@ -669,7 +681,7 @@
                         })
 
                         TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[INFO] start -> writeFiles -> writeVolumes -> creating file at filePath = " + filePath + " using " + storage.constructor.name);
+                            "[INFO] writeFiles -> Creating volumes file: " + filePath + " using " + storage.constructor.name + " (" + fileRecordCounter + " records)");
 
                         function onFileCreated(err) {
 
@@ -681,7 +693,7 @@
                             }
 
                             TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                "[WARN] start -> writeFiles -> writeVolumes -> onFileCreated ->  Finished with File @ " + TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.baseAsset.referenceParent.config.codeName + "_" + TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.quotedAsset.referenceParent.config.codeName + ", " + fileRecordCounter + " records inserted into " + filePath + "/" + fileName);
+                                "[INFO] writeFiles -> VOLUMES SAVED: " + fileRecordCounter + " records for " + timeFrame + " -> " + filePath);
 
                             callBack()
                         }

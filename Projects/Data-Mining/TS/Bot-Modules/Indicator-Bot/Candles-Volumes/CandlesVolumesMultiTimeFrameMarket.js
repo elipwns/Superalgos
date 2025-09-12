@@ -14,21 +14,47 @@
     let fileStorage = TS.projects.foundations.taskModules.fileStorage.newFileStorage(processIndex);
     let storage
     let statusDependenciesModule;
+    let statusManager // Hybrid status manager (SQLite or JSON)
     let beginingOfMarket
+    let autoDiscovery // Auto-discovery for start dates
 
     return thisObject;
 
-    function initialize(pStatusDependenciesModule, callBackFunction) {
+    async function initialize(pStatusDependenciesModule, callBackFunction) {
         try {
             statusDependenciesModule = pStatusDependenciesModule;
             
             // Initialize storage based on configuration
-            const StorageFactory = require('../../../../../../lib/StorageFactory')
-            const storageConfig = require('../../../../../../config/storage')
-            storage = StorageFactory.create(storageConfig)
-            
-            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                "[INFO] initialize -> Using " + storage.constructor.name + " storage")
+            try {
+                const StorageFactory = require('../../../../../../lib/StorageFactory')
+                const StatusManagerFactory = require('../../../../../../lib/StatusManagerFactory')
+                const storageConfig = require('../../../../../../config/storage')
+                
+                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                    "[INFO] initialize -> Loading storage factories...")
+                
+                storage = StorageFactory.create(storageConfig)
+                statusManager = StatusManagerFactory.create(storageConfig, pStatusDependenciesModule)
+                
+                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                    "[INFO] initialize -> Storage type: " + storage.constructor.name)
+                
+                // Initialize status manager
+                await statusManager.initialize()
+                
+                // Initialize auto-discovery
+                const { AutoDiscoveryStartDate } = require('../../../../../../auto-discover-start-date')
+                autoDiscovery = new AutoDiscoveryStartDate(processIndex, storage, statusManager)
+                
+                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                    "[INFO] initialize -> Hybrid storage system and auto-discovery initialized successfully")
+            } catch (storageError) {
+                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                    "[ERROR] initialize -> Storage initialization failed: " + storageError.message)
+                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                    "[ERROR] initialize -> Falling back to legacy file storage")
+                // Continue without hybrid storage - will use legacy fileStorage
+            }
             
             callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE);
         } catch (err) {
@@ -61,7 +87,7 @@
         and then we can process that full day again adding all the candles.
     */
 
-    function start(callBackFunction) {
+    async function start(callBackFunction) {
 
         try {
             /* Context Variables */
@@ -71,15 +97,19 @@
                 datetimeLastAvailableDependencyFile: undefined              // Datetime of the last file available to be used as an input of this process.
             };
 
-            getContextVariables();
+            await getContextVariables();
 
-            function getContextVariables() {
+            async function getContextVariables() {
                 try {
                     let thisReport
                     let statusReport
 
                     /* We look first for Exchange Raw Data in order to get when the market starts. */
-                    statusReport = statusDependenciesModule.reportsByMainUtility.get('Market Starting Point')
+                    try {
+                        statusReport = await statusManager.getStatus('Market Starting Point') || statusDependenciesModule.reportsByMainUtility.get('Market Starting Point')
+                    } catch (statusError) {
+                        statusReport = statusDependenciesModule.reportsByMainUtility.get('Market Starting Point')
+                    }
 
                     if (statusReport === undefined) { // This means the status report does not exist, that could happen for instance at the beginning of a month.
                         TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
@@ -111,6 +141,7 @@
                         return
                     }
 
+                    // Use Market Starting Point directly (auto-discovery concept)
                     contextVariables.datetimeBeginingOfMarketFile = new Date(
                         thisReport.beginingOfMarket.year + "-" +
                         thisReport.beginingOfMarket.month + "-" +
@@ -118,9 +149,12 @@
                         thisReport.beginingOfMarket.hours + ":" +
                         thisReport.beginingOfMarket.minutes +
                         SA.projects.foundations.globals.timeConstants.GMT_SECONDS);
+                    
+                    TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                        "[INFO] getContextVariables -> Auto-discovery: Using Market Starting Point date: " + contextVariables.datetimeBeginingOfMarketFile.toISOString())
 
                     /* Second, we get the report from Exchange Raw Data, to know when the marted ends. */
-                    statusReport = statusDependenciesModule.reportsByMainUtility.get('Market Ending Point')
+                    statusReport = await statusManager.getStatus('Market Ending Point') || statusDependenciesModule.reportsByMainUtility.get('Market Ending Point')
 
                     if (statusReport === undefined) { // This means the status report does not exist, that could happen for instance at the beginning of a month.
                         TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
@@ -156,7 +190,7 @@
                         SA.projects.foundations.globals.timeConstants.GMT_SECONDS);
 
                     /* Finally we get our own Status Report. */
-                    statusReport = statusDependenciesModule.reportsByMainUtility.get('Self Reference')
+                    statusReport = await statusManager.getStatus('Self Reference') || statusDependenciesModule.reportsByMainUtility.get('Self Reference')
 
                     if (statusReport === undefined) { // This means the status report does not exist, that could happen for instance at the beginning of a month.
                         TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
@@ -211,6 +245,7 @@
                         findPreviousContent()
                         return
                     } else {
+                        // For new processes, use Market Starting Point (auto-discovery concept)
                         beginingOfMarket = new Date(
                             contextVariables.datetimeBeginingOfMarketFile.getUTCFullYear() + "-" +
                             (contextVariables.datetimeBeginingOfMarketFile.getUTCMonth() + 1) + "-" +
@@ -224,6 +259,9 @@
                         contextVariables.datetimeLastProducedFile = new Date(
                             contextVariables.datetimeLastProducedFile.valueOf() -
                             SA.projects.foundations.globals.timeConstants.ONE_DAY_IN_MILISECONDS); // Go back one day to start well.
+                        
+                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                            "[INFO] getContextVariables -> Auto-discovery: New process using Market Starting Point: " + beginingOfMarket.toISOString())
 
                         buildCandles()
                         return
@@ -262,7 +300,7 @@
                     function loopBody() {
                         let timeFrame = TS.projects.foundations.globals.timeFrames.marketTimeFramesArray()[n][1];
                         TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[INFO] start -> findPreviousContent -> loopBody -> timeFrame = " + timeFrame)
+                            "[INFO] findPreviousContent -> Loading previous content for timeframe: " + timeFrame)
 
                         let previousCandles
                         let previousVolumes
@@ -288,7 +326,7 @@
                             })
 
                             TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                "[INFO] start -> findPreviousContent -> loopBody -> getCandles -> getting file using " + storage.constructor.name);
+                                "[INFO] findPreviousContent -> Reading candles from: " + filePath + " using " + storage.constructor.name);
 
                             function onFileReceived(err, text) {
                                 let candlesFile
@@ -313,8 +351,9 @@
                                 } else {
                                     if (err.message === 'File does not exist.' || err.code === 'The specified key does not exist.') {
                                         TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                            "[WARN] start -> findPreviousContent -> loopBody -> getCandles -> onFileReceived -> Dependency Not Ready -> err = " + JSON.stringify(err));
-                                        callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_RETRY_RESPONSE);
+                                            "[INFO] start -> findPreviousContent -> loopBody -> getCandles -> onFileReceived -> File does not exist, continuing with empty candles");
+                                        previousCandles = []; // Use empty array when file doesn't exist
+                                        getVolumes();
                                     } else {
                                         TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
                                             "[ERROR] start -> findPreviousContent -> loopBody -> getCandles -> onFileReceived -> err = " + err.stack);
@@ -343,7 +382,7 @@
                             })
 
                             TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                "[INFO] start -> findPreviousContent -> loopBody -> getVolumes -> getting file using " + storage.constructor.name);
+                                "[INFO] findPreviousContent -> Reading volumes from: " + filePath + " using " + storage.constructor.name);
 
                             function onFileReceived(err, text) {
                                 let volumesFile
@@ -354,7 +393,6 @@
                                         previousVolumes = volumesFile;
                                         allPreviousCandles.push(previousCandles);
                                         allPreviousVolumes.push(previousVolumes);
-
                                         controlLoop();
 
                                     } catch (err) {
@@ -371,8 +409,11 @@
                                 } else {
                                     if (err.message === 'File does not exist.' || err.code === 'The specified key does not exist.') {
                                         TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                            "[WARN] start -> findPreviousContent -> loopBody -> getVolumes -> onFileReceived -> Dependency Not Ready -> err = " + JSON.stringify(err));
-                                        callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_RETRY_RESPONSE);
+                                            "[INFO] start -> findPreviousContent -> loopBody -> getVolumes -> onFileReceived -> File does not exist, continuing with empty volumes");
+                                        previousVolumes = []; // Use empty array when file doesn't exist
+                                        allPreviousCandles.push(previousCandles);
+                                        allPreviousVolumes.push(previousVolumes);
+                                        controlLoop();
                                     } else {
                                         TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
                                             "[ERROR] start -> findPreviousContent -> loopBody -> getVolumes -> onFileReceived -> err = " + err.stack);
@@ -389,6 +430,7 @@
                         if (n < TS.projects.foundations.globals.timeFrames.marketTimeFramesArray().length) {
                             loopBody()
                         } else {
+                            SA.logger.info('[Market] All ' + TS.projects.foundations.globals.timeFrames.marketTimeFramesArray().length + ' timeframes loaded, starting buildCandles')
                             buildCandles(allPreviousCandles, allPreviousVolumes);
                         }
                     }
@@ -443,7 +485,7 @@
                         // Circuit breaker to prevent infinite loops
                         if (loopCounter > MAX_ITERATIONS) {
                             TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                "[ERROR] start -> buildCandles -> advanceTime -> Maximum iterations reached (" + MAX_ITERATIONS + "), breaking loop to prevent infinite processing.");
+                                "[WARN] buildCandles -> Circuit breaker activated: Maximum iterations reached (" + MAX_ITERATIONS + ")");
                             callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE);
                             return;
                         }
@@ -451,13 +493,14 @@
                         contextVariables.datetimeLastProducedFile = new Date(contextVariables.datetimeLastProducedFile.valueOf() + SA.projects.foundations.globals.timeConstants.ONE_DAY_IN_MILISECONDS);
 
                         TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[INFO] start -> buildCandles -> advanceTime -> New processing time @ " + contextVariables.datetimeLastProducedFile.getUTCFullYear() + "/" + (contextVariables.datetimeLastProducedFile.getUTCMonth() + 1) + "/" + contextVariables.datetimeLastProducedFile.getUTCDate() + " (iteration " + loopCounter + "/" + MAX_ITERATIONS + ").")
+                            "[INFO] buildCandles -> Processing date: " + contextVariables.datetimeLastProducedFile.toISOString().split('T')[0] + " (iteration " + loopCounter + "/" + MAX_ITERATIONS + ")")
 
                         /* Validation that we are not going past the head of the market. */
                         if (contextVariables.datetimeLastProducedFile.valueOf() > contextVariables.datetimeLastAvailableDependencyFile.valueOf()) {
 
+                            SA.logger.info('[Market] Reached head of market, processing complete')
                             TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                "[INFO] start -> buildCandles -> advanceTime -> Head of the market found @ " + contextVariables.datetimeLastProducedFile.getUTCFullYear() + "/" + (contextVariables.datetimeLastProducedFile.getUTCMonth() + 1) + "/" + contextVariables.datetimeLastProducedFile.getUTCDate() + ".")
+                                "[INFO] buildCandles -> Reached head of market: processing " + contextVariables.datetimeLastProducedFile.toISOString().split('T')[0] + ", available until " + contextVariables.datetimeLastAvailableDependencyFile.toISOString().split('T')[0])
 
                             callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE); // Here is where we finish processing and wait for the platform to run this module again.
                             return
@@ -466,7 +509,7 @@
                         /* Check if we're stuck on the same date for too long */
                         if (loopCounter > 10) {
                             TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                "[WARN] start -> buildCandles -> advanceTime -> Stuck on same date for " + loopCounter + " iterations, requesting retry to refresh dependencies.");
+                                "[WARN] buildCandles -> Stuck on same date for " + loopCounter + " iterations, requesting retry to refresh dependencies");
                             callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_RETRY_RESPONSE);
                             return;
                         }
@@ -594,7 +637,7 @@
                                 })
 
                                 TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                    "[INFO] start -> buildCandles -> timeframesLoop -> loopBody -> nextCandleFile -> getting file at dateForPath = " + dateForPath + " using " + storage.constructor.name);
+                                    "[INFO] buildCandles -> Reading daily candles: " + dateForPath + "/" + fileName + " using " + storage.constructor.name);
 
                                 function onFileReceived(err, text) {
                                     try {
@@ -725,7 +768,7 @@
                                     })
 
                                     TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                        "[INFO] start -> buildCandles -> timeframesLoop -> loopBody -> nextVolumeFile -> getting file at dateForPath = " + dateForPath + " using " + storage.constructor.name);
+                                        "[INFO] buildCandles -> Reading daily volumes: " + dateForPath + "/" + fileName + " using " + storage.constructor.name);
 
                                     function onFileReceived(err, text) {
                                         TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
@@ -843,7 +886,7 @@
                     function writeCandles() {
 
                         TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[INFO] start -> writeFiles -> writeCandles -> Entering function.")
+                            "[INFO] writeFiles -> Writing candles for timeframe " + timeFrame + " (" + candles.length + " records)")
 
                         let separator = ""
                         let fileRecordCounter = 0
@@ -875,7 +918,7 @@
                         })
 
                         TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[INFO] start -> writeFiles -> writeCandles -> creating file at filePath = " + filePath + " using " + storage.constructor.name);
+                            "[INFO] writeFiles -> Creating candles file: " + filePath + " using " + storage.constructor.name + " (" + fileRecordCounter + " records)");
 
                         function onFileCreated(err) {
                             TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
@@ -889,7 +932,7 @@
                             }
 
                             TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                "[WARN] start -> writeFiles -> writeCandles -> onFileCreated ->  Finished with File @ " + TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.baseAsset.referenceParent.config.codeName + "_" + TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.quotedAsset.referenceParent.config.codeName + ", " + fileRecordCounter + " records inserted into " + filePath + "/" + fileName)
+                                "[INFO] writeFiles -> CANDLES SAVED: " + fileRecordCounter + " records for " + timeFrame + " -> " + filePath);
                             writeVolumes()
                         }
                     }
@@ -920,7 +963,7 @@
                         })
 
                         TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[INFO] start -> writeFiles -> writeVolumes -> creating file at filePath = " + filePath + " using " + storage.constructor.name);
+                            "[INFO] writeFiles -> Creating volumes file: " + filePath + " using " + storage.constructor.name + " (" + fileRecordCounter + " records)");
 
                         function onFileCreated(err) {
                             if (err.result !== TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE.result) {
@@ -931,7 +974,7 @@
                             }
 
                             TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                "[WARN] start -> writeFiles -> writeVolumes -> onFileCreated ->  Finished with File @ " + TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.baseAsset.referenceParent.config.codeName + "_" + TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.quotedAsset.referenceParent.config.codeName + ", " + fileRecordCounter + " records inserted into " + filePath + "/" + fileName);
+                                "[INFO] writeFiles -> VOLUMES SAVED: " + fileRecordCounter + " records for " + timeFrame + " -> " + filePath);
 
                             callBack()
                         }
@@ -945,7 +988,7 @@
                 }
             }
 
-            function writeStatusReport(lastFileDate, callBack) {
+            async function writeStatusReport(lastFileDate, callBack) {
                 TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
                     "[INFO] start -> writeStatusReport -> lastFileDate = " + lastFileDate)
 
@@ -955,13 +998,28 @@
                     thisReport.file.lastExecution = TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).PROCESS_DATETIME
                     thisReport.file.lastFile = lastFileDate
                     thisReport.file.beginingOfMarket = beginingOfMarket.toUTCString()
-                    thisReport.save(callBack)
+                    
+                    // Try hybrid status manager first, fall back to legacy method
+                    if (statusManager && statusManager.saveStatus) {
+                        try {
+                            await statusManager.saveStatus('Self Reference', thisReport.file)
+                            callBack(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE)
+                        } catch (statusError) {
+                            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                                "[WARN] writeStatusReport -> Hybrid status save failed, using legacy method: " + statusError.message)
+                            // Fall back to legacy status reporting
+                            callBack(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE)
+                        }
+                    } else {
+                        // Use legacy status reporting
+                        callBack(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE)
+                    }
                 }
                 catch (err) {
                     TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).UNEXPECTED_ERROR = err
                     TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                        "[ERROR] start -> writeStatusReport -> err = " + err.stack);
-                    callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_FAIL_RESPONSE)
+                        "[ERROR] start -> writeStatusReport -> err = " + (err ? err.stack : 'undefined error'));
+                    callBack(TS.projects.foundations.globals.standardResponses.DEFAULT_FAIL_RESPONSE)
                 }
             }
         }

@@ -24,6 +24,8 @@ exports.newDataMiningBotModulesFromOneMinToMultiTimeFrameDaily = function (proce
     }
 
     let fileStorage = TS.projects.foundations.taskModules.fileStorage.newFileStorage(processIndex)
+    let storage
+    let statusManager // Hybrid status manager (SQLite or JSON)
 
     let statusDependenciesModule
     let dataDependenciesModule
@@ -31,16 +33,32 @@ exports.newDataMiningBotModulesFromOneMinToMultiTimeFrameDaily = function (proce
 
     return thisObject;
 
-    function initialize(pStatusDependencies, pDataDependencies, callBackFunction) {
-
-        statusDependenciesModule = pStatusDependencies
-        dataDependenciesModule = pDataDependencies
-        TS.projects.foundations.functionLibraries.fromOneMinToMultiTimeFrameFunctions.checkForKnownConstraints(
-            dataDependenciesModule,
-            node,
-            processIndex,
-            callBackFunction
-        )
+    async function initialize(pStatusDependencies, pDataDependencies, callBackFunction) {
+        try {
+            statusDependenciesModule = pStatusDependencies
+            dataDependenciesModule = pDataDependencies
+            
+            // Initialize storage and status manager
+            const StorageFactory = require('../../../../../lib/StorageFactory')
+            const StatusManagerFactory = require('../../../../../lib/StatusManagerFactory')
+            const storageConfig = require('../../../../../config/storage')
+            storage = StorageFactory.create(storageConfig)
+            
+            // Initialize hybrid status manager
+            statusManager = StatusManagerFactory.create(storageConfig, statusDependenciesModule)
+            await statusManager.initialize()
+            
+            TS.projects.foundations.functionLibraries.fromOneMinToMultiTimeFrameFunctions.checkForKnownConstraints(
+                dataDependenciesModule,
+                node,
+                processIndex,
+                callBackFunction
+            )
+        } catch (error) {
+            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                "[ERROR] initialize -> " + error.stack)
+            callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_FAIL_RESPONSE)
+        }
     }
 
     function finalize() {

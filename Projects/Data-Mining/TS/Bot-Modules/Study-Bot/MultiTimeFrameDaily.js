@@ -14,9 +14,11 @@
     
     // Initialize storage abstraction
     const StorageFactory = require('../../../../../lib/StorageFactory')
-    let storage = StorageFactory.createStorage()
+    const storageConfig = require('../../../../../config/storage')
+    let storage = StorageFactory.create(storageConfig)
 
     let statusDependenciesModule
+    let statusManager // Hybrid status manager (SQLite or JSON)
     let dataDependenciesModule
     let dataFiles = new Map
     let studyOutputModule
@@ -25,14 +27,28 @@
 
     return thisObject;
 
-    function initialize(pStatusDependencies, pDataDependenciesModule, callBackFunction) {
-        statusDependenciesModule = pStatusDependencies
-        dataDependenciesModule = pDataDependenciesModule
+    async function initialize(pStatusDependencies, pDataDependenciesModule, callBackFunction) {
+        try {
+            statusDependenciesModule = pStatusDependencies
+            dataDependenciesModule = pDataDependenciesModule
 
-        TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).ARE_WE_PROCESSING_DAILY_FILES = true
+            // Initialize hybrid status manager
+            const StatusManagerFactory = require('../../../../../lib/StatusManagerFactory')
+            const storageConfig = require('../../../../../config/storage')
+            statusManager = StatusManagerFactory.create(storageConfig, statusDependenciesModule)
+            
+            // Initialize status manager
+            await statusManager.initialize()
 
-        studyOutputModule = TS.projects.dataMining.botModules.studyOutput.newDataMiningBotModulesStudyOutput(processIndex)
-        studyOutputModule.initialize(callBackFunction)
+            TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).ARE_WE_PROCESSING_DAILY_FILES = true
+
+            studyOutputModule = TS.projects.dataMining.botModules.studyOutput.newDataMiningBotModulesStudyOutput(processIndex)
+            studyOutputModule.initialize(callBackFunction)
+        } catch (err) {
+            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                "[ERROR] initialize -> err = " + err.stack)
+            callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_FAIL_RESPONSE)
+        }
     }
 
     function finalize() {

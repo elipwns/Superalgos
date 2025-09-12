@@ -12,14 +12,26 @@
 
     let statusDependenciesModule
     let fileStorage = TS.projects.foundations.taskModules.fileStorage.newFileStorage(processIndex)
+    let storage
+    let statusManager // Hybrid status manager (SQLite or JSON)
 
     return thisObject
 
-    function initialize(pStatusDependenciesModule, callBackFunction) {
+    async function initialize(pStatusDependenciesModule, callBackFunction) {
         try {
             statusDependenciesModule = pStatusDependenciesModule;
+            
+            // Initialize storage and status manager
+            const StorageFactory = require('../../../../../../lib/StorageFactory')
+            const StatusManagerFactory = require('../../../../../../lib/StatusManagerFactory')
+            const storageConfig = require('../../../../../../config/storage')
+            storage = StorageFactory.create(storageConfig)
+            
+            // Initialize hybrid status manager
+            statusManager = StatusManagerFactory.create(storageConfig, statusDependenciesModule)
+            await statusManager.initialize()
+            
             callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE);
-
         } catch (err) {
             TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).UNEXPECTED_ERROR = err
             TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,

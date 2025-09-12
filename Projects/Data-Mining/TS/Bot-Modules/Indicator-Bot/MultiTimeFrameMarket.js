@@ -12,6 +12,7 @@
 
     let fileStorage = TS.projects.foundations.taskModules.fileStorage.newFileStorage(processIndex)
     let storage
+    let statusManager // Hybrid status manager (SQLite or JSON)
 
     let statusDependenciesModule
     let dataDependenciesModule
@@ -20,21 +21,31 @@
 
     return thisObject;
 
-    function initialize(pStatusDependencies, pDataDependenciesModule, callBackFunction) {
+    async function initialize(pStatusDependencies, pDataDependenciesModule, callBackFunction) {
+        try {
+            statusDependenciesModule = pStatusDependencies
+            dataDependenciesModule = pDataDependenciesModule
 
-        statusDependenciesModule = pStatusDependencies
-        dataDependenciesModule = pDataDependenciesModule
+            // Initialize storage based on configuration
+            const StorageFactory = require('../../../../../lib/StorageFactory')
+            const StatusManagerFactory = require('../../../../../lib/StatusManagerFactory')
+            const storageConfig = require('../../../../../config/storage')
+            storage = StorageFactory.create(storageConfig)
+            
+            // Initialize hybrid status manager
+            statusManager = StatusManagerFactory.create(storageConfig, statusDependenciesModule)
+            await statusManager.initialize()
+            
+            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                "[INFO] initialize -> Using " + storage.constructor.name + " storage")
 
-        // Initialize storage based on configuration
-        const StorageFactory = require('../../../../../lib/StorageFactory')
-        const storageConfig = require('../../../../../config/storage')
-        storage = StorageFactory.create(storageConfig)
-        
-        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-            "[INFO] initialize -> Using " + storage.constructor.name + " storage")
-
-        indicatorOutputModule = TS.projects.dataMining.botModules.indicatorOutput.newDataMiningBotModulesIndicatorOutput(processIndex)
-        indicatorOutputModule.initialize(callBackFunction)
+            indicatorOutputModule = TS.projects.dataMining.botModules.indicatorOutput.newDataMiningBotModulesIndicatorOutput(processIndex)
+            indicatorOutputModule.initialize(callBackFunction)
+        } catch (error) {
+            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                "[ERROR] initialize -> " + error.stack)
+            callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_FAIL_RESPONSE)
+        }
     }
 
     function finalize() {

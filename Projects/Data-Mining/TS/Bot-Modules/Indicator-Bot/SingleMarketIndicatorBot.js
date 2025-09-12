@@ -9,10 +9,12 @@
 
     let nextLoopTimeoutHandle
     let botModuleObject
+    let storage
+    let statusManager // Hybrid status manager (SQLite or JSON)
 
     return thisObject
 
-    function initialize(callBackFunction) {
+    async function initialize(callBackFunction) {
         try {
             /* We will check that we have received all the nodes needed to run this bot. */
             if (TS.projects.foundations.functionLibraries.singleMarketFunctions.checkUpstreamOfTaskNode(processIndex) === false) {
@@ -22,6 +24,12 @@
 
             /* Here we setup the path prefix that will be used when writing data or logs to disk. */
             TS.projects.foundations.functionLibraries.singleMarketFunctions.initializeFilePathRoot(processIndex)
+            
+            // Initialize storage and status manager
+            const StorageFactory = require('../../../../../lib/StorageFactory')
+            const StatusManagerFactory = require('../../../../../lib/StatusManagerFactory')
+            const storageConfig = require('../../../../../config/storage')
+            storage = StorageFactory.create(storageConfig)
 
             /*
             Bots can be defined at the UI, using one of the available existing frameworks for that,

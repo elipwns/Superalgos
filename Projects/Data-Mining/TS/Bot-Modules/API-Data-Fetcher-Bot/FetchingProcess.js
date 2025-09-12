@@ -11,14 +11,27 @@ exports.newDataMiningBotModulesFetchingProcess = function (processIndex) {
     };
 
     let fileStorage = TS.projects.foundations.taskModules.fileStorage.newFileStorage(processIndex)
+    let storage
     let statusDependencies
+    let statusManager // Hybrid status manager (SQLite or JSON)
     let lastQueryRun                                                                                     // This holds the epoch value of the last run value passed to the query string.
 
     return thisObject;
 
-    function initialize(pStatusDependencies, callBackFunction) {
+    async function initialize(pStatusDependencies, callBackFunction) {
         try {
             statusDependencies = pStatusDependencies;
+            
+            // Initialize storage based on configuration
+            const StorageFactory = require('../../../../../../lib/StorageFactory')
+            const StatusManagerFactory = require('../../../../../../lib/StatusManagerFactory')
+            const storageConfig = require('../../../../../../config/storage')
+            storage = StorageFactory.create(storageConfig)
+            statusManager = StatusManagerFactory.create(storageConfig, statusDependencies)
+            
+            // Initialize status manager
+            await statusManager.initialize()
+            
             callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE)
         } catch (err) {
             TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).UNEXPECTED_ERROR = err
