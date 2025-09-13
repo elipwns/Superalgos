@@ -63,11 +63,13 @@
 
             function processTimeFrames() {
                 let n;
+                console.log('[TRACE] processTimeFrames: Starting timeFramesLoop');
                 timeFramesLoop()
 
                 function timeFramesLoop() {
                     /* We will iterate through all possible timeFrames.*/
                     n = 0   // loop Variable representing each possible period as defined at the timeFrames array.
+                    console.log('[TRACE] timeFramesLoop: Entered, n =', n);
                     timeFramesLoopBody()
                 }
 
@@ -76,6 +78,7 @@
                     const timeFrameLabel = TS.projects.foundations.globals.timeFrames.marketTimeFramesArray()[n][1]
 
                     /* Check Time Frames Filter */
+                    console.log('[TRACE] timeFramesLoopBody: Processing timeFrame', timeFrameLabel);
                     if (TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.timeFramesFilter !== undefined) {
                         if (TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.timeFramesFilter.config.marketTimeFrames !== undefined) {
                             if (TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.timeFramesFilter.config.marketTimeFrames.includes(timeFrameLabel) === false) {
@@ -92,12 +95,14 @@
                     dependencyLoopBody()
 
                     function dependencyLoopBody() {
+                        console.log('[TRACE] dependencyLoopBody: dependencyIndex =', dependencyIndex);
                         let dependency = dataDependenciesModule.curatedDependencyNodeArray[dependencyIndex]
                         let datasetModule = dataDependenciesModule.dataSetsModulesArray[dependencyIndex]
 
                         getFile()
 
                         function getFile() {
+                            console.log('[TRACE] getFile: Getting file for dependency', dependency && dependency.id, 'at index', dependencyIndex);
                             let fileName = "Data.json";
                             let filePath
 
@@ -115,10 +120,12 @@
                             function onFileReceived(err, text) {
                                 if (err.result !== TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE.result) {
                                     if (err.message === "File does not exist.") {
+                                        console.log('[TRACE] onFileReceived: File does not exist for dependency', dependency && dependency.id, 'at index', dependencyIndex);
                                         // Wait silently for dependency files to be created by other bots
                                         callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_RETRY_RESPONSE)
                                         return
                                     }
+                                    console.log('[ERROR] onFileReceived: Error loading file for dependency', dependency && dependency.id, 'err =', err);
                                     TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
                                         "[ERROR] start -> processTimeFrames -> timeFramesLoopBody -> dependencyLoopBody -> getFile -> onFileReceived -> err = " + JSON.stringify(err))
                                     callBackFunction(err)
@@ -127,7 +134,7 @@
 
                                 let dataFile = JSON.parse(text)
                                 dataFiles.set(dependency.id, dataFile)
-
+                                console.log('[TRACE] onFileReceived: Successfully loaded file for dependency', dependency && dependency.id);
                                 dependencyControlLoop()
                             }
                         }
@@ -142,6 +149,7 @@
                         }
 
                         function generateOutput() {
+                            console.log('[TRACE] generateOutput: Starting indicatorOutputModule for timeFrame', timeFrameLabel);
                             indicatorOutputModule.start(
                                 dataFiles,
                                 timeFrame,
@@ -152,9 +160,11 @@
 
                             function onOutputGenerated(err) {
                                 if (err.result !== TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE.result) {
+                                    console.log('[ERROR] onOutputGenerated: Error in indicatorOutputModule for timeFrame', timeFrameLabel, 'err =', err);
                                     callBackFunction(err)
                                     return;
                                 }
+                                console.log('[TRACE] onOutputGenerated: Success for timeFrame', timeFrameLabel);
                                 timeFramesControlLoop()
                             }
                         }
@@ -164,10 +174,13 @@
                 function timeFramesControlLoop() {
                     n++;
                     if (n < TS.projects.foundations.globals.timeFrames.marketTimeFramesArray().length) {
+                        console.log('[TRACE] timeFramesControlLoop: Next timeFrame, n =', n);
                         timeFramesLoopBody()
                     } else {
+                        console.log('[TRACE] timeFramesControlLoop: All timeFrames processed, writing files.');
                         writeTimeFramesFiles(onTimeFrameFilesWritten)
                         function onTimeFrameFilesWritten() {
+                            console.log('[TRACE] onTimeFrameFilesWritten: About to write status report.');
                             writeStatusReport(callBackFunction)
                         }
                     }
@@ -175,6 +188,7 @@
             }
 
             function writeTimeFramesFiles(callBack) {
+                console.log('[TRACE] writeTimeFramesFiles: Writing output datasets.');
                 let outputDatasets =
                     SA.projects.visualScripting.utilities.nodeFunctions.nodeBranchToArray(TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.processOutput, 'Output Dataset')
                 let outputDatasetIndex = -1;
@@ -196,6 +210,7 @@
             }
 
             function writeTimeFramesFile(productCodeName, callBack) {
+                console.log('[TRACE] writeTimeFramesFile: Writing for product', productCodeName);
 
                 let timeFramesArray = []
                 for (let n = 0; n < TS.projects.foundations.globals.timeFrames.marketTimeFramesArray().length; n++) {
@@ -222,25 +237,34 @@
 
                 // Try storage abstraction first, fall back to fileStorage for backwards compatibility
                 storage.writeFile(filePath, fileContent + '\n').then(() => {
+                    console.log('[TRACE] writeTimeFramesFile: storage.writeFile success for', filePath);
                     onFileCreated(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE)
                 }).catch(err => {
+                    console.log('[ERROR] writeTimeFramesFile: storage.writeFile failed for', filePath, 'err =', err);
                     // Fall back to fileStorage for backwards compatibility
                     fileStorage.createTextFile(filePath, fileContent + '\n', onFileCreated)
                 })
 
                 function onFileCreated(err) {
                     if (err.result !== TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE.result) {
+                        console.log('[ERROR] onFileCreated: Failed to create file for product', productCodeName, 'err =', err);
                         TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
                             "[ERROR] start -> writeTimeFramesFile -> onFileCreated -> err = " + err.stack)
                         callBack(err)
                         return
                     }
+                    console.log('[TRACE] onFileCreated: File created for product', productCodeName);
                     callBack()
                 }
             }
 
             function writeStatusReport(callBack) {
+                console.log('[TRACE] writeStatusReport: Entered.');
                 let thisReport = statusDependenciesModule.reportsByMainUtility.get('Self Reference')
+
+                console.log(`[TEMP] writeStatusReport: About to log and save status. lastExecution:`, TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).PROCESS_DATETIME)
+                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                    `[DEBUG] writeStatusReport -> About to save status. lastExecution: ${TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).PROCESS_DATETIME}`)
 
                 thisReport.file.lastExecution = TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).PROCESS_DATETIME;
                 if (TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.timeFramesFilter !== undefined) {
@@ -248,7 +272,20 @@
                         thisReport.file.timeFrames = TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.timeFramesFilter.config.marketTimeFrames
                     }
                 }
-                thisReport.save(callBack)
+
+                thisReport.save(function(err) {
+                    console.log(`[TRACE] writeStatusReport: After save callback. err:`, err)
+                    if (err && err.result !== TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE.result) {
+                        console.log('[ERROR] writeStatusReport: Failed to save status. err =', err);
+                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                            `[ERROR] writeStatusReport -> Failed to save status: ${JSON.stringify(err)}`)
+                    } else {
+                        console.log('[TRACE] writeStatusReport: Status saved successfully.');
+                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                            `[DEBUG] writeStatusReport -> Status saved successfully.`)
+                    }
+                    if (typeof callBack === 'function') callBack(err)
+                })
 
                 if (TS.projects.foundations.utilities.dateTimeFunctions.areTheseDatesEqual(TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).PROCESS_DATETIME, new Date()) === false) {
                     TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.newInternalLoop(TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).PROCESS_DATETIME)

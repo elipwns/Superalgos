@@ -1,1033 +1,399 @@
-﻿exports.newDataMiningBotModulesCandlesVolumesMultiTimeFrameMarket = function (processIndex) {
-
-    const MODULE_NAME = "Candles Volumes Multi Time Frame Market"
-    const CANDLES_FOLDER_NAME = "Candles"
-    const CANDLES_ONE_MIN = "One-Min"
-    const VOLUMES_FOLDER_NAME = "Volumes"
-    const VOLUMES_ONE_MIN = "One-Min"
+exports.newDataMiningBotModulesCandlesVolumesMultiTimeFrameMarket = function (processIndex) {
+    const MODULE_NAME = "Candles Volumes Multi Time Frame Market";
+    const CANDLES_FOLDER_NAME = "Candles";
+    const VOLUMES_FOLDER_NAME = "Volumes";
 
     let thisObject = {
         initialize: initialize,
         start: start
-    }
+    };
 
     let fileStorage = TS.projects.foundations.taskModules.fileStorage.newFileStorage(processIndex);
-    let storage
+    let storage;
     let statusDependenciesModule;
-    let statusManager // Hybrid status manager (SQLite or JSON)
-    let beginingOfMarket
-    let autoDiscovery // Auto-discovery for start dates
+    let statusManager;
+    let beginingOfMarket;
 
-    return thisObject;
-
-    async function initialize(pStatusDependenciesModule, callBackFunction) {
+    function initialize(context, callback) {
         try {
-            statusDependenciesModule = pStatusDependenciesModule;
-            
-            // Initialize storage based on configuration
-            try {
-                const StorageFactory = require('../../../../../../lib/StorageFactory')
-                const StatusManagerFactory = require('../../../../../../lib/StatusManagerFactory')
-                const storageConfig = require('../../../../../../config/storage')
-                
-                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                    "[INFO] initialize -> Loading storage factories...")
-                
-                storage = StorageFactory.create(storageConfig)
-                statusManager = StatusManagerFactory.create(storageConfig, pStatusDependenciesModule)
-                
-                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                    "[INFO] initialize -> Storage type: " + storage.constructor.name)
-                
-                // Initialize status manager
-                await statusManager.initialize()
-                
-                // Initialize auto-discovery
-                const { AutoDiscoveryStartDate } = require('../../../../../../auto-discover-start-date')
-                autoDiscovery = new AutoDiscoveryStartDate(processIndex, storage, statusManager)
-                
-                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                    "[INFO] initialize -> Hybrid storage system and auto-discovery initialized successfully")
-            } catch (storageError) {
-                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                    "[ERROR] initialize -> Storage initialization failed: " + storageError.message)
-                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                    "[ERROR] initialize -> Falling back to legacy file storage")
-                // Continue without hybrid storage - will use legacy fileStorage
+            storage = fileStorage; // Default to fileStorage
+            if (
+                !TS.projects ||
+                !TS.projects.foundations ||
+                !TS.projects.foundations.taskModules ||
+                !TS.projects.foundations.taskModules.statusDependencies ||
+                !TS.projects.foundations.taskModules.statusDependencies.newStatusDependencies
+            ) {
+                const errMsg = "[ERROR] statusDependencies module is not loaded or TS object is incomplete.";
+                if (typeof callback === 'function') {
+                    callback(new Error(errMsg));
+                }
+                throw new Error(errMsg);
             }
-            
-            callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE);
+            statusDependenciesModule = TS.projects.foundations.taskModules.statusDependencies.newStatusDependencies(processIndex);
+            if (typeof callback === 'function') {
+                callback(null);
+            }
         } catch (err) {
-            TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).UNEXPECTED_ERROR = err
-            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                "[ERROR] initialize -> err = " + err.stack);
-            callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_FAIL_RESPONSE);
+            if (typeof callback === 'function') {
+                callback(err);
+            } else {
+                throw err;
+            }
         }
     }
 
-    /*
-        This process is going to do the following:
-    
-        Read the candles and volumes from Exchange Raw Data and produce a single Index File 
-        for Market Period. But this is the situation:
-    
-        Exchange Raw Data has a dataset organized with daily files with candles of 1 min. 
-        Candles Volumes is writing in this process a single file for each timeFrame for the whole market.
-        Everytime this process run, must be able to resume its job and process everything pending until 
-        reaching the head of the market. So the tactic to do this is the
-        following:
-    
-        1. First we need to read the last file written by this process, and load all the information into 
-        in-memory arrays. We will then append to this arrays the new information we will get from Exchange Raw Data.
-    
-        2. We know from our status report which was the last DAY we processed from Exchange Raw Data, 
-        but we must be carefully, because that day might  not have been completed yet, if the
-        last loop found the head of the market. That means that we have to be carefull not to append candles 
-        that are already there. To simplify what we do is to discard all candles of the last processed day, 
-        and then we can process that full day again adding all the candles.
-    */
-
-    async function start(callBackFunction) {
-
+    function start(callBackFunction) {
         try {
-            /* Context Variables */
+            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                "[INFO] start -> Entering function.");
+
             let contextVariables = {
-                datetimeLastProducedFile: undefined,                        // Datetime of the last file files successfully produced by this process.
-                datetimeBeginingOfMarketFile: undefined,                    // Datetime of the first trade file in the whole market history.
-                datetimeLastAvailableDependencyFile: undefined              // Datetime of the last file available to be used as an input of this process.
+                datetimeLastProducedFile: undefined,
+                datetimeLastAvailableDependencyFile: undefined,
+                datetimeBeginingOfMarketFile: undefined
             };
 
-            await getContextVariables();
+            getContextVariables();
 
-            async function getContextVariables() {
+            function getContextVariables() {
                 try {
-                    let thisReport
-                    let statusReport
+                    let thisReport;
+                    let statusReport = statusDependenciesModule.reportsByMainUtility.get('Self Reference');
 
-                    /* We look first for Exchange Raw Data in order to get when the market starts. */
-                    try {
-                        statusReport = await statusManager.getStatus('Market Starting Point') || statusDependenciesModule.reportsByMainUtility.get('Market Starting Point')
-                    } catch (statusError) {
-                        statusReport = statusDependenciesModule.reportsByMainUtility.get('Market Starting Point')
-                    }
-
-                    if (statusReport === undefined) { // This means the status report does not exist, that could happen for instance at the beginning of a month.
-                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[WARN] start -> getContextVariables -> Status Report does not exist. Retrying Later. ");
-                        callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_RETRY_RESPONSE);
-                        return
-                    }
-
-                    if (statusReport.status === "Status Report is corrupt.") {
-                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[ERROR] start -> getContextVariables -> Can not continue because dependency Status Report is corrupt. ");
-                        callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_RETRY_RESPONSE);
-                        return
-                    }
-
-                    thisReport = statusReport.file
-
-                    if (thisReport.beginingOfMarket === undefined) {
-                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[HINT] start -> getContextVariables -> It is too early too run this process since the trade history of the market is not there yet.");
-
-                        let customOK = {
-                            result: TS.projects.foundations.globals.standardResponses.CUSTOM_OK_RESPONSE.result,
-                            message: "Dependency does not exist."
+                    if (statusReport !== undefined) {
+                        thisReport = statusReport.file;
+                        if (thisReport.lastFile !== undefined) {
+                            contextVariables.datetimeLastProducedFile = new Date(thisReport.lastFile);
                         }
-                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[WARN] start -> getContextVariables -> customOK = " + customOK.message);
-                        callBackFunction(customOK)
-                        return
-                    }
-
-                    // Use Market Starting Point directly (auto-discovery concept)
-                    contextVariables.datetimeBeginingOfMarketFile = new Date(
-                        thisReport.beginingOfMarket.year + "-" +
-                        thisReport.beginingOfMarket.month + "-" +
-                        thisReport.beginingOfMarket.days + " " +
-                        thisReport.beginingOfMarket.hours + ":" +
-                        thisReport.beginingOfMarket.minutes +
-                        SA.projects.foundations.globals.timeConstants.GMT_SECONDS);
-                    
-                    TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                        "[INFO] getContextVariables -> Auto-discovery: Using Market Starting Point date: " + contextVariables.datetimeBeginingOfMarketFile.toISOString())
-
-                    /* Second, we get the report from Exchange Raw Data, to know when the marted ends. */
-                    statusReport = await statusManager.getStatus('Market Ending Point') || statusDependenciesModule.reportsByMainUtility.get('Market Ending Point')
-
-                    if (statusReport === undefined) { // This means the status report does not exist, that could happen for instance at the beginning of a month.
-                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[WARN] start -> getContextVariables -> Status Report does not exist. Retrying Later. ");
-                        callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_RETRY_RESPONSE);
-                        return;
-                    }
-
-                    if (statusReport.status === "Status Report is corrupt.") {
-                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[ERROR] start -> getContextVariables -> Can not continue because dependency Status Report is corrupt. ");
-                        callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_RETRY_RESPONSE);
-                        return;
-                    }
-
-                    thisReport = statusReport.file
-
-                    if (thisReport.lastFile === undefined) {
-                        let customOK = {
-                            result: TS.projects.foundations.globals.standardResponses.CUSTOM_OK_RESPONSE.result,
-                            message: "Dependency not ready."
+                        if (thisReport.beginingOfMarket !== undefined) {
+                            beginingOfMarket = new Date(thisReport.beginingOfMarket);
                         }
-                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[WARN] start -> getContextVariables -> customOK = " + customOK.message);
-                        callBackFunction(customOK);
-                        return;
                     }
 
-                    contextVariables.datetimeLastAvailableDependencyFile = new Date(
-                        thisReport.lastFile.year + "-" +
-                        thisReport.lastFile.month + "-" +
-                        thisReport.lastFile.days + " " + "00:00" +
-                        SA.projects.foundations.globals.timeConstants.GMT_SECONDS);
+                    let dependencyIndex = 0;
+                    getDependencies();
 
-                    /* Finally we get our own Status Report. */
-                    statusReport = await statusManager.getStatus('Self Reference') || statusDependenciesModule.reportsByMainUtility.get('Self Reference')
+                    function getDependencies() {
+                        let dependency = TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.processDependencies.dependencies[dependencyIndex];
+                        let report = statusDependenciesModule.reportsByMainUtility.get(dependency.referenceParent.parentNode.config.codeName);
 
-                    if (statusReport === undefined) { // This means the status report does not exist, that could happen for instance at the beginning of a month.
-                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[WARN] start -> getContextVariables -> Status Report does not exist. Retrying Later. ");
-                        callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_RETRY_RESPONSE);
-                        return
-                    }
-
-                    if (statusReport.status === "Status Report is corrupt.") {
-                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[ERROR] start -> getContextVariables -> Can not continue because self dependency Status Report is corrupt. Aborting Process.");
-                        callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_FAIL_RESPONSE);
-                        return
-                    }
-
-                    thisReport = statusReport.file
-
-                    if (thisReport.lastFile !== undefined) {
-
-                        beginingOfMarket = new Date(thisReport.beginingOfMarket);
-
-                        if (beginingOfMarket.valueOf() !== contextVariables.datetimeBeginingOfMarketFile.valueOf()) { // Reset Mechanism for Beginning of the Market
-
-                            beginingOfMarket = new Date(
-                                contextVariables.datetimeBeginingOfMarketFile.getUTCFullYear() + "-" +
-                                (contextVariables.datetimeBeginingOfMarketFile.getUTCMonth() + 1) + "-" +
-                                contextVariables.datetimeBeginingOfMarketFile.getUTCDate() + " " + "00:00" +
-                                SA.projects.foundations.globals.timeConstants.GMT_SECONDS);
-                            contextVariables.datetimeLastProducedFile = new Date(
-                                contextVariables.datetimeBeginingOfMarketFile.getUTCFullYear() + "-" +
-                                (contextVariables.datetimeBeginingOfMarketFile.getUTCMonth() + 1) + "-" +
-                                contextVariables.datetimeBeginingOfMarketFile.getUTCDate() + " " + "00:00" +
-                                SA.projects.foundations.globals.timeConstants.GMT_SECONDS);
-                            contextVariables.datetimeLastProducedFile = new Date(
-                                contextVariables.datetimeLastProducedFile.valueOf() -
-                                SA.projects.foundations.globals.timeConstants.ONE_DAY_IN_MILISECONDS); // Go back one day to start well.
-
-                            buildCandles()
-                            return
+                        if (report === undefined) {
+                            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                                "[ERROR] Dependency not found: " + dependency.referenceParent.parentNode.config.codeName);
+                            callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_FAIL_RESPONSE);
+                            return;
                         }
 
-                        contextVariables.datetimeLastProducedFile = new Date(thisReport.lastFile);
+                        if (report.file.lastFile === undefined) {
+                            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
+                                "[WARN] Dependency has no data: " + dependency.referenceParent.parentNode.config.codeName);
+                            callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_RETRY_RESPONSE);
+                            return;
+                        }
 
-                        /*
-                        Here we assume that the last day written might contain incomplete information. 
-                        This actually happens every time the head of the market is reached.
-                        For that reason we go back one day, the partial information is discarded and 
-                        added again with whatever new info is available.
-                        */
-                        contextVariables.datetimeLastProducedFile = new Date(contextVariables.datetimeLastProducedFile.valueOf() - SA.projects.foundations.globals.timeConstants.ONE_DAY_IN_MILISECONDS);
+                        let dependencyDate = new Date(report.file.lastFile);
+                        if (contextVariables.datetimeLastAvailableDependencyFile === undefined) {
+                            contextVariables.datetimeLastAvailableDependencyFile = dependencyDate;
+                        } else {
+                            if (dependencyDate.valueOf() < contextVariables.datetimeLastAvailableDependencyFile.valueOf()) {
+                                contextVariables.datetimeLastAvailableDependencyFile = dependencyDate;
+                            }
+                        }
 
-                        findPreviousContent()
-                        return
-                    } else {
-                        // For new processes, use Market Starting Point (auto-discovery concept)
-                        beginingOfMarket = new Date(
-                            contextVariables.datetimeBeginingOfMarketFile.getUTCFullYear() + "-" +
-                            (contextVariables.datetimeBeginingOfMarketFile.getUTCMonth() + 1) + "-" +
-                            contextVariables.datetimeBeginingOfMarketFile.getUTCDate() + " " + "00:00" +
-                            SA.projects.foundations.globals.timeConstants.GMT_SECONDS);
-                        contextVariables.datetimeLastProducedFile = new Date(
-                            contextVariables.datetimeBeginingOfMarketFile.getUTCFullYear() + "-" +
-                            (contextVariables.datetimeBeginingOfMarketFile.getUTCMonth() + 1) + "-" +
-                            contextVariables.datetimeBeginingOfMarketFile.getUTCDate() + " " + "00:00" +
-                            SA.projects.foundations.globals.timeConstants.GMT_SECONDS);
-                        contextVariables.datetimeLastProducedFile = new Date(
-                            contextVariables.datetimeLastProducedFile.valueOf() -
-                            SA.projects.foundations.globals.timeConstants.ONE_DAY_IN_MILISECONDS); // Go back one day to start well.
-                        
-                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[INFO] getContextVariables -> Auto-discovery: New process using Market Starting Point: " + beginingOfMarket.toISOString())
+                        dependencyIndex++;
+                        if (dependencyIndex < TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.processDependencies.dependencies.length) {
+                            getDependencies();
+                        } else {
+                            startProcessing();
+                        }
+                    }
 
-                        buildCandles()
-                        return
+                    function startProcessing() {
+                        if (contextVariables.datetimeLastProducedFile === undefined) {
+                            contextVariables.datetimeLastProducedFile = new Date(contextVariables.datetimeLastAvailableDependencyFile.valueOf() - SA.projects.foundations.globals.timeConstants.ONE_DAY_IN_MILISECONDS);
+                        }
+
+                        if (beginingOfMarket === undefined) {
+                            beginingOfMarket = new Date(contextVariables.datetimeLastAvailableDependencyFile);
+                        }
+
+                        findPreviousContent();
                     }
 
                 } catch (err) {
-                    TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).UNEXPECTED_ERROR = err
+                    TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).UNEXPECTED_ERROR = err;
                     TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                        "[ERROR] start -> getContextVariables -> err = " + err.stack);
-                    if (err.message === "Cannot read property 'file' of undefined") {
-                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[HINT] start -> getContextVariables -> Check the bot configuration to see if all of its statusDependenciesModule declarations are correct. ");
-                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[HINT] start -> getContextVariables -> Dependencies loaded -> keys = " + JSON.stringify(statusDependenciesModule.keys));
-                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[HINT] start -> getContextVariables -> Dependencies loaded -> Double check that you are not running a process that only can be run at noTime mode at a certain month when it is not prepared to do so.");
-                    }
+                        "[ERROR] getContextVariables -> err = " + err.stack);
                     callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_FAIL_RESPONSE);
                 }
             }
 
             function findPreviousContent() {
-                /*
-                This is where we read the current files we have produced at previous runs 
-                of this same process. We just read all the content and organize it
-                in arrays and keep them in memory.
-                */
                 try {
-                    let n = 0   // loop Variable representing each possible period as defined at the Time Frame Array.
+                    let n = 0;
+                    let allPreviousCandles = [];
+                    let allPreviousVolumes = [];
 
-                    let allPreviousCandles = [] // Each item of this array is an array of candles for a certain time frame
-                    let allPreviousVolumes = [] // Each item of this array is an array of volumes for a certain time frame
-
-                    loopBody()
+                    loopBody();
 
                     function loopBody() {
                         let timeFrame = TS.projects.foundations.globals.timeFrames.marketTimeFramesArray()[n][1];
-                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[INFO] findPreviousContent -> Loading previous content for timeframe: " + timeFrame)
-
-                        let previousCandles
-                        let previousVolumes
-
-                        getCandles()
+                        
+                        getCandles();
 
                         function getCandles() {
                             let fileName = 'Data.json';
-                            let filePath =
-                                TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).FILE_PATH_ROOT +
-                                "/Output/" +
-                                CANDLES_FOLDER_NAME + "/" +
+                            let filePath = TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).FILE_PATH_ROOT +
+                                "/Output/" + CANDLES_FOLDER_NAME + "/" +
                                 TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.config.codeName + "/" +
-                                timeFrame;
-                            filePath += '/' + fileName
+                                timeFrame + '/' + fileName;
 
-                            // Try storage abstraction first, fall back to fileStorage for backwards compatibility
                             storage.readFile(filePath).then(text => {
-                                onFileReceived(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE, text)
+                                onFileReceived(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE, text);
                             }).catch(err => {
-                                // Fall back to fileStorage for backwards compatibility
                                 fileStorage.getTextFile(filePath, onFileReceived);
-                            })
-
-                            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                "[INFO] findPreviousContent -> Reading candles from: " + filePath + " using " + storage.constructor.name);
+                            });
 
                             function onFileReceived(err, text) {
-                                let candlesFile
-
+                                let previousCandles = [];
+                                
                                 if (err.result === TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE.result) {
                                     try {
-                                        candlesFile = JSON.parse(text);
-                                        previousCandles = candlesFile;
-                                        getVolumes();
-
-                                    } catch (err) {
+                                        previousCandles = JSON.parse(text);
+                                    } catch (parseErr) {
                                         TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                            "[ERROR] start -> findPreviousContent -> loopBody -> getCandles -> onFileReceived -> fileName = " + fileName);
-                                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                            "[ERROR] start -> findPreviousContent -> loopBody -> getCandles -> onFileReceived -> filePath = " + filePath);
-                                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                            "[ERROR] start -> findPreviousContent -> loopBody -> getCandles -> onFileReceived -> err = " + err.stack);
-                                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                            "[ERROR] start -> findPreviousContent -> loopBody -> getCandles -> onFileReceived -> Assuming this is a temporary situation. Requesting a Retry.");
+                                            "[ERROR] Failed to parse candles file: " + parseErr.stack);
                                         callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_RETRY_RESPONSE);
-                                    }
-                                } else {
-                                    if (err.message === 'File does not exist.' || err.code === 'The specified key does not exist.') {
-                                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                            "[INFO] start -> findPreviousContent -> loopBody -> getCandles -> onFileReceived -> File does not exist, continuing with empty candles");
-                                        previousCandles = []; // Use empty array when file doesn't exist
-                                        getVolumes();
-                                    } else {
-                                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                            "[ERROR] start -> findPreviousContent -> loopBody -> getCandles -> onFileReceived -> err = " + err.stack);
-                                        callBackFunction(err);
+                                        return;
                                     }
                                 }
+
+                                getVolumes(previousCandles);
                             }
                         }
 
-                        function getVolumes() {
+                        function getVolumes(previousCandles) {
                             let fileName = 'Data.json';
-                            let filePath =
-                                TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).FILE_PATH_ROOT +
-                                "/Output/" +
-                                VOLUMES_FOLDER_NAME + "/" +
+                            let filePath = TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).FILE_PATH_ROOT +
+                                "/Output/" + VOLUMES_FOLDER_NAME + "/" +
                                 TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.config.codeName + "/" +
-                                timeFrame;
-                            filePath += '/' + fileName
+                                timeFrame + '/' + fileName;
 
-                            // Try storage abstraction first, fall back to fileStorage for backwards compatibility
                             storage.readFile(filePath).then(text => {
-                                onFileReceived(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE, text)
+                                onFileReceived(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE, text);
                             }).catch(err => {
-                                // Fall back to fileStorage for backwards compatibility
                                 fileStorage.getTextFile(filePath, onFileReceived);
-                            })
-
-                            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                "[INFO] findPreviousContent -> Reading volumes from: " + filePath + " using " + storage.constructor.name);
+                            });
 
                             function onFileReceived(err, text) {
-                                let volumesFile
-
+                                let previousVolumes = [];
+                                
                                 if (err.result === TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE.result) {
                                     try {
-                                        volumesFile = JSON.parse(text);
-                                        previousVolumes = volumesFile;
-                                        allPreviousCandles.push(previousCandles);
-                                        allPreviousVolumes.push(previousVolumes);
-                                        controlLoop();
-
-                                    } catch (err) {
+                                        previousVolumes = JSON.parse(text);
+                                    } catch (parseErr) {
                                         TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                            "[ERROR] start -> findPreviousContent -> loopBody -> getVolumes -> onFileReceived -> fileName = " + fileName);
-                                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                            "[ERROR] start -> findPreviousContent -> loopBody -> getVolumes -> onFileReceived -> filePath = " + filePath);
-                                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                            "[ERROR] start -> findPreviousContent -> loopBody -> getVolumes -> onFileReceived -> err = " + err.stack);
-                                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                            "[ERROR] start -> findPreviousContent -> loopBody -> getVolumes -> onFileReceived -> Assuming this is a temporary situation. Requesting a Retry.");
+                                            "[ERROR] Failed to parse volumes file: " + parseErr.stack);
                                         callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_RETRY_RESPONSE);
-                                    }
-                                } else {
-                                    if (err.message === 'File does not exist.' || err.code === 'The specified key does not exist.') {
-                                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                            "[INFO] start -> findPreviousContent -> loopBody -> getVolumes -> onFileReceived -> File does not exist, continuing with empty volumes");
-                                        previousVolumes = []; // Use empty array when file doesn't exist
-                                        allPreviousCandles.push(previousCandles);
-                                        allPreviousVolumes.push(previousVolumes);
-                                        controlLoop();
-                                    } else {
-                                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                            "[ERROR] start -> findPreviousContent -> loopBody -> getVolumes -> onFileReceived -> err = " + err.stack);
-                                        callBackFunction(err);
+                                        return;
                                     }
                                 }
+
+                                allPreviousCandles.push(previousCandles);
+                                allPreviousVolumes.push(previousVolumes);
+                                controlLoop();
                             }
                         }
-
                     }
 
                     function controlLoop() {
-                        n++
+                        n++;
                         if (n < TS.projects.foundations.globals.timeFrames.marketTimeFramesArray().length) {
-                            loopBody()
+                            loopBody();
                         } else {
-                            SA.logger.info('[Market] All ' + TS.projects.foundations.globals.timeFrames.marketTimeFramesArray().length + ' timeframes loaded, starting buildCandles')
                             buildCandles(allPreviousCandles, allPreviousVolumes);
                         }
                     }
-                }
-                catch (err) {
-                    TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).UNEXPECTED_ERROR = err
+
+                } catch (err) {
+                    TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).UNEXPECTED_ERROR = err;
                     TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                        "[ERROR] start -> findPreviousContent -> err = " + err.stack);
+                        "[ERROR] findPreviousContent -> err = " + err.stack);
                     callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_FAIL_RESPONSE);
                 }
             }
 
             function buildCandles(allPreviousCandles, allPreviousVolumes) {
-
                 try {
-                    let fromDate = new Date(contextVariables.datetimeLastProducedFile.valueOf())
-                    let lastDate = TS.projects.foundations.utilities.dateTimeFunctions.removeTime(new Date())
-                    /*
-                    Firstly we prepare the arrays that will accumulate all the information for each output file.
-                    */
+                    let fromDate = new Date(contextVariables.datetimeLastProducedFile.valueOf());
                     let outputCandles = [];
                     let outputVolumes = [];
-                    let loopCounter = 0;
-                    const MAX_ITERATIONS = 1000; // Circuit breaker to prevent infinite loops
 
                     for (let n = 0; n < TS.projects.foundations.globals.timeFrames.marketTimeFramesArray().length; n++) {
-                        const emptyArray1 = [];
-                        const emptyArray2 = [];
-                        outputCandles.push(emptyArray1);
-                        outputVolumes.push(emptyArray2);
+                        outputCandles.push([]);
+                        outputVolumes.push([]);
                     }
 
-                    advanceTime()
+                    advanceTime();
 
                     function advanceTime() {
-                        /*
-                        We position ourselves on the latest date that was added to the market files
-                        since we are going to re-process that date, removing first the elements of that 
-                        date and then adding again all the elements found right now at that date and then
-                        from there into the future.
-                        */
-                        loopCounter++;
-                        
-                        // Check if task is stopping
-                        if (TS.projects.foundations.globals.taskVariables.IS_TASK_STOPPING === true) {
-                            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                "[INFO] start -> buildCandles -> advanceTime -> Task stopping requested, exiting gracefully.");
-                            callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE);
-                            return;
-                        }
-                        
-                        // Circuit breaker to prevent infinite loops
-                        if (loopCounter > MAX_ITERATIONS) {
-                            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                "[WARN] buildCandles -> Circuit breaker activated: Maximum iterations reached (" + MAX_ITERATIONS + ")");
-                            callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE);
-                            return;
-                        }
-                        
                         contextVariables.datetimeLastProducedFile = new Date(contextVariables.datetimeLastProducedFile.valueOf() + SA.projects.foundations.globals.timeConstants.ONE_DAY_IN_MILISECONDS);
 
-                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[INFO] buildCandles -> Processing date: " + contextVariables.datetimeLastProducedFile.toISOString().split('T')[0] + " (iteration " + loopCounter + "/" + MAX_ITERATIONS + ")")
-
-                        /* Validation that we are not going past the head of the market. */
                         if (contextVariables.datetimeLastProducedFile.valueOf() > contextVariables.datetimeLastAvailableDependencyFile.valueOf()) {
-
-                            SA.logger.info('[Market] Reached head of market, processing complete')
-                            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                "[INFO] buildCandles -> Reached head of market: processing " + contextVariables.datetimeLastProducedFile.toISOString().split('T')[0] + ", available until " + contextVariables.datetimeLastAvailableDependencyFile.toISOString().split('T')[0])
-
-                            callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE); // Here is where we finish processing and wait for the platform to run this module again.
-                            return
-                        }
-                        
-                        /* Check if we're stuck on the same date for too long */
-                        if (loopCounter > 10) {
-                            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                "[WARN] buildCandles -> Stuck on same date for " + loopCounter + " iterations, requesting retry to refresh dependencies");
-                            callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_RETRY_RESPONSE);
+                            callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE);
                             return;
                         }
 
-                        /*  Telling the world we are alive and doing well */
-                        let currentDateString =
-                            contextVariables.datetimeLastProducedFile.getUTCFullYear() + '-' +
+                        let currentDateString = contextVariables.datetimeLastProducedFile.getUTCFullYear() + '-' +
                             SA.projects.foundations.utilities.miscellaneousFunctions.pad(contextVariables.datetimeLastProducedFile.getUTCMonth() + 1, 2) + '-' +
                             SA.projects.foundations.utilities.miscellaneousFunctions.pad(contextVariables.datetimeLastProducedFile.getUTCDate(), 2);
-                        let currentDate = new Date(contextVariables.datetimeLastProducedFile)
-                        let percentage = TS.projects.foundations.utilities.dateTimeFunctions.getPercentage(fromDate, currentDate, lastDate)
-                        TS.projects.foundations.functionLibraries.processFunctions.processHeartBeat(processIndex, currentDateString, percentage)
 
-                        if (TS.projects.foundations.utilities.dateTimeFunctions.areTheseDatesEqual(currentDate, new Date()) === false) {
-                            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.newInternalLoop(currentDate, percentage);
-                        }
-                        timeframesLoop()
+                        let currentDate = new Date(contextVariables.datetimeLastProducedFile);
+                        let percentage = TS.projects.foundations.utilities.dateTimeFunctions.getPercentage(fromDate, currentDate, new Date());
+                        TS.projects.foundations.functionLibraries.processFunctions.processHeartBeat(processIndex, currentDateString, percentage);
+
+                        timeframesLoop();
                     }
 
                     function timeframesLoop() {
-                        /*
-                        We will iterate through all possible time frames.
-                        */
-                        let n = 0   // loop Variable representing each possible period as defined at the Time Frame Array.
+                        let n = 0;
+                        processNextTimeFrame();
 
-                        loopBody()
-
-                        function loopBody() {
-                            let previousCandles // This is an array with all the elements already existing for a certain time frame.
-                            let previousVolumes
-
-                            if (allPreviousCandles !== undefined) {
-                                previousCandles = allPreviousCandles[n];
-                                previousVolumes = allPreviousVolumes[n];
+                        function processNextTimeFrame() {
+                            if (n >= TS.projects.foundations.globals.timeFrames.marketTimeFramesArray().length) {
+                                writeStatusReport(contextVariables.datetimeLastProducedFile, advanceTime);
+                                return;
                             }
 
-                            const outputPeriod = TS.projects.foundations.globals.timeFrames.marketTimeFramesArray()[n][0];
-                            const timeFrame = TS.projects.foundations.globals.timeFrames.marketTimeFramesArray()[n][1];
-                            /*
-                            Here we are inside a Loop that is going to advance 1 day at the time, 
-                            at each pass, we will read one of Exchange Raw Data's daily files and
-                            add all its candles to our in memory arrays. 
-                            
-                            At the first iteration of this loop, we will add the candles that we are carrying
-                            from our previous run, the ones we already have in-memory. 
-
-                            You can see below how we discard the elements that
-                            belong to the first day we are processing at this run, 
-                            that it is exactly the same as the last day processed the previous
-                            run. By discarding these candles, we are ready to run after that standard 
-                            function that will just add ALL the candles found each day at Exchange Raw Data.
-                            */
-                            if (previousCandles !== undefined && previousCandles.length !== 0) {
-                                for (let i = 0; i < previousCandles.length; i++) {
-                                    let candle = {
-                                        open: previousCandles[i][2],
-                                        close: previousCandles[i][3],
-                                        min: previousCandles[i][0],
-                                        max: previousCandles[i][1],
-                                        begin: previousCandles[i][4],
-                                        end: previousCandles[i][5]
-                                    }
-
-                                    if (candle.end < contextVariables.datetimeLastProducedFile.valueOf()) {
-                                        outputCandles[n].push(candle);
-                                    } else {
-                                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                            "[INFO] start -> buildCandles -> timeframesLoop -> loopBody -> Candle # " + i + " @ " + timeFrame + " discarded for closing past the current process time.")
-                                    }
-                                }
-                                allPreviousCandles[n] = [] // erasing these so as not to duplicate them.
-                            }
-
-                            if (previousVolumes !== undefined && previousVolumes.length !== 0) {
-
-                                for (let i = 0; i < previousVolumes.length; i++) {
-                                    let volume = {
-                                        begin: previousVolumes[i][2],
-                                        end: previousVolumes[i][3],
-                                        buy: previousVolumes[i][0],
-                                        sell: previousVolumes[i][1]
-                                    }
-
-                                    if (volume.end < contextVariables.datetimeLastProducedFile.valueOf()) {
-
-                                        outputVolumes[n].push(volume);
-
-                                    } else {
-                                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                            "[INFO] start -> buildCandles -> timeframesLoop -> loopBody -> Volume # " + i + " @ " + timeFrame + " discarded for closing past the current process time.")
-                                    }
-                                }
-                                allPreviousVolumes[n] = []; // erasing these so as not to duplicate them.
-                            }
-                            /*
-                            From here on is where every iteration of the loop fully runs. Here is where we 
-                            read Exchange Raw Data's files and add their content to whatever
-                            we already have in our arrays in-memory. In this way the process will run as 
-                            many days needed and it should only stop when it reaches
-                            the head of the market.
-                            */
-                            nextCandleFile();
-
-                            function nextCandleFile() {
-                                let dateForPath = contextVariables.datetimeLastProducedFile.getUTCFullYear() + '/' + SA.projects.foundations.utilities.miscellaneousFunctions.pad(contextVariables.datetimeLastProducedFile.getUTCMonth() + 1, 2) + '/' + SA.projects.foundations.utilities.miscellaneousFunctions.pad(contextVariables.datetimeLastProducedFile.getUTCDate(), 2);
-                                let fileName = "Data.json"
-
-                                let filePathRoot =
-                                    'Project/' +
-                                    TS.projects.foundations.globals.taskConstants.PROJECT_DEFINITION_NODE.config.codeName + "/" +
-                                    TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.parentNode.parentNode.type.replace(' ', '-') + "/" +
-                                    TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.parentNode.parentNode.config.codeName + "/" +
-                                    "Exchange-Raw-Data" + '/' + TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.parentNode.parentNode.config.codeName + "/" +
-                                    TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.baseAsset.referenceParent.config.codeName + "-" +
-                                    TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.quotedAsset.referenceParent.config.codeName
-                                let filePath = filePathRoot + "/Output/" + CANDLES_FOLDER_NAME + '/' + CANDLES_ONE_MIN + '/' + dateForPath;
-                                filePath += '/' + fileName
-
-                                // Try storage abstraction first, fall back to fileStorage for backwards compatibility
-                                storage.readFile(filePath).then(text => {
-                                    onFileReceived(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE, text)
-                                }).catch(err => {
-                                    // Fall back to fileStorage for backwards compatibility
-                                    fileStorage.getTextFile(filePath, onFileReceived);
-                                })
-
-                                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                    "[INFO] buildCandles -> Reading daily candles: " + dateForPath + "/" + fileName + " using " + storage.constructor.name);
-
-                                function onFileReceived(err, text) {
-                                    try {
-                                        let candlesFile
-
-                                        if (err.result === TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE.result) {
-                                            try {
-                                                candlesFile = JSON.parse(text);
-                                            } catch (err) {
-                                                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                                    "[ERROR] start -> buildCandles -> timeframesLoop -> loopBody -> nextCandleFile -> onFileReceived -> Error Parsing JSON -> err = " + err.stack);
-                                                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                                    "[ERROR] start -> buildCandles -> timeframesLoop -> loopBody -> nextCandleFile -> onFileReceived -> Assuming this is a temporary situation. Requesting a Retry.");
-                                                callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_RETRY_RESPONSE);
-                                                return
-                                            }
-                                        } else {
-
-                                            if (err.message === 'File does not exist.' || err.code === 'The specified key does not exist.') {
-
-                                                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                                    "[WARN] start -> buildCandles -> timeframesLoop -> loopBody -> nextCandleFile -> onFileReceived -> Dependency file missing, skipping this timeframe -> " + timeFrame);
-                                                // Skip this timeframe and continue with next one instead of retrying
-                                                controlLoop();
-                                                return
-
-                                            } else {
-                                                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                                    "[ERROR] start -> buildCandles -> timeframesLoop -> loopBody -> nextCandleFile -> onFileReceived -> Error Received -> err = " + err.stack);
-                                                callBackFunction(err)
-                                                return
-                                            }
-                                        }
-
-                                        const inputCandlesPerdiod = 60 * 1000;              // 1 min
-                                        const inputFilePeriod = 24 * 60 * 60 * 1000;        // 24 hs
-                                        let totalOutputCandles = inputFilePeriod / outputPeriod; // this should be 2 in this case.
-                                        let beginingOutputTime = contextVariables.datetimeLastProducedFile.valueOf();
-                                        /*
-                                        The algorithm that follows is going to aggregate candles of 1 min timeFrame read from Exchange Raw Data, into candles of each timeFrame
-                                        that Candles Volumes generates. For market files those time periods goes from 1h to 24hs.
-                                        */
-                                        for (let i = 0; i < totalOutputCandles; i++) {
-
-                                            let outputCandle = {
-                                                open: 0,
-                                                close: 0,
-                                                min: 0,
-                                                max: 0,
-                                                begin: 0,
-                                                end: 0
-                                            };
-
-                                            let saveCandle = false;
-                                            outputCandle.begin = beginingOutputTime + i * outputPeriod;
-                                            outputCandle.end = beginingOutputTime + (i + 1) * outputPeriod - 1;
-
-                                            for (let j = 0; j < candlesFile.length; j++) {
-                                                let candle = {
-                                                    open: candlesFile[j][2],
-                                                    close: candlesFile[j][3],
-                                                    min: candlesFile[j][0],
-                                                    max: candlesFile[j][1],
-                                                    begin: candlesFile[j][4],
-                                                    end: candlesFile[j][5]
-                                                }
-                                                /* Here we discard all the candles out of range.  */
-                                                if (candle.begin >= outputCandle.begin && candle.end <= outputCandle.end) {
-
-                                                    if (saveCandle === false) { // this will set the value only once.
-                                                        outputCandle.open = candle.open;
-                                                        outputCandle.min = candle.min;
-                                                        outputCandle.max = candle.max;
-                                                    }
-
-                                                    saveCandle = true;
-                                                    outputCandle.close = candle.close;      // only the last one will be saved
-                                                    if (candle.min < outputCandle.min) {
-                                                        outputCandle.min = candle.min;
-                                                    }
-                                                    if (candle.max > outputCandle.max) {
-                                                        outputCandle.max = candle.max;
-                                                    }
-                                                }
-                                            }
-                                            if (saveCandle === true) {      // then we have a valid candle, otherwise it means there were no candles to fill this one in its time range.
-                                                outputCandles[n].push(outputCandle);
-                                            }
-                                        }
-                                        nextVolumeFile();
-
-                                    } catch (err) {
-                                        TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).UNEXPECTED_ERROR = err
-                                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                            "[ERROR] start -> buildCandles -> timeframesLoop -> loopBody -> nextCandleFile -> onFileReceived -> err = " + err.stack);
-                                        callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_FAIL_RESPONSE);
-                                    }
-                                }
-                            }
-
-                            function nextVolumeFile() {
-                                try {
-                                    TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                        "[INFO] start -> buildCandles -> timeframesLoop -> loopBody -> nextVolumeFile -> Entering function.")
-
-                                    let dateForPath =
-                                        contextVariables.datetimeLastProducedFile.getUTCFullYear() + '/' +
-                                        SA.projects.foundations.utilities.miscellaneousFunctions.pad(contextVariables.datetimeLastProducedFile.getUTCMonth() + 1, 2) + '/' +
-                                        SA.projects.foundations.utilities.miscellaneousFunctions.pad(contextVariables.datetimeLastProducedFile.getUTCDate(), 2);
-                                    let fileName = "Data.json"
-
-                                    let filePathRoot =
-                                        'Project/' +
-                                        TS.projects.foundations.globals.taskConstants.PROJECT_DEFINITION_NODE.config.codeName + "/" +
-                                        TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.parentNode.parentNode.type.replace(' ', '-') + "/" +
-                                        TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.parentNode.parentNode.config.codeName + "/" +
-                                        "Exchange-Raw-Data" + '/' + TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.parentNode.parentNode.config.codeName + "/" +
-                                        TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.baseAsset.referenceParent.config.codeName + "-" +
-                                        TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.quotedAsset.referenceParent.config.codeName
-                                    let filePath = filePathRoot + "/Output/" + VOLUMES_FOLDER_NAME + '/' + VOLUMES_ONE_MIN + '/' + dateForPath;
-                                    filePath += '/' + fileName
-                                    // Try storage abstraction first, fall back to fileStorage for backwards compatibility
-                                    storage.readFile(filePath).then(text => {
-                                        onFileReceived(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE, text)
-                                    }).catch(err => {
-                                        // Fall back to fileStorage for backwards compatibility
-                                        fileStorage.getTextFile(filePath, onFileReceived);
-                                    })
-
-                                    TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                        "[INFO] buildCandles -> Reading daily volumes: " + dateForPath + "/" + fileName + " using " + storage.constructor.name);
-
-                                    function onFileReceived(err, text) {
-                                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                            "[INFO] start -> buildCandles -> timeframesLoop -> loopBody -> nextVolumeFile -> onFileReceived -> Entering function.")
-
-                                        let volumesFile
-                                        if (err.result === TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE.result) {
-                                            try {
-                                                volumesFile = JSON.parse(text);
-
-                                            } catch (err) {
-                                                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                                    "[ERROR] start -> buildCandles -> timeframesLoop -> loopBody -> nextVolumeFile -> onFileReceived -> Error Parsing JSON -> err = " + err.stack);
-                                                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                                    "[ERROR] start -> buildCandles -> timeframesLoop -> loopBody -> nextVolumeFile -> onFileReceived -> Assuming this is a temporary situation. Requesting a Retry.");
-                                                callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_RETRY_RESPONSE);
-                                                return;
-                                            }
-                                        } else {
-                                            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                                "[ERROR] start -> buildCandles -> timeframesLoop -> loopBody -> nextVolumeFile -> onFileReceived -> Error Received -> err = " + err.stack);
-                                            callBackFunction(err);
-                                            return;
-                                        }
-                                        const inputFilePeriod = 24 * 60 * 60 * 1000;        // 24 hs
-
-                                        let totalOutputVolumes = inputFilePeriod / outputPeriod; // this should be 2 in this case.
-                                        let beginingOutputTime = contextVariables.datetimeLastProducedFile.valueOf();
-
-                                        for (let i = 0; i < totalOutputVolumes; i++) {
-                                            let outputVolume = {
-                                                buy: 0,
-                                                sell: 0,
-                                                begin: 0,
-                                                end: 0
-                                            }
-
-                                            let saveVolume = false;
-                                            outputVolume.begin = beginingOutputTime + i * outputPeriod;
-                                            outputVolume.end = beginingOutputTime + (i + 1) * outputPeriod - 1;
-
-                                            for (let j = 0; j < volumesFile.length; j++) {
-                                                let volume = {
-                                                    buy: volumesFile[j][0],
-                                                    sell: volumesFile[j][1],
-                                                    begin: volumesFile[j][2],
-                                                    end: volumesFile[j][3]
-                                                }
-
-                                                /* Here we discard all the Volumes out of range.  */
-                                                if (volume.begin >= outputVolume.begin && volume.end <= outputVolume.end) {
-
-                                                    saveVolume = true;
-
-                                                    outputVolume.buy = outputVolume.buy + volume.buy;
-                                                    outputVolume.sell = outputVolume.sell + volume.sell;
-                                                }
-                                            }
-
-                                            if (saveVolume === true) {
-                                                outputVolumes[n].push(outputVolume);
-                                            }
-                                        }
-
-                                        writeFiles(outputCandles[n], outputVolumes[n], timeFrame, controlLoop);
-                                    }
-                                } catch (err) {
-                                    TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).UNEXPECTED_ERROR = err
-                                    TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                        "[ERROR] start -> buildCandles -> timeframesLoop -> loopBody -> nextVolumeFile -> onFileReceived -> err = " + err.stack);
-                                    callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_FAIL_RESPONSE);
-                                }
-                            }
-                        }
-
-                        function controlLoop() {
-
-                            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                "[INFO] start -> buildCandles -> timeframesLoop -> controlLoop -> Entering function.")
-                            n++
-                            if (n < TS.projects.foundations.globals.timeFrames.marketTimeFramesArray().length) {
-                                loopBody()
-                            } else {
-                                writeStatusReport(contextVariables.datetimeLastProducedFile, function(err) {
-                                    if (err.result !== TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE.result) {
-                                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                            "[ERROR] start -> buildCandles -> timeframesLoop -> controlLoop -> writeStatusReport -> err = " + err.stack);
-                                        callBackFunction(err);
-                                        return;
-                                    }
-                                    // Add a small delay to prevent tight loops and allow other processes to run
-                                    setTimeout(advanceTime, 100);
-                                });
-                            }
+                            let timeFrame = TS.projects.foundations.globals.timeFrames.marketTimeFramesArray()[n][1];
+                            writeFiles(outputCandles[n], outputVolumes[n], timeFrame, () => {
+                                n++;
+                                processNextTimeFrame();
+                            });
                         }
                     }
-                }
-                catch (err) {
+
+                } catch (err) {
+                    TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).UNEXPECTED_ERROR = err;
                     TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                        "[ERROR] start -> buildCandles -> err = " + err.stack);
+                        "[ERROR] buildCandles -> err = " + err.stack);
                     callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_FAIL_RESPONSE);
                 }
             }
 
             function writeFiles(candles, volumes, timeFrame, callBack) {
-
-                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                    "[INFO] start -> writeFiles -> Entering function.")
-                /*
-                Here we will write the contents of the Candles and Volumes files.
-                */
                 try {
-                    writeCandles()
+                    writeCandles();
 
                     function writeCandles() {
-
-                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[INFO] writeFiles -> Writing candles for timeframe " + timeFrame + " (" + candles.length + " records)")
-
-                        let separator = ""
-                        let fileRecordCounter = 0
-                        let fileContent = ""
+                        let separator = "";
+                        let fileContent = "";
 
                         for (let i = 0; i < candles.length; i++) {
-                            let candle = candles[i];
                             fileContent = fileContent + separator + '[' + candles[i].min + "," + candles[i].max + "," + candles[i].open + "," + candles[i].close + "," + candles[i].begin + "," + candles[i].end + "]";
                             if (separator === "") { separator = ","; }
-                            fileRecordCounter++
                         }
 
                         fileContent = "[" + fileContent + "]";
 
                         let fileName = 'Data.json';
                         let filePath = TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).FILE_PATH_ROOT +
-                            "/Output/" +
-                            CANDLES_FOLDER_NAME + "/" +
+                            "/Output/" + CANDLES_FOLDER_NAME + "/" +
                             TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.config.codeName + "/" +
-                            timeFrame
-                        filePath += '/' + fileName
+                            timeFrame + '/' + fileName;
 
-                        // Try storage abstraction first, fall back to fileStorage for backwards compatibility
                         storage.writeFile(filePath, fileContent + '\n').then(() => {
-                            onFileCreated(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE)
+                            onFileCreated(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE);
                         }).catch(err => {
-                            // Fall back to fileStorage for backwards compatibility
                             fileStorage.createTextFile(filePath, fileContent + '\n', onFileCreated);
-                        })
-
-                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[INFO] writeFiles -> Creating candles file: " + filePath + " using " + storage.constructor.name + " (" + fileRecordCounter + " records)");
+                        });
 
                         function onFileCreated(err) {
-                            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                "[INFO] start -> writeFiles -> writeCandles -> onFileCreated -> Entering function.")
-
                             if (err.result !== TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE.result) {
-                                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                    "[ERROR] start -> writeFiles -> writeCandles -> onFileCreated -> err = " + err.stack)
-                                callBackFunction(err)
-                                return
+                                callBackFunction(err);
+                                return;
                             }
-
-                            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                "[INFO] writeFiles -> CANDLES SAVED: " + fileRecordCounter + " records for " + timeFrame + " -> " + filePath);
-                            writeVolumes()
+                            writeVolumes();
                         }
                     }
 
                     function writeVolumes() {
                         let separator = "";
-                        let fileRecordCounter = 0;
                         let fileContent = "";
 
                         for (let i = 0; i < volumes.length; i++) {
                             fileContent = fileContent + separator + '[' + volumes[i].buy + "," + volumes[i].sell + "," + volumes[i].begin + "," + volumes[i].end + "]";
                             if (separator === "") { separator = ","; }
-                            fileRecordCounter++
                         }
 
                         fileContent = "[" + fileContent + "]";
 
                         let fileName = 'Data.json';
-                        let filePath = TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).FILE_PATH_ROOT + "/Output/" + VOLUMES_FOLDER_NAME + "/" + TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.config.codeName + "/" + timeFrame;
-                        filePath += '/' + fileName
+                        let filePath = TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).FILE_PATH_ROOT +
+                            "/Output/" + VOLUMES_FOLDER_NAME + "/" +
+                            TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.config.codeName + "/" +
+                            timeFrame + '/' + fileName;
 
-                        // Try storage abstraction first, fall back to fileStorage for backwards compatibility
                         storage.writeFile(filePath, fileContent + '\n').then(() => {
-                            onFileCreated(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE)
+                            onFileCreated(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE);
                         }).catch(err => {
-                            // Fall back to fileStorage for backwards compatibility
                             fileStorage.createTextFile(filePath, fileContent + '\n', onFileCreated);
-                        })
-
-                        TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                            "[INFO] writeFiles -> Creating volumes file: " + filePath + " using " + storage.constructor.name + " (" + fileRecordCounter + " records)");
+                        });
 
                         function onFileCreated(err) {
                             if (err.result !== TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE.result) {
-                                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                    "[ERROR] start -> writeFiles -> writeVolumes -> onFileCreated -> err = " + err.stack);
                                 callBackFunction(err);
                                 return;
                             }
-
-                            TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                "[INFO] writeFiles -> VOLUMES SAVED: " + fileRecordCounter + " records for " + timeFrame + " -> " + filePath);
-
-                            callBack()
+                            callBack();
                         }
                     }
-                }
-                catch (err) {
-                    TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).UNEXPECTED_ERROR = err
+
+                } catch (err) {
+                    TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).UNEXPECTED_ERROR = err;
                     TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                        "[ERROR] start -> writeFiles -> err = " + err.stack);
+                        "[ERROR] writeFiles -> err = " + err.stack);
                     callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_FAIL_RESPONSE);
                 }
             }
 
             async function writeStatusReport(lastFileDate, callBack) {
-                TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                    "[INFO] start -> writeStatusReport -> lastFileDate = " + lastFileDate)
-
                 try {
-                    let thisReport = statusDependenciesModule.reportsByMainUtility.get('Self Reference')
+                    let thisReport = statusDependenciesModule.reportsByMainUtility.get('Self Reference');
 
-                    thisReport.file.lastExecution = TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).PROCESS_DATETIME
-                    thisReport.file.lastFile = lastFileDate
-                    thisReport.file.beginingOfMarket = beginingOfMarket.toUTCString()
+                    thisReport.file.lastExecution = TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).PROCESS_DATETIME;
+                    thisReport.file.lastFile = lastFileDate;
+                    thisReport.file.beginingOfMarket = beginingOfMarket.toUTCString();
                     
-                    // Try hybrid status manager first, fall back to legacy method
                     if (statusManager && statusManager.saveStatus) {
                         try {
-                            await statusManager.saveStatus('Self Reference', thisReport.file)
-                            callBack(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE)
+                            await statusManager.saveStatus('Self Reference', thisReport.file);
+                            callBack(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE);
                         } catch (statusError) {
                             TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                                "[WARN] writeStatusReport -> Hybrid status save failed, using legacy method: " + statusError.message)
-                            // Fall back to legacy status reporting
-                            callBack(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE)
+                                "[WARN] writeStatusReport -> Hybrid status save failed, using legacy method: " + statusError.message);
+                            callBack(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE);
                         }
                     } else {
-                        // Use legacy status reporting
-                        callBack(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE)
+                        callBack(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE);
                     }
-                }
-                catch (err) {
-                    TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).UNEXPECTED_ERROR = err
+
+                } catch (err) {
+                    TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).UNEXPECTED_ERROR = err;
                     TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
-                        "[ERROR] start -> writeStatusReport -> err = " + (err ? err.stack : 'undefined error'));
-                    callBack(TS.projects.foundations.globals.standardResponses.DEFAULT_FAIL_RESPONSE)
+                        "[ERROR] writeStatusReport -> err = " + (err ? err.stack : 'undefined error'));
+                    callBack(TS.projects.foundations.globals.standardResponses.DEFAULT_FAIL_RESPONSE);
                 }
             }
-        }
-        catch (err) {
-            TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).UNEXPECTED_ERROR = err
+
+        } catch (err) {
+            TS.projects.foundations.globals.processVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).UNEXPECTED_ERROR = err;
             TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME,
                 "[ERROR] start -> err = " + err.stack);
-            callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_FAIL_RESPONSE)
+            callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_FAIL_RESPONSE);
         }
     }
-}
+
+    return thisObject;
+};
