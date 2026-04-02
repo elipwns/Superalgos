@@ -15,31 +15,20 @@ exports.newDataMiningBotModulesCandlesVolumesMultiTimeFrameMarket = function (pr
     let beginingOfMarket;
 
     function initialize(context, callback) {
-        try {
-            storage = fileStorage; // Default to fileStorage
-            if (
-                !TS.projects ||
-                !TS.projects.foundations ||
-                !TS.projects.foundations.taskModules ||
-                !TS.projects.foundations.taskModules.statusDependencies ||
-                !TS.projects.foundations.taskModules.statusDependencies.newStatusDependencies
-            ) {
-                const errMsg = "[ERROR] statusDependencies module is not loaded or TS object is incomplete.";
-                if (typeof callback === 'function') {
-                    callback(new Error(errMsg));
-                }
-                throw new Error(errMsg);
+        if (
+            !TS.projects.foundations.processModules.statusDependencies ||
+            !TS.projects.foundations.processModules.statusDependencies.newFoundationsProcessModulesStatusDependencies
+        ) {
+            const errMsg = "[ERROR] statusDependencies module is not loaded or TS object is incomplete.";
+            if (callback) {
+                callback({ result: 'Error', message: errMsg });
             }
-            statusDependenciesModule = TS.projects.foundations.taskModules.statusDependencies.newStatusDependencies(processIndex);
-            if (typeof callback === 'function') {
-                callback(null);
-            }
-        } catch (err) {
-            if (typeof callback === 'function') {
-                callback(err);
-            } else {
-                throw err;
-            }
+            return;
+        }
+        // Initialize statusDependencies for this process (updated to processModules)
+        statusDependenciesModule = TS.projects.foundations.processModules.statusDependencies.newFoundationsProcessModulesStatusDependencies(processIndex);
+        if (typeof callback === 'function') {
+            callback(null);
         }
     }
 
